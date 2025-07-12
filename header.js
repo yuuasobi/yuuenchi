@@ -15,7 +15,14 @@ const isGamePage = window.location.pathname.includes('/games/');
 
     // ヘッダーの内部HTMLを設定
     const logoPath = isGamePage ? '../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
-    header.innerHTML = `<a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>`;
+    const anotherXPath = isGamePage ? '../AnotherX.html' : './AnotherX.html';
+    header.innerHTML = `
+        <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
+        <div class="header-menu">
+            <a href="${homeLink}" class="menu-button">WCG</a>
+            <a href="${anotherXPath}" class="menu-button">AnotherX</a>
+        </div>
+    `;
 
     // bodyの先頭にヘッダーを追加
     document.body.prepend(header);

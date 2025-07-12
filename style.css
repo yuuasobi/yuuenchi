@@ -51,6 +51,112 @@ body {
     margin-left: 10px;
 }
 
+.header-menu {
+    margin-left: auto;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.menu-button {
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.menu-button:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 20px;
+    background-color: #333;
+}
+
+.menu-button:hover {
+    color: #666;
+}
+
+/* --- AnotherXページのスタイル --- */
+.anotherx-content {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.anotherx-content h1 {
+    font-size: 3rem;
+    color: #4a90e2;
+    margin-bottom: 1rem;
+}
+
+.anotherx-content p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+.content-section {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.content-section h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    color: #4a90e2;
+    margin-bottom: 0.5rem;
+}
+
+.back-link {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #5cb85c;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #4cae4c;
+}
+
 /* --- メインページのヘッダー --- */
 header {
     background: linear-gradient(90deg, #4a90e2, #5cb85c);
