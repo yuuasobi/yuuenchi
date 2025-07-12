@@ -10,11 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
     header.className = 'site-header';
 
     // 現在のページ階層を判定して、トップページへの正しいパスを設定
-    const isGamePage = window.location.pathname.includes('/games/');
+const isGamePage = window.location.pathname.includes('/games/');
     const homeLink = isGamePage ? '../index.html' : './index.html';
 
     // ヘッダーの内部HTMLを設定
-    header.innerHTML = `<a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> ゆうえんち</a>`;
+    const logoPath = isGamePage ? '../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
+    header.innerHTML = `<a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>`;
 
     // bodyの先頭にヘッダーを追加
     document.body.prepend(header);
