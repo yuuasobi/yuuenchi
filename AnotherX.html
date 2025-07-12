@@ -3,41 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnotherX - World Community Games</title>
+    <title>AnotherX - 図書館</title>
+    <link rel="icon" type="image/png" href="source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="source/観覧車ファビコン.png">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .library-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .library-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .library-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-container {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        #search-box {
+            width: 50%;
+            max-width: 400px;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        #search-box:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        }
+
+        .bookshelf {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .bookshelf h2 {
+            color: #4a90e2;
+            font-size: 2rem;
+            margin: 0 0 2rem 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .book {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #e0e0e0;
+            position: relative;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .book.hidden {
+            display: none;
+        }
+
+        .book:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+        }
+
+        .episode-number {
+            color: #4a90e2;
+            font-size: 0.9rem;
+            margin: 1rem 0 0.5rem 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .book h3 {
+            color: #333;
+            font-size: 1.25rem;
+            margin: 0 0 1.5rem 0;
+            font-weight: 600;
+            padding: 0 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            background-color: #333;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .library-header h1 {
+                font-size: 2.5rem;
+            }
+
+            #search-box {
+                width: 80%;
+            }
+        }
+    </style>
 </head>
 <body>
     <script src="header.js"></script>
     
+    <header class="library-header">
+        <h1>📚 AnotherX 図書館 📚</h1>
+    </header>
+    
     <div class="container">
-        <div class="anotherx-content">
-            <h1>AnotherX</h1>
-            <p>AnotherXページへようこそ！</p>
+        <div class="search-container">
+            <input type="text" id="search-box" placeholder="エピソード番号やタイトルで検索...">
+        </div>
+        
+        <div class="bookshelf">
+            <h2>📖 第1章</h2>
             
-            <div class="content-section">
-                <h2>About AnotherX</h2>
-                <p>このページはAnotherXに関する情報を表示するためのページです。</p>
-                
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h3>Feature 1</h3>
-                        <p>AnotherXの機能1についての説明</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Feature 2</h3>
-                        <p>AnotherXの機能2についての説明</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Feature 3</h3>
-                        <p>AnotherXの機能3についての説明</p>
-                    </div>
+            <div class="books-grid">
+                <div class="book" data-episode="1" data-title="旅路">
+                    <div class="episode-number">Episode 1</div>
+                    <h3>旅路</h3>
                 </div>
-            </div>
-            
-            <div class="back-link">
-                <a href="index.html" class="back-button">← トップページに戻る</a>
+                <div class="book" data-episode="2" data-title="森での戦い">
+                    <div class="episode-number">Episode 2</div>
+                    <h3>森での戦い</h3>
+                </div>
+                <div class="book" data-episode="3" data-title="ピンク髪の女の子">
+                    <div class="episode-number">Episode 3</div>
+                    <h3>ピンク髪の女の子</h3>
+                </div>
+                <div class="book" data-episode="4" data-title="モネ">
+                    <div class="episode-number">Episode 4</div>
+                    <h3>モネ</h3>
+                </div>
+                <div class="book" data-episode="5" data-title="渓谷のかくれんぼ">
+                    <div class="episode-number">Episode 5</div>
+                    <h3>渓谷のかくれんぼ</h3>
+                </div>
+                <div class="book" data-episode="6" data-title="モリの村">
+                    <div class="episode-number">Episode 6</div>
+                    <h3>モリの村</h3>
+                </div>
+                <div class="book" data-episode="7" data-title="寝顔">
+                    <div class="episode-number">Episode 7</div>
+                    <h3>寝顔</h3>
+                </div>
+                <div class="book" data-episode="8" data-title="遺跡に巣食うもの">
+                    <div class="episode-number">Episode 8</div>
+                    <h3>遺跡に巣食うもの</h3>
+                </div>
+                <div class="book" data-episode="9" data-title="洞窟に潜むもの">
+                    <div class="episode-number">Episode 9</div>
+                    <h3>洞窟に潜むもの</h3>
+                </div>
+                <div class="book" data-episode="10" data-title="薬学の心得">
+                    <div class="episode-number">Episode 10</div>
+                    <h3>薬学の心得</h3>
+                </div>
+                <div class="book" data-episode="11" data-title="ゲリラホーク戦">
+                    <div class="episode-number">Episode 11</div>
+                    <h3>ゲリラホーク戦</h3>
+                </div>
+                <div class="book" data-episode="12" data-title="怪鳥と異変">
+                    <div class="episode-number">Episode 12</div>
+                    <h3>怪鳥と異変</h3>
+                </div>
+                <div class="book" data-episode="13" data-title="ノンの作戦">
+                    <div class="episode-number">Episode 13</div>
+                    <h3>ノンの作戦</h3>
+                </div>
+                <div class="book" data-episode="14" data-title="エーテル">
+                    <div class="episode-number">Episode 14</div>
+                    <h3>エーテル</h3>
+                </div>
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.getElementById('search-box');
+            const books = document.querySelectorAll('.book');
+
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+
+                books.forEach(book => {
+                    const episode = book.getAttribute('data-episode');
+                    const title = book.getAttribute('data-title').toLowerCase();
+                    const episodeText = `episode ${episode}`.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || episodeText.includes(searchTerm) || episode.includes(searchTerm)) {
+                        book.classList.remove('hidden');
+                    } else {
+                        book.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

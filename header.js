@@ -19,8 +19,8 @@ const isGamePage = window.location.pathname.includes('/games/');
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
         <div class="header-menu">
-            <a href="${homeLink}" class="menu-button">WCG</a>
-            <a href="${anotherXPath}" class="menu-button">AnotherX</a>
+            <a href="${homeLink}" class="menu-button">Game</a>
+            <a href="${anotherXPath}" class="menu-button">Novel</a>
         </div>
     `;
 
