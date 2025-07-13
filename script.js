@@ -1,7 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const gameCards = document.querySelectorAll('.game-card');
-    const searchBox = document.getElementById('search-box');
+    
+    // 検索ボックスが確実に存在するまで少し待機
+    setTimeout(() => {
+        const searchBox = document.getElementById('header-search-box');
 
     // ゲームデータ（テーマとクリエイター情報）
     const gameData = {
@@ -128,22 +131,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 拡張検索機能
-    searchBox.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        gameCards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const gameNumber = card.querySelector('.game-number').textContent.replace('#', '');
-            const gameInfo = gameData[gameNumber];
-            
-            let isVisible = title.includes(searchTerm) || gameNumber.includes(searchTerm);
-            
-            if (gameInfo) {
-                const theme = gameInfo.theme.toLowerCase();
-                const creator = gameInfo.creator.toLowerCase();
-                isVisible = isVisible || theme.includes(searchTerm) || creator.includes(searchTerm);
-            }
-            
-            card.style.display = isVisible ? 'block' : 'none';
+    if (searchBox) {
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            gameCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const gameNumber = card.querySelector('.game-number').textContent.replace('#', '');
+                const gameInfo = gameData[gameNumber];
+                
+                let isVisible = false;
+                
+                // 範囲検索の処理
+                if (searchTerm.includes('-')) {
+                    const range = searchTerm.split('-');
+                    if (range.length === 2) {
+                        const start = range[0].trim();
+                        const end = range[1].trim();
+                        
+                        if (start && end) {
+                            // 5-10のような範囲検索
+                            const startNum = parseInt(start);
+                            const endNum = parseInt(end);
+                            const cardNum = parseInt(gameNumber);
+                            isVisible = !isNaN(startNum) && !isNaN(endNum) && !isNaN(cardNum) && 
+                                      cardNum >= startNum && cardNum <= endNum;
+                        } else if (start && !end) {
+                            // 5-のような開始番号以降の検索
+                            const startNum = parseInt(start);
+                            const cardNum = parseInt(gameNumber);
+                            isVisible = !isNaN(startNum) && !isNaN(cardNum) && cardNum >= startNum;
+                        }
+                    }
+                } else {
+                    // 通常の検索
+                    isVisible = title.includes(searchTerm) || gameNumber.includes(searchTerm);
+                    
+                    if (gameInfo) {
+                        const theme = gameInfo.theme.toLowerCase();
+                        const creator = gameInfo.creator.toLowerCase();
+                        isVisible = isVisible || theme.includes(searchTerm) || creator.includes(searchTerm);
+                    }
+                }
+                
+                card.style.display = isVisible ? 'block' : 'none';
+            });
         });
-    });
+    }
+    }, 100); // 100ms待機
 });
