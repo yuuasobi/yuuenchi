@@ -51,6 +51,33 @@ body {
     margin-left: 10px;
 }
 
+.header-search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 20px;
+}
+
+.header-search-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.header-search-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
 .header-menu {
     margin-left: auto;
     margin-right: 20px;
@@ -204,27 +231,7 @@ header p {
     margin-top: 2rem;
 }
 
-.search-container {
-    margin-bottom: 1rem;
-    text-align: center;
-}
 
-#search-box {
-    width: 50%;
-    max-width: 400px;
-    padding: 0.8rem 1.2rem;
-    font-size: 1rem;
-    border-radius: 50px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-}
-
-#search-box:focus {
-    outline: none;
-    border-color: #4a90e2;
-    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
-}
 
 .game-grid {
     display: grid;

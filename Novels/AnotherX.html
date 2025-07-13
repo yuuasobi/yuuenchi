@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnotherX - 図書館</title>
+    <link rel="icon" type="image/png" href="../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .library-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .library-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .library-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-container {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        #search-box {
+            width: 50%;
+            max-width: 400px;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        #search-box:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        }
+
+        .library-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .bookshelf {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+            border: 3px solid #654321;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            height: fit-content;
+        }
+
+        .bookshelf::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, #654321, #8B4513, #654321);
+            border-radius: 5px;
+        }
+
+        .bookshelf h2 {
+            color: #FFD700;
+            font-size: 1.5rem;
+            margin: 0 0 20px 0;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-weight: bold;
+        }
+
+        .episodes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .episode-card {
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #8B0000 100%);
+            border: 2px solid #654321;
+            border-radius: 5px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .episode-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        }
+
+        .episode-card.active {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+            color: #8B0000;
+        }
+
+        .episode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+        }
+
+        .episode-number {
+            color: #FFD700;
+            font-size: 0.8rem;
+            margin: 0 0 5px 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .episode-card h3 {
+            color: #FFD700;
+            font-size: 0.9rem;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-weight: bold;
+        }
+
+        .episode-card.active .episode-number,
+        .episode-card.active h3 {
+            color: #8B0000;
+            text-shadow: none;
+        }
+
+        .content-panel {
+            background: linear-gradient(135deg, #F5F5DC 0%, #FDF5E6 50%, #F5F5DC 100%);
+            border: 3px solid #8B4513;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 
+                0 8px 25px rgba(0,0,0,0.15),
+                inset 0 2px 8px rgba(255,255,255,0.3);
+            min-height: 200px;
+            position: relative;
+        }
+
+        .content-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .content-panel h2 {
+            color: #4a90e2;
+            font-size: 2rem;
+            margin: 0 0 1rem 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .title-image {
+            display: block;
+            margin: 0 auto 1rem auto;
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .content-panel h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .content-text {
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.8;
+            white-space: pre-line;
+            font-family: 'Times New Roman', serif;
+            height: 300px;
+            position: relative;
+            display: flex;
+            background: linear-gradient(135deg, #F8F8FF 0%, #F0F8FF 50%, #F8F8FF 100%);
+            border: 2px solid #8B4513;
+            border-radius: 8px;
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.12),
+                inset 0 1px 6px rgba(255,255,255,0.4);
+            overflow: hidden;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1rem;
+            width: 250px;
+            border-right: 4px solid #8B4513;
+            background: linear-gradient(135deg, #F5F5DC 0%, #FDF5E6 50%, #F5F5DC 100%);
+            position: relative;
+        }
+
+        .left-column::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #FFD700, #8B4513, #FFD700);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .right-column {
+            position: relative;
+            flex: 1;
+            background: linear-gradient(135deg, #F8F8FF 0%, #F0F8FF 50%, #F8F8FF 100%);
+            overflow: hidden;
+        }
+
+        .page-container {
+            position: relative;
+            height: 100%;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .page-navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .nav-button {
+            background: none;
+            color: #4a90e2;
+            border: none;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            font-size: 3rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-button:hover {
+            color: #2c5aa0;
+            transform: scale(1.2);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        }
+
+        .nav-button:disabled {
+            color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            text-shadow: none;
+        }
+
+        .page-info {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease;
+            background: #fff;
+        }
+
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .page.prev {
+            transform: translateX(-100%);
+        }
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #333;
+            text-align: center;
+        }
+
+        .page-image {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .page-image img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+
+
+        .no-content {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            background-color: #333;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .library-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .library-header h1 {
+                font-size: 2.5rem;
+            }
+
+            #search-box {
+                width: 80%;
+            }
+
+            .bookshelf {
+                order: 2;
+            }
+
+            .content-panel {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="../header.js"></script>
+    
+    <header class="library-header">
+        <h1>📚 AnotherX 図書館 📚</h1>
+    </header>
+    
+    <div class="container">
+        
+        <div class="library-content">
+            <div class="bookshelf">
+                <h2>第1章</h2>
+                
+                <div class="episodes-list">
+                    <div class="episode-card" data-episode="1" data-title="旅路">
+                        <div class="episode-number">Episode 1</div>
+                        <h3>旅路</h3>
+                    </div>
+                    <div class="episode-card" data-episode="2" data-title="森での戦い">
+                        <div class="episode-number">Episode 2</div>
+                        <h3>森での戦い</h3>
+                    </div>
+                    <div class="episode-card" data-episode="3" data-title="ピンク髪の女の子">
+                        <div class="episode-number">Episode 3</div>
+                        <h3>ピンク髪の女の子</h3>
+                    </div>
+                    <div class="episode-card" data-episode="4" data-title="モネ">
+                        <div class="episode-number">Episode 4</div>
+                        <h3>モネ</h3>
+                    </div>
+                    <div class="episode-card" data-episode="5" data-title="渓谷のかくれんぼ">
+                        <div class="episode-number">Episode 5</div>
+                        <h3>渓谷のかくれんぼ</h3>
+                    </div>
+                    <div class="episode-card" data-episode="6" data-title="モリの村">
+                        <div class="episode-number">Episode 6</div>
+                        <h3>モリの村</h3>
+                    </div>
+                    <div class="episode-card" data-episode="7" data-title="寝顔">
+                        <div class="episode-number">Episode 7</div>
+                        <h3>寝顔</h3>
+                    </div>
+                    <div class="episode-card" data-episode="8" data-title="遺跡に巣食うもの">
+                        <div class="episode-number">Episode 8</div>
+                        <h3>遺跡に巣食うもの</h3>
+                    </div>
+                    <div class="episode-card" data-episode="9" data-title="洞窟に潜むもの">
+                        <div class="episode-number">Episode 9</div>
+                        <h3>洞窟に潜むもの</h3>
+                    </div>
+                    <div class="episode-card" data-episode="10" data-title="薬学の心得">
+                        <div class="episode-number">Episode 10</div>
+                        <h3>薬学の心得</h3>
+                    </div>
+                    <div class="episode-card" data-episode="11" data-title="ゲリラホーク戦">
+                        <div class="episode-number">Episode 11</div>
+                        <h3>ゲリラホーク戦</h3>
+                    </div>
+                    <div class="episode-card" data-episode="12" data-title="怪鳥と異変">
+                        <div class="episode-number">Episode 12</div>
+                        <h3>怪鳥と異変</h3>
+                    </div>
+                    <div class="episode-card" data-episode="13" data-title="ノンの作戦">
+                        <div class="episode-number">Episode 13</div>
+                        <h3>ノンの作戦</h3>
+                    </div>
+                    <div class="episode-card" data-episode="14" data-title="エーテル">
+                        <div class="episode-number">Episode 14</div>
+                        <h3>エーテル</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-panel">
+                <div class="no-content">
+                    <h2>📖 物語を選択してください</h2>
+                    <p>左側のエピソードカードをクリックして、物語をお楽しみください。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+
+    <script src="anotherx-content.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const episodeCards = document.querySelectorAll('.episode-card');
+            const contentPanel = document.querySelector('.content-panel');
+
+            // エピソードカードクリック時の処理
+            episodeCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // アクティブクラスを削除
+                    episodeCards.forEach(c => c.classList.remove('active'));
+                    
+                    // クリックされたカードにアクティブクラスを追加
+                    this.classList.add('active');
+                    
+                    // コンテンツを表示
+                    const episode = this.getAttribute('data-episode');
+                    const title = this.getAttribute('data-title');
+                    loadContent(episode, title);
+                });
+            });
+
+            // コンテンツ表示関数
+            function loadContent(episode, title) {
+                const episodeData = episodeContents[episode];
+                
+                if (episodeData) {
+                    // テキストを空行で分割
+                    const pages = episodeData.content.split('\n\n').filter(page => page.trim() !== '');
+                    
+                    let pagesHTML = '';
+                    pages.forEach((page, index) => {
+                        pagesHTML += `
+                            <div class="page ${index === 0 ? 'active' : ''}" data-page="${index}">
+                                <div class="page-content">${page.trim()}</div>
+                            </div>
+                        `;
+                    });
+                    
+                    contentPanel.innerHTML = `
+                        <div class="content-text">
+                            <div class="left-column">
+                                <img src="../source/AnotherX/モネ.png" alt="モネ" class="title-image">
+                                <h2>${episodeData.title}</h2>
+                                <div class="page-info">
+                                    <span id="current-page">1</span> / <span id="total-pages">${pages.length}</span>
+                                </div>
+                            </div>
+                            <div class="right-column">
+                                <div class="page-container">
+                                    ${pagesHTML}
+                                    <div class="page-navigation">
+                                        <button class="nav-button" id="prev-page" onclick="changePage(-1)" disabled>
+                                            ‹
+                                        </button>
+                                        <button class="nav-button" id="next-page" onclick="changePage(1)" ${pages.length <= 1 ? 'disabled' : ''}>
+                                            ›
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // グローバル変数にページ情報を保存
+                    window.currentPageIndex = 0;
+                    window.totalPages = pages.length;
+                } else {
+                    contentPanel.innerHTML = `
+                        <h2>${title}</h2>
+                        <div class="no-content">
+                            <p>このエピソードのコンテンツが見つかりませんでした。</p>
+                        </div>
+                    `;
+                }
+            }
+
+            // ページめくり関数
+            window.changePage = function(direction) {
+                const pages = document.querySelectorAll('.page');
+                const prevButton = document.getElementById('prev-page');
+                const nextButton = document.getElementById('next-page');
+                const currentPageSpan = document.getElementById('current-page');
+                
+                if (direction === 1 && window.currentPageIndex < window.totalPages - 1) {
+                    // 次のページへ
+                    const currentPage = pages[window.currentPageIndex];
+                    const nextPage = pages[window.currentPageIndex + 1];
+                    
+                    currentPage.classList.remove('active');
+                    currentPage.classList.add('prev');
+                    nextPage.classList.add('active');
+                    
+                    window.currentPageIndex++;
+                } else if (direction === -1 && window.currentPageIndex > 0) {
+                    // 前のページへ
+                    const currentPage = pages[window.currentPageIndex];
+                    const prevPage = pages[window.currentPageIndex - 1];
+                    
+                    currentPage.classList.remove('active');
+                    prevPage.classList.remove('prev');
+                    prevPage.classList.add('active');
+                    
+                    window.currentPageIndex--;
+                }
+                
+                // ボタンの状態を更新
+                prevButton.disabled = window.currentPageIndex === 0;
+                nextButton.disabled = window.currentPageIndex === window.totalPages - 1;
+                
+                // ページ番号を更新
+                currentPageSpan.textContent = window.currentPageIndex + 1;
+            };
+        });
+    </script>
+</body>
+</html>
+</body>
+</html> 

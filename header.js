@@ -10,14 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
     header.className = 'site-header';
 
     // 現在のページ階層を判定して、トップページへの正しいパスを設定
-const isGamePage = window.location.pathname.includes('/games/');
-    const homeLink = isGamePage ? '../index.html' : './index.html';
+    const isGamePage = window.location.pathname.includes('/games/');
+    const isNovelsPage = window.location.pathname.includes('/Novels/');
+    const homeLink = isGamePage ? '../index.html' : isNovelsPage ? '../index.html' : './index.html';
 
     // ヘッダーの内部HTMLを設定
-    const logoPath = isGamePage ? '../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
-    const anotherXPath = isGamePage ? '../AnotherX.html' : './AnotherX.html';
+    const logoPath = isGamePage ? '../source/ゆうえんちカラー.png' : isNovelsPage ? '../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
+    const anotherXPath = isGamePage ? '../Novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './Novels/AnotherX.html';
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
+        <div class="header-search">
+            <input type="text" id="header-search-box" placeholder="検索..." class="header-search-input">
+        </div>
         <div class="header-menu">
             <a href="${homeLink}" class="menu-button">Game</a>
             <a href="${anotherXPath}" class="menu-button">Novel</a>
@@ -32,5 +36,68 @@ const isGamePage = window.location.pathname.includes('/games/');
     if (mainContent) {
         const headerHeight = header.offsetHeight;
         mainContent.style.marginTop = `${headerHeight}px`;
+    }
+
+    // ページごとの検索機能を設定
+    const searchBox = document.getElementById('header-search-box');
+    if (searchBox) {
+        // 現在のページに基づいて検索機能を設定
+        const currentPath = window.location.pathname;
+        
+        if (currentPath.includes('/Novels/AnotherX.html') || currentPath.endsWith('/Novels/AnotherX.html')) {
+            // AnotherXページの場合
+            const episodeCards = document.querySelectorAll('.episode-card');
+            if (episodeCards.length > 0) {
+                searchBox.placeholder = 'エピソード番号やタイトルで検索...';
+                searchBox.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    episodeCards.forEach(card => {
+                        const episode = card.getAttribute('data-episode');
+                        const title = card.getAttribute('data-title').toLowerCase();
+                        const episodeText = `episode ${episode}`.toLowerCase();
+                        
+                        let isVisible = false;
+                        
+                        // 範囲検索の処理
+                        if (searchTerm.includes('-')) {
+                            const range = searchTerm.split('-');
+                            if (range.length === 2) {
+                                const start = range[0].trim();
+                                const end = range[1].trim();
+                                
+                                if (start && end) {
+                                    // 5-10のような範囲検索
+                                    const startNum = parseInt(start);
+                                    const endNum = parseInt(end);
+                                    const episodeNum = parseInt(episode);
+                                    isVisible = !isNaN(startNum) && !isNaN(endNum) && !isNaN(episodeNum) && 
+                                              episodeNum >= startNum && episodeNum <= endNum;
+                                } else if (start && !end) {
+                                    // 5-のような開始番号以降の検索
+                                    const startNum = parseInt(start);
+                                    const episodeNum = parseInt(episode);
+                                    isVisible = !isNaN(startNum) && !isNaN(episodeNum) && episodeNum >= startNum;
+                                }
+                            }
+                        } else {
+                            // 通常の検索
+                            isVisible = title.includes(searchTerm) || episodeText.includes(searchTerm) || episode.includes(searchTerm);
+                        }
+                        
+                        card.style.display = isVisible ? 'block' : 'none';
+                    });
+                });
+            }
+        } else if (currentPath.includes('/index.html') || currentPath.endsWith('/') || currentPath.endsWith('/index.html')) {
+            // トップページの場合
+            const gameCards = document.querySelectorAll('.game-card');
+            if (gameCards.length > 0) {
+                searchBox.placeholder = 'ゲームを検索...';
+                // トップページの検索機能はscript.jsで処理されるため、ここでは何もしない
+            }
+        } else {
+            // その他のページの場合
+            searchBox.placeholder = '検索...';
+        }
     }
 });
