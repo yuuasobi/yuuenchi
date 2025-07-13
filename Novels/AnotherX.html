@@ -85,8 +85,9 @@
             
             <div class="content-panel">
                 <div class="no-content">
-                    <h2>📖 物語を選択してください</h2>
-                    <p>左側のエピソードカードをクリックして、物語をお楽しみください。</p>
+                    <img src="../source/AnotherX/アナザークロス_サムネイル.png" alt="AnotherX サムネイル" class="thumbnail-image">
+                    <p class="novel-description">AnotherXは長編ファンタジー小説です</p>
+                    <h2>📖 左のリストからエピソードを選択してください</h2>
                 </div>
             </div>
         </div>
@@ -115,7 +116,39 @@
                     const episode = this.getAttribute('data-episode');
                     const title = this.getAttribute('data-title');
                     loadContent(episode, title);
+                    
+                    // グローバル変数を更新
+                    window.currentEpisode = parseInt(episode);
                 });
+            });
+
+            // キーボードイベントリスナーを追加
+            document.addEventListener('keydown', function(event) {
+                // エピソードが選択されている場合のみキー操作を有効にする
+                if (window.currentEpisode && window.totalPages) {
+                    if (event.key === 'ArrowLeft') {
+                        // 左矢印キーで前のページ
+                        event.preventDefault();
+                        changePage(-1);
+                    } else if (event.key === 'ArrowRight') {
+                        // 右矢印キーで次のページ
+                        event.preventDefault();
+                        changePage(1);
+                    }
+                }
+                
+                // エピソード切り替え（Ctrl + 矢印キー）
+                if (event.ctrlKey && window.currentEpisode) {
+                    if (event.key === 'ArrowLeft') {
+                        // Ctrl + 左矢印キーで前のエピソード
+                        event.preventDefault();
+                        changeEpisode(-1);
+                    } else if (event.key === 'ArrowRight') {
+                        // Ctrl + 右矢印キーで次のエピソード
+                        event.preventDefault();
+                        changeEpisode(1);
+                    }
+                }
             });
 
             // コンテンツ表示関数
@@ -139,12 +172,28 @@
                         <div class="content-text">
                             <div class="left-column">
                                 <img src="../source/AnotherX/モネ.png" alt="モネ" class="title-image">
-                                <h2>${episodeData.title}</h2>
+                                <div class="auto-control">
+                                    <div class="auto-container">
+                                        <button id="auto-button" class="auto-button" onclick="toggleAuto()">
+                                            <span class="auto-icon">▶</span>
+                                            <span class="auto-text">Auto</span>
+                                        </button>
+                                        <div class="auto-timer">
+                                            <input type="number" id="auto-interval" class="auto-input" value="3.0" min="0.1" max="60.0" step="0.1">
+                                            <div class="auto-buttons">
+                                                <button class="auto-up" onclick="adjustInterval(0.1)">▲</button>
+                                                <button class="auto-down" onclick="adjustInterval(-0.1)">▼</button>
+                                            </div>
+                                            <span class="auto-unit">秒</span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="page-info">
                                     <span id="current-page">1</span> / <span id="total-pages">${pages.length}</span>
                                 </div>
                             </div>
                             <div class="right-column">
+                                <h2 class="episode-title">${episodeData.title}</h2>
                                 <div class="page-container">
                                     ${pagesHTML}
                                     <div class="page-navigation">
@@ -158,11 +207,43 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="episode-navigation">
+                            <button class="episode-nav-button" id="prev-episode" onclick="changeEpisode(-1)" ${episode <= 1 ? 'disabled' : ''}>
+                                ← 前のエピソード
+                            </button>
+                            <div class="episode-nav-info">
+                                Episode ${episode} / 14
+                            </div>
+                            <button class="episode-nav-button" id="next-episode" onclick="changeEpisode(1)" ${episode >= 14 ? 'disabled' : ''}>
+                                次のエピソード →
+                            </button>
+                        </div>
                     `;
                     
                     // グローバル変数にページ情報を保存
                     window.currentPageIndex = 0;
                     window.totalPages = pages.length;
+                    
+                    // 自動再生を停止
+                    if (autoInterval) {
+                        toggleAuto();
+                    }
+                    
+                    // 時間設定フィールドのイベントリスナーを設定
+                    setTimeout(() => {
+                        const intervalInput = document.getElementById('auto-interval');
+                        if (intervalInput) {
+                            intervalInput.addEventListener('input', function() {
+                                // 自動再生中の場合、新しい間隔で再設定
+                                if (autoInterval) {
+                                    toggleAuto(); // 一度停止
+                                    setTimeout(() => {
+                                        toggleAuto(); // 新しい間隔で再開
+                                    }, 100);
+                                }
+                            });
+                        }
+                    }, 100);
                 } else {
                     contentPanel.innerHTML = `
                         <h2>${title}</h2>
@@ -185,9 +266,16 @@
                     const currentPage = pages[window.currentPageIndex];
                     const nextPage = pages[window.currentPageIndex + 1];
                     
+                    // フェードアウト
                     currentPage.classList.remove('active');
                     currentPage.classList.add('prev');
-                    nextPage.classList.add('active');
+                    
+                    // 少し遅延してからフェードイン
+                    setTimeout(() => {
+                        // すべてのページのprevクラスをクリア
+                        pages.forEach(page => page.classList.remove('prev'));
+                        nextPage.classList.add('active');
+                    }, 100);
                     
                     window.currentPageIndex++;
                 } else if (direction === -1 && window.currentPageIndex > 0) {
@@ -195,9 +283,16 @@
                     const currentPage = pages[window.currentPageIndex];
                     const prevPage = pages[window.currentPageIndex - 1];
                     
+                    // フェードアウト
                     currentPage.classList.remove('active');
-                    prevPage.classList.remove('prev');
-                    prevPage.classList.add('active');
+                    currentPage.classList.add('prev');
+                    
+                    // 少し遅延してからフェードイン
+                    setTimeout(() => {
+                        // すべてのページのprevクラスをクリア
+                        pages.forEach(page => page.classList.remove('prev'));
+                        prevPage.classList.add('active');
+                    }, 100);
                     
                     window.currentPageIndex--;
                 }
@@ -209,6 +304,87 @@
                 // ページ番号を更新
                 currentPageSpan.textContent = window.currentPageIndex + 1;
             };
+            
+            // エピソード切り替え関数
+            window.changeEpisode = function(direction) {
+                const currentEpisode = parseInt(window.currentEpisode || 1);
+                const newEpisode = currentEpisode + direction;
+                
+                if (newEpisode >= 1 && newEpisode <= 14) {
+                    // アクティブなエピソードカードを更新
+                    episodeCards.forEach(c => c.classList.remove('active'));
+                    const targetCard = document.querySelector(`[data-episode="${newEpisode}"]`);
+                    if (targetCard) {
+                        targetCard.classList.add('active');
+                    }
+                    
+                    // 新しいエピソードのコンテンツを読み込み
+                    const title = targetCard.getAttribute('data-title');
+                    loadContent(newEpisode.toString(), title);
+                    
+                    // グローバル変数を更新
+                    window.currentEpisode = newEpisode;
+                }
+            };
+            
+            // 自動ページめくり機能
+            let autoInterval = null;
+            
+            window.toggleAuto = function() {
+                const autoButton = document.getElementById('auto-button');
+                const autoIcon = autoButton.querySelector('.auto-icon');
+                const autoText = autoButton.querySelector('.auto-text');
+                const intervalInput = document.getElementById('auto-interval');
+                
+                if (autoInterval) {
+                    // 自動再生を停止
+                    clearInterval(autoInterval);
+                    autoInterval = null;
+                    autoButton.classList.remove('active');
+                    autoIcon.textContent = '▶';
+                    autoText.textContent = 'Auto';
+                } else {
+                    // 自動再生を開始
+                    autoButton.classList.add('active');
+                    autoIcon.textContent = '⏸';
+                    autoText.textContent = 'Stop';
+                    
+                    // 設定された間隔で自動ページめくり
+                    const interval = parseFloat(intervalInput.value) * 1000; // 秒をミリ秒に変換
+                    autoInterval = setInterval(() => {
+                        // 最後のページでない場合は次のページへ
+                        if (window.currentPageIndex < window.totalPages - 1) {
+                            changePage(1);
+                        } else {
+                            // 最後のページの場合は自動再生を停止
+                            toggleAuto();
+                        }
+                    }, interval);
+                }
+            };
+            
+            // 時間間隔調整機能
+            window.adjustInterval = function(change) {
+                const intervalInput = document.getElementById('auto-interval');
+                let currentValue = parseFloat(intervalInput.value);
+                let newValue = currentValue + change;
+                
+                // 最小値と最大値を制限
+                newValue = Math.max(0.1, Math.min(60.0, newValue));
+                
+                // 小数点第1位まで表示
+                intervalInput.value = newValue.toFixed(1);
+                
+                // 自動再生中の場合、新しい間隔で再設定
+                if (autoInterval) {
+                    toggleAuto(); // 一度停止
+                    setTimeout(() => {
+                        toggleAuto(); // 新しい間隔で再開
+                    }, 100);
+                }
+            };
+            
+
         });
     </script>
 </body>
