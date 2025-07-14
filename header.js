@@ -12,11 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // 現在のページ階層を判定して、トップページへの正しいパスを設定
     const isGamePage = window.location.pathname.includes('/games/');
     const isNovelsPage = window.location.pathname.includes('/Novels/');
-    const homeLink = isGamePage ? '../index.html' : isNovelsPage ? '../index.html' : './index.html';
+    const isMusicPage = window.location.pathname.includes('/Music/');
+    const homeLink = isGamePage || isNovelsPage || isMusicPage ? '../index.html' : './index.html';
 
     // ヘッダーの内部HTMLを設定
-    const logoPath = isGamePage ? '../source/ゆうえんちカラー.png' : isNovelsPage ? '../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
-    const anotherXPath = isGamePage ? '../Novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './Novels/AnotherX.html';
+    const logoPath = isGamePage || isNovelsPage || isMusicPage ? '../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
+    const anotherXPath = isGamePage || isMusicPage ? '../Novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './Novels/AnotherX.html';
+    const musicPath = isGamePage || isNovelsPage ? '../Music/Music.html' : isMusicPage ? './Music.html' : './Music/Music.html';
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
         <div class="header-search">
@@ -25,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="header-menu">
             <a href="${homeLink}" class="menu-button">Game</a>
             <a href="${anotherXPath}" class="menu-button">Novel</a>
+            <a href="${musicPath}" class="menu-button">Music</a>
         </div>
     `;
 
