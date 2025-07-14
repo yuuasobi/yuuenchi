@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ヘッダーの内部HTMLを設定
     const logoPath = isGamePage || isNovelsPage || isMusicPage ? '../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
+    const gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage ? '../games/WCG.html' : './games/WCG.html';
     const anotherXPath = isGamePage || isMusicPage ? '../Novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './Novels/AnotherX.html';
     const musicPath = isGamePage || isNovelsPage ? '../Music/Music.html' : isMusicPage ? './Music.html' : './Music/Music.html';
     header.innerHTML = `
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <input type="text" id="header-search-box" placeholder="検索..." class="header-search-input">
         </div>
         <div class="header-menu">
-            <a href="${homeLink}" class="menu-button">Game</a>
+            <a href="${gamePath}" class="menu-button">Game</a>
             <a href="${anotherXPath}" class="menu-button">Novel</a>
             <a href="${musicPath}" class="menu-button">Music</a>
         </div>
