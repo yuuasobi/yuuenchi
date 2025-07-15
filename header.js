@@ -13,13 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const isGamePage = window.location.pathname.includes('/contents/games/');
     const isNovelsPage = window.location.pathname.includes('/contents/novels/');
     const isMusicPage = window.location.pathname.includes('/contents/music/');
-    const homeLink = isGamePage || isNovelsPage || isMusicPage ? '../../index.html' : './index.html';
+    const isSynthPage = window.location.pathname.includes('/contents/synth/');
+    const homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../index.html' : './index.html';
 
     // ヘッダーの内部HTMLを設定
-    const logoPath = isGamePage || isNovelsPage || isMusicPage ? '../../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
-    const gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage ? '../games/WCG.html' : './contents/games/WCG.html';
-    const anotherXPath = isGamePage || isMusicPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
-    const musicPath = isGamePage || isNovelsPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
+    const logoPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
+    const gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage || isSynthPage ? '../games/WCG.html' : './contents/games/WCG.html';
+    const anotherXPath = isGamePage || isMusicPage || isSynthPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
+    const musicPath = isGamePage || isNovelsPage || isSynthPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
+    const synthPath = isGamePage || isNovelsPage || isMusicPage ? '../synth/synth.html' : isSynthPage ? './synth.html' : './contents/synth/synth.html';
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
         <div class="header-search">
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="${gamePath}" class="menu-button">Game</a>
             <a href="${anotherXPath}" class="menu-button">Novel</a>
             <a href="${musicPath}" class="menu-button">Music</a>
+            <a href="${synthPath}" class="menu-button">Synth</a>
         </div>
     `;
 

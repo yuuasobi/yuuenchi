@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Synthesizer | ゆうえんち</title>
+    <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../style.css">
+    <script src="../../header.js" defer></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .synth-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+        }
+        .synth-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .synth-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem 2rem 1.5rem;
+            margin-top: 2rem;
+        }
+        .synth-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .synth-card {
+            background: linear-gradient(135deg, #f8f8ff 0%, #f0f8ff 100%);
+            border: 3px solid #8B4513;
+            border-radius: 14px;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .synth-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 16px 40px rgba(74,144,226,0.18);
+        }
+        .synth-card h3 {
+            margin: 0 0 0.7rem 0;
+            color: #1a237e;
+            font-size: 1.5rem;
+        }
+        .synth-card p {
+            margin: 0 0 1.2rem 0;
+            color: #555;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .synth-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #4a90e2, #5cb85c);
+            color: #fff;
+            padding: 0.8rem 2.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(74, 144, 226, 0.13);
+        }
+        .synth-link:hover {
+            background: linear-gradient(45deg, #5cb85c, #4a90e2);
+            box-shadow: 0 4px 16px rgba(74,144,226,0.18);
+        }
+        @media (max-width: 768px) {
+            .synth-header h1 { font-size: 2.1rem; }
+            .container { padding: 0 0.5rem 2rem 0.5rem; }
+            .synth-grid { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="synth-header">
+        <h1>🎹 Web Synthesizer 🎛️</h1>
+    </div>
+    <div class="container">
+        <div class="synth-grid">
+            <div class="synth-card">
+                <h3>Chord Progression</h3>
+                <p>コード進行を自動生成し、作曲や練習に活用できるツールです。</p>
+                <a class="synth-link" href="chord_progression/chord_progression.html">開く</a>
+            </div>
+            <div class="synth-card">
+                <h3>Clock Chords</h3>
+                <p>時計のようなUIでコードを鳴らせるシンセサイザー。</p>
+                <a class="synth-link" href="clockChords/index.html">開く</a>
+            </div>
+            <div class="synth-card">
+                <h3>key Sound</h3>
+                <p>キーボード入力で音を鳴らせるシンプルなウェブシンセ。</p>
+                <a class="synth-link" href="keysound/keySound.html">開く</a>
+            </div>
+            <div class="synth-card">
+                <h3>Painter</h3>
+                <p>お絵描き感覚で音を作れるビジュアルシンセ。</p>
+                <a class="synth-link" href="painter/painter.html">開く</a>
+            </div>
+            <div class="synth-card">
+                <h3>Pawpads</h3>
+                <p>肉球パッドを押して音を鳴らす癒し系シンセ。</p>
+                <a class="synth-link" href="pawpads/pawpads.html">開く</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
