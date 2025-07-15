@@ -14,14 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const isNovelsPage = window.location.pathname.includes('/contents/novels/');
     const isMusicPage = window.location.pathname.includes('/contents/music/');
     const isSynthPage = window.location.pathname.includes('/contents/synth/');
-    const homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../index.html' : './index.html';
-
-    // ヘッダーの内部HTMLを設定
-    const logoPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
-    const gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage || isSynthPage ? '../games/WCG.html' : './contents/games/WCG.html';
-    const anotherXPath = isGamePage || isMusicPage || isSynthPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
-    const musicPath = isGamePage || isNovelsPage || isSynthPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
-    const synthPath = isGamePage || isNovelsPage || isMusicPage ? '../synth/synth.html' : isSynthPage ? './synth.html' : './contents/synth/synth.html';
+    const isSynthSubPage = window.location.pathname.includes('/contents/synth/') && window.location.pathname.includes('/chord_progression/');
+    
+    // パス設定（chord_progression.html用に調整）
+    let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath;
+    
+    if (isSynthSubPage) {
+        // chord_progression.html用のパス
+        homeLink = '../../../index.html';
+        logoPath = '../../../source/ゆうえんちカラー.png';
+        gamePath = '../../games/WCG.html';
+        anotherXPath = '../../novels/AnotherX.html';
+        musicPath = '../../music/Music.html';
+        synthPath = '../synth.html';
+    } else {
+        // 他のページ用のパス
+        homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../index.html' : './index.html';
+        logoPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
+        gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage || isSynthPage ? '../games/WCG.html' : './contents/games/WCG.html';
+        anotherXPath = isGamePage || isMusicPage || isSynthPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
+        musicPath = isGamePage || isNovelsPage || isSynthPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
+        synthPath = isGamePage || isNovelsPage || isMusicPage ? '../synth/synth.html' : isSynthPage ? './synth.html' : './contents/synth/synth.html';
+    }
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
         <div class="header-search">

@@ -1,78 +1,239 @@
-		#container {
-			width: 1210px;
-			border: solid gray 2px;
-			border-radius: 10px;
-			padding: 10px;
-			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-		}
+/* 追加: chord-prog-container全体 */
+.chord-prog-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    padding: 2.5rem 2rem 2rem 2rem;
+    margin: 2.5rem auto 2rem auto;
+    max-width: 1100px;
+}
+.chord-prog-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    margin-top: 3rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.chord-prog-header h1 {
+    font-size: 2.2rem;
+    color: #4a90e2;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+.chord-prog-header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
 
-		.matrix > tr > .title {
-			width: 140px;
-			padding-left: 5px;
-			border: solid gray 1px;
-			background: pink;
-		}
+/* フルセットボタンとオプションのレイアウト */
+.chordprog-fullset-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-		.matrix2 > tr > .title {
-			width: 140px;
-			padding-left: 5px;
-			border: solid gray 1px;
-			background: pink;
-		}
+.chordprog-fullset-btn {
+    background: linear-gradient(90deg, #4a90e2, #5cb85c);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 1em 3em;
+    font-size: 1.3em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(74,144,226,0.2);
+    transition: background 0.2s, transform 0.2s;
+}
 
-		.bold {
-			font-weight: bold;
-		}
+.chordprog-fullset-btn:hover {
+    background: linear-gradient(90deg, #5cb85c, #4a90e2);
+    transform: translateY(-3px) scale(1.05);
+}
 
-		#defult {
-			background: yellow;
-		}
+.chordprog-options-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
 
-		 .option {
-			background: pink;
-		 }
+.chordprog-form-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-		.chord {
-			color: red;
-			border-right: solid gray 1px;
-		}
+.chordprog-checkbox-group {
+    display: flex;
+    gap: 1rem;
+}
 
-		.chordfunction {
-			width: 100px;
-			border-right: solid gray 1px;
-		}
+#container {
+    width: 100%;
+    max-width: 1000px;
+    border: none;
+    border-radius: 14px;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin: 0 auto;
+    background: #f8fafc;
+}
 
-		.chorddegree {
-			width: 100px;
-			border-right: solid gray 1px;
-		}
+.matrix, .matrix2 {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.matrix tr, .matrix2 tr {
+    border-bottom: 1px solid #e0e0e0;
+}
 
-		.matrix > tr > .title2 {
-			width: 120px;
-		}
-
-		thead.matrix > tr > .data {
-			background: pink;
-			text-align: center;
-			font-weight: bold;
-		}
-
-		.matrix > tr > .data {
-			width: 150px;
-			border: solid gray 1px;
-			padding-left: 5px;
-		}
-
-		.matrix2 > tr > #secoundaryDominant {
-			width: 1050px;
-			border: solid gray 1px;
-			padding-left: 5px;
-		}
-
-		.data:hover {
-			background-color: orange;
-		}
-
-		.chordchange {
-			background-color: orange;
-		}
+/* ベース、転調、転調先セクションのテーブル行の区分け線を強調 */
+.chordprog-bass .matrix tr,
+.chordprog-modulation .matrix tr,
+.chordprog-modulation .matrix2 tr,
+.chordprog-modulationto .matrix tr {
+    border-bottom: 2px solid #4a90e2;
+}
+.matrix tr:nth-child(even), .matrix2 tr:nth-child(even) {
+    background: #f3f7fa;
+}
+.matrix tr:nth-child(odd), .matrix2 tr:nth-child(odd) {
+    background: #fff;
+}
+.matrix > tr > .title, .matrix2 > tr > .title {
+    background: #ffe0ef;
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px 0 0 6px;
+    padding-left: 10px;
+    border-right: 1px solid #4a90e2;
+}
+.bold {
+    font-weight: bold;
+    color: #4a90e2;
+}
+#defult {
+    background: #fffbe6;
+}
+.option {
+    background: #ffe0ef;
+}
+.chord {
+    color: #e74c3c;
+    border-right: 1px solid #e0e0e0;
+}
+.chordfunction, .chorddegree {
+    border-right: 1px solid #e0e0e0;
+}
+.matrix > tr > .title2 {
+    width: 120px;
+    color: #4a90e2;
+    font-weight: bold;
+}
+thead.matrix > tr > .data {
+    background: #ffe0ef;
+    text-align: center;
+    font-weight: bold;
+}
+.matrix > tr > .data, .matrix2 > tr > .data {
+    border: 1px solid #e0e0e0;
+    padding-left: 5px;
+    border-right: 1px solid #4a90e2;
+}
+.matrix2 > tr > #secoundaryDominant {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    padding-left: 5px;
+    border-right: 1px solid #4a90e2;
+}
+.data:hover, .chordchange {
+    background-color: #ffe9b3;
+    transition: background 0.2s;
+}
+input[type="button"], .Return_view {
+    background: linear-gradient(90deg, #4a90e2, #5cb85c);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1.5em;
+    font-size: 1.1em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 0.2em 0.5em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(74,144,226,0.08);
+    transition: background 0.2s, transform 0.2s;
+}
+input[type="button"]:hover, .Return_view:hover {
+    background: linear-gradient(90deg, #5cb85c, #4a90e2);
+    transform: translateY(-2px) scale(1.04);
+}
+label {
+    font-size: 1.05em;
+    color: #333;
+    margin-right: 1.2em;
+    font-family: 'Poppins', 'Yusei Magic', sans-serif;
+}
+select, input[type="checkbox"] {
+    margin-right: 0.5em;
+}
+@media (max-width: 900px) {
+    .chord-prog-container {
+        padding: 1.2rem 0.5rem;
+    }
+    #container {
+        padding: 0.5rem 0.2rem;
+    }
+    .matrix, .matrix2 {
+        font-size: 0.98rem;
+    }
+    .chordprog-options-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .chordprog-fullset-btn {
+        font-size: 1.1em;
+        padding: 0.8em 2em;
+    }
+}
+@media (max-width: 600px) {
+    .chord-prog-header h1 {
+        font-size: 1.3rem;
+    }
+    .chord-prog-header p {
+        font-size: 0.95rem;
+    }
+    .chord-prog-container {
+        padding: 0.5rem 0.1rem;
+        border-radius: 8px;
+    }
+    #container {
+        padding: 0.2rem 0.05rem;
+        border-radius: 6px;
+    }
+    .matrix, .matrix2 {
+        font-size: 0.92rem;
+    }
+    input[type="button"], .Return_view {
+        font-size: 0.95em;
+        padding: 0.4em 1em;
+    }
+    .chordprog-fullset-btn {
+        font-size: 1em;
+        padding: 0.6em 1.5em;
+    }
+    .chordprog-options-container {
+        gap: 0.5rem;
+    }
+}
