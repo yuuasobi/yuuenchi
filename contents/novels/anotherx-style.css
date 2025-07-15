@@ -519,7 +519,7 @@ body {
     font-size: 1.1rem;
     line-height: 2;
     color: #333;
-    text-align: center;
+    text-align: left;
     max-width: 90%;
     max-height: 90%;
     overflow-y: auto;
