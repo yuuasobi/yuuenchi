@@ -235,8 +235,8 @@ header p {
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .game-card {
