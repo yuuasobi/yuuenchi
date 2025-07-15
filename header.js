@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
     header.className = 'site-header';
 
     // 現在のページ階層を判定して、トップページへの正しいパスを設定
-    const isGamePage = window.location.pathname.includes('/games/');
-    const isNovelsPage = window.location.pathname.includes('/Novels/');
-    const isMusicPage = window.location.pathname.includes('/Music/');
-    const homeLink = isGamePage || isNovelsPage || isMusicPage ? '../index.html' : './index.html';
+    const isGamePage = window.location.pathname.includes('/contents/games/');
+    const isNovelsPage = window.location.pathname.includes('/contents/novels/');
+    const isMusicPage = window.location.pathname.includes('/contents/music/');
+    const homeLink = isGamePage || isNovelsPage || isMusicPage ? '../../index.html' : './index.html';
 
     // ヘッダーの内部HTMLを設定
-    const logoPath = isGamePage || isNovelsPage || isMusicPage ? '../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
-    const gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage ? '../games/WCG.html' : './games/WCG.html';
-    const anotherXPath = isGamePage || isMusicPage ? '../Novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './Novels/AnotherX.html';
-    const musicPath = isGamePage || isNovelsPage ? '../Music/Music.html' : isMusicPage ? './Music.html' : './Music/Music.html';
+    const logoPath = isGamePage || isNovelsPage || isMusicPage ? '../../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
+    const gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage ? '../games/WCG.html' : './contents/games/WCG.html';
+    const anotherXPath = isGamePage || isMusicPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
+    const musicPath = isGamePage || isNovelsPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
         <div class="header-search">
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 現在のページに基づいて検索機能を設定
         const currentPath = window.location.pathname;
         
-        if (currentPath.includes('/Novels/AnotherX.html') || currentPath.endsWith('/Novels/AnotherX.html')) {
+        if (currentPath.includes('/contents/novels/AnotherX.html') || currentPath.endsWith('/contents/novels/AnotherX.html')) {
             // AnotherXページの場合
             const episodeCards = document.querySelectorAll('.episode-card');
             if (episodeCards.length > 0) {

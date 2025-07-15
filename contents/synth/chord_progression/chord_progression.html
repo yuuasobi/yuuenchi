@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Chord Progression</title>
+	<link rel="stylesheet" href="songwriteprogram.css">
+	<link rel="stylesheet" href="../style.css">
+	<script type="text/javascript" src="songwriteprogram.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="chordchange.js"></script>
+	<script type="text/javascript" src="soundpreview.js"></script>
+</head>
+<body>
+	<div class="header">soundies</div>
+	<div class="main">
+	<div id="container">
+	<br>
+	<!-- スケール指定 -->
+	<form name="scaleset">
+	<select name="scale">
+		<option value="flat5">Gbメジャー/Ebマイナー(b6)</option>
+		<option value="flat4">Dbメジャー/Bbマイナー(b5)</option>
+		<option value="flat3">Abメジャー/Fマイナー(b4)</option>
+		<option value="flat2">Ebメジャー/Cマイナー(b3)</option>
+		<option value="flat1">Bbメジャー/Gマイナー(b2)</option>
+		<option value="flat0">Fメジャー/Dマイナー(b1)</option>
+		<option value="default" selected>Cメジャー/Aマイナー</option>
+		<option value="sharp0">Gメジャー/Eマイナー(#1)</option>
+		<option value="sharp1">Dメジャー/Bマイナー(#2)</option>
+		<option value="sharp2">Aメジャー/F#マイナー(#3)</option>
+		<option value="sharp3">Eメジャー/C#マイナー(#4)</option>
+		<option value="sharp4">Bメジャー/G#マイナー(#5)</option>
+		<option value="sharp5">F#メジャー/D#マイナー(#6)</option>
+	</select>
+	　<input type="button" value="フルセット" onclick="full();">
+	</form>
+	<br>
+	<label><input type ="checkbox" id="threeChordCheck"> スリーコード</label>
+	<label><input type ="checkbox" id="sevenbasechord"> Ⅶm-5</label>
+
+	<table>
+		<tbody class="matrix">
+			<tr>
+			<!-- コード進行 -->
+				<td class="title2"><input type="button" value="コード進行" onclick="chord();"></td>
+				<td class="chorddegree"><span id="degreeName"><font size="2">ディグリー</font></span></td>
+				<td class="chorddegree"><span id="num1"></span></td>
+				<td class="chorddegree"><span id="num2"></span></td>
+				<td class="chorddegree"><span id="num3"></span></td>
+				<td class="chorddegree"><span id="num4"></span></td>
+				<td class="chorddegree"><span id="num5"></span></td>
+				<td class="chorddegree"><span id="num6"></span></td>
+				<td class="chorddegree"><span id="num7"></span></td>
+				<td class="chorddegree"><span id="num8"></span></td>
+			</tr>
+			<tr>
+				<td class="title2"></td>
+				<td class="chord"><span id="ChordName"><font size="2">コード</font></span></td>
+				<td class="chord"><span id="m1"></span></td>
+				<td class="chord"><span id="m2"></span></td>
+				<td class="chord"><span id="m3"></span></td>
+				<td class="chord"><span id="m4"></span></td>
+				<td class="chord"><span id="m5"></span></td>
+				<td class="chord"><span id="m6"></span></td>
+				<td class="chord"><span id="m7"></span></td>
+				<td class="chord"><span id="m8"></span></td>
+			</tr>
+			<tr>
+				<td class="title2"></td>
+				<td class="chordfunction"><span id="functionName"><font size="2">ファンクション</font></span></td>
+				<td class="chordfunction"><span id="f1"></span></td>
+				<td class="chordfunction"><span id="f2"></span></td>
+				<td class="chordfunction"><span id="f3"></span></td>
+				<td class="chordfunction"><span id="f4"></span></td>
+				<td class="chordfunction"><span id="f5"></span></td>
+				<td class="chordfunction"><span id="f6"></span></td>
+				<td class="chordfunction"><span id="f7"></span></td>
+				<td class="chordfunction"><span id="f8"></span></td>
+			</tr>
+
+			<tr>
+			<!-- リズム -->
+				<td class="title2"><input type="button" value="リズム" onclick="rhythm();"></td>
+				<td><span id="rhythm"></span>　拍子</td><td><span id="accent"></span></td><td><span id="b"></span>　ビート</td>
+			</tr>
+			<tr>
+			<!-- テンポ -->
+				<td class="title2"><input type="button" value="テンポ" onclick="bpm();">　
+				<td><span id="bpm"></span></td>
+			</tr>
+			<tr>
+			<!-- ジャンル -->
+				<td class="title2"><input type="button" value="ジャンル" onclick="genre();">　
+				<td><span id="genre"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	<br><span class="bold">ベース</span>
+	<table>
+		<thead class="matrix">
+			<tr>
+				<td class="title"></td>
+					<td class="data">T</td>
+					<td class="data">SD</td>
+					<td class="data">T/D</td>
+					<td class="data">SD</td>
+					<td class="data">D</td>
+					<td class="data">T</td>
+					<td class="data">D/SD</td>
+			</tr>
+		</thead>
+		<tbody class="matrix">
+			<tr class="option">
+				<td class="title">スケール</td>
+					<td id="s0" class="data"></td>
+					<td id="s1" class="data"></td>
+					<td id="s2" class="data"></td>
+					<td id="s3" class="data"></td>
+					<td id="s4" class="data"></td>
+					<td id="s5" class="data"></td>
+					<td id="s6" class="data"></td>
+			</tr>
+			<tr class="option">
+				<td class="title">音名</td>
+					<td id="p0" class="data"></td>
+					<td id="p1" class="data"></td>
+					<td id="p2" class="data"></td>
+					<td id="p3" class="data"></td>
+					<td id="p4" class="data"></td>
+					<td id="p5" class="data"></td>
+					<td id="p6" class="data"></td>
+			</tr>
+			<tr id="defult">
+				<td class="title">コード</td>
+					<td id="c0" class="data"></td>
+					<td id="c1" class="data"></td>
+					<td id="c2" class="data"></td>
+					<td id="c3" class="data"></td>
+					<td id="c4" class="data"></td>
+					<td id="c5" class="data"></td>
+					<td id="c6" class="data"></td>
+			</tr>
+			<tr id="defult">
+				<td class="title">7thコード</td>
+					<td id="seven0" class="data"></td>
+					<td id="seven1" class="data"></td>
+					<td id="seven2" class="data"></td>
+					<td id="seven3" class="data"></td>
+					<td id="seven4" class="data"></td>
+					<td id="seven5" class="data"></td>
+					<td id="seven6" class="data"></td>
+			</tr>
+			</tr>
+			<tr id="defult">
+				<td class="title">ﾅﾁｭﾗﾙﾃﾝｼｮﾝ</td>
+					<td id="tension0" class="data"></td>
+					<td id="tension1" class="data"></td>
+					<td id="tension2" class="data"></td>
+					<td id="tension3" class="data"></td>
+					<td id="tension4" class="data"></td>
+					<td id="tension5" class="data"></td>
+					<td id="tension6" class="data"></td>
+			</tr>
+			<tr id="defult">
+				<td class="title">ｵﾙﾀｰﾄﾞﾃﾝｼｮﾝ</td>
+					<td id="alteredtension0" class="data"></td>
+					<td id="alteredtension1" class="data"></td>
+					<td id="alteredtension2" class="data"></td>
+					<td id="alteredtension3" class="data"></td>
+					<td id="alteredtension4" class="data"></td>
+					<td id="alteredtension5" class="data"></td>
+					<td id="alteredtension6" class="data"></td>
+			</tr>
+		</tbody>
+	</table>
+	<br><span class="bold">転調</span>
+	<table>
+		<tbody class="matrix">
+			<tr id="chordhoverroot">
+				<td class="title"><span id="root">ルート</span></td>
+					<td id="root0" class="data"></td>
+					<td id="root1" class="data"></td>
+					<td id="root2" class="data"></td>
+					<td id="root3" class="data"></td>
+					<td id="root4" class="data"></td>
+					<td id="root5" class="data"></td>
+					<td id="root6" class="data"></td>
+			</tr>
+			<tr id="chordhoversubdominant">
+				<td class="title"><span id="subdominant">サブドミナント</span></td>
+					<td id="subdominant0" class="data"></td>
+					<td id="subdominant1" class="data"></td>
+					<td id="subdominant2" class="data"></td>
+					<td id="subdominant3" class="data"></td>
+					<td id="subdominant4" class="data"></td>
+					<td id="subdominant5" class="data"></td>
+					<td id="subdominant6" class="data"></td>
+			</tr>
+			<tr id="chordhoverdominant">
+				<td class="title"><span id="dominant">ドミナント</span></td>
+					<td id="dominant0" class="data"></td>
+					<td id="dominant1" class="data"></td>
+					<td id="dominant2" class="data"></td>
+					<td id="dominant3" class="data"></td>
+					<td id="dominant4" class="data"></td>
+					<td id="dominant5" class="data"></td>
+					<td id="dominant6" class="data"></td>
+			</tr>
+			<tr id="chordhoverparallel">
+				<td class="title"><span id="parallel">同主調</span></td>
+					<td id="parallel0" class="data"></td>
+					<td id="parallel1" class="data"></td>
+					<td id="parallel2" class="data"></td>
+					<td id="parallel3" class="data"></td>
+					<td id="parallel4" class="data"></td>
+					<td id="parallel5" class="data"></td>
+					<td id="parallel6" class="data"></td>
+			</tr>
+			<tr id="chordhoverminorflatfive">
+				<td class="title"><span id="minorflatfive">Ⅶm-5</span></td>
+					<td id="minorflatfive0" class="data"></td>
+					<td id="minorflatfive1" class="data"></td>
+					<td id="minorflatfive2" class="data"></td>
+					<td id="minorflatfive3" class="data"></td>
+					<td id="minorflatfive4" class="data"></td>
+					<td id="minorflatfive5" class="data"></td>
+					<td id="minorflatfive6" class="data"></td>
+			</tr>
+			<tr>
+				<td class="title"><span id="urachord">裏コード</span></td>
+					<td id="u0" class="data"></td>
+					<td id="u1" class="data"></td>
+					<td id="u2" class="data"></td>
+					<td id="u3" class="data"></td>
+					<td id="u4" class="data"></td>
+					<td id="u5" class="data"></td>
+					<td id="u6" class="data"></td>
+			</tr>
+		</tbody>
+	</table>
+	<table>
+		<tbody class="matrix2">
+			<tr>
+				<td class="title">ｾｶﾝﾀﾞﾘｰﾄﾞﾐﾅﾝﾄ</td>
+				<td id="secoundaryDominant" class="data"></td>
+			</tr>
+		</tbody>
+	</table>
+	<br><span class="bold">転調先</span>
+	<table>
+		<thead class="matrix">
+			<tr>
+				<td class="title"></td>
+					<td class="data">T</td>
+					<td class="data">SD</td>
+					<td class="data">T/D</td>
+					<td class="data">SD</td>
+					<td class="data">D</td>
+					<td class="data">T</td>
+					<td class="data">D/SD</td>
+			</tr>
+		</thead>
+		<tbody class="matrix">
+			<tr>
+				<td class="title" id="scalechange0">転調①</td>
+					<td id="scalechange0_0" class="data"></td>
+					<td id="scalechange0_1" class="data"></td>
+					<td id="scalechange0_2" class="data"></td>
+					<td id="scalechange0_3" class="data"></td>
+					<td id="scalechange0_4" class="data"></td>
+					<td id="scalechange0_5" class="data"></td>
+					<td id="scalechange0_6" class="data"></td>
+			</tr>
+			<tr>
+				<td class="title" id="scalechange1">転調②</td>
+					<td id="scalechange1_0" class="data"></td>
+					<td id="scalechange1_1" class="data"></td>
+					<td id="scalechange1_2" class="data"></td>
+					<td id="scalechange1_3" class="data"></td>
+					<td id="scalechange1_4" class="data"></td>
+					<td id="scalechange1_5" class="data"></td>
+					<td id="scalechange1_6" class="data"></td>
+			</tr>
+			<tr>
+				<td class="title" id="scalechange2">転調③</td>
+					<td id="scalechange2_0" class="data"></td>
+					<td id="scalechange2_1" class="data"></td>
+					<td id="scalechange2_2" class="data"></td>
+					<td id="scalechange2_3" class="data"></td>
+					<td id="scalechange2_4" class="data"></td>
+					<td id="scalechange2_5" class="data"></td>
+					<td id="scalechange2_6" class="data"></td>
+			</tr>
+			<tr>
+				<td class="title" id="scalechange6">転調④</td>
+					<td id="scalechange6_0" class="data"></td>
+					<td id="scalechange6_1" class="data"></td>
+					<td id="scalechange6_2" class="data"></td>
+					<td id="scalechange6_3" class="data"></td>
+					<td id="scalechange6_4" class="data"></td>
+					<td id="scalechange6_5" class="data"></td>
+					<td id="scalechange6_6" class="data"></td>
+			</tr>
+			<tr>
+				<td class="title" id="scalechange3">転調⑤</td>
+					<td id="scalechange3_0" class="data"></td>
+					<td id="scalechange3_1" class="data"></td>
+					<td id="scalechange3_2" class="data"></td>
+					<td id="scalechange3_3" class="data"></td>
+					<td id="scalechange3_4" class="data"></td>
+					<td id="scalechange3_5" class="data"></td>
+					<td id="scalechange3_6" class="data"></td>
+			</tr>
+			<tr>
+				<td class="title" id="scalechange4">転調⑥</td>
+					<td id="scalechange4_0" class="data"></td>
+					<td id="scalechange4_1" class="data"></td>
+					<td id="scalechange4_2" class="data"></td>
+					<td id="scalechange4_3" class="data"></td>
+					<td id="scalechange4_4" class="data"></td>
+					<td id="scalechange4_5" class="data"></td>
+					<td id="scalechange4_6" class="data"></td>
+			</tr>
+			<tr>
+				<td class="title" id="scalechange5">転調⑦</td>
+					<td id="scalechange5_0" class="data"></td>
+					<td id="scalechange5_1" class="data"></td>
+					<td id="scalechange5_2" class="data"></td>
+					<td id="scalechange5_3" class="data"></td>
+					<td id="scalechange5_4" class="data"></td>
+					<td id="scalechange5_5" class="data"></td>
+					<td id="scalechange5_6" class="data"></td>
+			</tr>
+			<tr>
+				<td class="title" id="scalechange7">転調⑧</td>
+					<td id="scalechange7_0" class="data"></td>
+					<td id="scalechange7_1" class="data"></td>
+					<td id="scalechange7_2" class="data"></td>
+					<td id="scalechange7_3" class="data"></td>
+					<td id="scalechange7_4" class="data"></td>
+					<td id="scalechange7_5" class="data"></td>
+					<td id="scalechange7_6" class="data"></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</div>
+	<br>
+	<br>
+  <a href="../index.html"><div class="Return_view">←</div></a>
+</body>
+</html>

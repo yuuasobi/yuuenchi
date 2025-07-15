@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Painter</title>
+  <link rel="stylesheet" href="painter.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="painter.js"></script>
+</head>
+<body>
+  <div class="container">
+  	<div class="header">soundies</div>
+	  <div class="main">
+      <div class="canvasarea">
+        <canvas id="mycanvas" width="800px" height="400px">
+          お使いのブラウザは対応していません。
+        </canvas>
+      </div>
+      <p>
+      <div class="erasearea" id="erase">消去</div>
+      <div id="save" >保存</div>
+      </p>
+        <div id="gallery"></div>
+
+      <div class="parametersarea">
+        <span class="toolarea">
+            <p>
+            <span>ペンの色： </span>
+            <select id="penColor">
+              <option value="black">黒</option>
+              <option value="red">赤</option>
+              <option value="blue">青</option>
+            </select>
+            <span>ペンの太さ： </span>
+            <select id="penWidth">
+              <option value="1">細</option>
+              <option value="3" selected>中</option>
+              <option value="5">太</option>
+            </select>
+
+            </p>
+        </span>
+
+        <span class="Coordinatearea">
+          <span>X座標：</span><span id="CoordinateX">000</span>
+          <span>Y座標：</span><span id="CoordinateY">000</span>
+        </span>
+
+        <span class="osc">
+           <span>Wave:</span>
+           <select id="wave" onchange="Setup()">
+               <option value="sine">Sine</option>
+               <option value="square">Square</option>
+               <option value="sawtooth">SawTooth</option>
+               <option value="triangle">Triangle</option>
+    			 </select>
+           <select id="wave2" onchange="Setup()">
+               <option value="sine">Sine</option>
+               <option value="square">Square</option>
+               <option value="sawtooth">SawTooth</option>
+               <option value="triangle">Triangle</option>
+    			 </select>
+           <p>
+             <span class="margin">OSC2 Freq:</span>
+             <input type="range" min="1" max="10" step="0.01" value="2" id="osc2freq" oninput="Setup()"/><span id="osc2freqdisp">2</span>
+             <span class="margin">Level:</span>
+             <input type="range" min="0" max="1" step="0.01" value="0.2" id="level" oninput="Setup()"/><span id="leveldisp">0.2</span>
+           </p>
+      	</span>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <a href="../index.html"><div class="Return_view">←</div></a>
+</body>
+</html>

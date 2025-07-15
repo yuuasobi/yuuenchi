@@ -246,9 +246,6 @@ header p {
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.5s forwards;
 }
 
 .game-card.visible {
@@ -314,4 +311,92 @@ footer {
     margin-top: 3rem;
     background-color: #333;
     color: white;
+}
+
+/* --- page-grid, page-card（WCG.html用） --- */
+.page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+.page-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.page-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.page-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+.page-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.page-card-content {
+    padding: 1.5rem;
+}
+.page-number {
+    font-size: 1.2rem;
+    color: #4a90e2;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.page-card h2 {
+    color: #4a90e2;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+.page-card p {
+    color: #666;
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+.page-card a, .page-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #4a90e2, #5cb85c);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.18);
+}
+.page-card a:hover, .page-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.22);
+}
+
+/* --- WCGページの大タイトル --- */
+.wcg-header {
+    background: linear-gradient(90deg, #4a90e2, #5cb85c);
+    color: white;
+    padding: 3rem 1rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 90px;
+    z-index: 1;
+}
+.wcg-header h1 {
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.18);
+    letter-spacing: 0.05em;
 }

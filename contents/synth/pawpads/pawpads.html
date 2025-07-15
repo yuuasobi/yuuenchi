@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>PawPads</title>
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="pawpads.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="pawpads.js"></script>
+</head>
+<body>
+<div id="container">
+	<div class="header">soundies</div>
+	</div>
+	<div class="main">
+		<div class="contentsarea">
+			<div class="pawpadsarea">
+				<div class="pad">
+					<!-- 指球 -->
+					<div class="digitals">
+					  <div class="digital"></div>
+					  <div class="digital"></div>
+					  <div class="digital"></div>
+					  <div class="digital"></div>
+					</div>
+					<!-- 掌球 -->
+					<div class="metacarpal"></div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="osc">
+       <span>Wave:</span>
+       <select id="wave" onchange="Setup()">
+           <option value="sine">Sine</option>
+           <option value="square">Square</option>
+           <option value="sawtooth">SawTooth</option>
+           <option value="triangle">Triangle</option>
+			 </select>
+       <span class="margin">Level:</span>
+       <input type="range" min="0" max="1" step="0.01" value="0.5" id="level" value="1" oninput="Setup()"/><span id="leveldisp">0.5</span>
+       <span class="margin">Freq(Hz) : </span><span id="keyAudioFreq"></span>
+  	</div>
+  </div>
+</div>
+	<br>
+  <a href="../index.html"><div class="Return_view">←</div></a>
+</body>
+</html>
