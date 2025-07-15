@@ -18,11 +18,9 @@
     </header>
     
     <div class="container">
-        
         <div class="library-content">
             <div class="bookshelf">
                 <h2>第1章</h2>
-                
                 <div class="episodes-list">
                     <div class="episode-card" data-episode="1" data-title="旅路">
                         <div class="episode-number">Episode 1</div>
@@ -48,41 +46,40 @@
                         <div class="episode-number">Episode 6</div>
                         <h3>モリの村</h3>
                     </div>
-                    <div class="episode-card" data-episode="7" data-title="寝顔">
-                        <div class="episode-number">Episode 7</div>
+                    <div class="episode-card" data-episode="6.5" data-title="寝顔">
+                        <div class="episode-number">Episode 6.5</div>
                         <h3>寝顔</h3>
                     </div>
-                    <div class="episode-card" data-episode="8" data-title="遺跡に巣食うもの">
-                        <div class="episode-number">Episode 8</div>
+                    <div class="episode-card" data-episode="7" data-title="遺跡に巣食うもの">
+                        <div class="episode-number">Episode 7</div>
                         <h3>遺跡に巣食うもの</h3>
                     </div>
-                    <div class="episode-card" data-episode="9" data-title="洞窟に潜むもの">
-                        <div class="episode-number">Episode 9</div>
+                    <div class="episode-card" data-episode="8" data-title="洞窟に潜むもの">
+                        <div class="episode-number">Episode 8</div>
                         <h3>洞窟に潜むもの</h3>
                     </div>
-                    <div class="episode-card" data-episode="10" data-title="薬学の心得">
-                        <div class="episode-number">Episode 10</div>
+                    <div class="episode-card" data-episode="9" data-title="薬学の心得">
+                        <div class="episode-number">Episode 9</div>
                         <h3>薬学の心得</h3>
                     </div>
-                    <div class="episode-card" data-episode="11" data-title="ゲリラホーク戦">
-                        <div class="episode-number">Episode 11</div>
+                    <div class="episode-card" data-episode="10" data-title="ゲリラホーク戦">
+                        <div class="episode-number">Episode 10</div>
                         <h3>ゲリラホーク戦</h3>
                     </div>
-                    <div class="episode-card" data-episode="12" data-title="怪鳥と異変">
-                        <div class="episode-number">Episode 12</div>
+                    <div class="episode-card" data-episode="11" data-title="怪鳥と異変">
+                        <div class="episode-number">Episode 11</div>
                         <h3>怪鳥と異変</h3>
                     </div>
-                    <div class="episode-card" data-episode="13" data-title="ノンの作戦">
-                        <div class="episode-number">Episode 13</div>
+                    <div class="episode-card" data-episode="12" data-title="ノンの作戦">
+                        <div class="episode-number">Episode 12</div>
                         <h3>ノンの作戦</h3>
                     </div>
-                    <div class="episode-card" data-episode="14" data-title="エーテル">
-                        <div class="episode-number">Episode 14</div>
+                    <div class="episode-card" data-episode="13" data-title="エーテル">
+                        <div class="episode-number">Episode 13</div>
                         <h3>エーテル</h3>
                     </div>
                 </div>
             </div>
-            
             <div class="content-panel">
                 <div class="no-content">
                     <img src="../../source/AnotherX/アナザークロス_サムネイル.png" alt="AnotherX サムネイル" class="thumbnail-image">
@@ -101,7 +98,69 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const episodeCards = document.querySelectorAll('.episode-card');
-            const contentPanel = document.querySelector('.content-panel');
+            const chapters = [
+                {
+                    title: '第1章',
+                    episodes: [
+                        { num: '1', title: '旅路' },
+                        { num: '2', title: '森での戦い' },
+                        { num: '3', title: 'ピンク髪の女の子' },
+                        { num: '4', title: 'モネ' },
+                        { num: '5', title: '渓谷のかくれんぼ' },
+                        { num: '6', title: 'モリの村' },
+                        { num: '6.5', title: '寝顔' },
+                        { num: '7', title: '遺跡に巣食うもの' },
+                        { num: '8', title: '洞窟に潜むもの' },
+                        { num: '9', title: '薬学の心得' },
+                        { num: '10', title: 'ゲリラホーク戦' },
+                        { num: '11', title: '怪鳥と異変' },
+                        { num: '12', title: 'ノンの作戦' },
+                        { num: '13', title: 'エーテル' }
+                    ]
+                },
+                {
+                    title: '第2章',
+                    episodes: [
+                        { num: '14', title: '行商人' },
+                        { num: '15', title: 'マナ族' },
+                        { num: '16', title: 'ソウゲン村' },
+                        { num: '17_main', title: 'ミドリさん家にて' },
+                        { num: '17_sub', title: '笛の音と正しさの意味' },
+                        { num: '18', title: '危険な知らせ' },
+                        { num: '19', title: 'タトゥホーン戦' },
+                        { num: '20', title: '戦利品' },
+                        { num: '21', title: 'ターゲット' },
+                        { num: '22', title: 'クロウ' },
+                        { num: '23', title: '位相反転' },
+                        { num: '24', title: '猪肉祭り～笛の音と共に～' }
+                    ]
+                }
+            ];
+            let currentChapter = 0;
+            let contentPanel = document.querySelector('.content-panel');
+            const chapterTitle = document.querySelector('.bookshelf h2');
+            const episodesList = document.querySelector('.episodes-list');
+
+            function renderChapter(chapterIdx) {
+                // 章タイトル更新
+                chapterTitle.textContent = chapters[chapterIdx].title;
+                // エピソードリスト更新
+                episodesList.innerHTML = '';
+                chapters[chapterIdx].episodes.forEach(ep => {
+                    const card = document.createElement('div');
+                    card.className = 'episode-card';
+                    card.setAttribute('data-episode', ep.num);
+                    card.setAttribute('data-title', ep.title);
+                    card.innerHTML = `<div class="episode-number">Episode ${ep.num}</div><h3>${ep.title}</h3>`;
+                    card.addEventListener('click', function() {
+                        document.querySelectorAll('.episode-card').forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                        loadContent(ep.num, ep.title);
+                        window.currentEpisode = ep.num;
+                    });
+                    episodesList.appendChild(card);
+                });
+            }
 
             // エピソードカードクリック時の処理
             episodeCards.forEach(card => {
@@ -153,7 +212,9 @@
 
             // コンテンツ表示関数
             function loadContent(episode, title) {
+                if (!contentPanel) return;
                 const episodeData = episodeContents[episode];
+                const maxEpisode = chapters[currentChapter].episodes[chapters[currentChapter].episodes.length - 1].num;
                 
                 if (episodeData) {
                     // テキストを空行で分割
@@ -208,13 +269,13 @@
                             </div>
                         </div>
                         <div class="episode-navigation">
-                            <button class="episode-nav-button" id="prev-episode" onclick="changeEpisode(-1)" ${episode <= 1 ? 'disabled' : ''}>
+                            <button class="episode-nav-button" id="prev-episode" onclick="changeEpisode(-1)" ${episode == chapters[currentChapter].episodes[0].num ? 'disabled' : ''}>
                                 ← 前のエピソード
                             </button>
                             <div class="episode-nav-info">
-                                Episode ${episode} / 14
+                                Episode ${episode} / ${maxEpisode}
                             </div>
-                            <button class="episode-nav-button" id="next-episode" onclick="changeEpisode(1)" ${episode >= 14 ? 'disabled' : ''}>
+                            <button class="episode-nav-button" id="next-episode" onclick="changeEpisode(1)" ${episode == maxEpisode ? 'disabled' : ''}>
                                 次のエピソード →
                             </button>
                         </div>
@@ -387,7 +448,5 @@
 
         });
     </script>
-</body>
-</html>
 </body>
 </html> 
