@@ -14,54 +14,72 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="keySound.js"></script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Poppins', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: white;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        
-        .main-title {
-            text-align: center;
+        .library-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
             color: white;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin: 20px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
         }
-        
+        .library-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .library-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
         }
-        
         .content-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             border-radius: 20px;
-            padding: 30px;
-            margin: 20px 0;
+            padding: 40px;
+            margin: 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        
-        .header {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        
-        .main {
-            text-align: center;
-        }
-        
         .textarea {
             width: 100%;
             max-width: 800px;
@@ -75,13 +93,11 @@
             background: white;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        
         .textarea:focus {
             outline: none;
             border-color: #764ba2;
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
-        
         .osc {
             margin-top: 30px;
             padding: 20px;
@@ -89,14 +105,12 @@
             border-radius: 15px;
             display: inline-block;
         }
-        
         .osc span {
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
             color: #333;
             margin: 0 10px;
         }
-        
         .osc select {
             border: 2px solid #667eea;
             border-radius: 8px;
@@ -106,31 +120,25 @@
             background: white;
             cursor: pointer;
         }
-        
         .osc select:focus {
             outline: none;
             border-color: #764ba2;
         }
-        
         .osc input[type="range"] {
             width: 150px;
             margin: 0 10px;
         }
-        
         .margin {
             margin-left: 20px;
         }
-        
         #leveldisp {
             font-weight: 600;
             color: #667eea;
         }
-        
         #keyAudioFreq {
             font-weight: 600;
             color: #667eea;
         }
-        
         .Return_view {
             position: fixed;
             bottom: 30px;
@@ -148,7 +156,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
-        
         .Return_view:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
@@ -157,16 +164,12 @@
 </head>
 <body>
     <script src="../../../header.js"></script>
-
-    <div class="main-title">
-        🎵 KeySound 🎵
-    </div>
-
+    <header class="library-header">
+        <h1>⌨️ KeySound ⌨️</h1>
+    </header>
     <div class="container">
         <div class="content-section">
-            <div class="header">soundies</div>
-
-            <div class="main">
+            <div style="width:100%;text-align:center;">
                 <textarea class="textarea" name="keyAudio" cols="100" rows="10" placeholder="ここにテキストを入力してください..."></textarea>
                 <br>
                 <div class="osc">
@@ -184,11 +187,8 @@
             </div>
         </div>
     </div>
-
     <footer>
         <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
     </footer>
-
-    <a href="../index.html"><div class="Return_view">←</div></a>
 </body>
 </html>

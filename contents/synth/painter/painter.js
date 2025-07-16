@@ -36,8 +36,7 @@ $(function() {
     ctx.stroke();
     startX = x;
     startY = y;
-    document.getElementById("CoordinateX").innerHTML = x;
-    document.getElementById("CoordinateY").innerHTML = y;
+    setCoordinate(x, y);
 
     // var freq = 440.0 * Math.pow(2.0, (48 - 69.0) / 12.0);
     var osc2freq = parseFloat(document.getElementById("osc2freq").value);
@@ -118,3 +117,9 @@ $(function() {
   });
 
 });
+
+// 既存の座標表示処理を上書き
+function setCoordinate(x, y) {
+  document.getElementById('CoordinateX').textContent = Math.floor(x);
+  document.getElementById('CoordinateY').textContent = Math.floor(y);
+}

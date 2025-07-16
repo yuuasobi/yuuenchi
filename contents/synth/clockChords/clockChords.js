@@ -31,40 +31,48 @@ var keysharpchord = [
 ];
 
 $(function() {
-  // 時計の中心座標
-  const center = 200; // .clockのwidth/heightの半分
-  const barRadius = 189; // barの円周半径（枠線の内側）
-  const beatRadius = 193; // beatの円周半径（枠線の内側）
 
-  // 小節のメモリ初期化
-  for (var n = 0; n < 12; n++) {
-    var angle = (n / 12) * 2 * Math.PI;
-    var x = center + barRadius * Math.sin(angle);
-    var y = center - barRadius * Math.cos(angle);
+  //小節のメモリ初期化
+  for (var n = 0; n < 13; n++) {
+
+    //要素作成
     var bar = document.createElement("div");
+    bar.id = "bar" + n;
     bar.className = "bar";
-    bar.style.position = "absolute";
-    bar.style.left = (x - 1.5) + "px";
-    bar.style.top = (y - 11) + "px";
-    bar.style.transform = `rotate(${n * 30}deg)`;
-    document.querySelector(".clock").appendChild(bar);
+    document.getElementById("beatset").appendChild(bar);
+
+    //スタイル指定
+    var barset = document.getElementById("bar" + n).style;
+    var style = {
+      transform: 'var(--barset, rotate(30deg))',
+    }
+    for(var prop in style) {
+      barset[prop] = style[prop]
+    }
+    barset.setProperty('--barset', 'rotate(' + 30 * n + 'deg)');
   }
 
-  // 拍のメモリ初期化
-  for (var n = 0; n < 60; n++) {
-    var angle = (n / 60) * 2 * Math.PI;
-    var x = center + beatRadius * Math.sin(angle);
-    var y = center - beatRadius * Math.cos(angle);
-    var beat = document.createElement("div");
-    beat.className = "beat";
-    beat.style.position = "absolute";
-    beat.style.left = (x - 0.5) + "px";
-    beat.style.top = (y - 8.5) + "px";
-    beat.style.transform = `rotate(${n * 6}deg)`;
-    document.querySelector(".clock").appendChild(beat);
+  //拍のメモリ初期化
+  for (var n = 0; n < 49; n++) {
+
+    //要素作成
+    var fourbeat = document.createElement("div");
+    fourbeat.id = "fourbeat" + n;
+    fourbeat.className = "beat";
+    document.getElementById("beatset").appendChild(fourbeat);
+
+    //スタイル指定
+    var beatset = document.getElementById("fourbeat" + n).style;
+    var style = {
+      transform: 'var(--beatset, rotate(7.5deg))',
+    }
+    for(var prop in style) {
+      beatset[prop] = style[prop]
+    }
+    beatset.setProperty('--beatset', 'rotate(' + 7.5 * n + 'deg)');
   }
 
-  // 再生バー初期化
+  //再生バー初期化
   var playbar = document.createElement("div");
   playbar.id = "playbarinitial";
   document.getElementById("playbar").appendChild(playbar);
