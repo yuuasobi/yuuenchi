@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const isNovelsPage = window.location.pathname.includes('/contents/novels/');
     const isMusicPage = window.location.pathname.includes('/contents/music/');
     const isSynthPage = window.location.pathname.includes('/contents/synth/');
-    const isSynthSubPage = window.location.pathname.includes('/contents/synth/') && window.location.pathname.includes('/chord_progression/');
+    const isSynthSubPage = window.location.pathname.includes('/contents/synth/') && (window.location.pathname.includes('/chord_progression/') || window.location.pathname.includes('/clockChords/') || window.location.pathname.includes('/keysound/') || window.location.pathname.includes('/painter/') || window.location.pathname.includes('/pawpads/'));
     
     // パス設定（chord_progression.html用に調整）
     let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath;
     
     if (isSynthSubPage) {
-        // chord_progression.html用のパス
+        // シンセサブページ用のパス
         homeLink = '../../../index.html';
         logoPath = '../../../source/ゆうえんちカラー.png';
         gamePath = '../../games/WCG.html';

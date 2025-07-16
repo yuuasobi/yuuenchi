@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock Chords</title>
+    <link rel="icon" type="image/png" href="../../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-title {
+            text-align: center;
+            color: #333;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 120px 0 60px 0;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .clock {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 2px solid #667eea;
+        }
+        
+        .maru {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .button {
+            position: absolute;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .chordtext {
+            position: absolute;
+            width: 60px;
+            text-align: center;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            background: white;
+        }
+        
+        /* 時計の時刻配置 - 少しだけ内側に */
+        #m0 { top: 20px; left: 50%; transform: translateX(-50%); }
+        #m1 { top: 60px; right: 70px; }
+        #m2 { top: 120px; right: 50px; }
+        #m3 { top: 200px; right: 30px; }
+        #m4 { top: 280px; right: 50px; }
+        #m5 { top: 340px; right: 70px; }
+        #m6 { bottom: 20px; left: 50%; transform: translateX(-50%); }
+        #m7 { top: 340px; left: 70px; }
+        #m8 { top: 280px; left: 50px; }
+        #m9 { top: 200px; left: 30px; }
+        #m10 { top: 120px; left: 50px; }
+        #m11 { top: 60px; left: 70px; }
+        
+        /* ボタンの位置設定 - 時計の外側に配置 */
+        .resetbutton { top: -60px; left: 20px; }
+        .chordbutton { top: -60px; right: 20px; }
+        .chordflowtypeplus { top: -100px; right: 20px; }
+        .chordflowtypeminus { top: -140px; right: 20px; }
+        .keyplus { top: -60px; left: 50%; transform: translateX(-50%); }
+        .keyminus { bottom: -60px; left: 50%; transform: translateX(-50%); }
+        .beatbutton { bottom: -60px; left: 20px; }
+        
+        /* カウント表示の位置 */
+        #keysharpcount { top: -30px; left: 50%; transform: translateX(-50%); }
+        #keyflatcount { bottom: -100px; left: 50%; transform: translateX(-50%); }
+        
+        /* ビートメモリのスタイル */
+        .bar {
+            position: absolute;
+            width: 3px;
+            height: 10px;
+            background: #667eea;
+            transform-origin: 50% 100%;
+        }
+        
+        .beat {
+            position: absolute;
+            width: 1px;
+            height: 6px;
+            background: #999;
+            transform-origin: 50% 100%;
+        }
+        
+        .playbutton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .playbutton:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .countarea {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .countarea h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .textposition {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chordflowtypebutton, .keychangebutton {
+            position: absolute;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .chordflowtypebutton:hover, .keychangebutton:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+        
+        #bpm {
+            position: absolute;
+            bottom: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            text-align: center;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 5px;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+        }
+        
+        #playbar, #beatset {
+            position: absolute;
+            background: #667eea;
+            border-radius: 2px;
+        }
+        
+        #keysharpcount, #keyflatcount {
+            position: absolute;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            background: #333;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <script src="../../../header.js"></script>
+
+    <div class="main-title">
+        🎵 Clock Chords 🎵
+    </div>
+
+    <div class="container">
+        <div class="content-section">
+            <div class="clock">
+                <div class="maru"></div>
+                <div id="playbar"></div>
+                <div id="beatset"></div>
+                <div class="button resetbutton" onclick="reset()"><span class="textposition">reset</span></div>
+                <div class="button chordbutton" onclick="chord()"><span class="textposition" id="chordflowtype">random</span></div>
+                <div class="chordflowtypebutton chordflowtypeplus" onclick="chordflowtypeplus()"><span class="textposition">></span></div>
+                <div class="chordflowtypebutton chordflowtypeminus" onclick="chordflowtypeminus()"><span class="textposition"><</span></div>
+                <div class="keychangebutton keyplus" onclick="keyplus()"><span class="textposition">♯</span></div>
+                <div id="keysharpcount"></div>
+                <div class="keychangebutton keyminus" onclick="keyminus()"><span class="textposition">♭</span></div>
+                <div id="keyflatcount"></div>
+                <div class="button beatbutton" onclick="beatchange()"><span class="textposition" id="beattype">4beat</span></div>
+                <input type="text" id="m0" value="C" class="chordtext">
+                <input type="text" id="m1" value="G" class="chordtext">
+                <input type="text" id="m2" value="D" class="chordtext">
+                <input type="text" id="m3" value="A" class="chordtext">
+                <input type="text" id="m4" value="E" class="chordtext">
+                <input type="text" id="m5" value="B" class="chordtext">
+                <input type="text" id="m6" value="Gb/F#" class="chordtext">
+                <input type="text" id="m7" value="Db" class="chordtext">
+                <input type="text" id="m8" value="Ab" class="chordtext">
+                <input type="text" id="m9" value="Eb" class="chordtext">
+                <input type="text" id="m10" value="Bb" class="chordtext">
+                <input type="text" id="m11" value="F" class="chordtext">
+                <div class="playbutton" onclick="playbutton()" id="playstatus">▶</div>
+                <form name="inputdisabled"><input type="text" name="bpm" size="3" maxlength="3" value="120" id="bpm" disabled></form>
+                <div class="countarea">
+                    <h1 id="timerLabel">00:00.000</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="clockChords.js"></script>
+    <script src="play.js"></script>
+</body>
+</html>
