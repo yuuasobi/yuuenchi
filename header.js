@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const isMusicPage = window.location.pathname.includes('/contents/music/');
     const isSynthPage = window.location.pathname.includes('/contents/synth/');
     const isSynthSubPage = window.location.pathname.includes('/contents/synth/') && (window.location.pathname.includes('/chord_progression/') || window.location.pathname.includes('/clockChords/') || window.location.pathname.includes('/keysound/') || window.location.pathname.includes('/painter/') || window.location.pathname.includes('/pawpads/'));
+    const isTmpPage = window.location.pathname.includes('/contents/tmp/');
     
     // パス設定（chord_progression.html用に調整）
     let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath;
@@ -27,13 +28,21 @@ document.addEventListener('DOMContentLoaded', function() {
         anotherXPath = '../../novels/AnotherX.html';
         musicPath = '../../music/Music.html';
         synthPath = '../synth.html';
+    } else if (isTmpPage) {
+        // tmpページ用のパス
+        homeLink = '../../index.html';
+        logoPath = '../../source/ゆうえんちカラー.png';
+        gamePath = '../games/WCG.html';
+        anotherXPath = '../novels/AnotherX.html';
+        musicPath = '../music/Music.html';
+        synthPath = '../synth/synth.html';
     } else {
         // 他のページ用のパス
         homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../index.html' : './index.html';
         logoPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
         gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage || isSynthPage ? '../games/WCG.html' : './contents/games/WCG.html';
         anotherXPath = isGamePage || isMusicPage || isSynthPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
-        musicPath = isGamePage || isNovelsPage || isSynthPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
+        musicPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
         synthPath = isGamePage || isNovelsPage || isMusicPage ? '../synth/synth.html' : isSynthPage ? './synth.html' : './contents/synth/synth.html';
     }
     header.innerHTML = `
