@@ -58,6 +58,12 @@
   transform: rotate(10deg);
 }
 
+.digital.active {
+  background: #ffb6d5;
+  border-color: #ff69b4;
+  box-shadow: 0 0 10px 2px #ffb6d5;
+}
+
 /* 掌球 */
 .metacarpal{
   position: absolute;
@@ -71,4 +77,13 @@
      12px 15px 0 0 #000,
     -12px 15px 0 0 #000;
   cursor: pointer;
+}
+
+.metacarpal.active {
+  background: #ffb6d5;
+  box-shadow:
+     12px 15px 0 0 #ffb6d5,
+    -12px 15px 0 0 #ffb6d5,
+    0 0 20px 4px #ffb6d5;
+  border-color: #ff69b4;
 }
