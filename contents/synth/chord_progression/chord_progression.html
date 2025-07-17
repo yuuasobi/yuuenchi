@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="songwriteprogram.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="chordchange.js"></script>
+	<script type="text/javascript" src="chordPlayer.js"></script>
 	<script type="text/javascript">
 		// ページ読み込み時に自動でフルセットを実行
 		document.addEventListener('DOMContentLoaded', function() {
@@ -146,44 +147,47 @@
 
             <!-- コード進行セクション -->
             <section class="chordprog-section chordprog-chordprogression">
-                <h2>コード進行</h2>
+                <h2>コード進行 
+                    <input type="button" value="生成" onclick="chord();" style="margin-left: 10px; padding: 4px 10px; font-size: 15px;">
+                    <input type="button" value="▶ 再生" onclick="playChordProgression();" id="playButton" style="margin-left: 10px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 4px 10px; font-size: 15px;">
+                </h2>
                 <table class="matrix chordprog-table">
                     <tbody>
                         <tr>
-                            <td class="title2"><input type="button" value="コード生成" onclick="chord();"></td>
-                            <td class="chorddegree"><span id="degreeName"><font size="2">ディグリー</font></span></td>
-                            <td class="chorddegree"><span id="num1"></span></td>
-                            <td class="chorddegree"><span id="num2"></span></td>
-                            <td class="chorddegree"><span id="num3"></span></td>
-                            <td class="chorddegree"><span id="num4"></span></td>
-                            <td class="chorddegree"><span id="num5"></span></td>
-                            <td class="chorddegree"><span id="num6"></span></td>
-                            <td class="chorddegree"><span id="num7"></span></td>
-                            <td class="chorddegree"><span id="num8"></span></td>
+                            <td class="title2"></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="degreeName"><font size="2">ディグリー</font></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="num1"></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="num2"></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="num3"></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="num4"></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="num5"></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="num6"></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="num7"></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="num8"></span></td>
                         </tr>
                         <tr>
                             <td class="title2"></td>
-                            <td class="chord"><span id="ChordName"><font size="2">コード</font></span></td>
-                            <td class="chord"><span id="m1"></span></td>
-                            <td class="chord"><span id="m2"></span></td>
-                            <td class="chord"><span id="m3"></span></td>
-                            <td class="chord"><span id="m4"></span></td>
-                            <td class="chord"><span id="m5"></span></td>
-                            <td class="chord"><span id="m6"></span></td>
-                            <td class="chord"><span id="m7"></span></td>
-                            <td class="chord"><span id="m8"></span></td>
+                            <td class="chord" style="text-align: left;"><span id="ChordName"><font size="2">コード</font></span></td>
+                            <td class="chord" style="text-align: left;"><span id="m1"></span></td>
+                            <td class="chord" style="text-align: left;"><span id="m2"></span></td>
+                            <td class="chord" style="text-align: left;"><span id="m3"></span></td>
+                            <td class="chord" style="text-align: left;"><span id="m4"></span></td>
+                            <td class="chord" style="text-align: left;"><span id="m5"></span></td>
+                            <td class="chord" style="text-align: left;"><span id="m6"></span></td>
+                            <td class="chord" style="text-align: left;"><span id="m7"></span></td>
+                            <td class="chord" style="text-align: left;"><span id="m8"></span></td>
                         </tr>
                         <tr>
                             <td class="title2"></td>
-                            <td class="chordfunction"><span id="functionName"><font size="2">ファンクション</font></span></td>
-                            <td class="chordfunction"><span id="f1"></span></td>
-                            <td class="chordfunction"><span id="f2"></span></td>
-                            <td class="chordfunction"><span id="f3"></span></td>
-                            <td class="chordfunction"><span id="f4"></span></td>
-                            <td class="chordfunction"><span id="f5"></span></td>
-                            <td class="chordfunction"><span id="f6"></span></td>
-                            <td class="chordfunction"><span id="f7"></span></td>
-                            <td class="chordfunction"><span id="f8"></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="functionName"><font size="2">ファンクション</font></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="f1"></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="f2"></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="f3"></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="f4"></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="f5"></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="f6"></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="f7"></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="f8"></span></td>
                         </tr>
                     </tbody>
                 </table>
