@@ -8,7 +8,6 @@
     <link rel="shortcut icon" type="image/png" href="../../../source/観覧車ファビコン.png">
     <link rel="apple-touch-icon" href="../../../source/観覧車ファビコン.png">
     <link rel="stylesheet" href="../../../style.css">
-    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="clockChords.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,13 +39,13 @@
                 <input type="text" id="m3" value="A" class="chordtext">
                 <input type="text" id="m4" value="E" class="chordtext">
                 <input type="text" id="m5" value="B" class="chordtext">
-                <input type="text" id="m6" value="Gb/F#" class="chordtext">
+                <input type="text" id="m6" value="Gb" class="chordtext">
                 <input type="text" id="m7" value="Db" class="chordtext">
                 <input type="text" id="m8" value="Ab" class="chordtext">
                 <input type="text" id="m9" value="Eb" class="chordtext">
                 <input type="text" id="m10" value="Bb" class="chordtext">
                 <input type="text" id="m11" value="F" class="chordtext">
-                <div class="playbutton"  onclick="playbutton()" id="playstatus">▶</div>
+                <div class="playbutton"  onclick="playChordProgression()" id="playstatus">▶</div>
                 <form name="inputdisabled"><input type="text" name="bpm" size="3" maxlength="3" value="120" id="bpm" disabled></form>
                 <div class="countarea">
                     <h1 id="timerLabel">00:00.000</h1>
@@ -59,5 +58,6 @@
     </footer>
     <script src="clockChords.js"></script>
     <script src="play.js"></script>
+    <script src="chordPlayer.js"></script>
   </body>
 </html>
