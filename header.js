@@ -16,9 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const isSynthPage = window.location.pathname.includes('/contents/synth/');
     const isSynthSubPage = window.location.pathname.includes('/contents/synth/') && (window.location.pathname.includes('/chord_progression/') || window.location.pathname.includes('/clockChords/') || window.location.pathname.includes('/keysound/') || window.location.pathname.includes('/painter/') || window.location.pathname.includes('/pawpads/'));
     const isTmpPage = window.location.pathname.includes('/contents/tmp/');
+    const is3DPage = window.location.pathname.includes('/contents/3Dmodel/');
     
-    // パス設定（chord_progression.html用に調整）
-    let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath;
+    // パス設定（3Dmodel.html用に分岐追加）
+    let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath, model3DPath;
     
     if (isSynthSubPage) {
         // シンセサブページ用のパス
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         anotherXPath = '../../novels/AnotherX.html';
         musicPath = '../../music/Music.html';
         synthPath = '../synth.html';
+        model3DPath = '../../3Dmodel/3Dmodel.html';
     } else if (isTmpPage) {
         // tmpページ用のパス
         homeLink = '../../index.html';
@@ -36,6 +38,16 @@ document.addEventListener('DOMContentLoaded', function() {
         anotherXPath = '../novels/AnotherX.html';
         musicPath = '../music/Music.html';
         synthPath = '../synth/synth.html';
+        model3DPath = '../3Dmodel/3Dmodel.html';
+    } else if (is3DPage) {
+        // 3Dページ用のパス
+        homeLink = '../../index.html';
+        logoPath = '../../source/ゆうえんちカラー.png';
+        gamePath = '../games/WCG.html';
+        anotherXPath = '../novels/AnotherX.html';
+        musicPath = '../music/Music.html';
+        synthPath = '../synth/synth.html';
+        model3DPath = './3Dmodel.html';
     } else {
         // 他のページ用のパス
         homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../index.html' : './index.html';
@@ -44,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         anotherXPath = isGamePage || isMusicPage || isSynthPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
         musicPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
         synthPath = isGamePage || isNovelsPage || isMusicPage ? '../synth/synth.html' : isSynthPage ? './synth.html' : './contents/synth/synth.html';
+        model3DPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../3Dmodel/3Dmodel.html' : './contents/3Dmodel/3Dmodel.html';
     }
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
@@ -55,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="${anotherXPath}" class="menu-button">Novel</a>
             <a href="${musicPath}" class="menu-button">Music</a>
             <a href="${synthPath}" class="menu-button">Synth</a>
+            <a href="${model3DPath}" class="menu-button">3D</a>
         </div>
     `;
 
