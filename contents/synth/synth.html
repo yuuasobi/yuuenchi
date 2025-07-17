@@ -100,6 +100,16 @@
             background: linear-gradient(45deg, #5cb85c, #4a90e2);
             box-shadow: 0 4px 16px rgba(74,144,226,0.18);
         }
+        /* サムネイル画像用（WCG風ワイド） */
+        .synth-thumb-wide {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            margin-bottom: 0.7rem;
+            background: #fff;
+        }
         @media (max-width: 768px) {
             .synth-header h1 { font-size: 2.1rem; }
             .container { padding: 0 0.5rem 2rem 0.5rem; }
@@ -114,26 +124,31 @@
     <div class="container">
         <div class="synth-grid">
             <div class="synth-card">
+                <img class="synth-thumb-wide" src="../../source/synth/chord_progression.png" alt="Chord Progression サムネイル">
                 <h3>Chord Progression</h3>
-                <p>コード進行を自動生成してくれるツールです。</p>
+                <p>コード進行を自動生成してくれるツール。</p>
                 <a class="synth-link" href="chord_progression/chord_progression.html">開く</a>
             </div>
             <div class="synth-card">
+                <img class="synth-thumb-wide" src="../../source/synth/clockChords.png" alt="Clock Chords サムネイル">
                 <h3>Clock Chords</h3>
                 <p>時計のようなUIでコードを鳴らせるシンセサイザー。</p>
                 <a class="synth-link" href="clockChords/clockChords.html">開く</a>
             </div>
             <div class="synth-card">
+                <img class="synth-thumb-wide" src="../../source/synth/keySound.png" alt="key Sound サムネイル">
                 <h3>key Sound</h3>
                 <p>キーボード入力で音を鳴らせるシンプルなウェブシンセ。</p>
                 <a class="synth-link" href="keysound/keySound.html">開く</a>
             </div>
             <div class="synth-card">
+                <img class="synth-thumb-wide" src="../../source/synth/painter.png" alt="Painter サムネイル">
                 <h3>Painter</h3>
                 <p>お絵描き感覚で音を作れるビジュアルシンセ。</p>
                 <a class="synth-link" href="painter/painter.html">開く</a>
             </div>
             <div class="synth-card">
+                <img class="synth-thumb-wide" src="../../source/synth/pawpads.png" alt="Pawpads サムネイル">
                 <h3>Pawpads</h3>
                 <p>肉球パッドを押して音を鳴らす癒し系シンセ。</p>
                 <a class="synth-link" href="pawpads/pawpads.html">開く</a>
