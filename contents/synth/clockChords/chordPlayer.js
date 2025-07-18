@@ -196,7 +196,7 @@ function startPlayBar() {
     if (existingPlayBar) {
         existingPlayBar.remove();
     }
-    
+
     // デフォルト位置の針も削除
     const initialPlayBar = document.getElementById("playbarinitial");
     if (initialPlayBar) {
@@ -205,32 +205,32 @@ function startPlayBar() {
 
     // 少し遅延してから新しい再生バーを作成（DOMの更新を待つ）
     setTimeout(() => {
-        // 新しい再生バーを作成
-        var playbarstart = document.createElement("span");
-        playbarstart.id = "playbarstart";
-        document.getElementById("playbar").appendChild(playbarstart);
-        
-        var playbar = document.getElementById("playbarstart").style;
-        var bpm = document.getElementById('bpm').value / 120;
-        var style = {
-            position: 'absolute',
-            bottom: '50%',
-            left: '50%',
-            backgroundColor: 'orange',
-            transformOrigin: '50% 100%',
-            width: '2px',
-            height: '110px',
-            animationPlayState: 'running',
-            zIndex: '1',
-            animation: 'var(--bpm, rotation-s 24s linear infinite)'
-        }
-        
-        for(var prop in style) {
-            playbar[prop] = style[prop]
-        }
-        
-        playbar.getPropertyValue('--bpm');
-        playbar.setProperty('--bpm', `rotation-s ${24 / bpm}s linear infinite`);
+    // 新しい再生バーを作成
+    var playbarstart = document.createElement("span");
+    playbarstart.id = "playbarstart";
+    document.getElementById("playbar").appendChild(playbarstart);
+    
+    var playbar = document.getElementById("playbarstart").style;
+    var bpm = document.getElementById('bpm').value / 120;
+    var style = {
+        position: 'absolute',
+        bottom: '50%',
+        left: '50%',
+        backgroundColor: 'orange',
+        transformOrigin: '50% 100%',
+        width: '2px',
+        height: '110px',
+        animationPlayState: 'running',
+        zIndex: '1',
+        animation: 'var(--bpm, rotation-s 24s linear infinite)'
+    }
+    
+    for(var prop in style) {
+        playbar[prop] = style[prop]
+    }
+    
+    playbar.getPropertyValue('--bpm');
+    playbar.setProperty('--bpm', `rotation-s ${24 / bpm}s linear infinite`);
     }, 10);
 }
 
@@ -344,11 +344,11 @@ function fadePadTransition(newChordName) {
     padOscillators.forEach((osc) => {
         if (osc && osc.gainNode) {
             osc.gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.5);
-            setTimeout(() => {
+        setTimeout(() => {
                 if (osc && typeof osc.stop === 'function') {
                     osc.stop();
                 }
-            }, 500);
+        }, 500);
         }
     });
     padOscillators = [];
@@ -587,7 +587,7 @@ function playClockTick() {
 // 時計らしいコード音を再生
 function playChord(chordName) {
     if (!audioContext) return;
-    
+
     console.log('Playing chord:', chordName);
     const { root, quality } = parseChord(chordName);
     console.log('Parsed chord:', { root, quality });
@@ -596,7 +596,7 @@ function playChord(chordName) {
         console.log('Invalid chord:', chordName);
         return;
     }
-    
+
     const rootFreq = noteFrequencies[root];
     if (!rootFreq) {
         console.log('Invalid root frequency for:', root);
@@ -735,7 +735,7 @@ function playClockChordNote(frequency, volume, duration, delay = 0) {
 // 時計らしいパッド音を再生
 function playPadChord(chordName) {
     if (!audioContext) return;
-    
+
     console.log('Playing pad chord:', chordName);
     const { root, quality } = parseChord(chordName);
     console.log('Parsed pad chord:', { root, quality });
@@ -744,7 +744,7 @@ function playPadChord(chordName) {
         console.log('Invalid pad chord:', chordName);
         return;
     }
-    
+
     const rootFreq = noteFrequencies[root];
     if (!rootFreq) {
         console.log('Invalid root frequency for pad:', root);
@@ -887,7 +887,7 @@ function playSaxNote(frequency, volume, duration, delay = 0) {
     const osc = audioContext.createOscillator();
     const gain = audioContext.createGain();
     const filter = audioContext.createBiquadFilter();
-    
+
     // 音色に応じた音色
     osc.type = oscType;
     osc.frequency.setValueAtTime(frequency * freqMultiplier, audioContext.currentTime + delay);
