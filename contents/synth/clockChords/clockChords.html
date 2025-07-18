@@ -53,6 +53,57 @@
             </div>
         </div>
     </div>
+    
+    <div class="mixer-section">
+        <h3>🎛️ Mixer</h3>
+        <div class="mixer-controls">
+            <div class="mixer-control">
+                <label for="tick-volume">Rhythm</label>
+                <select id="tick-tone" class="tone-selector">
+                    <option value="clock">Clock Tick</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="digital">Digital</option>
+                    <option value="analog">Analog</option>
+                </select>
+                <input type="range" id="tick-volume" min="0" max="1" step="0.1" value="0.8" class="volume-slider">
+                <span class="volume-value" id="tick-volume-value">0.8</span>
+            </div>
+            <div class="mixer-control">
+                <label for="chord-volume">Chord</label>
+                <select id="chord-tone" class="tone-selector">
+                    <option value="clockwork">Clockwork</option>
+                    <option value="gear">Gear</option>
+                    <option value="bell">Bell</option>
+                    <option value="chime">Chime</option>
+                </select>
+                <input type="range" id="chord-volume" min="0" max="1" step="0.1" value="0.6" class="volume-slider">
+                <span class="volume-value" id="chord-volume-value">0.6</span>
+            </div>
+            <div class="mixer-control">
+                <label for="pad-volume">Pad</label>
+                <select id="pad-tone" class="tone-selector">
+                    <option value="ambient">Ambient</option>
+                    <option value="atmospheric">Atmospheric</option>
+                    <option value="warm">Warm</option>
+                    <option value="cold">Cold</option>
+                </select>
+                <input type="range" id="pad-volume" min="0" max="1" step="0.1" value="0.4" class="volume-slider">
+                <span class="volume-value" id="pad-volume-value">0.4</span>
+            </div>
+            <div class="mixer-control">
+                <label for="melody-volume">Melody</label>
+                <select id="melody-tone" class="tone-selector">
+                    <option value="needle">Needle</option>
+                    <option value="crystal">Crystal</option>
+                    <option value="glass">Glass</option>
+                    <option value="metal">Metal</option>
+                </select>
+                <input type="range" id="melody-volume" min="0" max="1" step="0.1" value="0.5" class="volume-slider">
+                <span class="volume-value" id="melody-volume-value">0.5</span>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
     </footer>
