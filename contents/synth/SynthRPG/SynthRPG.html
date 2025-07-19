@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynthRPG - 音程バトル</title>
+    <link rel="icon" type="image/png" href="../../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="SynthRPG.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <script src="../../../header.js"></script>
+    
+    <header class="library-header">
+        <h1>🎵 SynthRPG - 音程バトル 🎵</h1>
+    </header>
+    
+    <div class="container">
+        <!-- ゲーム画面 -->
+        <div class="game-screen">
+            <!-- バトル画面 -->
+            <div class="battle-scene">
+                <div class="enemy-area">
+                    <div class="enemy" id="enemy">
+                        <div class="enemy-sprite">🎼</div>
+                        <div class="enemy-name" id="enemy-name">enemy</div>
+                        <div class="enemy-hp">
+                            <div class="hp-bar">
+                                <div class="hp-fill" id="enemy-hp-fill"></div>
+                            </div>
+                            <span id="enemy-hp-text">100/100</span>
+                            <div class="damage-display" id="enemy-damage">-</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="player-area">
+                    <div class="player" id="player">
+                        <div class="player-sprite">🎹</div>
+                        <div class="player-name">Player</div>
+                        <div class="player-hp">
+                            <div class="hp-bar">
+                                <div class="hp-fill" id="player-hp-fill"></div>
+                            </div>
+                            <span id="player-hp-text">100/100</span>
+                            <div class="damage-display" id="player-damage">-</div>
+                        </div>
+                        <div class="player-level">Lv.<span id="player-level">1</span></div>
+                    </div>
+                </div>
+            </div>
+            
+
+            
+            <!-- 音程選択 -->
+            <div class="note-selection">
+                <h3>🎵 音程を選択してください</h3>
+                <div class="note-buttons">
+                    <button class="note-btn" data-note="C" data-frequency="261.63">C</button>
+                    <button class="note-btn" data-note="D" data-frequency="293.66">D</button>
+                    <button class="note-btn" data-note="E" data-frequency="329.63">E</button>
+                    <button class="note-btn" data-note="F" data-frequency="349.23">F</button>
+                    <button class="note-btn" data-note="G" data-frequency="392.00">G</button>
+                    <button class="note-btn" data-note="A" data-frequency="440.00">A</button>
+                    <button class="note-btn" data-note="B" data-frequency="493.88">B</button>
+                </div>
+            </div>
+            
+            <!-- アクション選択 -->
+            <div class="action-buttons" id="action-buttons">
+                <button class="action-btn" id="attack-btn">⚔️ 攻撃</button>
+                <button class="action-btn" id="heal-btn">💊 回復</button>
+            </div>
+            
+
+        </div>
+        
+        <!-- キャラクター情報 -->
+        <div class="character-info">
+            <h3>🎵 STATUS</h3>
+            <div class="character-stats">
+                <div class="stat-item">
+                    <span class="stat-label">レベル:</span>
+                    <span class="stat-value" id="char-level">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">経験値:</span>
+                    <span class="stat-value" id="char-exp">0/100</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">攻撃力:</span>
+                    <span class="stat-value" id="char-attack">10</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">防御力:</span>
+                    <span class="stat-value" id="char-defense">5</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">習得音程:</span>
+                    <span class="stat-value" id="char-notes">C</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ゲーム説明 -->
+        <div class="game-instructions">
+            <h3>🎮 ゲームの遊び方</h3>
+            <div class="instructions-content">
+                <p><strong>🎵 音程選択:</strong> まず音程（CDEFGAB）を選択してください。選択した音程は音で再生されます</p>
+                <p><strong>⚔️ 攻撃:</strong> 選択した音程で攻撃します。敵の音程と同じ場合は攻撃ミス、異なる場合はダメージを与えます</p>
+                <p><strong>💊 回復:</strong> 選択した音程で回復を試みます。敵の音程と同じ場合は回復失敗、異なる場合はHPが回復します</p>
+                <p><strong>レベルアップ:</strong> 敵を倒すと経験値を獲得し、レベルアップで新しい音程を習得できます</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="SynthRPG.js"></script>
+</body>
+</html> 

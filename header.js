@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const isNovelsPage = window.location.pathname.includes('/contents/novels/');
     const isMusicPage = window.location.pathname.includes('/contents/music/');
     const isSynthPage = window.location.pathname.includes('/contents/synth/');
-    const isSynthSubPage = window.location.pathname.includes('/contents/synth/') && (window.location.pathname.includes('/chord_progression/') || window.location.pathname.includes('/clockChords/') || window.location.pathname.includes('/keysound/') || window.location.pathname.includes('/painter/') || window.location.pathname.includes('/pawpads/'));
+    const isSynthSubPage = window.location.pathname.includes('/contents/synth/') && (window.location.pathname.includes('/chord_progression/') || window.location.pathname.includes('/clockChords/') || window.location.pathname.includes('/keysound/') || window.location.pathname.includes('/painter/') || window.location.pathname.includes('/pawpads/') || window.location.pathname.includes('/SynthRPG/'));
     const isTmpPage = window.location.pathname.includes('/contents/tmp/');
     const is3DPage = window.location.pathname.includes('/contents/3Dmodel/');
     
