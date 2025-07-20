@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const isSynthSubPage = window.location.pathname.includes('/contents/synth/') && (window.location.pathname.includes('/chord_progression/') || window.location.pathname.includes('/clockChords/') || window.location.pathname.includes('/keysound/') || window.location.pathname.includes('/painter/') || window.location.pathname.includes('/pawpads/') || window.location.pathname.includes('/SynthRPG/'));
     const isTmpPage = window.location.pathname.includes('/contents/tmp/');
     const is3DPage = window.location.pathname.includes('/contents/3Dmodel/');
+    const isNewPage = window.location.pathname.includes('/new/');
     
     // パス設定（3Dmodel.html用に分岐追加）
     let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath, model3DPath;
@@ -48,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
         musicPath = '../music/Music.html';
         synthPath = '../synth/synth.html';
         model3DPath = './3Dmodel.html';
+    } else if (isNewPage) {
+        // new/ディレクトリのページ用のパス
+        homeLink = '../index.html';
+        logoPath = '../source/ゆうえんちカラー.png';
+        gamePath = '../contents/games/WCG.html';
+        anotherXPath = '../contents/novels/AnotherX.html';
+        musicPath = '../contents/music/Music.html';
+        synthPath = '../contents/synth/synth.html';
+        model3DPath = '../contents/3Dmodel/3Dmodel.html';
     } else {
         // 他のページ用のパス
         homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../index.html' : './index.html';

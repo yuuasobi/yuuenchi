@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テンプレートページ</title>
+    <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../yuuenchi/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .library-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .library-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .library-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: none;
+            border-radius: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-section {
+            background: linear-gradient(135deg, #F8F8FF 0%, #F0F8FF 50%, #F8F8FF 100%);
+            border: 3px solid #8B4513;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 
+                0 8px 25px rgba(0,0,0,0.15),
+                inset 0 2px 8px rgba(255,255,255,0.3);
+            margin-top: 2rem;
+        }
+
+        .content-section h2 {
+            color: #4a90e2;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .content-section p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .feature-box {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .feature-box h3 {
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .feature-box li {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .library-header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="../../header.js"></script>
+    
+    <header class="library-header">
+        <h1>📄 テンプレートページ 📄</h1>
+    </header>
+    
+    <div class="container">
+        <div class="content-section">
+            <h2>仮のコンテンツ</h2>
+            <p>ここに実際のコンテンツを追加してください。</p>
+            <p>このテンプレートページは他のページと同じヘッダーとフッターのデザインを使用しています。</p>
+            
+            <div class="feature-box">
+                <h3>テンプレートの特徴</h3>
+                <ul>
+                    <li>統一されたヘッダーデザイン（グラデーション背景とアニメーション）</li>
+                    <li>統一されたフッターデザイン（グラデーション背景）</li>
+                    <li>レスポンシブ対応</li>
+                    <li>Font Awesome アイコン対応</li>
+                    <li>Google Fonts (Poppins) 対応</li>
+                    <li>他のページと同じスタイリング構造</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+</body>
+</html> 
