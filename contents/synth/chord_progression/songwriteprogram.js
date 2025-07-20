@@ -355,36 +355,13 @@
 
 	}
 
-//リズム
-	function rhythm() {
-		var rhythm = ["4/4", "3/4", "6/8"];
-		var beat;
-		var accent = ["表拍", "裏拍"];
-
-		var r = Math.floor(Math.random() * rhythm.length);
-		document.getElementById('rhythm').innerHTML = rhythm[r];
-
-		if (r == 2) {
-			beat = ["8", "16"];
-		} else {
-			beat = ["4", "8", "16"];
-		}
-
-		var b = Math.floor(Math.random() * beat.length);
-		var a = Math.floor(Math.random() * accent.length);
-		document.getElementById('b').innerHTML = beat[b];
-		document.getElementById('accent').innerHTML = accent[a];
-	}
-
 //テンポ
 	function bpm() {
 		var tempo = Math.floor(Math.random() * (200 - 60) + 60);
 		document.getElementById('bpm').innerHTML = tempo;
-	}
-
-//ジャンル
-	function genre() {
-		var genre = ["ポップス", "ロック", "ジャズ", "ラテン", "ダンス", "エレクトロ"];
-		var g = Math.floor(Math.random() * genre.length);
-		document.getElementById('genre').innerHTML = genre[g];
+		// ミキサーのテンポ表示も更新
+		const bpmValueElement = document.getElementById('bpm-value');
+		if (bpmValueElement) {
+			bpmValueElement.textContent = tempo;
+		}
 	}

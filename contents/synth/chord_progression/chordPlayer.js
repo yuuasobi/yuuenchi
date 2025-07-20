@@ -6,6 +6,14 @@ let chordProgression = [];
 let padOscillators = []; // パッド音のオシレーターを管理
 let hihatGain = null; // ハイハット用のゲインノード
 let melodyOscillators = []; // メロディ音のオシレーターを管理
+let rhythmLoopTimeout = null; // リズムループ用のタイムアウト
+
+// ミキサー設定
+let mixerSettings = {
+    rhythm: { sound: 'click', volume: 80 },
+    chord: { sound: 'triangle', volume: 70 },
+    melody: { sound: 'sawtooth', volume: 60 }
+};
 
 // 音階の周波数マッピング
 const noteFrequencies = {
@@ -51,11 +59,42 @@ const melodyPatterns = [
     [0, 4, 8, 12]      // ルート→3度→5度→オクターブ（オーグメント）
 ];
 
+// ミキサー設定を更新する関数
+function updateMixerSettings() {
+    try {
+        const rhythmSound = document.getElementById('rhythmSound');
+        const chordSound = document.getElementById('chordSound');
+        const melodySound = document.getElementById('melodySound');
+        const rhythmVolume = document.getElementById('rhythmVolume');
+        const chordVolume = document.getElementById('chordVolume');
+        const melodyVolume = document.getElementById('melodyVolume');
+        
+        if (rhythmSound) mixerSettings.rhythm.sound = rhythmSound.value;
+        if (chordSound) mixerSettings.chord.sound = chordSound.value;
+        if (melodySound) mixerSettings.melody.sound = melodySound.value;
+        if (rhythmVolume) mixerSettings.rhythm.volume = parseInt(rhythmVolume.value);
+        if (chordVolume) mixerSettings.chord.volume = parseInt(chordVolume.value);
+        if (melodyVolume) mixerSettings.melody.volume = parseInt(melodyVolume.value);
+        
+        console.log('ミキサー設定更新:', mixerSettings);
+    } catch (error) {
+        console.error('ミキサー設定更新エラー:', error);
+    }
+}
+
 // コード進行を再生する関数
 function playChordProgression() {
     if (isPlaying) {
         stopChordProgression();
         return;
+    }
+
+    try {
+        // ミキサー設定を更新
+        updateMixerSettings();
+    } catch (error) {
+        console.error('ミキサー設定更新エラー:', error);
+        // エラーが発生しても再生を続行
     }
 
     // コード進行を取得
@@ -80,9 +119,11 @@ function playChordProgression() {
     // ハイハット用のゲインノードを初期化
     if (!hihatGain) {
         hihatGain = audioContext.createGain();
-        hihatGain.gain.setValueAtTime(0.3, audioContext.currentTime);
         hihatGain.connect(audioContext.destination);
     }
+    // リズム音量を設定（安全な範囲で）
+    const rhythmVolume = Math.max(0, Math.min(1, mixerSettings.rhythm.volume / 100));
+    hihatGain.gain.setValueAtTime(rhythmVolume, audioContext.currentTime);
 
     // 再生状態を更新
     isPlaying = true;
@@ -96,9 +137,21 @@ function playChordProgression() {
 
 // 次のコードを再生（自然な繋がり）
 function playNextChord() {
-    if (!isPlaying || currentChordIndex >= chordProgression.length) {
-        stopChordProgression();
+    if (!isPlaying) {
         return;
+    }
+    
+    // 最後のコードが終わったら最初に戻る（ループ再生）
+    if (currentChordIndex >= chordProgression.length) {
+        currentChordIndex = 0;
+    }
+
+    // 各コード再生時にミキサー設定を更新
+    try {
+        updateMixerSettings();
+    } catch (error) {
+        console.error('ミキサー設定更新エラー:', error);
+        // エラーが発生しても再生を続行
     }
 
     const chord = chordProgression[currentChordIndex];
@@ -255,27 +308,58 @@ function playMelodyPhrase(chordName) {
         return freq;
     }).filter(freq => freq > 0);
 
+    // メロディ音量を取得
+    const melodyVolume = mixerSettings.melody.volume / 100;
+
+    // 音量が0に近い場合は再生しない
+    if (melodyVolume < 0.001) {
+        return;
+    }
+
     // メロディを再生
     melodyNotes.forEach((freq, index) => {
         const delay = index * 0.3; // 各音の間隔
-        playSaxNote(freq, 0.25, 1.2, delay);
+        const adjustedVolume = 0.25 * melodyVolume;
+        playSaxNote(freq, adjustedVolume, 1.2, delay);
     });
 }
 
-// サックス音色で音を再生
+// メロディ音色で音を再生
 function playSaxNote(frequency, volume, duration, delay = 0) {
+    // 音量が0に近い場合は再生しない
+    if (volume < 0.001) {
+        return;
+    }
+    
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
     const filter = audioContext.createBiquadFilter();
     const panner = audioContext.createStereoPanner();
+    
+    // 選択された音源に応じて波形を設定
+    const melodySound = mixerSettings.melody.sound;
+    switch (melodySound) {
+        case 'sawtooth':
+            oscillator.type = 'sawtooth';
+            break;
+        case 'square':
+            oscillator.type = 'square';
+            break;
+        case 'triangle':
+            oscillator.type = 'triangle';
+            break;
+        case 'sine':
+            oscillator.type = 'sine';
+            break;
+        default:
+            oscillator.type = 'sawtooth';
+    }
 
     oscillator.connect(filter);
     filter.connect(gainNode);
     gainNode.connect(panner);
     panner.connect(audioContext.destination);
 
-    // サックスらしい音色を作成
-    oscillator.type = 'sawtooth';
     oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime + delay);
 
     // フィルターでサックスらしい音色を作成
@@ -290,7 +374,7 @@ function playSaxNote(frequency, volume, duration, delay = 0) {
     gainNode.gain.setValueAtTime(0, audioContext.currentTime + delay);
     gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + delay + 0.1);
     gainNode.gain.exponentialRampToValueAtTime(volume * 0.6, audioContext.currentTime + delay + 0.3);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + delay + duration);
+    gainNode.gain.linearRampToValueAtTime(0.001, audioContext.currentTime + delay + duration);
 
     // ビブラート効果を追加
     const vibratoDepth = 1.5;
@@ -395,8 +479,17 @@ function playPadChord(chordName) {
         leftPanner.pan.setValueAtTime(-0.3, audioContext.currentTime);
         rightPanner.pan.setValueAtTime(0.3, audioContext.currentTime);
 
+        // パッド音量を取得（コード音量と同じ）
+        const padVolume = mixerSettings.chord.volume / 100;
+        
+        // 音量が0に近い場合は再生しない
+        if (padVolume < 0.001) {
+            return;
+        }
+        
         // ヴァイオリンらしいエンベロープ（ゆっくりとフェードイン、ビブラート効果）
-        const volume = (index === 0 ? 0.12 : 0.08) * 0.4; // パッド音は小さめ
+        const baseVolume = (index === 0 ? 0.12 : 0.08) * 0.4; // パッド音は小さめ
+        const volume = baseVolume * padVolume;
         leftGain.gain.setValueAtTime(0, audioContext.currentTime);
         rightGain.gain.setValueAtTime(0, audioContext.currentTime);
         leftGain.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.8);
@@ -450,18 +543,30 @@ function stopPadSounds() {
 // ハイハットのリズムを開始
 function startHihatRhythm(bpm) {
     const beatDuration = 60 / bpm; // 秒
-    const beatsPerBar = 4;
+    const beatsPerBar = 4; // 4/4拍子に固定
     
-    for (let beat = 0; beat < beatsPerBar; beat++) {
-        setTimeout(() => {
-            if (isPlaying) {
-                playHihat();
-            }
-        }, beat * beatDuration * 1000);
+    // リズムをループ再生
+    function playRhythmLoop() {
+        for (let beatIndex = 0; beatIndex < beatsPerBar; beatIndex++) {
+            setTimeout(() => {
+                if (isPlaying) {
+                    // 4拍すべてでリズム音を再生
+                    playHihat();
+                }
+            }, beatIndex * beatDuration * 1000);
+        }
+        
+        // 次のループを設定
+        if (isPlaying) {
+            rhythmLoopTimeout = setTimeout(playRhythmLoop, beatsPerBar * beatDuration * 1000);
+        }
     }
+    
+    // 最初のループを開始
+    playRhythmLoop();
 }
 
-// ハイハット音を再生（パン位置調整）
+// リズム音を再生（パン位置調整）
 function playHihat() {
     if (!audioContext || !hihatGain) return;
 
@@ -475,24 +580,70 @@ function playHihat() {
     gainNode.connect(panner);
     panner.connect(hihatGain);
 
-    // ハイハットらしい音色を作成
-    oscillator.type = 'triangle';
-    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+    // 選択された音源に応じて波形と周波数を設定
+    const rhythmSound = mixerSettings.rhythm.sound;
+    switch (rhythmSound) {
+        case 'click':
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            // Click用のエンベロープ設定
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+            break;
+        case 'kick':
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(60, audioContext.currentTime);
+            // Kick用のエンベロープ設定（低く、短い）
+            gainNode.gain.setValueAtTime(0.6, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+            break;
+        case 'noise':
+            oscillator.type = 'sawtooth';
+            oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+            // Noise用のエンベロープ設定
+            gainNode.gain.setValueAtTime(0.25, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.12);
+            break;
+        case 'bell':
+            oscillator.type = 'square';
+            oscillator.frequency.setValueAtTime(1200, audioContext.currentTime);
+            // Bell用のエンベロープ設定
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            break;
+        default:
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    }
 
-    // フィルターでハイハットらしい音色を作成
-    filter.type = 'highpass';
-    filter.frequency.setValueAtTime(2000, audioContext.currentTime);
-    filter.Q.setValueAtTime(2, audioContext.currentTime);
+    // 音源に応じてフィルター設定を変更
+    if (rhythmSound === 'kick') {
+        // Kick用は低周波数を通過させるローパスフィルター
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(800, audioContext.currentTime);
+        filter.Q.setValueAtTime(1, audioContext.currentTime);
+    } else {
+        // その他の音源はハイパスフィルター
+        filter.type = 'highpass';
+        filter.frequency.setValueAtTime(2000, audioContext.currentTime);
+        filter.Q.setValueAtTime(2, audioContext.currentTime);
+    }
 
     // パン位置を中央から少しずらす（右側に）
     panner.pan.setValueAtTime(0.2, audioContext.currentTime);
 
-    // ハイハットらしいエンベロープ（短く、鋭い）
-    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    // 音源に応じて持続時間を調整
+    let duration = 0.1;
+    if (rhythmSound === 'kick') {
+        duration = 0.15; // Kickは少し長め
+    } else if (rhythmSound === 'bell') {
+        duration = 0.3; // Bellは長め
+    }
 
     oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.1);
+    oscillator.stop(audioContext.currentTime + duration);
 }
 
 // 個別のコードを再生
@@ -523,26 +674,57 @@ function playChord(chordName) {
         return freq;
     }).filter(freq => freq > 0);
 
+    // コード音量を取得
+    const chordVolume = mixerSettings.chord.volume / 100;
+
+    // 音量が0に近い場合は再生しない
+    if (chordVolume < 0.001) {
+        return;
+    }
+
     // 各音を再生（ピアノらしい音量バランス）
     frequencies.forEach((freq, index) => {
         // ルート音を少し大きく、他の音を少し小さく
-        const volume = index === 0 ? 0.4 : 0.25;
-        playNote(freq, volume, 1.8, index * 0.05);
+        const baseVolume = index === 0 ? 0.4 : 0.25;
+        const adjustedVolume = baseVolume * chordVolume;
+        playNote(freq, adjustedVolume, 1.8, index * 0.05);
     });
 }
 
-// 個別の音を再生（ピアノ音色）
+// 個別の音を再生（コード音色）
 function playNote(frequency, volume, duration, delay = 0) {
+    // 音量が0に近い場合は再生しない
+    if (volume < 0.001) {
+        return;
+    }
+    
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
     const filter = audioContext.createBiquadFilter();
+    
+    // 選択された音源に応じて波形を設定
+    const chordSound = mixerSettings.chord.sound;
+    switch (chordSound) {
+        case 'triangle':
+            oscillator.type = 'triangle';
+            break;
+        case 'square':
+            oscillator.type = 'square';
+            break;
+        case 'sawtooth':
+            oscillator.type = 'sawtooth';
+            break;
+        case 'sine':
+            oscillator.type = 'sine';
+            break;
+        default:
+            oscillator.type = 'triangle';
+    }
 
     oscillator.connect(filter);
     filter.connect(gainNode);
     gainNode.connect(audioContext.destination);
 
-    // ピアノのような音色を作成
-    oscillator.type = 'triangle';
     oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime + delay);
 
     // フィルターでピアノらしい音色を作成
@@ -554,7 +736,7 @@ function playNote(frequency, volume, duration, delay = 0) {
     gainNode.gain.setValueAtTime(0, audioContext.currentTime + delay);
     gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + delay + 0.05);
     gainNode.gain.exponentialRampToValueAtTime(volume * 0.3, audioContext.currentTime + delay + 0.1);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + delay + duration);
+    gainNode.gain.linearRampToValueAtTime(0.001, audioContext.currentTime + delay + duration);
 
     oscillator.start(audioContext.currentTime + delay);
     oscillator.stop(audioContext.currentTime + delay + duration);
@@ -606,6 +788,13 @@ function parseChord(chordName) {
 function stopChordProgression() {
     isPlaying = false;
     currentChordIndex = 0;
+    
+    // リズムループを停止
+    if (rhythmLoopTimeout) {
+        clearTimeout(rhythmLoopTimeout);
+        rhythmLoopTimeout = null;
+    }
+    
     stopPadSounds();
     stopMelodySounds();
     clearChordHighlights();

@@ -18,7 +18,41 @@
 					full();
 				}
 			}, 500);
+			
+			// ボリュームスライダーのイベントリスナーを設定
+			setupVolumeSliders();
+			
+			// デフォルトのテンポ値を設定
+			const bpmValueElement = document.getElementById('bpm-value');
+			if (bpmValueElement) {
+				bpmValueElement.textContent = '120';
+			}
 		});
+		
+		// ボリュームスライダーの設定
+		function setupVolumeSliders() {
+			const volumeSliders = document.querySelectorAll('.volume-slider');
+			const soundSelects = document.querySelectorAll('.sound-select');
+			
+			volumeSliders.forEach(slider => {
+				slider.addEventListener('input', function() {
+					const value = this.value;
+					const valueDisplay = this.parentElement.querySelector('.volume-value');
+					if (valueDisplay) {
+						valueDisplay.textContent = value;
+					}
+					// 再生中は音量調整を一時停止（次のコード再生時に反映）
+					// リアルタイム更新は削除して安全性を確保
+				});
+			});
+			
+			soundSelects.forEach(select => {
+				select.addEventListener('change', function() {
+					// 音源変更時も次のコード再生時に反映
+					// リアルタイム更新は削除して安全性を確保
+				});
+			});
+		}
 	</script>
 </head>
 <body>
@@ -105,6 +139,105 @@
             border: 1px solid #888;
             padding: 6px 8px;
         }
+        
+        /* ミキサースタイル */
+        .mixer-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .mixer-channel {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 20px;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .mixer-channel:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .mixer-channel h3 {
+            margin: 0 0 15px 0;
+            color: #495057;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .sound-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #ced4da;
+            border-radius: 6px;
+            background: white;
+            font-size: 14px;
+            margin-bottom: 15px;
+            transition: border-color 0.2s ease;
+        }
+        
+        .sound-select:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+        
+        .volume-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .volume-control label {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 500;
+        }
+        
+        .volume-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e9ecef;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a90e2, #5cb85c);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .volume-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a90e2, #5cb85c);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .volume-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #495057;
+            min-width: 30px;
+        }
     </style>
     <header class="library-header">
         <h1>🎵 Chord Progression 🎵</h1>
@@ -115,13 +248,13 @@
             <section class="chordprog-section chordprog-options">
                 <!-- フルセットボタンを中央に配置 -->
                 <div class="chordprog-fullset-container">
-                    <input type="button" value="フルセット" onclick="full();" class="chordprog-fullset-btn">
+                    <input type="button" value="Full Set" onclick="full();" class="chordprog-fullset-btn">
                 </div>
                 
                 <!-- スケール選択とチェックボックスを下に配置 -->
                 <div class="chordprog-options-container">
                     <form name="scaleset" class="chordprog-form-group">
-                        <label for="scale">スケール：</label>
+                        <label for="scale">Scale:</label>
                         <select name="scale" id="scale">
                             <option value="flat5">Gbメジャー/Ebマイナー(b6)</option>
                             <option value="flat4">Dbメジャー/Bbマイナー(b5)</option>
@@ -139,7 +272,7 @@
                         </select>
                     </form>
                     <div class="chordprog-checkbox-group">
-                        <label><input type="checkbox" id="threeChordCheck"> スリーコード</label>
+                        <label><input type="checkbox" id="threeChordCheck"> Three Chord</label>
                         <label><input type="checkbox" id="sevenbasechord"> Ⅶm-5</label>
                     </div>
                 </div>
@@ -147,15 +280,15 @@
 
             <!-- コード進行セクション -->
             <section class="chordprog-section chordprog-chordprogression">
-                <h2>コード進行 
-                    <input type="button" value="生成" onclick="chord();" style="margin-left: 10px; padding: 4px 10px; font-size: 15px;">
-                    <input type="button" value="▶ 再生" onclick="playChordProgression();" id="playButton" style="margin-left: 10px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 4px 10px; font-size: 15px;">
+                <h2>Chord Progression 
+                    <input type="button" value="Generate" onclick="chord();" style="margin-left: 10px; padding: 4px 10px; font-size: 15px;">
+                    <input type="button" value="▶ Play" onclick="playChordProgression();" id="playButton" style="margin-left: 10px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 4px 10px; font-size: 15px;">
                 </h2>
                 <table class="matrix chordprog-table">
                     <tbody>
                         <tr>
                             <td class="title2"></td>
-                            <td class="chorddegree" style="text-align: left;"><span id="degreeName"><font size="2">ディグリー</font></span></td>
+                            <td class="chorddegree" style="text-align: left;"><span id="degreeName"><font size="2">Degree</font></span></td>
                             <td class="chorddegree" style="text-align: left;"><span id="num1"></span></td>
                             <td class="chorddegree" style="text-align: left;"><span id="num2"></span></td>
                             <td class="chorddegree" style="text-align: left;"><span id="num3"></span></td>
@@ -167,7 +300,7 @@
                         </tr>
                         <tr>
                             <td class="title2"></td>
-                            <td class="chord" style="text-align: left;"><span id="ChordName"><font size="2">コード</font></span></td>
+                            <td class="chord" style="text-align: left;"><span id="ChordName"><font size="2">Chord</font></span></td>
                             <td class="chord" style="text-align: left;"><span id="m1"></span></td>
                             <td class="chord" style="text-align: left;"><span id="m2"></span></td>
                             <td class="chord" style="text-align: left;"><span id="m3"></span></td>
@@ -179,7 +312,7 @@
                         </tr>
                         <tr>
                             <td class="title2"></td>
-                            <td class="chordfunction" style="text-align: left;"><span id="functionName"><font size="2">ファンクション</font></span></td>
+                            <td class="chordfunction" style="text-align: left;"><span id="functionName"><font size="2">Function</font></span></td>
                             <td class="chordfunction" style="text-align: left;"><span id="f1"></span></td>
                             <td class="chordfunction" style="text-align: left;"><span id="f2"></span></td>
                             <td class="chordfunction" style="text-align: left;"><span id="f3"></span></td>
@@ -193,21 +326,72 @@
                 </table>
             </section>
 
-            <!-- リズム・テンポ・ジャンルセクション -->
-            <section class="chordprog-section chordprog-rhythm">
-                <h2>リズム・テンポ・ジャンル</h2>
+            <!-- ミキサーセクション -->
+            <section class="chordprog-section chordprog-mixer">
+                <h2>Mixer <span id="bpm-display" style="font-size: 0.8em; color: #666; margin-left: 20px;"><input type="button" value="Tempo" onclick="bpm();" class="chordprog-fullset-btn" style="margin-left: 10px; padding: 4px 10px; font-size: 15px;"> <span id="bpm-value">120</span> BPM</span></h2>
+                <div class="mixer-container">
+                    <div class="mixer-channel">
+                        <h3>Rhythm</h3>
+                        <select id="rhythmSound" class="sound-select">
+                            <option value="click">click</option>
+                            <option value="kick">Kick</option>
+                            <option value="noise">Noise</option>
+                            <option value="bell">bell</option>
+                        </select>
+                        <div class="volume-control">
+                            <label for="rhythmVolume">Volume</label>
+                            <input type="range" id="rhythmVolume" min="0" max="100" value="80" class="volume-slider">
+                            <span class="volume-value">80</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mixer-channel">
+                        <h3>Chord</h3>
+                        <select id="chordSound" class="sound-select">
+                            <option value="triangle">Triangle</option>
+                            <option value="square">Square</option>
+                            <option value="sawtooth">Sawtooth</option>
+                            <option value="sine">Sine</option>
+                        </select>
+                        <div class="volume-control">
+                            <label for="chordVolume">Volume</label>
+                            <input type="range" id="chordVolume" min="0" max="100" value="70" class="volume-slider">
+                            <span class="volume-value">70</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mixer-channel">
+                        <h3>Melody</h3>
+                        <select id="melodySound" class="sound-select">
+                            <option value="sawtooth">Sawtooth</option>
+                            <option value="square">Square</option>
+                            <option value="triangle">Triangle</option>
+                            <option value="sine">Sine</option>
+                        </select>
+                        <div class="volume-control">
+                            <label for="melodyVolume">Volume</label>
+                            <input type="range" id="melodyVolume" min="0" max="100" value="60" class="volume-slider">
+                            <span class="volume-value">60</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- リズム・テンポ・ジャンルセクション（非表示） -->
+            <section class="chordprog-section chordprog-rhythm" style="display: none;">
+                <h2>Rhythm・Tempo・Genre</h2>
                 <table class="matrix chordprog-table">
                     <tbody>
                         <tr>
-                            <td class="title2"><input type="button" value="リズム" onclick="rhythm();"></td>
-                            <td><span id="rhythm"></span>　拍子</td><td><span id="accent"></span></td><td><span id="b"></span>　ビート</td>
+                            <td class="title2"><input type="button" value="Rhythm" onclick="rhythm();"></td>
+                            <td><span id="rhythm"></span>　Time</td><td><span id="accent"></span></td><td><span id="b"></span>　Beat</td>
                         </tr>
                         <tr>
-                            <td class="title2"><input type="button" value="テンポ" onclick="bpm();"></td>
+                            <td class="title2"><input type="button" value="Tempo" onclick="bpm();"></td>
                             <td><span id="bpm"></span></td>
                         </tr>
                         <tr>
-                            <td class="title2"><input type="button" value="ジャンル" onclick="genre();"></td>
+                            <td class="title2"><input type="button" value="Genre" onclick="genre();"></td>
                             <td><span id="genre"></span></td>
                         </tr>
                     </tbody>
@@ -216,7 +400,7 @@
 
             <!-- ベースセクション -->
             <section class="chordprog-section chordprog-bass">
-                <h2>ベース</h2>
+                <h2>Bass Chord</h2>
                 <div class="chordprog-table-wrap">
                     <table class="matrix chordprog-table">
                         <thead>
@@ -233,7 +417,7 @@
                         </thead>
                         <tbody>
                             <tr class="option">
-                                <td class="title">スケール</td>
+                                <td class="title">Scale</td>
                                 <td id="s0" class="data"></td>
                                 <td id="s1" class="data"></td>
                                 <td id="s2" class="data"></td>
@@ -243,7 +427,7 @@
                                 <td id="s6" class="data"></td>
                             </tr>
                             <tr class="option">
-                                <td class="title">音名</td>
+                                <td class="title">Note</td>
                                 <td id="p0" class="data"></td>
                                 <td id="p1" class="data"></td>
                                 <td id="p2" class="data"></td>
@@ -253,7 +437,7 @@
                                 <td id="p6" class="data"></td>
                             </tr>
                             <tr id="defult">
-                                <td class="title">コード</td>
+                                <td class="title">Chord</td>
                                 <td id="c0" class="data"></td>
                                 <td id="c1" class="data"></td>
                                 <td id="c2" class="data"></td>
@@ -263,7 +447,7 @@
                                 <td id="c6" class="data"></td>
                             </tr>
                             <tr id="defult">
-                                <td class="title">7thコード</td>
+                                <td class="title">7th Chord</td>
                                 <td id="seven0" class="data"></td>
                                 <td id="seven1" class="data"></td>
                                 <td id="seven2" class="data"></td>
@@ -273,7 +457,7 @@
                                 <td id="seven6" class="data"></td>
                             </tr>
                             <tr id="defult">
-                                <td class="title">ﾅﾁｭﾗﾙﾃﾝｼｮﾝ</td>
+                                <td class="title">Natural Tension</td>
                                 <td id="tension0" class="data"></td>
                                 <td id="tension1" class="data"></td>
                                 <td id="tension2" class="data"></td>
@@ -283,7 +467,7 @@
                                 <td id="tension6" class="data"></td>
                             </tr>
                             <tr id="defult">
-                                <td class="title">ｵﾙﾀｰﾄﾞﾃﾝｼｮﾝ</td>
+                                <td class="title">Altered Tension</td>
                                 <td id="alteredtension0" class="data"></td>
                                 <td id="alteredtension1" class="data"></td>
                                 <td id="alteredtension2" class="data"></td>
@@ -299,12 +483,12 @@
 
             <!-- 転調セクション -->
             <section class="chordprog-section chordprog-modulation">
-                <h2>転調</h2>
+                <h2>Modulation</h2>
                 <div class="chordprog-table-wrap">
                     <table class="matrix chordprog-table">
                         <tbody>
                             <tr id="chordhoverroot">
-                                <td class="title"><span id="root">ルート</span></td>
+                                <td class="title"><span id="root">Root</span></td>
                                 <td id="root0" class="data"></td>
                                 <td id="root1" class="data"></td>
                                 <td id="root2" class="data"></td>
@@ -314,7 +498,7 @@
                                 <td id="root6" class="data"></td>
                             </tr>
                             <tr id="chordhoversubdominant">
-                                <td class="title"><span id="subdominant">サブドミナント</span></td>
+                                <td class="title"><span id="subdominant">Subdominant</span></td>
                                 <td id="subdominant0" class="data"></td>
                                 <td id="subdominant1" class="data"></td>
                                 <td id="subdominant2" class="data"></td>
@@ -324,7 +508,7 @@
                                 <td id="subdominant6" class="data"></td>
                             </tr>
                             <tr id="chordhoverdominant">
-                                <td class="title"><span id="dominant">ドミナント</span></td>
+                                <td class="title"><span id="dominant">Dominant</span></td>
                                 <td id="dominant0" class="data"></td>
                                 <td id="dominant1" class="data"></td>
                                 <td id="dominant2" class="data"></td>
@@ -334,7 +518,7 @@
                                 <td id="dominant6" class="data"></td>
                             </tr>
                             <tr id="chordhoverparallel">
-                                <td class="title"><span id="parallel">同主調</span></td>
+                                <td class="title"><span id="parallel">Parallel</span></td>
                                 <td id="parallel0" class="data"></td>
                                 <td id="parallel1" class="data"></td>
                                 <td id="parallel2" class="data"></td>
@@ -354,7 +538,7 @@
                                 <td id="minorflatfive6" class="data"></td>
                             </tr>
                             <tr>
-                                <td class="title"><span id="urachord">裏コード</span></td>
+                                <td class="title"><span id="urachord">Tritone Sub</span></td>
                                 <td id="u0" class="data"></td>
                                 <td id="u1" class="data"></td>
                                 <td id="u2" class="data"></td>
@@ -369,7 +553,7 @@
                 <table class="matrix2 chordprog-table">
                     <tbody>
                         <tr>
-                            <td class="title">ｾｶﾝﾀﾞﾘｰﾄﾞﾐﾅﾝﾄ</td>
+                            <td class="title">Secondary Dominant</td>
                             <td id="secoundaryDominant" class="data"></td>
                         </tr>
                     </tbody>
@@ -378,7 +562,7 @@
 
             <!-- 転調先セクション -->
             <section class="chordprog-section chordprog-modulationto">
-                <h2>転調先</h2>
+                <h2>Modulation To</h2>
                 <div class="chordprog-table-wrap">
                     <table class="matrix chordprog-table">
                         <thead>
@@ -395,7 +579,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="title" id="scalechange0">転調①</td>
+                                <td class="title" id="scalechange0">Modulation 1</td>
                                 <td id="scalechange0_0" class="data"></td>
                                 <td id="scalechange0_1" class="data"></td>
                                 <td id="scalechange0_2" class="data"></td>
@@ -405,7 +589,7 @@
                                 <td id="scalechange0_6" class="data"></td>
                             </tr>
                             <tr>
-                                <td class="title" id="scalechange1">転調②</td>
+                                <td class="title" id="scalechange1">Modulation 2</td>
                                 <td id="scalechange1_0" class="data"></td>
                                 <td id="scalechange1_1" class="data"></td>
                                 <td id="scalechange1_2" class="data"></td>
@@ -415,7 +599,7 @@
                                 <td id="scalechange1_6" class="data"></td>
                             </tr>
                             <tr>
-                                <td class="title" id="scalechange2">転調③</td>
+                                <td class="title" id="scalechange2">Modulation 3</td>
                                 <td id="scalechange2_0" class="data"></td>
                                 <td id="scalechange2_1" class="data"></td>
                                 <td id="scalechange2_2" class="data"></td>
@@ -425,7 +609,7 @@
                                 <td id="scalechange2_6" class="data"></td>
                             </tr>
                             <tr>
-                                <td class="title" id="scalechange6">転調④</td>
+                                <td class="title" id="scalechange6">Modulation 4</td>
                                 <td id="scalechange6_0" class="data"></td>
                                 <td id="scalechange6_1" class="data"></td>
                                 <td id="scalechange6_2" class="data"></td>
@@ -435,7 +619,7 @@
                                 <td id="scalechange6_6" class="data"></td>
                             </tr>
                             <tr>
-                                <td class="title" id="scalechange3">転調⑤</td>
+                                <td class="title" id="scalechange3">Modulation 5</td>
                                 <td id="scalechange3_0" class="data"></td>
                                 <td id="scalechange3_1" class="data"></td>
                                 <td id="scalechange3_2" class="data"></td>
@@ -445,7 +629,7 @@
                                 <td id="scalechange3_6" class="data"></td>
                             </tr>
                             <tr>
-                                <td class="title" id="scalechange4">転調⑥</td>
+                                <td class="title" id="scalechange4">Modulation 6</td>
                                 <td id="scalechange4_0" class="data"></td>
                                 <td id="scalechange4_1" class="data"></td>
                                 <td id="scalechange4_2" class="data"></td>
@@ -455,7 +639,7 @@
                                 <td id="scalechange4_6" class="data"></td>
                             </tr>
                             <tr>
-                                <td class="title" id="scalechange5">転調⑦</td>
+                                <td class="title" id="scalechange5">Modulation 7</td>
                                 <td id="scalechange5_0" class="data"></td>
                                 <td id="scalechange5_1" class="data"></td>
                                 <td id="scalechange5_2" class="data"></td>
@@ -465,7 +649,7 @@
                                 <td id="scalechange5_6" class="data"></td>
                             </tr>
                             <tr>
-                                <td class="title" id="scalechange7">転調⑧</td>
+                                <td class="title" id="scalechange7">Modulation 8</td>
                                 <td id="scalechange7_0" class="data"></td>
                                 <td id="scalechange7_1" class="data"></td>
                                 <td id="scalechange7_2" class="data"></td>
