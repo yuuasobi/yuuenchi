@@ -68,7 +68,23 @@
             flex-direction: column;
             align-items: center;
             transition: transform 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
         }
+        .synth-card:nth-child(1) { animation-delay: 0.1s; }
+        .synth-card:nth-child(2) { animation-delay: 0.2s; }
+        .synth-card:nth-child(3) { animation-delay: 0.3s; }
+        .synth-card:nth-child(4) { animation-delay: 0.4s; }
+        .synth-card:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .synth-card:hover {
             transform: translateY(-5px) scale(1.03);
             box-shadow: 0 16px 40px rgba(74,144,226,0.18);
@@ -109,6 +125,27 @@
             border-top-right-radius: 12px;
             margin-bottom: 0.7rem;
             background: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .synth-thumb-wide.loaded {
+            opacity: 1;
+        }
+        /* 画像プレースホルダー */
+        .image-placeholder {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
         }
         @media (max-width: 768px) {
             .synth-header h1 { font-size: 2.1rem; }
@@ -124,36 +161,89 @@
     <div class="container">
         <div class="synth-grid">
             <div class="synth-card">
-                <img class="synth-thumb-wide" src="../../source/synth/chord_progression.png" alt="Chord Progression サムネイル">
+                <div class="image-placeholder">...</div>
+                <img class="synth-thumb-wide lazy" data-src="../../source/synth/chord_progression.png" alt="Chord Progression サムネイル">
                 <h3>Chord Progression</h3>
                 <p>コード進行を自動生成してくれるツール。</p>
                 <a class="synth-link" href="chord_progression/chord_progression.html">開く</a>
             </div>
             <div class="synth-card">
-                <img class="synth-thumb-wide" src="../../source/synth/clockChords.png" alt="Clock Chords サムネイル">
+                <div class="image-placeholder">...</div>
+                <img class="synth-thumb-wide lazy" data-src="../../source/synth/clockChords.png" alt="Clock Chords サムネイル">
                 <h3>Clock Chords</h3>
                 <p>時計のようなUIでコードを鳴らせるシンセサイザー。</p>
                 <a class="synth-link" href="clockChords/clockChords.html">開く</a>
             </div>
             <div class="synth-card">
-                <img class="synth-thumb-wide" src="../../source/synth/keySound.png" alt="key Sound サムネイル">
+                <div class="image-placeholder">...</div>
+                <img class="synth-thumb-wide lazy" data-src="../../source/synth/keySound.png" alt="key Sound サムネイル">
                 <h3>key Sound</h3>
                 <p>キーボード入力で音を鳴らせるシンプルなウェブシンセ。</p>
                 <a class="synth-link" href="keysound/keySound.html">開く</a>
             </div>
             <div class="synth-card">
-                <img class="synth-thumb-wide" src="../../source/synth/painter.png" alt="Painter サムネイル">
+                <div class="image-placeholder">...</div>
+                <img class="synth-thumb-wide lazy" data-src="../../source/synth/painter.png" alt="Painter サムネイル">
                 <h3>Painter</h3>
                 <p>お絵描き感覚で音を作れるビジュアルシンセ。</p>
                 <a class="synth-link" href="painter/painter.html">開く</a>
             </div>
             <div class="synth-card">
-                <img class="synth-thumb-wide" src="../../source/synth/pawpads.png" alt="Pawpads サムネイル">
+                <div class="image-placeholder">...</div>
+                <img class="synth-thumb-wide lazy" data-src="../../source/synth/pawpads.png" alt="Pawpads サムネイル">
                 <h3>Pawpads</h3>
                 <p>肉球パッドを押して音を鳴らす癒し系シンセ。</p>
                 <a class="synth-link" href="pawpads/pawpads.html">開く</a>
             </div>
         </div>
     </div>
+
+    <!-- 遅延読み込み用のJavaScript -->
+    <script>
+        // Intersection Observer APIを使用した遅延読み込み
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const placeholder = img.previousElementSibling;
+                        
+                        // 画像のsrcを設定
+                        img.src = img.dataset.src;
+                        
+                        // 画像が読み込まれたらプレースホルダーを非表示にして画像を表示
+                        img.onload = function() {
+                            img.classList.add('loaded');
+                            if (placeholder) {
+                                placeholder.style.display = 'none';
+                            }
+                        };
+                        
+                        // エラーハンドリング
+                        img.onerror = function() {
+                            if (placeholder) {
+                                placeholder.textContent = '画像読み込みエラー';
+                                placeholder.style.color = '#ff6b6b';
+                            }
+                        };
+                        
+                        // 監視を停止
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                // より早い段階で読み込みを開始するための設定
+                rootMargin: '50px 0px', // 画面の上下50px手前で読み込み開始
+                threshold: 0.1 // 10%見えた時点で読み込み開始
+            });
+            
+            // 各画像を監視開始
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+        });
+    </script>
 </body>
 </html> 

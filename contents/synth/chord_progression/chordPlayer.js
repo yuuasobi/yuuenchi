@@ -30,11 +30,13 @@ const noteFrequencies = {
 const chordIntervals = {
     'maj': [0, 4, 7],      // メジャーコード: ルート, 長3度, 完全5度
     'min': [0, 3, 7],      // マイナーコード: ルート, 短3度, 完全5度
+    'm-5': [0, 3, 6],      // マイナーフラットファイブ: ルート, 短3度, 減5度
     'dim': [0, 3, 6],      // ディミニッシュコード: ルート, 短3度, 減5度
     'aug': [0, 4, 8],      // オーグメントコード: ルート, 長3度, 増5度
     '7': [0, 4, 7, 10],    // セブンスコード: ルート, 長3度, 完全5度, 短7度
     'm7': [0, 3, 7, 10],   // マイナーセブンスコード: ルート, 短3度, 完全5度, 短7度
     'm7b5': [0, 3, 6, 10], // マイナーセブンスフラットファイブ: ルート, 短3度, 減5度, 短7度
+    'm7-5': [0, 3, 6, 10], // マイナーセブンスフラットファイブ（別表記）: ルート, 短3度, 減5度, 短7度
     'maj7': [0, 4, 7, 11], // メジャーセブンスコード: ルート, 長3度, 完全5度, 長7度
     'sus2': [0, 2, 7],     // サスツー: ルート, 長2度, 完全5度
     'sus4': [0, 5, 7]      // サスフォー: ルート, 完全4度, 完全5度
@@ -744,9 +746,9 @@ function playNote(frequency, volume, duration, delay = 0) {
 
 // コード名を解析
 function parseChord(chordName) {
-    // 基本的なコード名の解析
+    // より柔軟なコード名の解析
     const patterns = [
-        /^([A-G][#b]?)(M7|maj7?|min|m|dim|aug|sus[24]|7|m7|m7b5)$/,
+        /^([A-G][#b]?)(M7|maj7?|min|m|dim|aug|sus[24]|7|m7|m7b5|m-5|m7-5)$/,
         /^([A-G][#b]?)(maj|min|m)$/,
         /^([A-G][#b]?)$/
     ];
@@ -764,6 +766,7 @@ function parseChord(chordName) {
                 'maj7': 'maj7',
                 'min': 'min',
                 'm': 'min',
+                'm-5': 'm-5',
                 'dim': 'dim',
                 'aug': 'aug',
                 'sus2': 'sus2',
@@ -771,6 +774,7 @@ function parseChord(chordName) {
                 '7': '7',
                 'm7': 'm7',
                 'm7b5': 'm7b5',
+                'm7-5': 'm7-5',
                 'maj7': 'maj7'
             };
 
@@ -779,6 +783,16 @@ function parseChord(chordName) {
                 quality: qualityMap[quality] || 'maj'
             };
         }
+    }
+
+    // 特殊なケース: m-5の別表記に対応
+    const m5Pattern = /^([A-G][#b]?)m-5$/;
+    const m5Match = chordName.match(m5Pattern);
+    if (m5Match) {
+        return {
+            root: m5Match[1],
+            quality: 'm-5'
+        };
     }
 
     return { root: null, quality: null };
