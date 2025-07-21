@@ -5,6 +5,15 @@
 		},
 		{
 			"path": "../素材"
+		},
+		{
+			"path": "../../dify"
+		},
+		{
+			"path": "../tools"
+		},
+		{
+			"path": "../text"
 		}
 	],
 	"settings": {}
