@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurokuro Game</title>
+    <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="game-style.css">
+</head>
+<body>
+    <script src="../../header.js"></script>
+    <div id="game-content"></div>
+    <script>
+        const kurokuroGameData = {
+            "302": `
+                <div class="container">
+                    <h1>Kuroro Aquarium</h1>
+                    <p>イラストレーター「くろろ」さんの海の生き物イラストが縦横無尽に移動していく姿を眺められる、横スクロールの水族館ゲーム。</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/SP_J_6ybypk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>水族館</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>上昇/下降</td>
+                                    <td>RB/RTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ゲーム終了</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>くろろさんの海の生き物イラストが縦横無尽に移動していく姿を眺められます。</li>
+                                <li>横スクロールの水族館ゲームです。</li>
+                                <li>この作品はリングリンクパークプロジェクトで、くろろさんの作品を使って制作中のテーマパークゲーム「くろろパーク」に収録されているミニゲームの１つになります。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/kuroro-aquarium" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            `,
+            "303": `
+                <div class="container">
+                    <h1>undersea concentration</h1>
+                    <p>貝の中に隠れた海の生き物のペアを探す海底神経衰弱ゲーム。</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/suxGMCdo9Oo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>神経衰弱</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>貝を開く</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>上昇/下降</td>
+                                    <td>上下キー</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>貝の中に隠れた海の生き物のペアを探します。</li>
+                                <li>ペアを当てるとスコア獲得、外すとゲージが減ります。</li>
+                                <li>すべての貝を開くと次のウェーブが始まります。</li>
+                                <li>ゲージが無くなるまでに獲得したスコアがハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/underseaconcentration" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            `,
+            "304": `
+                <div class="container">
+                    <h1>Shellfish free diving fishing</h1>
+                    <p>貝が多く流れ着く海域で、素潜りで流れてきた貝を集めるゲーム。</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/OdQqUDkrS6E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>素潜り漁</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>捕る</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>上昇</td>
+                                    <td>RBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>下降</td>
+                                    <td>上昇していない間は自動で下降</td>
+                                </tr>
+                                <tr>
+                                    <td>下降スピードアップ</td>
+                                    <td>RTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>移動スピードアップ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>海の中にい貝を手に入れていくゲームです。</li>
+                                <li>海の中に入ると息ゲージが減っていきます。</li>
+                                <li>海藻に触れると絡まってしまい息ゲージが減ります。</li>
+                                <li>息ゲージが0になるまでに入手した貝の数がハイスコアとして記録されます。</li>
+                                <li>岩に引っかかった際は上へ上昇すると抜けられます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/shellfishfreedivingfishing" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            `,
+            "305": `
+                <div class="container">
+                    <h1>undersea maze</h1>
+                    <p>海底にある迷路を探索し斧を使ってオブジェクトの後ろに隠れている魚を入手するゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/xWbsLdEFGuA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>迷路探索</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>アクション</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>入手アイテム確認</td>
+                                    <td>Yボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>迷路を探索し海藻や貝に隠れた魚を手に入れます。</li>
+                                <li>海藻や貝を開くのに斧が必要です。</li>
+                                <li>海藻や斧は入手して一定時間経つと再配置されます。</li>
+                                <li>探索ゲージは一定時間で減っていき、0になるまでに手に入れた魚の数がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/underseamaze" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            `,
+            "306": `
+                <div class="container">
+                    <h1>Treasure of Pirate Ship</h1>
+                    <p>海賊船にある宝箱ガチャからアイテムを入手するゲーム。</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/Z9sWK-CMxpc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>ガチャ</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>決定</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>入手した時計確認</td>
+                                    <td>Yボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ジャンプ</td>
+                                    <td>Aボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>１０個の宝箱を空けて時計を入手します。</li>
+                                <li>重複で入手すると獲得できるスコアが増えていくので、１０個の宝箱全部同じ時計がでたら最高スコアとなります。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/treasureofpirateship" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "307": `
+                <div class="container">
+                    <h1>undersea race</h1>
+                    <p>サイコロを振って海底を走るゲーム。</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/9VhUBh4DCSA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>レース</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>サイコロを止める</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>サイコロの出た目分キャラが移動します。</li>
+                                <li>ゲージがMAXの時にサイコロを止めると必ず5～6で出るが、ゲージが少ない状態で止めると必ず1～2が出ます。</li>
+                                <li>ゴールラインを越えた距離分ポイントが加算されるので、ゴールラインピッタシの位置でサイコロの出目が6が出れば最高得点が獲得できます。</li>
+                                <li>１着でゴールすると更にポイント３倍、２着でゴールした場合はポイント２倍です。</li>
+                                <li>他のキャラがゴールした時のポイントも獲得ポイントに合算され、3キャラの合計ポイントが前回の記録よりも多ければハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/undersearace" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "308": `
+                <div class="container">
+                    <h1>tug of war</h1>
+                    <p>綱引き大会ゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/AZMDQzTFNJM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>綱引き</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>綱を引く</td>
+                                    <td>A/B/X/Y</td>
+                                </tr>
+                                <tr>
+                                    <td>ゲームスタート</td>
+                                    <td>STARTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>自チームは右側です。</li>
+                                <li>指示されたボタンを押し続けると綱を引っ張ることができます。</li>
+                                <li>指示以外のボタンを間違って押すと一気に相手チームに引っ張られます。</li>
+                                <li>指示されるボタンは一定間隔で切り替わるので、リズムに乗って正しいボタンを押下して少しずつ引っ張っていくと勝てます。</li>
+                                <li>勝ち続けた回数がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/tug-of-war" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "309": `
+                <div class="container">
+                    <h1>goblin extermination</h1>
+                    <p>森を探索して、協力してゴブリンを討伐していくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/8iHurITJHpU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>カウンター</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>移動</td>
+                                    <td>上方向キー</td>
+                                </tr>
+                                <tr>
+                                    <td>採取</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>料理</td>
+                                    <td>Y長押し</td>
+                                </tr>
+                                <tr>
+                                    <td>ガード</td>
+                                    <td>RT/LTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>カウンター攻撃</td>
+                                    <td>Xボタン：Monna、Bボタン：Zen</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>キノコを採取して探索中に料理を作ると回復できます。</li>
+                                <li>ガード成功時にガードしたキャラ以外のキャラでカウンター攻撃できます。</li>
+                                <li>つまりZenとMonnaでガード役とカウンター攻撃役を臨機応変に切り替えながら協力して戦うシステムです。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/goblin-slayer" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "310": `
+                <div class="container">
+                    <h1>clock land</h1>
+                    <p>3Dマップで時計を集めるアクションゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/gLjeapQtxUg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>3Dプラットフォーマー</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>決定</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ジャンプ</td>
+                                    <td>Aボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>指定の時間の位置にある時計を入手します。</li>
+                                <li>城の方向にある時計が12時です。</li>
+                                <li>全ての時計を入手した時のスコアが少なければハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/clock-land" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "311": `
+                <div class="container">
+                    <h1>hurdle race</h1>
+                    <p>ハードルをジャンプで飛び越えてコースを走り抜けるゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/5H-Y5SJ0_X0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>ハードル走</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>ジャンプ</td>
+                                    <td>Aボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>ハードルにぶつからないようにジャンプしてコースを走り抜けます。</li>
+                                <li>ハードルにぶつかると体力が減り、体力がなくなるまでに走り抜けたコース数がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/hurdles-course" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "312": `
+                <div class="container">
+                    <h1>AnotherX Exhibition</h1>
+                    <p>イラストレーター「くろろ」さんが描いて頂いたファンタジー小説「AnotherX」のイラストの展示ゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/uVzf4PMyPls" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>AnotherX展</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>決定</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ジャンプ</td>
+                                    <td>Aボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>タイトル切替</td>
+                                    <td>Xボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>テキスト入力</td>
+                                    <td>キーボード</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>イラストにタイトルを付けられます。</li>
+                                <li>自分で付けたタイトルと、小説の著者である「ゆうえんち」が付けたデフォルトのタイトルを切り替えられます。</li>
+                                <li>第１章、第２章の舞台の１部をコンパクトな3Dマップで表現し、各イラストの対応する場所に展示物を配置してます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/anotherx-exhibition" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "313": `
+                <div class="container">
+                    <h1>invasion defense</h1>
+                    <p>敵の侵略から防衛するゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/Xz_9PRLf3K8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>防衛</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>決定</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>単体ターゲット切替</td>
+                                    <td>RB/LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>攻撃コマンド切替</td>
+                                    <td>左右キー</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>ターゲット範囲と効果対象の異なるコマンドを切り替えて侵略してくる敵を排除していきます。</li>
+                                <li>攻撃エリアに入った敵を攻撃できますが、攻撃相性の悪い敵はすり抜けて移動を続けます。</li>
+                                <li>プレイヤーエリアに入ってくると爆発して防衛システムにダメージを与えます。</li>
+                                <li>殴：単体：アイアン以外を倒せる</li>
+                                <li>雷：単体：スライム以外を倒せる</li>
+                                <li>炎：範囲：スライム、アイアン以外を倒せる</li>
+                                <li>砲：範囲：ラット、キラービーを倒せる</li>
+                                <li>爆：範囲：スライム、ゴブリン、アイアンを倒せる</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/invasion-and-defense" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "314": `
+                <div class="container">
+                    <h1>quick draw water gun</h1>
+                    <p>海の生き物による早撃ちウォーターガンゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/l4vowmmdk9Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>早撃ち</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>撃つ</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>キャラ切り替え</td>
+                                    <td>RB/LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>振り向く</td>
+                                    <td>右キー</td>
+                                </tr>
+                                <tr>
+                                    <td>ゲームスタート</td>
+                                    <td>STARTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>BGMが鳴り終わった後に音が鳴ったら、振り向くアクションをして相手の方向を向いてから撃ちます。</li>
+                                <li>合図が鳴る前に振り向いてしまったり相手に先に攻撃されるとゲージが減ります。</li>
+                                <li>ゲージが0になるまでに勝利した回数がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/undersea-quick-draw-water-gun" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "315": `
+                <div class="container">
+                    <h1>clock production line</h1>
+                    <p>３つの時計生産ラインに流れてくる製品のミスを取り除くゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/m8_3tZh47Yk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>生産ライン</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>取り除く</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ジャンプ</td>
+                                    <td>Aボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>３種類の時計が生産ラインのベルトコンベアーに流れてきます。</li>
+                                <li>たまに異なるタイプの時計が混じってるので、見つけたら取り除きます。</li>
+                                <li>ミス製品を取り除くとスコアが獲得され、ミス製品が流れて行ってしまうと評価ゲージが下がります。</li>
+                                <li>評価ゲージが0になるまでにミス製品を取り除いた数がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/clock-production-line" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "316": `
+                <div class="container">
+                    <h1>find the twins</h1>
+                    <p>入口にいる子と同じ姿の双子の子を家の中で探すゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/xuO_ctyri7Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>双子</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>決定</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ジャンプ</td>
+                                    <td>Aボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>入口にいる子と同じ姿の双子の子を家の中で探します。</li>
+                                <li>見つけるまでの時間が記録され、前回の時間よりも早い時間で見つけると記録が更新されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/find-the-twins" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "317": `
+                <div class="container">
+                    <h1>mine placement battle</h1>
+                    <p>設置した地雷を踏ませて戦うゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/Wj-h4uf8a1U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>地雷</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>地雷設置</td>
+                                    <td>光る場所を通り抜ける</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>光る場所を通ると地雷が設置されます。</li>
+                                <li>地雷設置場所を5回通るとターン終了です。</li>
+                                <li>自分で設置した地雷の場所を自分自身で通っても爆発するので相手と自分の設置した場所を覚えておく必要があります。</li>
+                                <li>相手の動きは完全にランダム移動なので、自分の設置した場所に戻って自爆することが多々あるので、勝つのは簡単です。</li>
+                                <li>相手の体力を０にした時のプレイヤーの残り体力がスコアとして獲得し、地雷設置状態なども引き継いだ状態で次のバトルが開始されます。</li>
+                                <li>プレイヤーの体力が0になるまでに獲得したスコアがハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/mine-battle" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "318": `
+                <div class="container">
+                    <h1>dolphin jumping</h1>
+                    <p>勢いを付けて遠くまでジャンプするゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/Oh_tUskUxgk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>ジャンプ</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>勢いチャージ</td>
+                                    <td>左キー押しっぱなし</td>
+                                </tr>
+                                <tr>
+                                    <td>ジャンプ</td>
+                                    <td>チャージ後「↓→」のコマンド入力後にAボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>左方向への入力で勢いゲージを溜めて、その後に「↓→」とコマンド入力することで勢いよくジャンプできます。</li>
+                                <li>勢いゲージの量に応じてスピードが変化します。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/dolphin-jumping" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "319": `
+                <div class="container">
+                    <h1>seafood platter</h1>
+                    <p>好きなネタを盛り付けてシーフードプラッターを作るゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/fjXYjb-Zod4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>海鮮盛り付け</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>決定/配置</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>アイテム切替</td>
+                                    <td>Yボタン押下中に左右キー（アイテム移動モードオフ中）</td>
+                                </tr>
+                                <tr>
+                                    <td>食材切替</td>
+                                    <td>Yボタン押下中に左右キー（アイテム移動モードオン中）</td>
+                                </tr>
+                                <tr>
+                                    <td>上下移動</td>
+                                    <td>RB/RT</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>食材を切り替えて、皿の上に盛り付けを行います。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/seafood-platter" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "320": `
+                <div class="container">
+                    <h1>red light green light</h1>
+                    <p>"だるまさんがころんだ"と入力して振り返るまでに一番移動した距離が長い子を当てていくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/FI-PCW6O2zE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>だるまさんがころんだ</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>アクション</td>
+                                    <td>Bボタン / Enter</td>
+                                </tr>
+                                <tr>
+                                    <td>キャラ選択から戻る</td>
+                                    <td>Aボタン / Back</td>
+                                </tr>
+                                <tr>
+                                    <td>テキスト入力</td>
+                                    <td>キーボード</td>
+                                </tr>
+                                <tr>
+                                    <td>ゲームスタート</td>
+                                    <td>START</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>テキスト入力画面が表示されている間、子供たちが近づいてきます。</li>
+                                <li>"だるまさんがころんだ"と入力すると振り返って子供たちが止まるので、振り向くまでに一番移動した距離が長い子を選択するとスコア獲得し、その子供は初期位置に戻ります。</li>
+                                <li>一番近い子ではなく、一番距離を稼いだ子が対象なので、プレイヤー視点で一番遠くにいたとしても白線超えて戻っただけで一番距離を稼いだ子の可能性もあります。</li>
+                                <li>「キャラ選択から戻る」ボタンで再度"だるまさんがころんだ"の入力受付が開始されます。</li>
+                                <li>子供が線を超えたり、一番移動した距離が長い子以外を選択するとゲージが減ります（テキスト入力を間違ってもゲージは減らないが再度入力し直しになります）。</li>
+                                <li>ゲージが0になるまでに獲得したスコアがハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/darumasangakoronda" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "321": `
+                <div class="container">
+                    <h1>battleship</h1>
+                    <p>ターン制のバトルシップコマンドバトルゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/whUDoOrmK7Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>バトルシップ</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>決定</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>バトルスタート</td>
+                                    <td>STARTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>コマンド毎に攻撃範囲と攻撃力が異なります。</li>
+                                <li>攻撃範囲に相手が移動するとダメージが入ります。</li>
+                                <li>一番左の殴る攻撃コマンドは相手の移動前に攻撃ができますが、ダメージが最小です。</li>
+                                <li>敵を倒すとプレイヤーの残りHPが守った数としてスコアを獲得できます。</li>
+                                <li>プレイヤーが負けるまでに獲得したバトルスコアがハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/battle-ship" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "322": `
+                <div class="container">
+                    <h1>boat fishing</h1>
+                    <p>船に乗って釣りポイントを見つけて魚を釣るゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/nNtYCixgwOY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>船釣り</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>釣り開始</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>リールを巻く</td>
+                                    <td>釣り開始後にXボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>魚をリリース</td>
+                                    <td>釣り開始後にAボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>魚ボックスを開く</td>
+                                    <td>Yボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>エリア内を移動しているとビックリマークが表示されるので、表示中に決定ボタンを押すと釣りを開始できます。</li>
+                                <li>魚を発見した際の重さゲージが高いほど引き上げるまでの時間が掛かりますが、価値の高い魚である可能性は高いです。</li>
+                                <li>エリアの端に移動するとエリア移動ができ、エリアによって獲得できる魚の価値の幅が変わります。</li>
+                                <li>燃料ゲージがなくなるまでに獲得した魚のバリュー値の合計がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/boat-fishing" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "323": `
+                <div class="container">
+                    <h1>food service</h1>
+                    <p>瞬間表示される４テーブル分の注文料理を記憶して、調理し提供してくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/tt9spdNMy00" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>瞬間記憶</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>選択</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>調理＆提供</td>
+                                    <td>Xボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>時間コスト増減</td>
+                                    <td>RB/LB</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ゲームスタート</td>
+                                    <td>STARTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>ゲームスタート画面で時間コスト値を設定します。</li>
+                                <li>ゲームが始まると４つのテーブルから注文の料理が表示されるので、表示されてる時間の間に注文料理を覚えて、キッチンで対象の料理を作ったら、各テーブルに向かい注文通りの料理を提供します。</li>
+                                <li>注文料理の表示時間は設定した時間コスト値の間だけ表示され、その後料理の提供が終わるまで時間経過とともに設定した時間コスト分ゲージが減っていきます。例えば2秒に設定すると料理画像は２秒間表示されるが、時間経過で２ゲージずつ減っていきます。</li>
+                                <li>4テーブル分の注文料理を提供し終わったら、次の注文がスタートし、ゲージが0になると提供した料理の数がハイスコアとして記録されます。</li>
+                                <li>提供する料理を間違ったり、注文されていない料理を作った状態で次の注文に以降しても、ゲージが減ります。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/cooking-serving" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "324": `
+                <div class="container">
+                    <h1>snowball fight</h1>
+                    <p>ランダムに出現する敵キャラと雪合戦をするゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/yYq-VlkyDc8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>雪合戦</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>雪玉を投げる</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>雪玉を作る</td>
+                                    <td>Xボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>ランダムの位置に出現する敵キャラに雪玉をぶつけることでスコアを獲得します。</li>
+                                <li>敵の雪玉にぶつかると体力が減り、体力が0になるまでのスコアがハイスコアとして記録されます。</li>
+                                <li>雪玉を投げるには事前に雪玉を作ってストックしておく必要があります。</li>
+                                <li>雪玉が敵に当たったように見えても避けられて倒れない場合もあります。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/kindergarten-snowball-fight" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "325": `
+                <div class="container">
+                    <h1>crab and whale</h1>
+                    <p>クジラの背に乗って空中にあるエサを入手していくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/QEDilz40W-c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>チェンジアクション</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>アクション</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ジャンプ</td>
+                                    <td>Aボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>クジラサポート</td>
+                                    <td>Xボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>クジラのサポートを受けながら空中にあるエサを手に入れます。</li>
+                                <li>クジラのサポートを受けるとサポートゲージが減り、全てのエサを入手するかサポートゲージが0になるまでに獲得したエサの数がハイスコアとして記録されます。</li>
+                                <li>全てのエサを入手した場合は、残りサポートゲージも追加スコアとして獲得できます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/crab-and-whale" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "326": `
+                <div class="container">
+                    <h1>rescue fish</h1>
+                    <p>海上へと釣られていく仲間の魚たちを救助していくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/a19NCB4py_E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>救助</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>救助</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>上昇/下降</td>
+                                    <td>上下キー</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>海上へと釣られていく仲間の魚たちを救助していきます。</li>
+                                <li>仲間たちを救えず釣られてしまうとゲージが減ります。</li>
+                                <li>ゲージが0になるまでに助けた仲間の数がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/rescue-fish" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "327": `
+                <div class="container">
+                    <h1>internal clock</h1>
+                    <p>設定した時間を体内時計で計って、残り時間1秒以内でのストップを目指すゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/mX2oURn_zHg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>体内時計</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>スタート/ストップ</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>時間増減±1</td>
+                                    <td>左右キー</td>
+                                </tr>
+                                <tr>
+                                    <td>時間増減±10</td>
+                                    <td>上下キー</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>カウントダウン後に設定した時間を自分で計ります。</li>
+                                <li>ストップした時に残り時間１秒以内なら、計測した時間がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/internal-clock" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "328": `
+                <div class="container">
+                    <h1>ball toss</h1>
+                    <p>子供たちが自由な位置で投げる玉を籠に入れていくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/DXnmAhoFhTM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>玉入れ</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ゲームスタート</td>
+                                    <td>STARTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>子供たちは自由な位置で玉を投げるので、ボールが落ちてくる位置までいって持ってる籠に入れるとスコア獲得します。</li>
+                                <li>ボールが落ちるとゲージが減り、ゲージが０になるまでに籠に入れたボールの数がハイスコアとして記録されます。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/ball-in-the-basket" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "329": `
+                <div class="container">
+                    <h1>pirate ship territory</h1>
+                    <p>海賊船のナワバリで敵船の移動ルートにボムを設置して倒していくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/v3bsze5Iulg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>縄張り</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>ボム設置</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ダッシュ</td>
+                                    <td>LBボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>ゲームスタート</td>
+                                    <td>STARTボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>敵船の移動ルートにボムを設置します。</li>
+                                <li>敵船が設置したボムに触れると爆発して撃破数がカウントされます。</li>
+                                <li>設置したボムのアイコンは一定時間で消えるが設置はされているので、敵のボム設置場所を踏まないように気を付けて移動する必要があります。</li>
+                                <li>一定時間ごとにプレイヤーの位置の周辺に大砲が放たれます。当たると一撃でゲームオーバーなので常に移動している必要があります。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/territory-of-the-pirate" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "330": `
+                <div class="container">
+                    <h1>Japanese summoning training</h1>
+                    <p>子供たちが召喚する物体がリクエスト通りに召喚できているかチェックしていくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/B4idopAPMR8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>召喚</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr>
+                                    <td>召喚成功を知らせる</td>
+                                    <td>Bボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>召喚指示</td>
+                                    <td>Xボタン</td>
+                                </tr>
+                                <tr>
+                                    <td>召喚対象の切替</td>
+                                    <td>RB押下中に左右キー</td>
+                                </tr>
+                                <tr>
+                                    <td>オプション</td>
+                                    <td>Backボタン</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>召喚してもらうアイテムを選んで召喚指示すると、子供たちが日本語で物体を召喚します。</li>
+                                <li>指示した物体を無事召喚できたら成功したと教えてあげてください。</li>
+                                <li>召喚をすると子供達の体力が減り、０になると召喚訓練は終了しますが、召喚に成功した数分の召喚レベルが上がります。</li>
+                                <li>召喚レベルが上がると成功確率が上がっていき、レベル100まで到達すると100%成功するようになります。</li>
+                                <li>召喚レベルと同じ回数分召喚が成功した場合と、召喚の成功回数が１０回に到達する度に体力が全回復します。</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr>
+                                    <td>イラスト</td>
+                                    <td>くろろ</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/japanese-summons-training" class="purchase-button" target="_blank">
+                            itch.ioで購入
+                        </a>
+                    </div>
+                </div>
+            `,
+            "331": `
+                <div class="container">
+                    <h1>Searching in the Desert</h1>
+                    <p>砂の下に埋まっている時計を音を頼りに探すゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/8Wd2hHD-OrE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>探し物</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr><td>アクション</td><td>Bボタン</td></tr>
+                                <tr><td>砂の中を探す</td><td>Xボタン長押し</td></tr>
+                                <tr><td>感覚を研ぎ澄ます</td><td>RBボタン</td></tr>
+                                <tr><td>ジャンプ</td><td>Aボタン</td></tr>
+                                <tr><td>ダッシュ</td><td>LBボタン</td></tr>
+                                <tr><td>オプション</td><td>Backボタン</td></tr>
+                            </table>
+                        </div>
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>時計が埋まっている場所から一定間隔で音が鳴る。音が一番大きく聞こえる場所で砂をかき分けて探すと時計を手に入れられる。</li>
+                                <li>風の音で聞こえない時は、感覚を研ぎ澄ますことで音が聞こえやすくなる。</li>
+                                <li>時間経過で潤いゲージが減り、ゲージが無くなるまでに手に入れた時計の数がハイスコア。</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr><td>イラスト</td><td>くろろ</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/searching-in-the-desert" class="purchase-button" target="_blank">itch.ioで購入</a>
+                    </div>
+                </div>
+            `,
+            "332": `
+                <div class="container">
+                    <h1>kuroro signing</h1>
+                    <p>訪れるファンにサインをしていくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/naTNpBE_YLk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>サイン</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr><td>サインする</td><td>Bボタン</td></tr>
+                                <tr><td>サイン入力</td><td>マウスでドラッグ</td></tr>
+                                <tr><td>サイン会スタート</td><td>STARTボタン</td></tr>
+                                <tr><td>オプション</td><td>Backボタン</td></tr>
+                            </table>
+                        </div>
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>サイン時間が減っていき、0になるまでに書いたサインの数がハイスコア。</li>
+                                <li>7つの国の言語でサインを求められる。</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr><td>イラスト</td><td>くろろ</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/kuroro-signing" class="purchase-button" target="_blank">itch.ioで購入</a>
+                    </div>
+                </div>
+            `,
+            "333": `
+                <div class="container">
+                    <h1>Dolphin vs Shark</h1>
+                    <p>サメのナワバリでサメを倒すシューティングゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/97dxMuEEvmA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>横シューティング</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr><td>撃つ</td><td>Bボタン</td></tr>
+                                <tr><td>上昇/下降</td><td>上下キー</td></tr>
+                                <tr><td>ダッシュ</td><td>LBボタン</td></tr>
+                                <tr><td>ゲームスタート</td><td>STARTボタン</td></tr>
+                                <tr><td>オプション</td><td>Backボタン</td></tr>
+                            </table>
+                        </div>
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>玉を撃ってサメに当てるとスコア獲得。</li>
+                                <li>サメに触れるとダメージ。</li>
+                                <li>体力ゲージが0になるまでに倒したサメの数がハイスコア。</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr><td>イラスト</td><td>くろろ</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/ootsuchi-of-kitanochi-mountain" class="purchase-button" target="_blank">itch.ioで購入</a>
+                    </div>
+                </div>
+            `,
+            "334": `
+                <div class="container">
+                    <h1>Delivering cuisine in a sky city</h1>
+                    <p>空中都市で和食を配達していくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/Wwn4p20VEus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>配達</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr><td>アクション</td><td>Bボタン</td></tr>
+                                <tr><td>ジャンプ</td><td>Aボタン（配達モード中）</td></tr>
+                                <tr><td>ダッシュ</td><td>LBボタン</td></tr>
+                                <tr><td>上昇/下降</td><td>RB/RTボタン（注文鳥モード中）</td></tr>
+                                <tr><td>オプション</td><td>Backボタン</td></tr>
+                            </table>
+                        </div>
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>注文鳥で注文を受け、注文の品と品数を覚えて配達。</li>
+                                <li>落下や間違いでゲージ減少、0になるまでの配達数がハイスコア。</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr><td>イラスト</td><td>くろろ</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/delivering-cuisine-in-a-sky-city" class="purchase-button" target="_blank">itch.ioで購入</a>
+                    </div>
+                </div>
+            `,
+            "335": `
+                <div class="container">
+                    <h1>flutist</h1>
+                    <p>難破船の見える丘を見ながら笛を吹けるインストゥルメントゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/kGbDSf7e6Lk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>楽器ゲーム</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr><td>C</td><td>Xボタン</td></tr>
+                                <tr><td>E</td><td>Aボタン</td></tr>
+                                <tr><td>G</td><td>Bボタン</td></tr>
+                                <tr><td>Bb</td><td>Yボタン</td></tr>
+                            </table>
+                        </div>
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>難破船の見える丘で笛を吹ける。</li>
+                                <li>4つのボタンに割り振られた音程の音を鳴らせる。</li>
+                                <li>4つのボタンの音を同時に鳴らすとC7コードになる。</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr><td>イラスト</td><td>くろろ</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/flutist" class="purchase-button" target="_blank">itch.ioで購入</a>
+                    </div>
+                </div>
+            `,
+            "336": `
+                <div class="container">
+                    <h1>Matchmaking event at the seabed</h1>
+                    <p>壁から出る魚体の長さを合わせていくゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/uGCIVIF84CA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>お見合い</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr><td>決定</td><td>Bボタン</td></tr>
+                                <tr><td>移動</td><td>左右キー</td></tr>
+                                <tr><td>オプション</td><td>Backボタン</td></tr>
+                            </table>
+                        </div>
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>左右の魚の体が壁から出てる長さを合わせる。</li>
+                                <li>長さの差異分、遊び時間ゲージが減る。</li>
+                                <li>遊び時間ゲージが0になるまでに合わせた数がハイスコア。</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr><td>イラスト</td><td>くろろ</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/matchmaking-event-at-the-seabed" class="purchase-button" target="_blank">itch.ioで購入</a>
+                    </div>
+                </div>
+            `,
+            "337": `
+                <div class="container">
+                    <h1>group photo</h1>
+                    <p>クリエイター育成所で集合写真を撮るゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/hs8igAkDHiY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>集合写真</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr><td>キャラ選択/配置</td><td>Bボタン</td></tr>
+                                <tr><td>写真を撮る</td><td>Bボタン（カメラモード）</td></tr>
+                                <tr><td>上昇/下降</td><td>RB/RTボタン（カメラモード）</td></tr>
+                                <tr><td>メモリー確認</td><td>Yボタン</td></tr>
+                                <tr><td>メモリー写真切替</td><td>RB/LBボタン</td></tr>
+                                <tr><td>オプション</td><td>Backボタン</td></tr>
+                            </table>
+                        </div>
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>猫モードでキャラを移動できる。</li>
+                                <li>カメラモードで写真を撮れる。</li>
+                                <li>撮った写真はメモリーに保存され、確認できる。</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr><td>イラスト</td><td>くろろ</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/group-photo" class="purchase-button" target="_blank">itch.ioで購入</a>
+                    </div>
+                </div>
+            `,
+            "338": `
+                <div class="container">
+                    <h1>Japanese Cuisine Buffet</h1>
+                    <p>満足するまで和食ビュッフェを堪能するゲーム</p>
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/lSFB74rQkEc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="details-section">
+                        <h2>ゲーム詳細</h2>
+                        <div class="detail-block">
+                            <h3>テーマ</h3>
+                            <p>ビュッフェ</p>
+                        </div>
+                        <div class="detail-block">
+                            <h3>操作方法 (Xinputコントローラ)</h3>
+                            <table>
+                                <tr><td>食べる</td><td>Bボタン</td></tr>
+                                <tr><td>ダッシュ</td><td>LBボタン</td></tr>
+                                <tr><td>オプション</td><td>Backボタン</td></tr>
+                            </table>
+                        </div>
+                        <div class="detail-block">
+                            <h3>システム</h3>
+                            <ul>
+                                <li>同じ種類の料理を食べ続けると満足感が増えやすくなる。</li>
+                                <li>全種類の料理を満遍なく食べると沢山食べられる。</li>
+                                <li>料理を食べると満足感ゲージが徐々に上がる。</li>
+                                <li>満腹感ゲージがMAXになるまでに食べた料理の数がハイスコア。</li>
+                                <li>料理を食べるとすべての料理が再配置される。</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h3>クリエイター</h3>
+                            <p>このゲームには以下のクリエイターさんの作品を素材として使用しています。</p>
+                            <table>
+                                <tr><td>イラスト</td><td>くろろ</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://yuuenchi.itch.io/japanese-cuisine-buffet" class="purchase-button" target="_blank">itch.ioで購入</a>
+                    </div>
+                </div>
+            `
+        };
+
+        // URLからゲームIDを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const gameId = urlParams.get('id');
+        
+        // ゲームデータを取得して表示
+        const gameContent = document.getElementById('game-content');
+        if (gameId && kurokuroGameData[gameId]) {
+            gameContent.innerHTML = kurokuroGameData[gameId];
+        } else {
+            gameContent.innerHTML = `
+                <div class="container">
+                    <h1>Game Not Found</h1>
+                    <p>指定されたゲームが見つかりませんでした。</p>
+                    <a href="WCG.html" class="back-button">WCGページに戻る</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html> 

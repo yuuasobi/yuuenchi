@@ -1,16 +1,20 @@
 {
 	"folders": [
 		{
+			"name": "yuuenchi",
 			"path": "."
 		},
 		{
-			"path": "../素材"
-		},
-		{
+			"name": "tools",
 			"path": "../tools"
 		},
 		{
+			"name": "Audioplugins",
 			"path": "../Audioplugins"
+		},
+		{
+			"name": "素材",
+			"path": "../素材"
 		}
 	],
 	"settings": {}
