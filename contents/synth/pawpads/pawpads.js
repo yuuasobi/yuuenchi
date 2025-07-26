@@ -390,4 +390,84 @@ window.addEventListener('DOMContentLoaded', () => {
     if (e.code === 'Numpad3') playPadSound(3); // 右端
     if (e.code === 'Numpad0') playPadSound(4); // 掌球
   });
+
+  // Auto Play 機能の初期化
+  setupAutoPlay();
 });
+
+// Auto Play 機能
+let autoPlayInterval = null;
+let isAutoPlaying = false;
+
+function setupAutoPlay() {
+  // インターバルスライダーのイベントリスナー
+  const intervalSlider = document.getElementById('auto-interval');
+  const intervalDisplay = document.getElementById('interval-display');
+  
+  if (intervalSlider && intervalDisplay) {
+    intervalSlider.addEventListener('input', function() {
+      intervalDisplay.textContent = this.value + 's';
+      
+      // Auto Play中の場合、新しい間隔で再設定
+      if (isAutoPlaying) {
+        toggleAutoPlay(); // 一度停止
+        setTimeout(() => {
+          toggleAutoPlay(); // 新しい間隔で再開
+        }, 100);
+      }
+    });
+  }
+}
+
+function toggleAutoPlay() {
+  const button = document.getElementById('auto-play-button');
+  const icon = button.querySelector('.auto-play-icon');
+  const text = button.querySelector('.auto-play-text');
+  const intervalSlider = document.getElementById('auto-interval');
+  
+  if (isAutoPlaying) {
+    // Auto Playを停止
+    clearInterval(autoPlayInterval);
+    autoPlayInterval = null;
+    isAutoPlaying = false;
+    
+    // ボタンの見た目を更新
+    button.classList.remove('active');
+    icon.textContent = '▶';
+    text.textContent = 'Auto Play';
+  } else {
+    // Auto Playを開始
+    isAutoPlaying = true;
+    
+    // ボタンの見た目を更新
+    button.classList.add('active');
+    icon.textContent = '⏸';
+    text.textContent = 'Stop';
+    
+    // 設定された間隔でランダムな肉球音を再生
+    const interval = parseFloat(intervalSlider.value) * 1000; // 秒をミリ秒に変換
+    
+    autoPlayInterval = setInterval(() => {
+      // ランダムな肉球を選択（0-4: 指球4つ + 掌球1つ）
+      const randomPad = Math.floor(Math.random() * 5);
+      playPadSound(randomPad);
+    }, interval);
+  }
+}
+
+// ランダムな間隔で音を鳴らす関数（より自然な感じ）
+function playRandomPadWithVariation() {
+  const randomPad = Math.floor(Math.random() * 5);
+  playPadSound(randomPad);
+  
+  // 次の再生までの間隔をランダムに設定（0.5秒〜2.0秒）
+  const minInterval = 500;
+  const maxInterval = 2000;
+  const randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
+  
+  setTimeout(() => {
+    if (isAutoPlaying) {
+      playRandomPadWithVariation();
+    }
+  }, randomInterval);
+}

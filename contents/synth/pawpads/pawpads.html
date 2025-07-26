@@ -80,6 +80,96 @@
       justify-content: center;
       align-items: center;
     }
+    
+    /* Auto Play ボタンのスタイル */
+    .auto-play-section {
+      text-align: center;
+      padding: 20px;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 15px;
+      border: 2px solid #667eea;
+    }
+    
+    .auto-play-button {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 auto 15px auto;
+    }
+    
+    .auto-play-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    .auto-play-button.active {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+    
+    .auto-play-icon {
+      font-size: 16px;
+    }
+    
+    .auto-play-text {
+      font-size: 14px;
+    }
+    
+    .auto-play-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      color: #333;
+    }
+    
+    .auto-interval-slider {
+      width: 120px;
+      height: 6px;
+      border-radius: 3px;
+      background: #ddd;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    
+    .auto-interval-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #667eea;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    
+    .auto-interval-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #667eea;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    
+    #interval-display {
+      font-weight: 600;
+      color: #667eea;
+      min-width: 40px;
+    }
   </style>
 </head>
 <body>
@@ -124,6 +214,17 @@
           <span class="margin">Level:</span>
           <input type="range" min="0" max="1" step="0.01" value="0.5" id="level" value="1" oninput="Setup()"/><span id="leveldisp">0.5</span>
           <span class="margin">Freq(Hz) : </span><span id="keyAudioFreq"></span>
+        </div>
+        <div class="auto-play-section" style="margin-top: 20px;">
+          <button id="auto-play-button" class="auto-play-button" onclick="toggleAutoPlay()">
+            <span class="auto-play-icon">▶</span>
+            <span class="auto-play-text">Auto Play</span>
+          </button>
+          <div class="auto-play-controls">
+            <span>Interval:</span>
+            <input type="range" min="0.5" max="3.0" step="0.1" value="1.0" id="auto-interval" class="auto-interval-slider"/>
+            <span id="interval-display">1.0s</span>
+          </div>
         </div>
       </div>
     </div>
