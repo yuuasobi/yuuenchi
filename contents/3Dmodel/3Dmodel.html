@@ -15,6 +15,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 <body>
     <script src="../../header.js"></script>
@@ -25,47 +28,43 @@
     
     <div class="container">
         <div class="model-grid">
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/タマゴ.glb" data-title="タマゴ">
                 <img src="../../source/3Dmodel/タマゴ.png" alt="タマゴ" class="model-thumb">
                 <div class="model-title">タマゴ</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/スター.glb" data-title="スター">
                 <img src="../../source/3Dmodel/スター.png" alt="スター" class="model-thumb">
                 <div class="model-title">スター</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/山.glb" data-title="山">
                 <img src="../../source/3Dmodel/山.png" alt="山" class="model-thumb">
                 <div class="model-title">山</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/リング.glb" data-title="リング">
                 <img src="../../source/3Dmodel/リング.png" alt="リング" class="model-thumb">
                 <div class="model-title">リング</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/円柱.glb" data-title="円柱">
                 <img src="../../source/3Dmodel/円柱.png" alt="円柱" class="model-thumb">
                 <div class="model-title">円柱</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/ハート.glb" data-title="ハート">
                 <img src="../../source/3Dmodel/ハート.png" alt="ハート" class="model-thumb">
                 <div class="model-title">ハート</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/風船.glb" data-title="風船">
                 <img src="../../source/3Dmodel/風船.png" alt="風船" class="model-thumb">
                 <div class="model-title">風船</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/茶碗.glb" data-title="茶碗">
                 <img src="../../source/3Dmodel/茶碗.png" alt="茶碗" class="model-thumb">
                 <div class="model-title">茶碗</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
-                <img src="../../source/3Dmodel/水槽.png" alt="水槽" class="model-thumb">
-                <div class="model-title">水槽</div>
-            </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/看板.glb" data-title="看板">
                 <img src="../../source/3Dmodel/看板.png" alt="看板" class="model-thumb">
                 <div class="model-title">看板</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/スピーカー.glb" data-title="スピーカー">
                 <img src="../../source/3Dmodel/スピーカー.png" alt="スピーカー" class="model-thumb">
                 <div class="model-title">スピーカー</div>
             </div>
@@ -73,7 +72,7 @@
                 <img src="../../source/3Dmodel/サイコロ.png" alt="サイコロ" class="model-thumb">
                 <div class="model-title">サイコロ</div>
             </div>
-            <div class="model-card" data-model="../../source/3Dmodel/サイコロ.glb" data-title="サイコロ">
+            <div class="model-card" data-model="../../source/3Dmodel/雪だるま.glb" data-title="雪だるま">
                 <img src="../../source/3Dmodel/雪だるま.png" alt="雪だるま" class="model-thumb">
                 <div class="model-title">雪だるま</div>
             </div>
@@ -112,8 +111,9 @@
 
     <script>
         // 3Dビューアー関連の変数
-        let scene, camera, renderer, controls, model;
-        let autoRotate = false;
+        let scene = null, camera = null, renderer = null, controls = null, model = null;
+        let autoRotate = true;
+        let animationId = null;
 
         // ライブラリの読み込み確認とイベント設定
         function initializeViewer() {
@@ -160,31 +160,116 @@
         document.addEventListener('DOMContentLoaded', initializeViewer);
         window.addEventListener('load', initializeViewer);
 
+        // キャッシュバスティング用の関数
+        function addCacheBuster(url) {
+            const separator = url.indexOf('?') !== -1 ? '&' : '?';
+            return url + separator + 'v=' + Date.now();
+        }
+
         // 3Dビューアーを開く
         function openModelViewer(modelPath, title) {
             console.log('Opening model viewer for:', modelPath, title);
             document.getElementById('modelTitle').textContent = title;
             document.getElementById('modelViewer').style.display = 'flex';
-            document.getElementById('loadingMessage').style.display = 'block';
+            
+            const loadingMessage = document.getElementById('loadingMessage');
+            if (loadingMessage) {
+                loadingMessage.style.display = 'block';
+            }
             
             // Three.jsが読み込まれているかチェック
             if (typeof THREE === 'undefined') {
                 console.error('Three.js is not loaded');
-                document.getElementById('loadingMessage').innerHTML = 
-                    '<i class="fas fa-exclamation-triangle"></i> Three.jsライブラリの読み込みに失敗しました';
+                if (loadingMessage) {
+                    loadingMessage.innerHTML = 
+                        '<i class="fas fa-exclamation-triangle"></i> Three.jsライブラリの読み込みに失敗しました';
+                }
                 return;
             }
             
+            // 完全にクリーンアップ
+            cleanupThreeJS();
+            
             initThreeJS();
-            loadModel(modelPath);
+            loadModel(addCacheBuster(modelPath));
+            
+            // 自動回転ボタンの初期状態を設定
+            setTimeout(() => {
+                const autoRotateBtn = document.getElementById('autoRotateBtn');
+                if (autoRotateBtn) {
+                    autoRotateBtn.classList.add('active');
+                    autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> 自動回転ON';
+                }
+            }, 100);
         }
 
         // 3Dビューアーを閉じる
         function closeModelViewer() {
             document.getElementById('modelViewer').style.display = 'none';
+            cleanupThreeJS();
+        }
+
+        // Three.jsの完全クリーンアップ
+        function cleanupThreeJS() {
+            console.log('Cleaning up Three.js...');
+            
+            // アニメーションループを停止
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+            
+            // モデルのクリーンアップ
+            if (model) {
+                model.traverse((child) => {
+                    if (child.geometry) {
+                        child.geometry.dispose();
+                    }
+                    if (child.material) {
+                        if (Array.isArray(child.material)) {
+                            child.material.forEach(material => material.dispose());
+                        } else {
+                            child.material.dispose();
+                        }
+                    }
+                });
+                model = null;
+            }
+            
+            // シーンのクリーンアップ
+            if (scene) {
+                scene.traverse((child) => {
+                    if (child.geometry) {
+                        child.geometry.dispose();
+                    }
+                    if (child.material) {
+                        if (Array.isArray(child.material)) {
+                            child.material.forEach(material => material.dispose());
+                        } else {
+                            child.material.dispose();
+                        }
+                    }
+                });
+                scene.clear();
+                scene = null;
+            }
+            
+            // コントロールのクリーンアップ
+            if (controls) {
+                controls.dispose();
+                controls = null;
+            }
+            
+            // レンダラーのクリーンアップ
             if (renderer) {
                 renderer.dispose();
+                renderer = null;
             }
+            
+            // カメラのクリーンアップ
+            camera = null;
+            
+            console.log('Three.js cleanup completed');
         }
 
         // Three.jsの初期化
@@ -193,6 +278,21 @@
             const container = document.getElementById('modelContainer');
             
             try {
+                // コンテナを完全にクリア
+                container.innerHTML = '';
+                
+                // 既存のレンダラーをクリア
+                if (renderer) {
+                    renderer.dispose();
+                    renderer = null;
+                }
+                
+                // すべての変数をリセット
+                scene = null;
+                camera = null;
+                controls = null;
+                model = null;
+                
                 // シーンの作成
                 scene = new THREE.Scene();
                 scene.background = new THREE.Color(0xf0f0f0);
@@ -206,8 +306,7 @@
                 // レンダラーの設定
                 renderer = new THREE.WebGLRenderer({ antialias: true });
                 renderer.setSize(container.clientWidth, container.clientHeight);
-                renderer.shadowMap.enabled = true;
-                renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+                renderer.shadowMap.enabled = false;
                 console.log('Renderer created');
 
                 // コントロールの設定
@@ -216,19 +315,33 @@
                     controls.enableDamping = true;
                     controls.dampingFactor = 0.05;
                     controls.autoRotate = autoRotate;
+                    controls.enableZoom = true;
+                    controls.enablePan = true;
+                    controls.enableRotate = true;
                     console.log('Controls created');
                 } else {
                     console.error('OrbitControls not available');
                 }
 
-                // ライトの追加
-                const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+                // ライトの追加（影を完全に除去）
+                const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
                 scene.add(ambientLight);
 
-                const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-                directionalLight.position.set(10, 10, 5);
-                directionalLight.castShadow = true;
-                scene.add(directionalLight);
+                // 複数の方向からライトを追加して影を均等に照らす
+                const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.5);
+                directionalLight1.position.set(10, 10, 5);
+                directionalLight1.castShadow = false;
+                scene.add(directionalLight1);
+
+                const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+                directionalLight2.position.set(-10, -10, -5);
+                directionalLight2.castShadow = false;
+                scene.add(directionalLight2);
+
+                const directionalLight3 = new THREE.DirectionalLight(0xffffff, 0.3);
+                directionalLight3.position.set(0, 10, 0);
+                directionalLight3.castShadow = false;
+                scene.add(directionalLight3);
                 console.log('Lights added');
 
                 // レンダラーをコンテナに追加
@@ -238,7 +351,7 @@
 
                 // アニメーションループ
                 function animate() {
-                    requestAnimationFrame(animate);
+                    animationId = requestAnimationFrame(animate);
                     if (controls) controls.update();
                     renderer.render(scene, camera);
                 }
@@ -250,8 +363,11 @@
                 
             } catch (error) {
                 console.error('Error initializing Three.js:', error);
-                document.getElementById('loadingMessage').innerHTML = 
-                    '<i class="fas fa-exclamation-triangle"></i> Three.jsの初期化に失敗しました: ' + error.message;
+                const loadingMessage = document.getElementById('loadingMessage');
+                if (loadingMessage) {
+                    loadingMessage.innerHTML = 
+                        '<i class="fas fa-exclamation-triangle"></i> Three.jsの初期化に失敗しました: ' + error.message;
+                }
             }
         }
 
@@ -273,6 +389,24 @@
                 modelPath,
                 function(gltf) {
                     console.log('Model loaded successfully:', gltf);
+                    
+                    // 既存のモデルを削除
+                    if (model) {
+                        scene.remove(model);
+                        model.traverse((child) => {
+                            if (child.geometry) {
+                                child.geometry.dispose();
+                            }
+                            if (child.material) {
+                                if (Array.isArray(child.material)) {
+                                    child.material.forEach(material => material.dispose());
+                                } else {
+                                    child.material.dispose();
+                                }
+                            }
+                        });
+                    }
+                    
                     model = gltf.scene;
                     
                     // モデルのサイズを調整
@@ -288,20 +422,54 @@
                     model.position.sub(center.multiplyScalar(scale));
                     console.log('Model positioned');
 
+                    // モデルに影を落とさない設定
+                    model.traverse((child) => {
+                        if (child.isMesh) {
+                            child.castShadow = false;
+                            child.receiveShadow = false;
+                            
+                            // マテリアルの設定を調整して影を除去
+                            if (child.material) {
+                                if (Array.isArray(child.material)) {
+                                    child.material.forEach(material => {
+                                        material.flatShading = false;
+                                        material.shading = THREE.SmoothShading;
+                                    });
+                                } else {
+                                    child.material.flatShading = false;
+                                    child.material.shading = THREE.SmoothShading;
+                                }
+                            }
+                        }
+                    });
+                    
                     scene.add(model);
                     console.log('Model added to scene');
-                    document.getElementById('loadingMessage').style.display = 'none';
+                    
+                    // loadingMessageの存在確認
+                    const loadingMessage = document.getElementById('loadingMessage');
+                    if (loadingMessage) {
+                        loadingMessage.style.display = 'none';
+                    }
                 },
                 function(xhr) {
                     const progress = (xhr.loaded / xhr.total * 100);
                     console.log(progress + '% loaded');
-                    document.getElementById('loadingMessage').innerHTML = 
-                        '<i class="fas fa-spinner fa-spin"></i> 3Dモデルを読み込み中... ' + Math.round(progress) + '%';
+                    
+                    const loadingMessage = document.getElementById('loadingMessage');
+                    if (loadingMessage) {
+                        loadingMessage.innerHTML = 
+                            '<i class="fas fa-spinner fa-spin"></i> 3Dモデルを読み込み中... ' + Math.round(progress) + '%';
+                    }
                 },
                 function(error) {
                     console.error('モデルの読み込みに失敗しました:', error);
-                    document.getElementById('loadingMessage').innerHTML = 
-                        '<i class="fas fa-exclamation-triangle"></i> モデルの読み込みに失敗しました<br><small>' + error.message + '</small>';
+                    
+                    const loadingMessage = document.getElementById('loadingMessage');
+                    if (loadingMessage) {
+                        loadingMessage.innerHTML = 
+                            '<i class="fas fa-exclamation-triangle"></i> モデルの読み込みに失敗しました<br><small>' + error.message + '</small>';
+                    }
                 }
             );
         }
