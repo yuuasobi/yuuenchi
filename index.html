@@ -96,10 +96,57 @@
                 0 8px 25px rgba(0,0,0,0.15),
                 inset 0 2px 8px rgba(255,255,255,0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            cursor: pointer;
         }
         
         .page-card::before {
-            content: none;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .page-card:hover::before {
+            opacity: 0.9;
+        }
+        
+        .page-card.game-card::before {
+            background-image: url('source/games_file/メイン画像_ミニゲーム30.png');
+        }
+        
+        .page-card.novel-card::before {
+            background-image: url('source/AnotherX/モネ.png');
+        }
+        
+        .page-card.music-card::before {
+            background-image: url('source/games_file/WCG100/17/17_yoseiライブステージ.png');
+        }
+        
+        .page-card.synth-card::before {
+            background-image: url('source/synth/pawpads.png');
+        }
+        
+        .page-card.model-card::before {
+            background-image: url('source/3Dmodel/雪だるま.png');
+        }
+        
+        .page-card > * {
+            position: relative;
+            z-index: 1;
         }
         
         .page-card:hover {
@@ -127,13 +174,15 @@
             display: inline-block;
             background: linear-gradient(45deg, #4a90e2, #5cb85c);
             color: white;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.2rem;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+            position: relative;
+            z-index: 1;
         }
         
         .page-card a:hover {
@@ -232,34 +281,24 @@
     
     <div class="main-content">
         <div class="page-grid">
-            <div class="page-card">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🎮</div>
-                <h2>Game</h2>
-                <a href="contents/games/WCG.html">ゲームを見る</a>
+            <div class="page-card game-card">
+                <a href="contents/games/WCG.html">🎮 Game</a>
             </div>
             
-            <div class="page-card">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">📖</div>
-                <h2>Novel</h2>
-                <a href="contents/novels/AnotherX.html">小説を読む</a>
+            <div class="page-card novel-card">
+                <a href="contents/novels/AnotherX.html">📖 Novel</a>
             </div>
             
-            <div class="page-card">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🎵</div>
-                <h2>Music</h2>
-                <a href="contents/music/Music.html">音楽を聴く</a>
+            <div class="page-card music-card">
+                <a href="contents/music/Music.html">🎵 Music</a>
             </div>
             
-            <div class="page-card">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🎹</div>
-                <h2>Synth</h2>
-                <a href="contents/synth/synth.html">シンセで遊ぶ</a>
+            <div class="page-card synth-card">
+                <a href="contents/synth/synth.html">🎹 Synth</a>
             </div>
             
-            <div class="page-card">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🧊</div>
-                <h2>3D model</h2>
-                <a href="contents/3Dmodel/3Dmodel.html">3Dモデルを見る</a>
+            <div class="page-card model-card">
+                <a href="contents/3Dmodel/3Dmodel.html">🧊 3D Model</a>
             </div>
         </div>
     </div>
@@ -267,5 +306,27 @@
     <footer>
         <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
     </footer>
+    
+    <script>
+        // カード全体をクリック可能にする
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.page-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // ボタン自体をクリックした場合は何もしない（重複を避ける）
+                    if (e.target.tagName === 'A') {
+                        return;
+                    }
+                    
+                    // カード内のリンクを取得してクリック
+                    const link = this.querySelector('a');
+                    if (link) {
+                        link.click();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
