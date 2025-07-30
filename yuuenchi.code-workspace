@@ -13,10 +13,15 @@
 			"path": "../Audioplugins"
 		},
 		{
+			"name": "web_game",
+			"path": "../web_game"
+		},
+		{
 			"name": "素材",
 			"path": "../素材"
 		},
 		{
+			"name": "text",
 			"path": "../text"
 		}
 	],
