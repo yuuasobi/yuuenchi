@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operation Log Tool - ゆうえんち</title>
+    <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .detail-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .detail-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .detail-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: none;
+            border-radius: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .detail-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h2 {
+            color: #4a90e2;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #4a90e2;
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-section img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .detail-section p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            background: #f8f9fa;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .parameter-table th,
+        .parameter-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .parameter-table th {
+            background-color: #4a90e2;
+            color: white;
+            font-weight: 600;
+        }
+
+        .parameter-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .back-button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+            
+            .detail-section {
+                padding: 1.5rem;
+            }
+            
+            .parameter-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="../../header.js"></script>
+    
+    <header class="detail-header">
+        <h1>📊 Operation Log Tool</h1>
+    </header>
+    
+    <div class="container">
+        <!-- 画像セクション -->
+        <div class="detail-section">
+            <img src="../../source/tools/operation_log/operation_log.png" alt="Operation Log Tool">
+        </div>
+
+        <!-- 使い方セクション -->
+        <div class="detail-section">
+            <h2>📖 使い方</h2>
+            <p>Operation Log Toolは、ユーザーの操作（マウスクリック、キーボード入力）とアクティブなアプリケーションのリソース使用状況（CPU使用率、メモリ使用量）を記録するPython製デスクトップアプリケーションです。</p>
+            
+            <h3>GUIアプリケーション版（推奨）</h3>
+            <ol>
+                <li>Pythonで`gui_app.py`を実行（またはバッチファイルを利用）</li>
+                <li>「監視開始」ボタンをクリック</li>
+                <li>ログファイルを選択（または自動生成）</li>
+                <li>リアルタイムでログを確認</li>
+                <li>「監視停止」ボタンで監視を停止</li>
+            </ol>
+
+            <h3>コマンドライン版</h3>
+            <ol>
+                <li>Pythonで`operation_log.py`を実行</li>
+                <li>出力ファイルを指定（オプション）</li>
+                <li>Ctrl+Cで監視を停止</li>
+            </ol>
+        </div>
+
+        <!-- 機能セクション -->
+        <div class="detail-section">
+            <h2>⚙️ 機能</h2>
+            <ul class="feature-list">
+                <li><strong>操作監視</strong> - マウスクリック、キー入力、スクロール、監視をリアルタイムで記録</li>
+                <li><strong>アクティブウィンドウ監視</strong> - 現在アクティブなウィンドウの情報を取得</li>
+                <li><strong>リソース監視</strong> - アクティブなプロセスのCPU使用率とメモリ使用量を監視</li>
+                <li><strong>CSV出力</strong> - 時系列でログをCSVファイルに記録</li>
+                <li><strong>統計機能</strong> - ログファイルの統計情報を取得</li>
+                <li><strong>フィルタリング</strong> - 条件に基づいてログをフィルタリング・エクスポート</li>
+            </ul>
+        </div>
+
+        <!-- パラメータセクション -->
+        <div class="detail-section">
+            <h2>🎛️ パラメータ</h2>
+            <table class="parameter-table">
+                <thead>
+                    <tr>
+                        <th>パラメータ名</th>
+                        <th>入力形式</th>
+                        <th>必須/任意</th>
+                        <th>説明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>出力ファイル</td>
+                        <td>ファイルパス</td>
+                        <td>任意</td>
+                        <td>ログを保存するCSVファイルのパス（デフォルト: operation_log.csv）</td>
+                    </tr>
+                    <tr>
+                        <td>監視間隔</td>
+                        <td>数値（秒）</td>
+                        <td>任意</td>
+                        <td>リソース監視の間隔（デフォルト: 1.0秒）</td>
+                    </tr>
+                    <tr>
+                        <td>イベントタイプ</td>
+                        <td>自動検出</td>
+                        <td>自動</td>
+                        <td>記録されるイベント: マウスクリック、キー入力、スクロール、監視</td>
+                    </tr>
+                    <tr>
+                        <td>ログレベル</td>
+                        <td>設定</td>
+                        <td>任意</td>
+                        <td>記録する詳細レベル（デフォルト: 全イベント）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 戻るボタン -->
+        <div class="detail-section" style="text-align: center;">
+            <a href="tools.html" class="back-button">← ツール一覧に戻る</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+</body>
+</html> 

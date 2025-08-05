@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulation Wave Mix - ゆうえんち</title>
+    <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .detail-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .detail-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .detail-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: none;
+            border-radius: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .detail-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h2 {
+            color: #4a90e2;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #4a90e2;
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-section img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .detail-section p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            background: #f8f9fa;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .parameter-table th,
+        .parameter-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .parameter-table th {
+            background-color: #4a90e2;
+            color: white;
+            font-weight: 600;
+        }
+
+        .parameter-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .back-button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+            
+            .detail-section {
+                padding: 1.5rem;
+            }
+            
+            .parameter-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="../../header.js"></script>
+    
+    <header class="detail-header">
+        <h1>🎛️ Modulation Wave Mix</h1>
+    </header>
+    
+    <div class="container">
+        <!-- 画像セクション -->
+        <div class="detail-section">
+            <img src="../../source/plugins/ModulationWaveMix/ModulationWaveMix.png" alt="Modulation Wave Mix Plugin">
+        </div>
+
+        <!-- 使い方セクション -->
+        <div class="detail-section">
+            <h2>📖 使い方</h2>
+            <p>Modulation Wave Mixは、複数の波形を組み合わせて豊かな音色を作り出す波形合成モジュレーションエフェクターです。</p>
+            
+            <h3>基本的な使用方法</h3>
+            <ol>
+                <li>プラグインをDAWに読み込みます</li>
+                <li>入力音声を接続します</li>
+                <li>波形タイプを選択します（サイン波、三角波、矩形波など）</li>
+                <li>モジュレーションの強度を調整します</li>
+                <li>周波数と位相を設定します</li>
+                <li>出力を確認しながらパラメータを微調整します</li>
+            </ol>
+        </div>
+
+        <!-- 機能セクション -->
+        <div class="detail-section">
+            <h2>⚙️ 機能</h2>
+            <ul class="feature-list">
+                <li><strong>波形合成</strong> - 複数の波形を組み合わせて新しい音色を作成</li>
+                <li><strong>モジュレーションエフェクト</strong> - 音声信号に波形を変調して豊かな音色を実現</li>
+                <li><strong>複数波形対応</strong> - サイン波、三角波、矩形波、ノコギリ波など様々な波形を選択可能</li>
+                <li><strong>リアルタイム処理</strong> - 低レイテンシーでリアルタイム処理を実現</li>
+                <li><strong>直感的なUI</strong> - 波形の視覚的表示と直感的な操作</li>
+            </ul>
+        </div>
+
+        <!-- パラメータセクション -->
+        <div class="detail-section">
+            <h2>🎛️ パラメータ</h2>
+            <table class="parameter-table">
+                <thead>
+                    <tr>
+                        <th>パラメータ名</th>
+                        <th>範囲</th>
+                        <th>デフォルト値</th>
+                        <th>説明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wave Type</td>
+                        <td>Sine, Triangle, Square, Saw</td>
+                        <td>Sine</td>
+                        <td>モジュレーションに使用する波形の種類を選択します。</td>
+                    </tr>
+                    <tr>
+                        <td>Modulation Depth</td>
+                        <td>0.0 - 1.0</td>
+                        <td>0.5</td>
+                        <td>モジュレーションエフェクトの強度を設定します。</td>
+                    </tr>
+                    <tr>
+                        <td>Frequency</td>
+                        <td>0.1 - 20.0 Hz</td>
+                        <td>2.0 Hz</td>
+                        <td>モジュレーション波形の周波数を調整します。</td>
+                    </tr>
+                    <tr>
+                        <td>Phase</td>
+                        <td>0.0 - 360.0°</td>
+                        <td>0.0°</td>
+                        <td>モジュレーション波形の位相を調整します。</td>
+                    </tr>
+                    <tr>
+                        <td>Mix Level</td>
+                        <td>0.0 - 1.0</td>
+                        <td>0.7</td>
+                        <td>元の信号とモジュレーション信号の混合比率を設定します。</td>
+                    </tr>
+                    <tr>
+                        <td>Input Gain</td>
+                        <td>-60.0 - +20.0 dB</td>
+                        <td>0.0 dB</td>
+                        <td>入力信号のゲインを調整します。</td>
+                    </tr>
+                    <tr>
+                        <td>Output Gain</td>
+                        <td>-60.0 - +20.0 dB</td>
+                        <td>0.0 dB</td>
+                        <td>出力信号のゲインを調整します。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 戻るボタン -->
+        <div class="detail-section" style="text-align: center;">
+            <a href="plugins.html" class="back-button">← プラグイン一覧に戻る</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+</body>
+</html> 
