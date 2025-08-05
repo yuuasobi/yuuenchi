@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plugin - ゆうえんち</title>
+    <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .library-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .library-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .library-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: none;
+            border-radius: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .plugin-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .plugin-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plugin-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .plugin-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .plugin-card-content {
+            padding: 1.5rem;
+        }
+
+        .plugin-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #4a90e2;
+            margin-bottom: 0.5rem;
+        }
+
+        .plugin-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .plugin-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .plugin-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.8rem;
+            background: #5cb85c;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .plugin-card a:hover {
+            background-color: #4cae4c;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .library-header h1 {
+                font-size: 2rem;
+            }
+            
+            .plugin-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .plugin-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="../../header.js"></script>
+    
+    <header class="library-header">
+        <h1>🔌 Plugin 🔌</h1>
+    </header>
+    
+    <div class="container">
+        <div class="plugin-grid">
+            <div class="plugin-card">
+                <img src="../../source/plugins/ghost_tuner/ghost_tuner.png" alt="Ghost Tuner">
+                <div class="plugin-card-content">
+                    <p class="plugin-number">#01</p>
+                    <h3>🎵 Ghost Tuner</h3>
+                    <p>リアルタイムピッチ推定モジュレーションエフェクター</p>
+                    <a href="../../source/plugins/ghost_tuner/README.md" class="play-button">詳細を見る</a>
+                </div>
+            </div>
+            
+            <div class="plugin-card">
+                <img src="../../source/plugins/ModulationWaveMix/ModulationWaveMix.png" alt="Modulation Wave Mix">
+                <div class="plugin-card-content">
+                    <p class="plugin-number">#02</p>
+                    <h3>🎛️ Modulation Wave Mix</h3>
+                    <p>波形合成モジュレーションエフェクター</p>
+                    <a href="../../source/plugins/ModulationWaveMix/README.md" class="play-button">詳細を見る</a>
+                </div>
+            </div>
+            
+            <div class="plugin-card">
+                <img src="../../source/plugins/ToneShaper/ToneShaper.png" alt="Tone Shaper">
+                <div class="plugin-card-content">
+                    <p class="plugin-number">#03</p>
+                    <h3>🎚️ Tone Shaper</h3>
+                    <p>XYパッドコントロールのLow/High周波数トーンシェイピングエフェクター</p>
+                    <a href="../../source/plugins/ToneShaper/README.md" class="play-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+    
+
+</body>
+</html> 

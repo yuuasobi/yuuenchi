@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const isTmpPage = window.location.pathname.includes('/contents/tmp/');
     const is3DPage = window.location.pathname.includes('/contents/3Dmodel/');
     const isNewPage = window.location.pathname.includes('/new/');
+    const isPluginsPage = window.location.pathname.includes('/contents/plugins/');
+    const isToolsPage = window.location.pathname.includes('/contents/tools/');
     
     // パス設定（3Dmodel.html用に分岐追加）
-    let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath, model3DPath;
+    let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath, model3DPath, pluginsPath, toolsPath;
     
     if (isSynthSubPage) {
         // シンセサブページ用のパス
@@ -58,15 +60,19 @@ document.addEventListener('DOMContentLoaded', function() {
         musicPath = '../contents/music/Music.html';
         synthPath = '../contents/synth/synth.html';
         model3DPath = '../contents/3Dmodel/3Dmodel.html';
+        pluginsPath = '../contents/plugins/plugins.html';
+        toolsPath = '../contents/tools/tools.html';
     } else {
         // 他のページ用のパス
-        homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../index.html' : './index.html';
-        logoPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
-        gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage || isSynthPage ? '../games/WCG.html' : './contents/games/WCG.html';
-        anotherXPath = isGamePage || isMusicPage || isSynthPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
-        musicPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
-        synthPath = isGamePage || isNovelsPage || isMusicPage ? '../synth/synth.html' : isSynthPage ? './synth.html' : './contents/synth/synth.html';
-        model3DPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage ? '../3Dmodel/3Dmodel.html' : './contents/3Dmodel/3Dmodel.html';
+        homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../../index.html' : './index.html';
+        logoPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../../source/ゆうえんちカラー.png' : 'source/ゆうえんちカラー.png';
+        gamePath = isGamePage ? './WCG.html' : isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../games/WCG.html' : './contents/games/WCG.html';
+        anotherXPath = isGamePage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../novels/AnotherX.html' : isNovelsPage ? './AnotherX.html' : './contents/novels/AnotherX.html';
+        musicPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../music/Music.html' : isMusicPage ? './Music.html' : './contents/music/Music.html';
+        synthPath = isGamePage || isNovelsPage || isMusicPage || isPluginsPage || isToolsPage ? '../synth/synth.html' : isSynthPage ? './synth.html' : './contents/synth/synth.html';
+        model3DPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../3Dmodel/3Dmodel.html' : './contents/3Dmodel/3Dmodel.html';
+        pluginsPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isToolsPage ? '../plugins/plugins.html' : isPluginsPage ? './plugins.html' : './contents/plugins/plugins.html';
+        toolsPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage ? '../tools/tools.html' : isToolsPage ? './tools.html' : './contents/tools/tools.html';
     }
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
@@ -79,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="${musicPath}" class="menu-button">Music</a>
             <a href="${synthPath}" class="menu-button">Synth</a>
             <a href="${model3DPath}" class="menu-button">3D</a>
+            <a href="${pluginsPath}" class="menu-button">Plugin</a>
+            <a href="${toolsPath}" class="menu-button">Tools</a>
         </div>
     `;
 

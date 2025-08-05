@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools - ゆうえんち</title>
+    <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .library-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .library-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .library-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: none;
+            border-radius: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .tool-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .tool-card-content {
+            padding: 1.5rem;
+        }
+
+        .tool-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #4a90e2;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .tool-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .tool-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.8rem;
+            background: #5cb85c;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .tool-card a:hover {
+            background-color: #4cae4c;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .library-header h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="../../header.js"></script>
+    
+    <header class="library-header">
+        <h1>🛠️ Tools 🛠️</h1>
+    </header>
+    
+    <div class="container">
+        <div class="tool-grid">
+            <div class="tool-card">
+                <img src="../../source/tools/file_extraction/file_extraction_ver1.0.png" alt="File Extraction Tool">
+                <div class="tool-card-content">
+                    <p class="tool-number">#01</p>
+                    <h3>📁 File Extraction Tool</h3>
+                    <p>指定した拡張子のファイルのみを抽出するツール</p>
+                    <a href="../../source/tools/file_extraction/README.md" class="play-button">詳細を見る</a>
+                </div>
+            </div>
+            
+            <div class="tool-card">
+                <img src="../../source/tools/img_resize/ツール画像_ver1.0.png" alt="Image Resize Tool">
+                <div class="tool-card-content">
+                    <p class="tool-number">#02</p>
+                    <h3>🖼️ Image Resize Tool</h3>
+                    <p>画像ファイルを一括でリサイズするツール</p>
+                    <a href="../../source/tools/img_resize/README.md" class="play-button">詳細を見る</a>
+                </div>
+            </div>
+            
+            <div class="tool-card">
+                <img src="../../source/tools/txt2md_rename/ツール画像_ver1.0.png" alt="TXT to MD Converter">
+                <div class="tool-card-content">
+                    <p class="tool-number">#03</p>
+                    <h3>📝 TXT to MD Converter</h3>
+                    <p>.txtファイルを.mdファイルに一括変換するツール</p>
+                    <a href="../../source/tools/txt2md_rename/README.md" class="play-button">詳細を見る</a>
+                </div>
+            </div>
+            
+            <div class="tool-card">
+                <img src="../../source/tools/debug_tool/debug_tool.png" alt="Debug Tool">
+                <div class="tool-card-content">
+                    <p class="tool-number">#04</p>
+                    <h3>🔧 Debug Tool</h3>
+                    <p>外部GUIアプリの自動操作とクラッシュ監視を行う開発支援ツール</p>
+                    <a href="../../source/tools/debug_tool/README.md" class="play-button">詳細を見る</a>
+                </div>
+            </div>
+            
+            <div class="tool-card">
+                <img src="../../source/tools/operation_log/operation_log.png" alt="Operation Log Tool">
+                <div class="tool-card-content">
+                    <p class="tool-number">#05</p>
+                    <h3>📊 Operation Log Tool</h3>
+                    <p>ユーザー操作とリソース使用状況を記録するデスクトップ監視ツール</p>
+                    <a href="../../source/tools/operation_log/README.md" class="play-button">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+</body>
+</html> 
