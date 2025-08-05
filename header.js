@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
         musicPath = '../music/Music.html';
         synthPath = '../synth/synth.html';
         model3DPath = './3Dmodel.html';
+        pluginsPath = '../plugins/plugins.html';
+        toolsPath = '../tools/tools.html';
     } else if (isNewPage) {
         // new/ディレクトリのページ用のパス
         homeLink = '../index.html';
