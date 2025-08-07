@@ -18,8 +18,30 @@
     </header>
     
     <div class="container">
-        <div class="library-content">
-            <div class="bookshelf">
+        <div class="tab-content-wrapper">
+                               <!-- あらすじセクション -->
+                   <div class="introduction-section">
+                       <div class="container">
+                           <h3>📖 あらすじ</h3>
+                    <div class="introduction-content" id="introduction-content">
+                        <p>ハツノ村出身のゼンと、獣の姿をしたマナ族のモネ。2年間の旅を終え、故郷への帰路についていた2人は、森でピンク髪の女性・ノンと出会う。彼女は遺跡の調査を目的とした旅の途中だった。</p>
+                        <p>種族を超えた友情と信頼関係を築きながら、仲間と協力して困難に立ち向かう冒険物語。モネの尻尾でのコミュニケーションや、ノンの薬学知識を活かした戦闘など、独特な世界観と魅力的なキャラクターたちが織りなす心温まるファンタジーストーリーの幕開け。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- タブボタン -->
+            <div class="tab-container">
+                <button class="tab-button active" data-chapter="0">第1章</button>
+                <button class="tab-button" data-chapter="1">第2章</button>
+                <button class="tab-button" data-chapter="2">第3章</button>
+                <button class="tab-button" data-chapter="3">第4章</button>
+                <button class="tab-button" data-chapter="4">第5章</button>
+                <button class="tab-button" data-chapter="5">第6章</button>
+            </div>
+            
+            <div class="library-content">
+                <div class="bookshelf">
                 <h2>第1章</h2>
                 <div class="episodes-list">
                     <div class="episode-card" data-episode="1" data-title="旅路">
@@ -90,21 +112,7 @@
         </div>
     </div>
 
-    <div class="external-links-section">
-        <div class="container">
-            <h3>📖 すべてのエピソードの公開サイト</h3>
-            <div class="link-container">
-                <a href="https://note.com/yuuenchi/n/n8f222e18e395" target="_blank" class="external-link">
-                    <span class="link-icon">🇯🇵</span>
-                    <span class="link-text">日本語版（note）</span>
-                </a>
-                <a href="https://medium.com/fantasy-novel-anotherx/fantasy-novel-anotherx-f95eb90925bb" target="_blank" class="external-link">
-                    <span class="link-icon">🇺🇸</span>
-                    <span class="link-text">英語版（Medium）</span>
-                </a>
-            </div>
-        </div>
-    </div>
+
 
     <div class="world-map-section">
         <div class="container">
@@ -305,6 +313,79 @@
                         { num: '23', title: '位相反転' },
                         { num: '24', title: '猪肉祭り～笛の音と共に～' }
                     ]
+                },
+                {
+                    title: '第3章',
+                    episodes: [
+                        { num: '25', title: 'マウを求めて' },
+                        { num: '26', title: '海を越えた先の地' },
+                        { num: '27', title: '港町トゥカイ' },
+                        { num: '28', title: '海賊の襲撃' },
+                        { num: '28.5', title: '法螺貝の音' },
+                        { num: '29', title: '海の記憶' },
+                        { num: '30', title: '記憶の水兵' },
+                        { num: '31', title: '航海の果て' },
+                        { num: '32', title: '新たな冒険' },
+                        { num: '33', title: '難破船' },
+                        { num: '34', title: '記憶の水兵' },
+                        { num: '35', title: '海の彼方' },
+                        { num: '36', title: '港町の秘密' },
+                        { num: '37', title: '航海の終わり' }
+                    ]
+                },
+                {
+                    title: '第4章',
+                    episodes: [
+                        { num: '38', title: '訪問者' },
+                        { num: '39', title: '踊り子島と美しさの価値観' },
+                        { num: '40_main', title: '踊り子の服' },
+                        { num: '40_sub', title: '美しさの定義' },
+                        { num: '41', title: '島の秘密' },
+                        { num: '42', title: '踊り子たち' },
+                        { num: '43', title: '美の追求' },
+                        { num: '44', title: '島の伝統' },
+                        { num: '45', title: '踊り子の決意' },
+                        { num: '46', title: '美しさの真実' },
+                        { num: '47', title: '島を出る日' }
+                    ]
+                },
+                {
+                    title: '第5章',
+                    episodes: [
+                        { num: '50', title: 'また会うその日まで' },
+                        { num: '51', title: '護衛役' },
+                        { num: '52', title: '黄金色の村' },
+                        { num: '53', title: '村の秘密' },
+                        { num: '54', title: '黄金の伝説' },
+                        { num: '55', title: '村人たち' },
+                        { num: '56', title: '黄金の力' },
+                        { num: '57', title: '村の危機' },
+                        { num: '58', title: '黄金の真実' },
+                        { num: '59', title: '村を守る' },
+                        { num: '60', title: '黄金の選択' },
+                        { num: '61', title: '村の未来' },
+                        { num: '62', title: '黄金の約束' }
+                    ]
+                },
+                {
+                    title: '第6章',
+                    episodes: [
+                        { num: '63', title: '帰還と招待とお誘いと' },
+                        { num: '64', title: '王座の間へと続く道' },
+                        { num: '65', title: '二人の姫君と晩餐会' },
+                        { num: '66', title: '宮廷の秘密' },
+                        { num: '67', title: '姫君たち' },
+                        { num: '68', title: '王座の間' },
+                        { num: '69', title: '皇帝の真意' },
+                        { num: '70', title: '宮廷の陰謀' },
+                        { num: '71', title: '姫君の選択' },
+                        { num: '72', title: '王座の決断' },
+                        { num: '73', title: '宮廷の未来' },
+                        { num: '74', title: '皇帝と娘' },
+                        { num: '75', title: '宝石の名を冠するもの' },
+                        { num: '76', title: '故郷に向けて' },
+                        { num: '77', title: '旅の終わり' }
+                    ]
                 }
             ];
             let currentChapter = 0;
@@ -331,6 +412,26 @@
                     });
                     episodesList.appendChild(card);
                 });
+                
+                // 紹介文を更新
+                updateIntroduction(chapterIdx);
+            }
+            
+            // 紹介文更新関数
+            function updateIntroduction(chapterIdx) {
+                const introductionContent = document.getElementById('introduction-content');
+                if (!introductionContent) return;
+                
+                const introductions = {
+                    0: `<p>ハツノ村出身のゼンと、獣の姿をしたマナ族のモネ。2年間の旅を終え、故郷への帰路についていた2人は、森でピンク髪の女性・ノンと出会う。彼女は遺跡の調査を目的とした旅の途中だった。</p><p>種族を超えた友情と信頼関係を築きながら、仲間と協力して困難に立ち向かう冒険物語。モネの尻尾でのコミュニケーションや、ノンの薬学知識を活かした戦闘など、独特な世界観と魅力的なキャラクターたちが織りなす心温まるファンタジーストーリーの幕開け。</p>`,
+                    1: `<p>ソウゲン村への旅の途中、行商人ドグとの一期一会の出会い。おにぎりという新しい食文化を通じて、各地の文化の多様性を学ぶ。村では温かい家族との交流があり、村の危機に立ち向かうことで地域コミュニティの絆を深める。</p><p>文化交流と人間関係の深化を描きながら、戦闘技術の向上と新たな仲間との出会いを通じて、冒険の幅を広げる心温まる物語。</p>`,
+                    2: `<p>港町トゥカイでの海の文化との出会い。海舞祭の準備やマウの貸出屋での仕事を通じて、海辺の暮らしを体験する。法螺貝の音色や踊り子たちの美しい踊りに触れながら、海の神様への信仰を学ぶ。</p><p>記憶と心という深いテーマを扱いながら、海の文化との融合と家族愛の描写を通じて、物語に哲学的な深みと感動的な魅力を加える章。</p>`,
+                    3: `<p>踊り子島での海舞祭への参加。各地から集まる踊り子たちの美しい踊りに触れながら、トゥカイ特有の回転を軸にした踊りの文化を学ぶ。海の神様への願い事や伝統文化の継承を通じて、美しさの価値観について深く考える。</p><p>恋愛感情の芽生えと美しさの価値観の探求を描きながら、伝統文化と神秘的な現象を通じて、物語に深い文化的な魅力と感動的な要素を加える章。</p>`,
+                    4: `<p>各地を巡る旅を通じて、黄金色の村やキタノチ山、アルテミス城下町など多様な文化との出会いを体験する。鍛冶屋兄弟の職人技やくるみ菓子の文化を通じて、各地の特色ある文化を学ぶ。</p><p>旅の多様性と新たな仲間との出会いを描きながら、戦闘システムの革新と宝玉という重要な要素の導入を通じて、物語に新たな深みと魅力を加える章。</p>`,
+                    5: `<p>アルテミス城での王家との出会い。舞踏会という優雅な社交イベントを通じて、城での地位を確立する。社交ダンスの美しさや王家の歴史に触れながら、新たな仲間との出会いを体験する。</p><p>社交と家族愛を中心とした物語で、舞踏会の優雅さと戦闘の緊張感が織りなすバランスの取れた構成。王家の秘密とマナ族の謎への接近を通じて、物語に深い歴史的背景を加える章。</p>`
+                };
+                
+                introductionContent.innerHTML = introductions[chapterIdx] || introductions[0];
             }
 
             // エピソードカードクリック時の処理
@@ -349,6 +450,23 @@
                     
                     // グローバル変数を更新
                     window.currentEpisode = parseInt(episode);
+                });
+            });
+
+            // タブナビゲーションのイベントリスナーを追加
+                    document.querySelectorAll('.tab-container .tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.tab-container .tab-button').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentChapter = parseInt(this.getAttribute('data-chapter'));
+                    renderChapter(currentChapter);
+                    // エピソードカードのアクティブ状態をリセット
+                    episodeCards.forEach(c => c.classList.remove('active'));
+                    const firstEpisodeCard = document.querySelector('.episodes-list .episode-card');
+                    if (firstEpisodeCard) {
+                        firstEpisodeCard.classList.add('active');
+                    }
+                    window.currentEpisode = parseInt(firstEpisodeCard.getAttribute('data-episode'));
                 });
             });
 
@@ -499,9 +617,20 @@
                     } else {
                         console.log(`エピソード ${episode} のデータが見つかりません`);
                         contentPanel.innerHTML = `
-                            <h2>${title}</h2>
                             <div class="no-content">
-                                <p>このエピソードのコンテンツが見つかりませんでした。</p>
+                                <img src="../../source/AnotherX/アナザークロス_サムネイル.png" alt="AnotherX サムネイル" class="thumbnail-image">
+                                <h2>${title}</h2>
+                                <p class="novel-description">このエピソードはnote(日本語)若しくはmedium(英語版)のサイトで公開中です。</p>
+                                <div class="external-links-container">
+                                    <a href="https://note.com/yuuenchi/n/n8f222e18e395" target="_blank" class="external-link-button">
+                                        <span class="link-icon">🇯🇵</span>
+                                        <span class="link-text">日本語版（note）</span>
+                                    </a>
+                                    <a href="https://medium.com/fantasy-novel-anotherx/fantasy-novel-anotherx-f95eb90925bb" target="_blank" class="external-link-button">
+                                        <span class="link-icon">🇺🇸</span>
+                                        <span class="link-text">英語版（Medium）</span>
+                                    </a>
+                                </div>
                             </div>
                         `;
                     }
@@ -570,23 +699,25 @@
             
             // エピソード切り替え関数
             window.changeEpisode = async function(direction) {
-                const currentEpisode = parseInt(window.currentEpisode || 1);
-                const newEpisode = currentEpisode + direction;
+                const currentEpisode = window.currentEpisode || chapters[currentChapter].episodes[0].num;
+                const currentEpisodeIndex = chapters[currentChapter].episodes.findIndex(ep => ep.num === currentEpisode);
+                const newEpisodeIndex = currentEpisodeIndex + direction;
                 
-                if (newEpisode >= 1 && newEpisode <= 14) {
+                if (newEpisodeIndex >= 0 && newEpisodeIndex < chapters[currentChapter].episodes.length) {
+                    const newEpisode = chapters[currentChapter].episodes[newEpisodeIndex];
+                    
                     // アクティブなエピソードカードを更新
                     episodeCards.forEach(c => c.classList.remove('active'));
-                    const targetCard = document.querySelector(`[data-episode="${newEpisode}"]`);
+                    const targetCard = document.querySelector(`[data-episode="${newEpisode.num}"]`);
                     if (targetCard) {
                         targetCard.classList.add('active');
                     }
                     
                     // 新しいエピソードのコンテンツを読み込み
-                    const title = targetCard.getAttribute('data-title');
-                    await loadContent(newEpisode.toString(), title);
+                    await loadContent(newEpisode.num, newEpisode.title);
                     
                     // グローバル変数を更新
-                    window.currentEpisode = newEpisode;
+                    window.currentEpisode = newEpisode.num;
                 }
             };
             
@@ -647,6 +778,16 @@
                 }
             };
             
+            // 初期化時にエピソード1を自動選択
+            renderChapter(0); // 第1章を表示
+            const firstEpisodeCard = document.querySelector('.episodes-list .episode-card');
+            if (firstEpisodeCard) {
+                firstEpisodeCard.classList.add('active');
+                const episode = firstEpisodeCard.getAttribute('data-episode');
+                const title = firstEpisodeCard.getAttribute('data-title');
+                window.currentEpisode = parseInt(episode);
+                loadContent(episode, title);
+            }
 
         });
         
@@ -903,6 +1044,76 @@
             transform: scale(1.02);
         }
         
+        /* タブとローディングスピナーのCSS */
+        .tab-content-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid #f0f0f0;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 6px;
+            border-radius: 16px;
+            border: 1px solid #e9ecef;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #6c757d;
+            position: relative;
+            overflow: hidden;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .tab-button:hover::before {
+            left: 100%;
+        }
+
+        .tab-button:hover {
+            color: #495057;
+            transform: translateY(-1px);
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #007bff;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .tab-button.active::before {
+            display: none;
+        }
+        
         /* ライトボックス */
         .lightbox {
             display: none;
@@ -962,8 +1173,64 @@
             margin-top: 1rem;
         }
         
+        /* 外部リンクボタンのスタイル */
+        .external-links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+        
+        .external-link-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #4a90e2 0%, #5cb85c 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border: 2px solid transparent;
+            min-width: 250px;
+            justify-content: center;
+        }
+        
+        .external-link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #5cb85c 0%, #4a90e2 100%);
+            border-color: #FFD700;
+        }
+        
+        .external-link-button .link-icon {
+            font-size: 1.2rem;
+        }
+        
+        .external-link-button .link-text {
+            font-weight: 600;
+        }
+        
         /* レスポンシブ対応 */
         @media (max-width: 768px) {
+            .tab-container {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                max-width: 100%;
+            }
+            
+            .tab-button {
+                padding: 0.6rem 1rem;
+                margin: 0 0.2rem;
+                font-size: 0.9rem;
+                min-width: 60px;
+            }
+            
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
                 gap: 1rem;
@@ -983,6 +1250,60 @@
                 right: 20px;
                 font-size: 30px;
             }
+            
+            .external-link-button {
+                min-width: 200px;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .introduction-section {
+                padding: 1.5rem 0;
+                margin: 1.5rem 0;
+            }
+            
+            .introduction-section h3 {
+                font-size: 1.3rem;
+            }
+            
+            .introduction-content p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* 紹介文セクションのスタイル */
+        .introduction-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem 0;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .introduction-section h3 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .introduction-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .introduction-content p {
+            color: #34495e;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        
+        .introduction-content p:last-child {
+            margin-bottom: 0;
         }
     </style>
 </body>
