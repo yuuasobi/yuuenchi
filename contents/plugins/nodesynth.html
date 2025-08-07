@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Tuner - ゆうえんち</title>
+    <title>NodeSynth - ゆうえんち</title>
     <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
     <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
     <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
@@ -160,6 +160,37 @@
             background-color: #f8f9fa;
         }
 
+        .waveform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .waveform-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 4px solid;
+        }
+
+        .waveform-card.sine { border-left-color: #dc3545; }
+        .waveform-card.square { border-left-color: #28a745; }
+        .waveform-card.triangle { border-left-color: #007bff; }
+        .waveform-card.saw { border-left-color: #ffc107; }
+
+        .waveform-card h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .waveform-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         .back-button {
             display: inline-block;
             padding: 12px 24px;
@@ -202,6 +233,10 @@
             .parameter-table {
                 font-size: 0.9rem;
             }
+            
+            .waveform-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -209,32 +244,33 @@
     <script src="../../header.js"></script>
     
     <header class="detail-header">
-        <h1>🎵 Ghost Tuner</h1>
+        <h1>🎹 NodeSynth</h1>
     </header>
     
     <div class="container">
         <!-- 動画セクション -->
         <div class="detail-section">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/OgMx_DsXRnA" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/nsne6Kp9Rs4" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
         <!-- 概要セクション -->
         <div class="detail-section">
             <h2>📖 概要</h2>
-            <p>Ghost Tunerは、リアルタイムで音声のピッチを推定し、モジュレーションエフェクトを適用するプラグインです。入力音声から高精度にピッチを検出し、その情報を基に豊かなモジュレーションエフェクトを実現します。</p>
+            <p>NodeSynthは、Rustで構築されたノードベースのソフトウェアシンセサイザーVST3/CLAPプラグインです。最大12個の波形ノードを4×3グリッドレイアウトで組み合わせ、個別パラメータコントロールで豊かなサウンドを作成できます。</p>
         </div>
 
         <!-- 使い方セクション -->
         <div class="detail-section">
             <h2>🎯 使い方</h2>
             <ol>
-                <li>プラグインをDAWに読み込みます</li>
-                <li>入力音声を接続します</li>
-                <li>ピッチ推定の感度を調整します</li>
-                <li>モジュレーションの強度を設定します</li>
-                <li>出力を確認しながらパラメータを微調整します</li>
+                <li>DAWでVST3またはCLAPインストゥルメントとしてプラグインを読み込みます</li>
+                <li>波形ボタン（Sine、Square、Triangle、Saw）を使用してノードを追加します</li>
+                <li>最大12個までノードを追加できます（制限に達するとボタンが無効化されます）</li>
+                <li>各ノードのパラメータを個別に調整します</li>
+                <li>MIDIノートを演奏してレイヤー合成サウンドを再生します</li>
+                <li>各ノードの×ボタンでノードを削除できます</li>
             </ol>
         </div>
 
@@ -242,12 +278,38 @@
         <div class="detail-section">
             <h2>⚙️ 機能</h2>
             <ul class="feature-list">
-                <li><strong>リアルタイムピッチ推定</strong> - 入力音声からリアルタイムでピッチを推定し、高精度な音声処理を実現</li>
-                <li><strong>モジュレーションエフェクト</strong> - 推定されたピッチに基づいてモジュレーションエフェクトを適用</li>
-                <li><strong>低レイテンシー処理</strong> - 最小限の遅延でリアルタイム処理を実現</li>
-                <li><strong>高品質音声処理</strong> - プロフェッショナルレベルの音質を維持</li>
-                <li><strong>直感的なUI</strong> - 使いやすいインターフェースで簡単に操作可能</li>
+                <li><strong>ノードベース合成</strong> - 最大12個の波形ノードを組み合わせて豊かなサウンドを作成</li>
+                <li><strong>4×3グリッドレイアウト</strong> - 4列3行の整理された表示で直感的な操作</li>
+                <li><strong>複数の波形</strong> - サイン、矩形、三角、のこぎり波（色分け表示）</li>
+                <li><strong>個別ノードパラメータ</strong> - 各ノードのゲイン、デチューン、位相、パルス幅</li>
+                <li><strong>MIDI入力</strong> - ノートオン/オフイベントによる完全なポリフォニック対応</li>
+                <li><strong>リアルタイム制御</strong> - 再生中の瞬時パラメータ調整</li>
+                <li><strong>マスターゲイン</strong> - 全体出力レベル制御</li>
+                <li><strong>視覚的フィードバック</strong> - 波形名の色分けで簡単識別</li>
             </ul>
+        </div>
+
+        <!-- 波形タイプセクション -->
+        <div class="detail-section">
+            <h2>🌊 波形タイプ</h2>
+            <div class="waveform-grid">
+                <div class="waveform-card sine">
+                    <h4>🔴 サイン波</h4>
+                    <p>純粋で滑らかな正弦波音色。最も基本的で自然な音色を提供します。</p>
+                </div>
+                <div class="waveform-card square">
+                    <h4>🟢 矩形波</h4>
+                    <p>パルス幅調整可能な豊富な倍音。明るく力強い音色を特徴とします。</p>
+                </div>
+                <div class="waveform-card triangle">
+                    <h4>🔵 三角波</h4>
+                    <p>まろやかで柔らかい倍音成分。温かみのある音色を提供します。</p>
+                </div>
+                <div class="waveform-card saw">
+                    <h4>🟡 のこぎり波</h4>
+                    <p>明るくバズ感のあるのこぎり波特性。豊かな倍音を含む音色です。</p>
+                </div>
+            </div>
         </div>
 
         <!-- パラメータセクション -->
@@ -264,34 +326,34 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Pitch Sensitivity</td>
+                        <td>Master Gain</td>
+                        <td>0.0 - 1.0</td>
+                        <td>0.7</td>
+                        <td>全体出力レベルを制御します。</td>
+                    </tr>
+                    <tr>
+                        <td>Node Gain</td>
                         <td>0.0 - 1.0</td>
                         <td>0.5</td>
-                        <td>ピッチ推定の感度を調整します。高い値ほど細かいピッチ変化を検出します。</td>
+                        <td>個別ノードの音量を調整します。</td>
                     </tr>
                     <tr>
-                        <td>Modulation Depth</td>
-                        <td>0.0 - 1.0</td>
-                        <td>0.3</td>
-                        <td>モジュレーションエフェクトの強度を設定します。</td>
+                        <td>Detune</td>
+                        <td>-50 〜 +50 セント</td>
+                        <td>0 セント</td>
+                        <td>セント単位のピッチオフセットを設定します。</td>
                     </tr>
                     <tr>
-                        <td>Modulation Rate</td>
-                        <td>0.1 - 10.0 Hz</td>
-                        <td>2.0 Hz</td>
-                        <td>モジュレーションの速度を調整します。</td>
+                        <td>Phase</td>
+                        <td>0 〜 360度</td>
+                        <td>0度</td>
+                        <td>波形位相オフセットを調整します。</td>
                     </tr>
                     <tr>
-                        <td>Input Gain</td>
-                        <td>-60.0 - +20.0 dB</td>
-                        <td>0.0 dB</td>
-                        <td>入力信号のゲインを調整します。</td>
-                    </tr>
-                    <tr>
-                        <td>Output Gain</td>
-                        <td>-60.0 - +20.0 dB</td>
-                        <td>0.0 dB</td>
-                        <td>出力信号のゲインを調整します。</td>
+                        <td>Pulse Width</td>
+                        <td>0 〜 100%</td>
+                        <td>50%</td>
+                        <td>矩形波のデューティサイクルを設定します（矩形波のみ）。</td>
                     </tr>
                 </tbody>
             </table>
@@ -305,10 +367,10 @@
                 <li><strong>開発言語</strong> - Rust</li>
                 <li><strong>フレームワーク</strong> - nih-plug（ISCライセンス）</li>
                 <li><strong>GUIライブラリ</strong> - egui（MIT/Apache-2.0）</li>
-                <li><strong>ピッチ推定アルゴリズム</strong> - 高精度FFTベース</li>
-                <li><strong>処理レイテンシー</strong> - 低レイテンシー</li>
-                <li><strong>サンプリングレート</strong> - 44.1kHz - 192kHz対応</li>
-                <li><strong>ビット深度</strong> - 16bit - 32bit対応</li>
+                <li><strong>最大ノード数</strong> - 12個</li>
+                <li><strong>レイアウト</strong> - 4×3グリッド</li>
+                <li><strong>ポリフォニック対応</strong> - 完全対応</li>
+                <li><strong>リアルタイム処理</strong> - 低レイテンシー</li>
             </ul>
         </div>
 
