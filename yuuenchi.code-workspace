@@ -5,6 +5,10 @@
 			"path": "."
 		},
 		{
+			"name": "FuranoFlower",
+			"path": "../FuranoFlower"
+		},
+		{
 			"name": "tools",
 			"path": "../tools"
 		},
