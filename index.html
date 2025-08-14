@@ -113,58 +113,12 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
-            min-height: 250px;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-        }
-        
-        .page-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.7;
-            z-index: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .page-card:hover::before {
-            opacity: 0.9;
-        }
-        
-        .page-card.game-card::before {
-            background-image: url('source/games_file/メイン画像_ミニゲーム30.png');
-        }
-        
-        .page-card.novel-card::before {
-            background-image: url('source/AnotherX/モネ.png');
-        }
-        
-        .page-card.music-card::before {
-            background-image: url('source/games_file/WCG100/17/17_yoseiライブステージ.png');
-        }
-        
-        .page-card.synth-card::before {
-            background-image: url('source/synth/pawpads.png');
-        }
-        
-        .page-card.model-card::before {
-            background-image: url('source/category_image/3Dmodel.png');
-        }
-        
-        .page-card.plugin-card::before {
-            background-image: url('source/category_image/plugin.png');
-        }
-        
-        .page-card.tools-card::before {
-            background-image: url('source/category_image/tools.png');
         }
         
         .page-card > * {
@@ -179,29 +133,29 @@
                 inset 0 2px 8px rgba(255,255,255,0.3);
         }
         
-        .page-card h2 {
-            color: #4a90e2;
-            font-size: 2rem;
+        .card-icon {
+            font-size: 4rem;
             margin-bottom: 1rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            display: block;
         }
         
-        .page-card p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
+        .page-card h3 {
+            color: #4a90e2;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            font-weight: 600;
         }
         
         .page-card a {
             display: inline-block;
             background: linear-gradient(45deg, #4a90e2, #5cb85c);
             color: white;
-            padding: 0.8rem 1.2rem;
+            padding: 0.8rem 1.5rem;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
             position: relative;
@@ -305,31 +259,45 @@
     <div class="main-content">
         <div class="page-grid">
             <div class="page-card game-card">
-                <a href="contents/games/WCG.html">🎮 Game</a>
+                <div class="card-icon">🎮</div>
+                <h3>Game</h3>
+                <a href="contents/games/WCG.html">Check</a>
             </div>
             
             <div class="page-card novel-card">
-                <a href="contents/novels/AnotherX.html">📖 Novel</a>
+                <div class="card-icon">📖</div>
+                <h3>Novel</h3>
+                <a href="contents/novels/AnotherX.html">Check</a>
             </div>
             
             <div class="page-card music-card">
-                <a href="contents/music/Music.html">🎵 Music</a>
+                <div class="card-icon">🎵</div>
+                <h3>Music</h3>
+                <a href="contents/music/Music.html">Check</a>
             </div>
             
             <div class="page-card synth-card">
-                <a href="contents/synth/synth.html">🎹 Synth</a>
+                <div class="card-icon">🎹</div>
+                <h3>Synth</h3>
+                <a href="contents/synth/synth.html">Check</a>
             </div>
             
             <div class="page-card model-card">
-                <a href="contents/3Dmodel/3Dmodel.html">🧊 3D Model</a>
+                <div class="card-icon">🧊</div>
+                <h3>3D Model</h3>
+                <a href="contents/3Dmodel/3Dmodel.html">Check</a>
             </div>
             
             <div class="page-card plugin-card">
-                <a href="contents/plugins/plugins.html">🔌 Plugin</a>
+                <div class="card-icon">🔌</div>
+                <h3>Plugin</h3>
+                <a href="contents/plugins/plugins.html">Check</a>
             </div>
             
             <div class="page-card tools-card">
-                <a href="contents/tools/tools.html">🛠️ Tools</a>
+                <div class="card-icon">🛠️</div>
+                <h3>Tools</h3>
+                <a href="contents/tools/tools.html">Check</a>
             </div>
         </div>
     </div>
@@ -345,7 +313,7 @@
             
             cards.forEach(card => {
                 card.addEventListener('click', function(e) {
-                    // ボタン自体をクリックした場合は何もしない（重複を避ける）
+                    // リンク自体をクリックした場合は何もしない（重複を避ける）
                     if (e.target.tagName === 'A') {
                         return;
                     }
