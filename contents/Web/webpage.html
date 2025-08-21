@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web - ゆうえんち</title>
+    <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
+    <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .library-header {
+            background: linear-gradient(90deg, #4a90e2, #5cb85c);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .library-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .library-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: none;
+            border-radius: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .web-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .web-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .web-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .web-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .web-card-content {
+            padding: 1.5rem;
+        }
+
+        .web-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #4a90e2;
+        }
+
+        .web-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .web-card a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #4a90e2, #5cb85c);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        }
+
+        .web-card a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .library-header h1 {
+                font-size: 2rem;
+            }
+            
+            .web-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .web-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="../../header.js"></script>
+    
+    <header class="library-header">
+        <h1>🌐 Web</h1>
+    </header>
+    
+    <div class="container">
+        <div class="web-grid">
+            <div class="web-card">
+                <img src="../../source/web/Image_KamiFu.png" alt="Kami-Furano" class="web-thumbnail">
+                <div class="web-card-content">
+                    <h3>Kami-Furano</h3>
+                    <p>上富良野を紹介するサイト</p>
+                    <a href="https://yuuasobi.github.io/FuranoFlower/kamiFu/KamiFu.html" target="_blank">Open</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        // カード全体をクリック可能にする
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.web-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // リンク自体をクリックした場合は何もしない（重複を避ける）
+                    if (e.target.tagName === 'A') {
+                        return;
+                    }
+                    
+                    // カード内のリンクを取得してクリック
+                    const link = this.querySelector('a');
+                    if (link) {
+                        link.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
