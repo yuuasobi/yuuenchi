@@ -27,6 +27,9 @@
 		{
 			"name": "text",
 			"path": "../text"
+		},
+		{
+			"path": "../Japanese_Travel_Etiquette"
 		}
 	],
 	"settings": {}

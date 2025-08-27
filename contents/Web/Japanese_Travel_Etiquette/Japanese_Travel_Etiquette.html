@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japanese Travel Etiquette - 日本観光マナー</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-select {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .lang-select:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .lang-select option {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><pattern id="cherry" patternUnits="userSpaceOnUse" width="60" height="60"><circle cx="30" cy="30" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="15" cy="15" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="45" cy="45" r="2" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="1200" height="400" fill="url(%23cherry)"/><circle cx="200" cy="100" r="80" fill="rgba(255,255,255,0.05)"/><circle cx="1000" cy="300" r="60" fill="rgba(255,255,255,0.05)"/><polygon points="600,50 650,150 550,150" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                        linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%), 
+                        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+            line-height: 1.8;
+        }
+
+        .hero .principles {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            padding: 30px 35px;
+            border-radius: 25px;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .hero .principles h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .hero .principles-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hero .principles-list li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            color: white;
+            line-height: 1.5;
+        }
+
+        .hero .principles-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero .principles-list .check-icon {
+            color: white;
+            background: #28a745;
+            margin-right: 15px;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+        }
+
+        .hero .principles-list .check-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .etiquette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .etiquette-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .etiquette-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .etiquette-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .ok-icon {
+            color: #28a745;
+        }
+
+        .ng-icon {
+            color: #dc3545;
+        }
+
+        .etiquette-item h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .etiquette-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-content p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero .principles {
+                padding: 20px 25px;
+            }
+
+            .hero .principles h3 {
+                font-size: 1.2rem;
+            }
+
+            .hero .principles-list li {
+                font-size: 1rem;
+            }
+
+            .hero .principles-list .check-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .hero .principles-list .check-icon svg {
+                width: 12px;
+                height: 12px;
+                stroke-width: 2.5;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .etiquette-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .etiquette-item {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Hidden class for language switching */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span data-ja="日本観光マナー" data-en="Japanese Travel Etiquette" data-zh="日本旅游礼仪">Japanese Travel Etiquette</span>
+                </div>
+                <div class="language-switcher">
+                    <select class="lang-select" onchange="switchLanguage(this.value)">
+                        <option value="en" selected>English</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 data-ja="日本へようこそ！" data-en="Welcome to Japan!" data-zh="欢迎来到日本！">Welcome to Japan!</h1>
+            <div class="principles">
+                <h3 data-ja="日本でのマナー三原則" data-en="Three Principles of Japanese Etiquette" data-zh="日本礼仪三原则">Three Principles of Japanese Etiquette</h3>
+                <ul class="principles-list">
+                    <li>
+                        <div class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <span data-ja="静けさを尊重する" data-en="Respect for Quietness" data-zh="尊重安静">Respect for Quietness</span>
+                    </li>
+                    <li>
+                        <div class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <span data-ja="清潔を守る" data-en="Maintain Cleanliness" data-zh="保持清洁">Maintain Cleanliness</span>
+                    </li>
+                    <li>
+                        <div class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <span data-ja="他人に迷惑をかけない" data-en="Do Not Disturb Others" data-zh="不给他人添麻烦">Do Not Disturb Others</span>
+                    </li>
+                </ul>
+            </div>
+            <p data-ja="楽しい旅を、マナーを守って楽しみましょう。" data-en="Enjoy your trip respectfully and safely." data-zh="请遵守礼仪，享受愉快的旅行。">Enjoy your trip respectfully and safely.</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- 農地立入禁止セクション -->
+            <section class="section">
+                <h2>
+                    <i class="fas fa-exclamation-triangle" style="color: #dc3545;"></i>
+                                         <span data-ja="農地への立ち入り禁止" data-en="No Entry to Farmland" data-zh="禁止进入农田">No Entry to Farmland</span>
+                </h2>
+                <div class="etiquette-grid">
+                    <div class="etiquette-item">
+                        <div class="etiquette-icon ok-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                                                 <h3 data-ja="正しい観光方法" data-en="Proper Tourism" data-zh="正确的观光方式">Proper Tourism</h3>
+                         <p data-ja="指定された観光地や展望台から景色を楽しみましょう。" data-en="Enjoy the scenery from designated tourist spots and viewpoints." data-zh="请在指定的观光地和观景台欣赏风景。">Enjoy the scenery from designated tourist spots and viewpoints.</p>
+                    </div>
+                    <div class="etiquette-item">
+                        <div class="etiquette-icon ng-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                                                 <h3 data-ja="私有農地への立ち入り" data-en="Entering Private Farms" data-zh="进入私人农田">Entering Private Farms</h3>
+                         <p data-ja="私有農地には許可なく立ち入らないでください。農作物を傷つける可能性があります。" data-en="Do not enter private farms without permission. You may damage crops." data-zh="未经许可请勿进入私人农田。可能会损坏农作物。">Do not enter private farms without permission. You may damage crops.</p>
+                    </div>
+                </div>
+            </section>
+
+                         <!-- 公共交通マナーセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-train" style="color: #28a745;"></i>
+                                           <span data-ja="公共交通マナー" data-en="Public Transportation Etiquette" data-zh="公共交通礼仪">Public Transportation Etiquette</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="荷物の置き方" data-en="Luggage Placement" data-zh="行李放置">Luggage Placement</h3>
+                          <p data-ja="大きな荷物は端に置き、他の乗客の邪魔にならないようにしましょう。" data-en="Place large luggage at the end and avoid blocking other passengers." data-zh="请将大件行李放在车厢端部，避免妨碍其他乘客。">Place large luggage at the end and avoid blocking other passengers.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="優先席の利用" data-en="Priority Seats" data-zh="优先座位">Priority Seats</h3>
+                          <p data-ja="優先席は高齢者や体の不自由な方のために空けておきましょう。" data-en="Keep priority seats available for elderly and disabled passengers." data-zh="请为老年人和行动不便的乘客保留优先座位。">Keep priority seats available for elderly and disabled passengers.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="大声での会話" data-en="Loud Conversations" data-zh="大声说话">Loud Conversations</h3>
+                          <p data-ja="車内では静かにし、他の乗客に迷惑をかけないようにしましょう。" data-en="Keep quiet in the train and avoid disturbing other passengers." data-zh="请在车内保持安静，避免打扰其他乘客。">Keep quiet in the train and avoid disturbing other passengers.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="列への割り込み" data-en="Cutting in Line" data-zh="插队">Cutting in Line</h3>
+                          <p data-ja="順番を守り、列に割り込まないようにしましょう。" data-en="Follow the order and do not cut in line." data-zh="请遵守顺序，不要插队。">Follow the order and do not cut in line.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 神社・寺院でのマナーセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-torii-gate" style="color: #8B4513;"></i>
+                                           <span data-ja="神社・寺院でのマナー" data-en="Shrine & Temple Etiquette" data-zh="神社寺庙礼仪">Shrine & Temple Etiquette</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="鳥居での会釈" data-en="Bow at Torii Gate" data-zh="在鸟居前鞠躬">Bow at Torii Gate</h3>
+                          <p data-ja="鳥居をくぐる際は軽く会釈しましょう。" data-en="Bow slightly when passing through the torii gate." data-zh="通过鸟居时要轻轻鞠躬。">Bow slightly when passing through the torii gate.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="手水舎での清め" data-en="Purification at Chozuya" data-zh="在手水舍净身">Purification at Chozuya</h3>
+                          <p data-ja="手水舎で手と口を清めてから参拝しましょう。" data-en="Purify your hands and mouth at the chozuya before praying." data-zh="在手水舍洗手漱口后再参拜。">Purify your hands and mouth at the chozuya before praying.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="本堂での騒音" data-en="Noise in Main Hall" data-zh="大殿内喧哗">Noise in Main Hall</h3>
+                          <p data-ja="本堂や拝殿では静かにしましょう。" data-en="Keep quiet in the main hall and prayer hall." data-zh="在大殿和拜殿内要保持安静。">Keep quiet in the main hall and prayer hall.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="撮影禁止区域" data-en="No Photography Areas" data-zh="禁止拍照区域">No Photography Areas</h3>
+                          <p data-ja="撮影禁止の場所では写真を撮らないようにしましょう。" data-en="Do not take photos in no-photography areas." data-zh="在禁止拍照的地方不要拍照。">Do not take photos in no-photography areas.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 文化財・観光資源の保護セクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-landmark" style="color: #DAA520;"></i>
+                                           <span data-ja="文化財・観光資源の保護" data-en="Cultural Heritage Protection" data-zh="文化遗产保护">Cultural Heritage Protection</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="立入禁止区域の遵守" data-en="Respect Restricted Areas" data-zh="遵守禁止进入区域">Respect Restricted Areas</h3>
+                          <p data-ja="立入禁止区域には入らないようにしましょう。" data-en="Do not enter restricted areas." data-zh="不要进入禁止进入的区域。">Do not enter restricted areas.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="文化財への配慮" data-en="Care for Cultural Assets" data-zh="爱护文物">Care for Cultural Assets</h3>
+                          <p data-ja="彫刻や建物に触れない、登らないようにしましょう。" data-en="Do not touch or climb on sculptures and buildings." data-zh="不要触摸或攀爬雕塑和建筑物。">Do not touch or climb on sculptures and buildings.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="桜の枝折り" data-en="Breaking Cherry Branches" data-zh="折断樱花枝">Breaking Cherry Branches</h3>
+                          <p data-ja="桜の枝を折ったり、花を取ったりしないようにしましょう。" data-en="Do not break cherry branches or pick flowers." data-zh="不要折断樱花枝或采摘花朵。">Do not break cherry branches or pick flowers.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- ゴミの扱いセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-recycle" style="color: #228B22;"></i>
+                                           <span data-ja="ゴミの扱い" data-en="Waste Management" data-zh="垃圾处理">Waste Management</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="ゴミの持ち帰り" data-en="Take Trash Home" data-zh="垃圾带回家">Take Trash Home</h3>
+                          <p data-ja="ゴミ箱がない場合は持ち帰りましょう。" data-en="Take trash home if there are no trash bins." data-zh="如果没有垃圾桶请将垃圾带回家。">Take trash home if there are no trash bins.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="分別ルールの遵守" data-en="Follow Sorting Rules" data-zh="遵守分类规则">Follow Sorting Rules</h3>
+                          <p data-ja="分別ルール（燃えるゴミ・リサイクルなど）を守りましょう。" data-en="Follow sorting rules (burnable waste, recycling, etc.)." data-zh="遵守垃圾分类规则（可燃垃圾、可回收垃圾等）。">Follow sorting rules (burnable waste, recycling, etc.).</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="ポイ捨て禁止" data-en="No Littering" data-zh="禁止乱扔垃圾">No Littering</h3>
+                          <p data-ja="路上や観光地にポイ捨てしないようにしましょう。" data-en="Do not litter on streets or tourist spots." data-zh="不要在街道或观光地乱扔垃圾。">Do not litter on streets or tourist spots.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 飲食のマナーセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-utensils" style="color: #FF6B35;"></i>
+                                           <span data-ja="飲食のマナー" data-en="Dining Etiquette" data-zh="餐饮礼仪">Dining Etiquette</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="立ち止まって飲食" data-en="Stop to Eat" data-zh="停下进食">Stop to Eat</h3>
+                          <p data-ja="食べ歩き禁止エリアでは立ち止まって飲食しましょう。" data-en="Stop to eat in no-walking-eating areas." data-zh="在禁止边走边吃的区域要停下进食。">Stop to eat in no-walking-eating areas.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="チップ不要" data-en="No Tipping" data-zh="无需小费">No Tipping</h3>
+                          <p data-ja="チップは不要です（渡す習慣はありません）。" data-en="Tipping is not required (it's not a custom)." data-zh="不需要给小费（没有这个习惯）。">Tipping is not required (it's not a custom).</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="持ち込み禁止" data-en="No Outside Food" data-zh="禁止外带食物">No Outside Food</h3>
+                          <p data-ja="持ち込み禁止の場所で飲食しないようにしましょう。" data-en="Do not eat in no-outside-food areas." data-zh="不要在禁止外带食物的地方饮食。">Do not eat in no-outside-food areas.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 温泉・公共浴場のマナーセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-hot-tub" style="color: #4682B4;"></i>
+                                           <span data-ja="温泉・公共浴場のマナー" data-en="Hot Spring & Public Bath Etiquette" data-zh="温泉公共浴场礼仪">Hot Spring & Public Bath Etiquette</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="入浴前の清潔" data-en="Clean Before Bathing" data-zh="入浴前清洁">Clean Before Bathing</h3>
+                          <p data-ja="入る前に体を洗ってから湯船に入りましょう。" data-en="Wash your body before entering the bath." data-zh="入浴前要先清洗身体再进入浴池。">Wash your body before entering the bath.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="髪の毛の処理" data-en="Hair Care" data-zh="头发处理">Hair Care</h3>
+                          <p data-ja="髪の毛は湯船につけないようにしましょう。" data-en="Do not let your hair touch the bath water." data-zh="不要让头发接触浴池水。">Do not let your hair touch the bath water.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="湯船への持ち込み" data-en="No Items in Bath" data-zh="浴池内禁止携带物品">No Items in Bath</h3>
+                          <p data-ja="水着やタオルを湯船に入れないようにしましょう。" data-en="Do not put swimsuits or towels in the bath." data-zh="不要将泳衣或毛巾放入浴池。">Do not put swimsuits or towels in the bath.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="大声での騒ぎ" data-en="No Loud Noise" data-zh="禁止大声喧哗">No Loud Noise</h3>
+                          <p data-ja="大声で騒がないようにしましょう。" data-en="Do not make loud noise." data-zh="不要大声喧哗。">Do not make loud noise.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 宿泊施設でのマナーセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-bed" style="color: #9370DB;"></i>
+                                           <span data-ja="宿泊施設でのマナー" data-en="Accommodation Etiquette" data-zh="住宿礼仪">Accommodation Etiquette</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="静かに過ごす" data-en="Keep Quiet" data-zh="保持安静">Keep Quiet</h3>
+                          <p data-ja="静かに過ごし、廊下や隣室に響く騒音は避けましょう。" data-en="Keep quiet and avoid noise that disturbs hallways or adjacent rooms." data-zh="保持安静，避免产生影响走廊或邻室的噪音。">Keep quiet and avoid noise that disturbs hallways or adjacent rooms.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="時間の遵守" data-en="Respect Times" data-zh="遵守时间">Respect Times</h3>
+                          <p data-ja="チェックイン・チェックアウト時間を守りましょう。" data-en="Follow check-in and check-out times." data-zh="遵守入住和退房时间。">Follow check-in and check-out times.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="禁煙ルームでの喫煙" data-en="No Smoking in Non-Smoking Rooms" data-zh="禁烟房间内吸烟">No Smoking in Non-Smoking Rooms</h3>
+                          <p data-ja="禁煙ルームでは喫煙しないようにしましょう。" data-en="Do not smoke in non-smoking rooms." data-zh="不要在禁烟房间内吸烟。">Do not smoke in non-smoking rooms.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 行列・順番待ちセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-users" style="color: #20B2AA;"></i>
+                                           <span data-ja="行列・順番待ち" data-en="Queuing & Waiting" data-zh="排队等候">Queuing & Waiting</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="順番を守る" data-en="Follow Order" data-zh="遵守顺序">Follow Order</h3>
+                          <p data-ja="順番を守って並びましょう。" data-en="Wait in line following the order." data-zh="按顺序排队。">Wait in line following the order.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="自動販売機・レジ" data-en="Vending Machines & Cashiers" data-zh="自动贩卖机和收银台">Vending Machines & Cashiers</h3>
+                          <p data-ja="自動販売機・レジなどでも同様に順番を守りましょう。" data-en="Follow the same order at vending machines and cashiers." data-zh="在自动贩卖机和收银台也要遵守同样的顺序。">Follow the same order at vending machines and cashiers.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="列への割り込み" data-en="Cutting in Line" data-zh="插队">Cutting in Line</h3>
+                          <p data-ja="列に割り込まないようにしましょう。" data-en="Do not cut in line." data-zh="不要插队。">Do not cut in line.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 写真撮影マナーセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-camera" style="color: #FF69B4;"></i>
+                                           <span data-ja="写真撮影マナー" data-en="Photography Etiquette" data-zh="摄影礼仪">Photography Etiquette</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="フラッシュ禁止の遵守" data-en="Respect No Flash Areas" data-zh="遵守禁止闪光灯">Respect No Flash Areas</h3>
+                          <p data-ja="フラッシュ禁止の場所では従いましょう。" data-en="Follow no-flash rules in designated areas." data-zh="在禁止闪光灯的地方要遵守规定。">Follow no-flash rules in designated areas.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="ドローン禁止区域" data-en="No Drone Zones" data-zh="无人机禁飞区">No Drone Zones</h3>
+                          <p data-ja="ドローン禁止区域では飛ばさないようにしましょう。" data-en="Do not fly drones in no-drone zones." data-zh="在无人机禁飞区不要飞行。">Do not fly drones in no-drone zones.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="無断撮影" data-en="Unauthorized Photography" data-zh="未经许可拍摄">Unauthorized Photography</h3>
+                          <p data-ja="他人を勝手に撮影しないようにしましょう。" data-en="Do not take photos of others without permission." data-zh="不要未经许可拍摄他人。">Do not take photos of others without permission.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 騒音・周囲への配慮セクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-volume-mute" style="color: #696969;"></i>
+                                           <span data-ja="騒音・周囲への配慮" data-en="Noise & Consideration" data-zh="噪音和周围考虑">Noise & Consideration</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="夜間の静寂" data-en="Nighttime Quiet" data-zh="夜间安静">Nighttime Quiet</h3>
+                          <p data-ja="夜遅くに騒がないようにしましょう（住宅街やホテル周辺）。" data-en="Do not make noise late at night (residential areas and hotels)." data-zh="夜间不要喧哗（住宅区和酒店周边）。">Do not make noise late at night (residential areas and hotels).</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="スピーカーの音量" data-en="Speaker Volume" data-zh="音响音量">Speaker Volume</h3>
+                          <p data-ja="路上や公園でスピーカーを大音量で流さないようにしましょう。" data-en="Do not play speakers at high volume on streets or in parks." data-zh="不要在街道或公园用音响播放大音量。">Do not play speakers at high volume on streets or in parks.</p>
+                     </div>
+                 </div>
+             </section>
+
+             <!-- 喫煙マナーセクション -->
+             <section class="section">
+                 <h2>
+                     <i class="fas fa-smoking-ban" style="color: #DC143C;"></i>
+                                           <span data-ja="喫煙マナー" data-en="Smoking Etiquette" data-zh="吸烟礼仪">Smoking Etiquette</span>
+                 </h2>
+                 <div class="etiquette-grid">
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ok-icon">
+                             <i class="fas fa-check-circle"></i>
+                         </div>
+                                                   <h3 data-ja="灰皿の使用" data-en="Use Ashtrays" data-zh="使用烟灰缸">Use Ashtrays</h3>
+                          <p data-ja="吸い殻は必ず灰皿に捨てましょう。" data-en="Always dispose of cigarette butts in ashtrays." data-zh="一定要将烟蒂扔到烟灰缸里。">Always dispose of cigarette butts in ashtrays.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="路上喫煙禁止" data-en="No Street Smoking" data-zh="禁止街头吸烟">No Street Smoking</h3>
+                          <p data-ja="路上喫煙禁止エリアでは吸わないようにしましょう。" data-en="Do not smoke in no-smoking areas on streets." data-zh="在禁止街头吸烟的区域不要吸烟。">Do not smoke in no-smoking areas on streets.</p>
+                     </div>
+                     <div class="etiquette-item">
+                         <div class="etiquette-icon ng-icon">
+                             <i class="fas fa-times-circle"></i>
+                         </div>
+                                                   <h3 data-ja="歩きタバコ" data-en="No Walking While Smoking" data-zh="禁止边走边吸烟">No Walking While Smoking</h3>
+                          <p data-ja="歩きタバコは危険なので禁止です。" data-en="Walking while smoking is dangerous and prohibited." data-zh="边走边吸烟很危险，所以禁止。">Walking while smoking is dangerous and prohibited.</p>
+                     </div>
+                 </div>
+             </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 data-ja="日本で楽しい旅を！" data-en="Have a wonderful trip in Japan!" data-zh="在日本享受愉快的旅行！">Have a wonderful trip in Japan!</h3>
+                <p>&copy; 2024 yuuenchi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 言語切り替え機能
+        function switchLanguage(lang) {
+            // データ属性を持つ要素を更新
+            document.querySelectorAll('[data-' + lang + ']').forEach(element => {
+                element.textContent = element.getAttribute('data-' + lang);
+            });
+
+            // 言語属性を更新
+            document.documentElement.lang = lang;
+        }
+
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            const etiquetteItems = document.querySelectorAll('.etiquette-item');
+
+            // スクロールアニメーション
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(section);
+            });
+
+            etiquetteItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(item);
+            });
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
