@@ -1,0 +1,19 @@
+# 一時ファイル・テンプレートファイル
+source/tmp/
+
+# システムファイル
+.DS_Store
+Thumbs.db
+
+# エディタ設定ファイル
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ログファイル
+*.log
+
+# 一時ファイル
+*.tmp
+*.temp
