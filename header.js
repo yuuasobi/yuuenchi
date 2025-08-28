@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         model3DPath = '../../3Dmodel/3Dmodel.html';
         pluginsPath = '../../plugins/plugins.html';
         toolsPath = '../../tools/tools.html';
-        webPath = '../../web/webpage.html';
+        webPath = '../../Web/webpage.html';
     } else if (isTmpPage) {
         // tmpページ用のパス
         homeLink = '../../index.html';
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         model3DPath = '../3Dmodel/3Dmodel.html';
         pluginsPath = '../plugins/plugins.html';
         toolsPath = '../tools/tools.html';
-        webPath = '../web/webpage.html';
+        webPath = '../Web/webpage.html';
     } else if (is3DPage) {
         // 3Dページ用のパス
         homeLink = '../../index.html';
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         model3DPath = './3Dmodel.html';
         pluginsPath = '../plugins/plugins.html';
         toolsPath = '../tools/tools.html';
-        webPath = '../web/webpage.html';
+        webPath = '../Web/webpage.html';
     } else if (isNewPage) {
         // new/ディレクトリのページ用のパス
         homeLink = '../index.html';
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         model3DPath = '../contents/3Dmodel/3Dmodel.html';
         pluginsPath = '../contents/plugins/plugins.html';
         toolsPath = '../contents/tools/tools.html';
-        webPath = '../contents/web/webpage.html';
+        webPath = '../contents/Web/webpage.html';
     } else {
         // 他のページ用のパス
         homeLink = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage || isWebPage ? '../../index.html' : './index.html';
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         model3DPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage || isWebPage ? '../3Dmodel/3Dmodel.html' : './contents/3Dmodel/3Dmodel.html';
         pluginsPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isToolsPage || isWebPage ? '../plugins/plugins.html' : isPluginsPage ? './plugins.html' : './contents/plugins/plugins.html';
         toolsPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isWebPage ? '../tools/tools.html' : isToolsPage ? './tools.html' : './contents/tools/tools.html';
-        webPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../web/webpage.html' : isWebPage ? './webpage.html' : './contents/web/webpage.html';
+        webPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../Web/webpage.html' : isWebPage ? './webpage.html' : './contents/Web/webpage.html';
     }
     header.innerHTML = `
         <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
