@@ -1,6 +1,10 @@
 # 一時ファイル・テンプレートファイル
 source/tmp/
 
+# 設定ファイル（ローカルのみ）
+.mcp.json
+.context.json
+
 # システムファイル
 .DS_Store
 Thumbs.db
