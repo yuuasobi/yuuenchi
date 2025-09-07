@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Font Awesomeを読み込む
-    const fontAwesomeLink = document.createElement('link');
-    fontAwesomeLink.rel = 'stylesheet';
-    fontAwesomeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
-    document.head.appendChild(fontAwesomeLink);
+    // Font Awesomeが既に読み込まれているかチェック
+    const existingFontAwesome = document.querySelector('link[href*="font-awesome"]');
+    if (!existingFontAwesome) {
+        // Font Awesomeを読み込む
+        const fontAwesomeLink = document.createElement('link');
+        fontAwesomeLink.rel = 'stylesheet';
+        fontAwesomeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
+        document.head.appendChild(fontAwesomeLink);
+    }
 
     // ヘッダー要素を作成
     const header = document.createElement('header');
@@ -20,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const isNewPage = window.location.pathname.includes('/new/');
     const isPluginsPage = window.location.pathname.includes('/contents/plugins/');
     const isToolsPage = window.location.pathname.includes('/contents/tools/');
-    const isWebPage = window.location.pathname.includes('/contents/web/');
+    const isWebPage = window.location.pathname.includes('/contents/Web/');
     
     // パス設定（3Dmodel.html用に分岐追加）
     let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath, model3DPath, pluginsPath, toolsPath, webPath;
