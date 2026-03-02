@@ -7900,36 +7900,532 @@
                     'The total number of products purchased by customers before the gauge runs out is recorded as a high score.'
                 ]
             },
-            '51': { title: 'Gold Mine Maze', description: 'A game where you mine for gold while avoiding explosive mining spots.', theme: 'Gold Mine Maze' },
-            '52': { title: 'Malnutrition Dept', description: 'A game where you provide missing nutrients to patients in a diagnostic room.', theme: 'Malnutrition Dept' },
-            '53': { title: 'Fly High Shimaenaga', description: 'A game where you eat food to gain power and fly as high as possible.', theme: 'Fly High Shimaenaga' },
-            '54': { title: 'Ball Juggling', description: 'A game where you keep a ball in the air using your feet, knees, and head.', theme: 'Ball Juggling' },
-            '55': { title: 'World Map Memory', description: 'A game where you take photos across the world map.', theme: 'World Map Memory' },
-            '56': { title: 'Snowfield Hide & Seek', description: 'A game where you find family members hidden in a crowd on a snowfield.', theme: 'Snowfield Hide & Seek' },
-            '57': { title: 'Shimaenaga Garden', description: 'A game where you grow a central tree and garden the surrounding area.', theme: 'Shimaenaga Garden' },
-            '58': { title: 'Alligator Panic', description: 'A game where you stomp on alligators that threaten a frog family.', theme: 'Alligator Panic' },
-            '59': { title: '3D x 2D Battle', description: 'A command battle game where a 3-person party of 2D characters fights 3D monsters.', theme: '3Dx2D' },
-            '60': { title: 'Tea Ceremony', description: 'A game where you drink tea in the Urasenke style.', theme: 'Sado (Tea Ceremony)' },
-            '61': { title: 'Warp Road', description: 'A game where you collect energy to warp as long as possible.', theme: 'Warp Road' },
-            '62': { title: 'Signing Session', description: 'A game where you sign autographs for visiting fans.', theme: 'Signing' },
-            '63': { title: 'Cat in the Barrel', description: 'A game where you sneak food while hiding in a barrel from pirates.', theme: 'Cat in the Barrel' },
-            '64': { title: 'Zodiac Dungeon', description: 'A game where you collect zodiac cards to increase your level.', theme: 'Zodiac Dungeon' },
-            '65': { title: 'Library', description: 'A game where you collect subtitles for "Another X" in episodic order.', theme: 'Library' },
-            '66': { title: 'Medicinal Food', description: 'A game where you balance heat and cold by eating medicinal food.', theme: 'Medicinal Food' },
-            '67': { title: 'Pizza Delivery', description: 'A game where you deliver pizzas in an aerial city.', theme: 'Pizza Delivery' },
-            '68': { title: 'Pitch Animals', description: 'A game where you match the sound pitch of animals to become friends.', theme: 'Pitch Animals' },
-            '69': { title: 'Symmetrical Room Differences', description: 'A 3D spot-the-difference game set in symmetrical rooms.', theme: 'Symmetrical Room Differences' },
-            '70': { title: 'Golem Crush', description: 'A battle game where you defeat golems using positioning and buffs.', theme: 'Golem Crush' },
-            '71': { title: 'Box Puzzle', description: 'A puzzle game where you move boxes to create a path to the tower.', theme: 'Box Puzzle' },
-            '72': { title: 'Bonfire Control', description: 'A game where you manage a bonfire to survive until morning.', theme: 'Bonfire Control' },
-            '73': { title: 'Sumo', description: 'A sumo game where you push opponents out of the ring.', theme: 'Sumo' },
-            '74': { title: 'Cattle Care', description: 'A game where you raise and care for high-quality cattle.', theme: 'Cattle Care' },
-            '75': { title: 'Arena Battle', description: 'A front-view real-time battle game.', theme: 'Arena' },
-            '76': { title: 'Dowsing Factory', description: 'A mining game set in a randomly changing labyrinth.', theme: 'Dowsing' },
-            '77': { title: 'Growing Home', description: 'A game where you cook and eat to grow your character.', theme: 'Growing Home' },
-            '78': { title: 'Dance Matching', description: 'A dance party game where you match poses.', theme: 'Dance Matching' },
-            '79': { title: 'Popular Bakery', description: 'A game where you run a popular bakery.', theme: 'Popular Bakery' },
-            '80': { title: 'Puzzle Dungeon', description: 'A game where you use items to find crystals deep in a dungeon.', theme: 'Puzzle' },
+            '51': {
+                title: 'Maze of the Gold Mine',
+                description: 'A game where you mine gold while avoiding blocks rigged with explosives.',
+                theme: 'Mining',
+                controls: [
+                    { action: 'Mine', btn: 'B Button' },
+                    { action: 'Move to Another Floor', btn: 'RB Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Game Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Mine gold by digging gold blocks while avoiding blocks rigged with explosives.',
+                    'Gold locations with explosives turn black before you start mining, allowing you to check the route in advance.',
+                    'Mining gold with explosives reduces your HP; the gold collected before HP reaches 0 is earned as your high score.',
+                    'You can reset the placement by moving to another floor before starting to mine.'
+                ]
+            },
+            '52': {
+                title: 'Malnutrition Treatment',
+                description: 'A game where you provide missing nutrients to patients visiting the diagnostic room.',
+                theme: 'Nutrients',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Switch Nutrient', btn: 'RB/LB Button' },
+                    { action: 'Game Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Diagnose patients visiting at the entrance and inject missing nutrients into patients who have moved to beds.',
+                    'The gauge decreases if there are patients waiting for diagnosis, and injecting a different nutrient than diagnosed also significantly reduces the gauge.',
+                    'The gauge does not decrease while patients are in beds, so you can diagnose all patients first according to the number of beds available and then inject them all at once to avoid reducing the gauge; however, you must remember the required nutrients for all patients.',
+                    'The total number of patients treated before the gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '53': {
+                title: 'Fly High, Shimaenaga',
+                description: 'A game where you eat food to increase your power and fly as high as possible.',
+                theme: 'Shimaenaga',
+                controls: [
+                    { action: 'Flap Wings', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Aim for the highest position possible using HP and flapping power.',
+                    'You can only flap up to 20 times, so you need to consider the timing of switching from searching for food to aiming for a high position.',
+                    'Flapping power increases by eating food in the air.',
+                    'There are 4 types of food that increase flapping power: Green (+0.1), Blue (+0.2), Red (+0.5), and Gold (+1).',
+                    'Food is placed in random locations: 20 Green, 5 Blue, 2 Red, and 1 Gold.'
+                ]
+            },
+            '54': {
+                title: 'Ball Juggling',
+                description: 'A game where you keep juggling using your feet, knees, and head.',
+                theme: 'Juggling',
+                controls: [
+                    { action: 'Juggling Action', btn: 'Foot(A) / Knee(X) / Head(Y) Button' },
+                    { action: 'Switch Character', btn: 'Left/Right Keys' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'The game starts when you kick the ball up with your foot.',
+                    'The height the ball floats and the timing for input acceptance change depending on the body part used.',
+                    'A combo bonus is earned by juggling in the order of Foot -> Knee -> Head.',
+                    'The juggling score obtained before dropping the ball is recorded as a high score.'
+                ]
+            },
+            '55': {
+                title: 'World Map Memory',
+                description: 'A game where you take photos on the world map.',
+                theme: 'Photography',
+                controls: [
+                    { action: 'Take Photo', btn: 'B Button' },
+                    { action: 'Ascend/Descend', btn: 'RB/RT Button' },
+                    { action: 'Check Memory', btn: 'Y Button' },
+                    { action: 'Switch Memory Photo', btn: 'RB/LB Button' },
+                    { action: 'Switch Time Zone', btn: 'X Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Move around the world map and take photos from your favorite position and angle.',
+                    'You can save photos to memory and check them later (up to 20 photos).'
+                ]
+            },
+            '56': {
+                title: 'Snowfield Hide and Seek',
+                description: 'A game where you find family members hidden in a crowd.',
+                theme: 'Hide and Seek',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Talking to the character in the center of the area makes the target character hide in the crowd; once the game starts, finding and talking to the target character earns you a score, and the target character moves to another location.',
+                    'Mistaking a character reduces your time.',
+                    'The number of characters found before the time gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '57': {
+                title: 'Shimaenaga Garden',
+                description: 'A game where you grow the central tree in Shimaenaga\'s garden while gardening the surrounding area.',
+                theme: 'Planting',
+                controls: [
+                    { action: 'Select/Place', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Water', btn: 'X Button' },
+                    { action: 'Ascend/Descend', btn: 'RB/RT Button' },
+                    { action: 'Change Plant Type', btn: 'Y Button + Left/Right Keys' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Garden while watering and growing the central tree.',
+                    'The central tree absorbs water over time after being watered; when it reaches a certain value, its level increases, and the tree grows larger.',
+                    'While the tree is absorbing water, you can move the surrounding hedges or change them to other types of hedges, trees, or flowers to garden them.',
+                    'The maximum level for the tree is 5.'
+                ]
+            },
+            '58': {
+                title: 'David Alligator Panic',
+                description: 'A game where you stomp on alligators attacking a frog family to repel them.',
+                theme: 'Panic',
+                controls: [
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Game Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Stomp on an alligator three times to repel it.',
+                    'When an alligator approaches a frog, the frog\'s health decreases over time.',
+                    'Up to 4 alligators can appear at once.',
+                    'The number of alligators repelled before the frog\'s health runs out is recorded as a high score.'
+                ]
+            },
+            '59': {
+                title: '3Dx2D BATTLE',
+                description: 'A 3D vs 2D command battle game where a 3-person party of 2D characters fights 3D monsters to protect a castle.',
+                theme: '3D VS 2D',
+                controls: [
+                    { action: 'Physical Attack', btn: 'B Button' },
+                    { action: 'Magic Attack', btn: 'X Button' },
+                    { action: 'Defend', btn: 'A Button' },
+                    { action: 'Game Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Switch actions with the B/A/X buttons to defeat enemies.',
+                    'Defeating an enemy earns you their remaining HP as your score.',
+                    'After defeating the third boss, GP and MP are slightly restored, and you proceed to the next WAVE to fight the first enemy again.',
+                    'The score obtained before GP reaches 0 is recorded as a high score.'
+                ]
+            },
+            '60': {
+                title: 'Sado (Tea Ceremony)',
+                description: 'A game where you drink tea using the Urasenke style.',
+                theme: 'Tea Ceremony',
+                controls: [
+                    { action: 'Hold with Right Hand', btn: 'Right Key' },
+                    { action: 'Hold with Left Hand', btn: 'Left Key' },
+                    { action: 'Move Forward/Backward', btn: 'Up/Down Keys' },
+                    { action: 'Rotate Bowl', btn: 'RB/LB Button' },
+                    { action: 'Place Bowl', btn: 'A Button' },
+                    { action: 'Wipe Rim', btn: 'X Button' },
+                    { action: 'Greet', btn: 'Y Button' },
+                    { action: 'Drink Tea', btn: 'B Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Drink tea gracefully without making mistakes.',
+                    'Missing inputs increases the count.',
+                    'Fewer mistakes than before are recorded as a high score.'
+                ]
+            },
+            '61': {
+                title: 'Warp Road',
+                description: 'A game where you keep warping while recovering warp energy by obtaining numbered energy.',
+                theme: 'Warp',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Game Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Continue warping using warp energy that is consumed over time.',
+                    'Collecting numbering energy to exactly match the required energy restores warp energy slightly.',
+                    'Hitting lightning significantly consumes warp energy.',
+                    'The travel distance earned before warp energy reaches 0 is recorded as a high score.'
+                ]
+            },
+            '62': {
+                title: 'Signing Session',
+                description: 'A game where you sign autographs for visiting fans.',
+                theme: 'Signing',
+                controls: [
+                    { action: 'Start Signing', btn: 'B Button' },
+                    { action: 'Write Signature', btn: 'Mouse Drag' },
+                    { action: 'Session Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Write signatures for fans.',
+                    'While fans are waiting for an autograph, the signing time decreases.',
+                    'The total number of signatures written before the signing time reaches 0 is recorded as a high score.'
+                ]
+            },
+            '63': {
+                title: 'Cat in the Barrel',
+                description: 'A game where you sneak food while hiding in a barrel to avoid being caught by pirates.',
+                theme: 'Barrel',
+                controls: [
+                    { action: 'Hide in Barrel/Exit Barrel', btn: 'B Button' },
+                    { action: 'Eat Food', btn: 'X Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Control the cat to sneak food while hiding in a barrel.',
+                    'Pirates turn around periodically; you must be inside the barrel and stay still while they are looking, or you will be caught.',
+                    'Exit the barrel and keep eating food while the pirates are watching outside the ship.',
+                    'Food runs out after 10 bites and is replenished after a certain time.',
+                    'The number of times you ate food before being caught by pirates or your hunger gauge reaching 0 is recorded as a high score.'
+                ]
+            },
+            '64': {
+                title: 'Animal Zodiac Route Dungeon',
+                description: 'A game where you collect Zodiac cards to increase your level in order.',
+                theme: 'Zodiac',
+                controls: [
+                    { action: 'Attack', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Route Confirmation Camera', btn: 'LT Button' },
+                    { action: 'Zodiac Confirmation Camera', btn: 'RT Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Defeat enemies while collecting Zodiac cards in order to increase your level.',
+                    'Collecting a Zodiac card earns you EXP proportional to the number of enemies defeated up to that point.',
+                    'Passing through the Ghost Leg route to get a Zodiac card doubles the gained EXP.',
+                    'Picking the wrong Zodiac card significantly reduces your HP.',
+                    'The EXP earned before HP reaches 0 or the final Zodiac card is collected is recorded as a high score.'
+                ]
+            },
+            '65': {
+                title: 'AnotherX Library',
+                description: 'A game where you collect subtitles in the episodic order of the serial novel "AnotherX".',
+                theme: 'Library',
+                controls: [
+                    { action: 'Collect', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Ascend/Descend', btn: 'RB/RT Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Collect books in the episodic order of AnotherX.',
+                    'Covers all 40 episodes through Chapter 3.',
+                    'Collecting books out of order reduces your gauge; the high score is recorded when the gauge reaches 0 or all episodes are collected.'
+                ]
+            },
+            '66': {
+                title: 'Medicinal Cuisine Neutrality',
+                description: 'A game where you balance hot and cold areas while regulating your body temperature by eating medicinal cuisine ingredients.',
+                theme: 'Medicinal Cuisine',
+                controls: [
+                    { action: 'Hold/Place', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Discard', btn: 'X Button' },
+                    { action: 'Game Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Block holes in opposite attribute areas while holding a heat/cold box while your body temperature gauge is in the neutral (green) state.',
+                    'The number of holes blocked before the body temperature gauge reaches 0 or MAX is recorded as a high score.',
+                    'Eating neutral-type medicinal cuisine stops the progress of the body temperature gauge for a certain period, and you can regulate your temperature with hot, warm, cool, and cold ingredients.',
+                    'Hot and cold ingredients consume stock ±10, while warm, neutral, and cool ingredients consume ±1.'
+                ]
+            },
+            '67': {
+                title: 'PIZZA Delivery',
+                description: 'A game where you deliver pizzas in a floating city.',
+                theme: 'Delivery',
+                controls: [
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Deliver', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Fly around the floating city to deliver pizzas.',
+                    'Compete for the score by delivering as many pizzas as possible within the time limit.',
+                    'Find efficient delivery routes while avoiding various buildings and obstacles.'
+                ]
+            },
+            '68': {
+                title: 'Pitch Animals',
+                description: 'A game where you send the same pitch as the pitch animals to make friends with them.',
+                theme: 'Music/Animals',
+                controls: [
+                    { action: 'Pitch Adjustment', btn: 'Left Stick' },
+                    { action: 'Send Sound', btn: 'A Button' },
+                    { action: 'Select Animal', btn: 'Right Stick' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Observe the animal and send the same pitch to become friends.',
+                    'Sending the correct pitch makes the animal happy and your friend.',
+                    'Make friends with various animals to complete your collection.'
+                ]
+            },
+            '69': {
+                title: 'Symmetrical Room Mistakes',
+                description: 'A 3D spot-the-difference game where you find the number of differences between symmetrical Rooms A and B.',
+                theme: 'Spot the Difference/Puzzle',
+                controls: [
+                    { action: 'Viewpoint Movement', btn: 'Right Stick' },
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Select Number', btn: 'A Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Compare Symmetrical Rooms A and B and select the number of differences.',
+                    'Selecting the correct number moves you to the next level.',
+                    'Compete for the number of levels cleared within the time limit.'
+                ]
+            },
+            '70': {
+                title: 'Golem Crush',
+                description: 'A game where you charge into enemies to defeat them.',
+                theme: 'Battle/Action',
+                controls: [
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Dash Charge', btn: 'A Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Charge into enemies to deal damage.',
+                    'Well-timed charges create combos and increase damage.',
+                    'Strategic positioning and timing are the keys to victory.'
+                ]
+            },
+            '71': {
+                title: 'Box Puzzle Master',
+                description: 'A puzzle game where you move boxes to create a path and aim for the tower in the back.',
+                theme: 'Puzzle/Box Moving',
+                controls: [
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Push Box', btn: 'A Button' },
+                    { action: 'Pull Box', btn: 'B Button' },
+                    { action: 'Reset', btn: 'X Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Move boxes to create a path and reach the tower in the back.',
+                    'Solve puzzles by combining various types of boxes.',
+                    'Aim to clear within the limit of moves.'
+                ]
+            },
+            '72': {
+                title: 'Firewood on the Brink',
+                description: 'A game where you build a bonfire and spend the night until morning.',
+                theme: 'Bonfire/Survival',
+                controls: [
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Add Firewood', btn: 'A Button' },
+                    { action: 'Extinguish Fire', btn: 'B Button' },
+                    { action: 'Pick up Firewood', btn: 'X Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Keep the bonfire going and survive until morning.',
+                    'Collect firewood and don\'t let the fire go out.',
+                    'The fire weakens as time passes.'
+                ]
+            },
+            '73': {
+                title: 'Harite Sumo',
+                description: 'A sumo game where you use harite to push your opponent out of the ring.',
+                theme: 'Sumo/Fighting',
+                controls: [
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Harite', btn: 'A Button' },
+                    { action: 'Thrust', btn: 'B Button' },
+                    { action: 'Defend', btn: 'X Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Use sumo techniques to push your opponent out of the ring.',
+                    'Combine techniques like harite and thrusts to fight.',
+                    'Timing and strategy are the keys to victory.'
+                ]
+            },
+            '74': {
+                title: 'Cattle Fattening',
+                description: 'A game where you care for cattle to raise high-quality animals.',
+                theme: 'Ranch/Training',
+                controls: [
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Feed', btn: 'A Button' },
+                    { action: 'Brush', btn: 'B Button' },
+                    { action: 'Water', btn: 'X Button' },
+                    { action: 'Select Cow', btn: 'Y Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Care for cattle to raise healthy and high-quality animals.',
+                    'Manage the condition of the cattle through feeding, brushing, and watering.',
+                    'Earnings vary depending on the quality of the cattle raised.'
+                ]
+            },
+            '75': {
+                title: 'Arena Battle Challenge',
+                description: 'A front-view real-time battle game.',
+                theme: 'Battle/Fighting',
+                controls: [
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Attack', btn: 'A Button' },
+                    { action: 'Defend', btn: 'B Button' },
+                    { action: 'Special Move', btn: 'X Button' },
+                    { action: 'Jump', btn: 'Y Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Engage in real-time battles from a front-view perspective.',
+                    'Fight by combining various attack and defense techniques.',
+                    'Continue fighting until you reduce the opponent\'s HP to 0.'
+                ]
+            },
+            '76': {
+                title: 'Dowsing Equip Factory',
+                description: 'A mining game set in a labyrinth where areas switch randomly.',
+                theme: 'Mining/Labyrinth',
+                controls: [
+                    { action: 'Move', btn: 'Left Stick' },
+                    { action: 'Mine', btn: 'A Button' },
+                    { action: 'Select Tool', btn: 'B Button' },
+                    { action: 'Check Map', btn: 'X Button' },
+                    { action: 'Switch Area', btn: 'Y Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Mine resources in a labyrinth that changes randomly.',
+                    'Use various mining tools to collect resources efficiently.',
+                    'Discover something new every time the area switches.'
+                ]
+            },
+            '77': {
+                title: 'Growing Home Intake',
+                description: 'A game where you cook and eat meals to grow your character\'s body.',
+                theme: 'Growth/Cooking',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Eat/Drink', btn: 'Actions Button Long Press' },
+                    { action: 'Cook/Add Water', btn: 'X Button' },
+                    { action: 'Hold Cup', btn: 'RB Button' },
+                    { action: 'Show Status', btn: 'Y Button' },
+                    { action: 'Run', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Collect ingredients, cook in the kitchen, and eat at the terrace seats to grow your abilities.',
+                    'You get thirsty over time or after eating.',
+                    'Drink water periodically to quench your thirst and then eat.',
+                    'Use growth points to increase HP or attribute values.',
+                    'Ingredients are redistributed to random locations when you sleep in bed.'
+                ]
+            },
+            '78': {
+                title: 'Frilly Dance Matching',
+                description: 'A dance party game where you match poses for a frilly dance.',
+                theme: 'Dance/Party',
+                controls: [
+                    { action: 'Change Pose', btn: 'A/B/X/Y Button or Directional Keys' },
+                    { action: 'Game Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Match dance poses sequentially.',
+                    'Poses change only while buttons or keys are pressed.',
+                    'Successfully matching poses slightly restores dance party time.',
+                    'The number of successful matches within the dance party time is recorded as a high score.'
+                ]
+            },
+            '79': {
+                title: 'Popular Bakery',
+                description: 'A game where you sell bread at a popular bakery.',
+                theme: 'Bakery/Management',
+                controls: [
+                    { action: 'Bake Bread', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Open Shop', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Replenish bread inventory to prevent running out.',
+                    'Running out of bread inventory reduces business hours.',
+                    'The total number of loaves sold before the business hours gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '80': {
+                title: 'Puzzle Dungeon',
+                description: 'A game where you use items to find crystals deep in a dungeon.',
+                theme: 'Dungeon Quest/Puzzle',
+                controls: [
+                    { action: 'Confirm/Sword Attack', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button *Requires Shoes' },
+                    { action: 'Bomb', btn: 'RB Button *Requires Bombs' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Explore the dungeon, solve mysteries, and find the crystals deep inside.',
+                    'Taking damage when attacking enemies or entering water without the corresponding items or equipment.',
+                    'Rats can be attacked if you are equipped with shoes.',
+                    'Bats can be attacked if you have acquired wings.',
+                    'Golems can be attacked with bombs.',
+                    'A high score is recorded if the time taken to find the crystals is faster than before.'
+                ]
+            },
             '81': { title: 'Card High & Low', description: 'A game where you guess if the next game card\'s number is higher or lower.', theme: 'Card High & Low' },
             '82': { title: 'Eye Contact Friends', description: 'A game where you match facial expressions to befriend cautious characters.', theme: 'Eye Contact' },
             '83': { title: 'Catch Ball', description: 'A game where you maintain power balance to keep playing catch.', theme: 'Catch Ball' },
