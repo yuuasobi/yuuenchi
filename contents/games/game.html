@@ -7376,36 +7376,530 @@
                     'The number of people avoided before HP reaches 0 is recorded as high score.'
                 ]
             },
-            '21': { title: 'Maze Exploration', description: 'A game where you explore mazes and use keys to find items in treasure chests.', theme: 'Maze Exploration' },
-            '22': { title: 'Card Battle', description: 'A game where you battle and defeat opponents using card affinities.', theme: 'Card Battle' },
-            '23': { title: 'Star Land', description: 'An action game where you collect stars in a 3D map.', theme: 'Star Land' },
-            '24': { title: 'Music Room', description: 'A game where you open doors leading to rooms where music is playing.', theme: 'Music Room' },
-            '25': { title: 'Waste Disposal', description: 'A game where you sort various types of waste.', theme: 'Waste Disposal' },
-            '26': { title: 'Shrine Visit', description: 'A game where you visit a shrine and offer prayers.', theme: 'Shrine Visit' },
-            '27': { title: 'Greeting Exercise', description: 'A game where you say greetings in various languages.', theme: 'Greeting Exercise' },
-            '28': { title: 'Dice Race', description: 'A game where you race by rolling dice.', theme: 'Dice Race' },
-            '29': { title: 'Stack Craft', description: 'A game where you use stacked craft paper to reach balloons in the sky.', theme: 'Stack Craft' },
-            '30': { title: 'Snowman', description: 'A game where you make a snowman by rolling snowballs and collecting materials.', theme: 'Snowman' },
-            '31': { title: 'Multilingual Service', description: 'A game where you serve products matching orders placed in various languages.', theme: 'Multilingual Service' },
-            '32': { title: 'Focusing on the Good', description: 'A game where you write and share good points on sticky notes.', theme: 'Focusing on the Good' },
-            '33': { title: 'Fantasy Dept', description: 'A game where you display merchandise in a fantasy department store.', theme: 'Fantasy Dept' },
-            '34': { title: 'Quick Draw Water Gun', description: 'A quick-draw game using water guns.', theme: 'Quick Draw Water Gun' },
-            '35': { title: 'Invaders', description: 'A game where you place Peanut-kun on the oni\'s path to prevent their invasion.', theme: 'Invaders' },
-            '36': { title: 'Japan Map', description: 'A game where you create a 3D map of Japan.', theme: 'Japan Map' },
-            '37': { title: 'Robot Battle', description: 'A turn-based robot command battle game.', theme: 'Robot Battle' },
-            '38': { title: 'Gift', description: 'A game where you receive presents from visitors on anniversaries.', theme: 'Gift' },
-            '39': { title: 'Princess in the Box', description: 'A puzzle game where you move blocks to let the princess out.', theme: 'Princess in the Box' },
-            '40': { title: 'Wine Sommelier', description: 'A game where you serve the correct wines to increase your sommelier rank.', theme: 'Wine Sommelier' },
-            '41': { title: 'Balloon Animals', description: 'A game where you save animals that are floating away tied to balloons.', theme: 'Balloon Animals' },
-            '42': { title: 'Rescue Boat', description: 'A game where you find and rescue survivors drifting at sea.', theme: 'Rescue Boat' },
-            '43': { title: 'Snowball Fight', description: 'A game where you have a snowball fight with randomly appearing animals.', theme: 'Snowball Fight' },
-            '44': { title: 'Rabbit Jump', description: 'A game where you use custom-placed platforms to reach carrot boxes in the sky.', theme: 'Rabbit Jump' },
-            '45': { title: 'Pioneer Village', description: 'A game where you collect wood and build houses to develop a village.', theme: 'Pioneer Village' },
-            '46': { title: 'Hina Festival', description: 'A game based on the traditional Japanese Hina Doll Festival where you arrange dolls on a display stand.', theme: 'Hina Festival' },
-            '47': { title: 'Creator Institute', description: 'A game where you observe the creativity of students at a training institute.', theme: 'Creator Institute' },
-            '48': { title: 'Dragon Slayer', description: 'A side-scrolling action battle game where you slay dragons.', theme: 'Dragon Slayer' },
-            '49': { title: 'Graduation Ceremony', description: 'A game where you receive graduation certificates and input custom messages.', theme: 'Graduation Ceremony' },
-            '50': { title: 'White Day', description: 'A game where you restock shelves and serve customers in a White Day shop.', theme: 'White Day' },
+            '21': {
+                title: 'Maze Exploration',
+                description: 'A game where you explore mazes and use keys to find items in treasure chests.',
+                theme: 'Maze',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Check Items', btn: 'Y Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Explore the maze and open all 16 treasure chests to obtain the clock.',
+                    'Keys are required to open the treasure chests.',
+                    'Your time taken to open 16 chests is recorded as a high score if it is faster than your previous record.'
+                ]
+            },
+            '22': {
+                title: 'Card Battle',
+                description: 'A game where you battle and defeat opponents using card affinities.',
+                theme: 'Card Battle',
+                controls: [
+                    { action: 'Switch Card Type', btn: 'Step on the card' },
+                    { action: 'Switch Card Element', btn: 'B Button on Shield or Magic card' },
+                    { action: 'Battle Start', btn: 'START Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Physical attacks cancel magic, and magic deals damage exceeding defense and healing power.',
+                    'Physical attacks can be countered while defending with a shield card.',
+                    'Magic elements follow the strength cycle: Fire -> Ice -> Wind -> Earth -> Thunder -> Water -> Fire.',
+                    'Defeating enemy characters earns you their remaining HP as your score.',
+                    'The total score earned before the player\'s HP reaches 0 is recorded as a high score.'
+                ]
+            },
+            '23': {
+                title: 'Star Land',
+                description: 'An action game where you collect stars in a 3D map.',
+                theme: '3D Platformer',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Collect 12 stars located in the 3D map.',
+                    'The time taken to collect all stars is recorded as a high score if it is shorter than the previous record.'
+                ]
+            },
+            '24': {
+                title: 'Music Room',
+                description: 'A game where you open doors leading to rooms where music is playing.',
+                theme: 'Music Room',
+                controls: [
+                    { action: 'Open Door', btn: 'B Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Open doors that lead to rooms where music is playing.',
+                    'Judge by the volume of the music, which increases as you approach the correct door.',
+                    'The gauge decreases over time, and the number of doors passed before it reaches 0 is recorded as a high score.'
+                ]
+            },
+            '25': {
+                title: 'Waste Disposal',
+                description: 'A game where you sort various types of waste.',
+                theme: 'Waste Sorting',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Pick up falling waste and sort them into the appropriate disposal bins.',
+                    'The gauge decreases if waste is left on the ground, and the number of items correctly sorted before the gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '26': {
+                title: 'Shrine Visit',
+                description: 'A game where you visit a shrine and offer prayers.',
+                theme: 'Shrine Visit',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Switch Action', btn: 'RB + Left/Right Keys' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Perform shrine visit actions at the correct timing according to the flow of the visit.',
+                    'The miss count increases if you do not follow the correct flow.',
+                    'A low miss count upon completing the visit is recorded as a high score.'
+                ]
+            },
+            '27': {
+                title: 'Greeting Exercise',
+                description: 'A game where you say greetings in various languages.',
+                theme: 'Greeting',
+                controls: [
+                    { action: 'Confirm/Greet', btn: 'B Button' },
+                    { action: 'Switch Character/Language', btn: 'RB + Left/Right Keys' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Greet in various languages.',
+                    'The greeting gauge decreases over time.',
+                    'Greeting the same character twice in a row before they leave the area will treat you as a suspicious person and significantly decrease the gauge.',
+                    'The number of successful greetings before the gauge reaches 0 is recorded as a high score.',
+                    'Supported languages: Japanese, English, Italian, Spanish, German, Turkish, French, Arabic.'
+                ]
+            },
+            '28': {
+                title: 'Dice Race',
+                description: 'A game where you race by rolling dice.',
+                theme: 'Race',
+                controls: [
+                    { action: 'Stop Dice', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Characters move according to the number rolled on the dice.',
+                    'The gauge decreases over time and with the placement of craft paper; the number of balloons obtained before the gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '29': {
+                title: 'Stack Craft',
+                description: 'A game where you use stacked craft paper to reach balloons in the sky.',
+                theme: 'Craft Paper',
+                controls: [
+                    { action: 'Place Craft Paper', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Place craft paper in the air to reach balloons.',
+                    'Placing craft paper causes the player character to jump.',
+                    'The gauge decreases over time and with the placement of craft paper; the number of balloons obtained before the gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '30': {
+                title: 'Snowman',
+                description: 'A game where you make a snowman by rolling snowballs and collecting materials.',
+                theme: 'Snowman',
+                controls: [
+                    { action: 'Pick Up/Talk', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Take Photo', btn: 'RB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Roll snowballs to complete the body and head of the snowman first.',
+                    'Obtain two branches, five buttons, one cone, and one hat to build the snowman.',
+                    'Animals provide hints for the locations of the snowman items, but the text is only available in Japanese.',
+                    'Branches are buried in the ground; exclamation marks appear where they are buried.',
+                    'Buttons are on withered trees, the cone is at the base of the snow mountain, and the hat is inside a kamakura (snow hut).',
+                    'Clear the game by taking a group photo once the snowman is complete.',
+                    'You can move the animals\' positions by pushing them when taking the group photo.'
+                ]
+            },
+            '31': {
+                title: 'Multilingual Service',
+                description: 'A game where you serve products matching orders placed in various languages.',
+                theme: 'Multilingual Support',
+                controls: [
+                    { action: 'Serve Product', btn: 'B Button' },
+                    { action: 'Switch Menu', btn: 'Left/Right Keys' },
+                    { action: 'Increase/Decrease Quantity', btn: 'Up/Down Keys' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Serve the correct dishes and quantities according to customers\' orders.',
+                    'Orders are placed in three languages: Japanese, English, and German.',
+                    'The business hours gauge decreases over time; serving the wrong product causes a significant decrease.',
+                    'The total number of successful sales before the gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '32': {
+                title: 'Focusing on the Good',
+                description: 'A game where you write and share good points on sticky notes.',
+                theme: 'Sharing',
+                controls: [
+                    { action: 'Write on Sticky Note', btn: 'X Button' },
+                    { action: 'Switch Character', btn: 'LB/RB Button' },
+                    { action: 'Switch Sticky Note', btn: 'RT/LT Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Write points you want to share on sticky notes and post them on the whiteboard.',
+                    'Boys and girls use different colored sticky notes.',
+                    'You can write up to 10 notes, and the positions of the notes can be moved.',
+                    'You can also overwrite the content of existing sticky notes.'
+                ]
+            },
+            '33': {
+                title: 'Fantasy Dept',
+                description: 'A game where you display merchandise in a fantasy department store.',
+                theme: 'Merchandise Display',
+                controls: [
+                    { action: 'Talk', btn: 'B Button' },
+                    { action: 'Switch Product', btn: 'RB/LB Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'You can display merchandise on shelves in 6 shops within the department store.',
+                    'Includes a weapon shop, armor shops for body and arms, a clothing shop, a tool shop, and a magic shop.'
+                ]
+            },
+            '34': {
+                title: 'Quick Draw Water Gun',
+                description: 'A quick-draw game using water guns.',
+                theme: 'Quick Draw',
+                controls: [
+                    { action: 'Shoot', btn: 'X Button' },
+                    { action: 'Switch Character', btn: 'Left/Right Keys' },
+                    { action: 'Turn Around', btn: 'Right Key' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'When an exclamation mark appears, perform the action to turn right to face the opponent before shooting.',
+                    'If you shoot before turning around or shoot too late, you will be hit and lose HP.',
+                    'The number of hits before HP reaches 0 is recorded as a high score.',
+                    'Characters can be switched, but there are no performance differences.'
+                ]
+            },
+            '35': {
+                title: 'Invaders',
+                description: 'A game where you place Peanut-kun on the oni\'s path to prevent their invasion.',
+                theme: 'Setsubun',
+                controls: [
+                    { action: 'Place Peanut-kun', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Predict the movement route of the oni and place Peanut-kun in advance to repel them.',
+                    'Movement patterns and HP vary depending on the type of oni.',
+                    'After placement, Peanut-kun will automatically disappear if not picked up by an oni within a certain time.',
+                    'The gauge decreases over time, when placing Peanut-kun, or when an oni enters the house; the number of oni repelled before the gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '36': {
+                title: 'Japan Map',
+                description: 'A game where you create a 3D map of Japan.',
+                theme: 'Map Creation',
+                controls: [
+                    { action: 'Place Item', btn: 'B Button' },
+                    { action: 'Switch Item', btn: 'RB + Up/Down Keys' },
+                    { action: 'Remove Item', btn: 'A Button while touching item' },
+                    { action: 'Change Direction', btn: 'RB + Left/Right Keys' },
+                    { action: 'Change Name', btn: 'Y Button while touching item' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Select items to place from the item switch and arrange them on the map.',
+                    'Up to 50 items can be placed.',
+                    'You can name the items you place.',
+                    'The assigned name is displayed when you touch the item.'
+                ]
+            },
+            '37': {
+                title: 'Robot Battle',
+                description: 'A turn-based robot command battle game.',
+                theme: 'Robot',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Switch Robot', btn: 'Left/Right Keys' },
+                    { action: 'Battle Start', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'A player\'s attack turn begins after selecting commands for 5 squares.',
+                    'Damage is dealt when the enemy moves into the command\'s attack area.',
+                    'The Punch command attacks before the enemy moves but deals less damage.',
+                    'If the enemy\'s HP reaches 0 after both player and enemy attacks end, you earn a score and the next battle begins.',
+                    'If both player and enemy HP reach 0, no score is earned and the next battle begins.',
+                    'The number of successful defenses before the player\'s HP reaches 0 is recorded as a high score.'
+                ]
+            },
+            '38': {
+                title: 'Gift',
+                description: 'A game where you receive presents from visitors on anniversaries.',
+                theme: 'Gift',
+                controls: [
+                    { action: 'Open Door', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Open the door and receive presents when the chime rings.',
+                    'Presents can be received on three anniversaries: Valentine\'s Day, Birthday, and Christmas.',
+                    'The number of presents you receive on these three anniversaries depends on luck.'
+                ]
+            },
+            '39': {
+                title: 'Princess in the Box',
+                description: 'A puzzle game where you move blocks to let the princess out.',
+                theme: 'Puzzle',
+                controls: [
+                    { action: 'Select/Finish Move', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Reset Layout', btn: 'X Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Move blocks to get the block with the princess out.',
+                    'A counter increases as you move blocks; a high score is recorded if the number of moves taken to release the princess is fewer than before.',
+                    'Layout can be restarted with the reset button.'
+                ]
+            },
+            '40': {
+                title: 'Wine Sommelier',
+                description: 'A game where you serve the correct wines to increase your sommelier rank.',
+                theme: 'Wine',
+                controls: [
+                    { action: 'Select Wine', btn: 'B Button' },
+                    { action: 'Return Wine', btn: 'A Button' },
+                    { action: 'Pour Wine', btn: 'X Button Long Press' },
+                    { action: 'Check Bouchonné', btn: 'Y Button Long Press' },
+                    { action: 'Replace Wine', btn: 'RB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Serve the appropriate wine according to the order type and vintage.',
+                    'Vintages are arranged from the left: 2-year-old, 5-year-old, and 10-year-old.',
+                    'Your sommelier rank increases if you correctly serve wine and satisfy the customers.',
+                    'The gauge decreases during service, and the sommelier rank at the point it reaches 0 is recorded as a high score.',
+                    'Serving wine with a strong cork smell significantly reduces the gauge, so check for bouchonné and replace the wine if it is bad before serving.'
+                ]
+            },
+            '41': {
+                title: 'Balloon Animals',
+                description: 'A game where you save animals that are floating away tied to balloons.',
+                theme: 'Balloon',
+                controls: [
+                    { action: 'Rescue', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Rescue animals that are being carried into the sky by balloons.',
+                    'The gauge decreases if you fail to rescue an animal and they float away.',
+                    'The number of animals rescued before the gauge reaches 0 is recorded as a high score.'
+                ]
+            },
+            '42': {
+                title: 'Rescue Boat',
+                description: 'A game where you find and rescue survivors drifting at sea.',
+                theme: 'Rescue',
+                controls: [
+                    { action: 'Rescue', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Switch areas to search for survivors drifting at sea.',
+                    'The fuel gauge decreases during the search; once it runs out, the number of rescues is recorded as a high score.'
+                ]
+            },
+            '43': {
+                title: 'Snowball Fight',
+                description: 'A game where you have a snowball fight with randomly appearing animals.',
+                theme: 'Snowball Fight',
+                controls: [
+                    { action: 'Throw Snowball', btn: 'B Button' },
+                    { action: 'Make Snowball', btn: 'X Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Earn scores by hitting enemy characters that appear in random locations with snowballs.',
+                    'Being hit by an enemy\'s snowball reduces HP; the score obtained before HP reaches 0 is recorded as a high score.',
+                    'You must make and stock snowballs in advance to throw them.',
+                    'Even if it looks like a snowball hit an enemy, they might avoid it and not fall.'
+                ]
+            },
+            '44': {
+                title: 'Rabbit Jump',
+                description: 'A game where you use custom-placed platforms to reach carrot boxes in the sky.',
+                theme: 'Platform Placement',
+                controls: [
+                    { action: 'Get Carrot', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Switch Mode', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Freely place platforms in edit mode to create a path to the carrot box.',
+                    'You can freely switch between edit mode and action mode at any time.',
+                    'The number of remaining carrots when you get the carrot box is recorded as a high score.',
+                    'You start with 100 carrots.',
+                    'Placing or removing platforms consumes carrots.',
+                    'Picking up carrots floating in the air gives you 10 carrots.'
+                ]
+            },
+            '45': {
+                title: 'Pioneer Village',
+                description: 'A game where you collect wood and build houses to develop a village.',
+                theme: 'Pioneering',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Time Leap', btn: 'Y Button' },
+                    { action: 'Cut Tree/Demolish/Build', btn: 'X Button' },
+                    { action: 'Switch Mode', btn: 'START Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'End Game', btn: 'Back Button' }
+                ],
+                systems: [
+                    'You can cut down standing trees.',
+                    'Advancing time allows the cut trees to regrow.',
+                    'In building mode, you can consume 10 pieces of wood to build a house in any location.'
+                ]
+            },
+            '46': {
+                title: 'Hina Festival',
+                description: 'A game based on the traditional Japanese Hina Doll Festival where you arrange dolls on a display stand.',
+                theme: 'Hina Matsuri',
+                controls: [
+                    { action: 'Place Item', btn: 'B Button' },
+                    { action: 'Switch Item', btn: 'LB + Left/Right Keys' },
+                    { action: 'Remove Item', btn: 'X Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Switch Camera Mode', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Freely place Hina dolls in any location to decorate the display.'
+                ]
+            },
+            '47': {
+                title: 'Creator Institute',
+                description: 'A game where you observe the creativity of students at a training institute.',
+                theme: 'School',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Observe Creativity/Release', btn: 'X Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Observe the creativity that students are learning.',
+                    'Experience expressions through systems built during game production.',
+                    'Departments in the Creator Training Institute: Gravity, Planting, Weather, Flight, Spacetime, Hydraulic, Teleportation, and Terrain.'
+                ]
+            },
+            '48': {
+                title: 'Dragon Slayer',
+                description: 'A side-scrolling action battle game where you slay dragons.',
+                theme: 'Dragon Slaying',
+                controls: [
+                    { action: 'Attack', btn: 'X Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Defeat the dragon by attacking one of three parts: head, body, or front legs, while avoiding its attacks.',
+                    'Fire attacks occur after a certain time at locations marked with light.',
+                    'Wind attacks are centered on the player\'s position and activate after a certain time.',
+                    'Enemy attack hitboxes remain active until the attack effect disappears.',
+                    'When the ground-splitting attack occurs, rocks will float up; use these rocks to attack the dragon\'s head for massive damage.',
+                    'The attack after hitting 5 times will always be a critical hit; use this critical hit on the dragon\'s head for maximum damage.',
+                    'Defeating the dragon earns you its remaining HP as your slaying score.',
+                    'The total slaying score earned before the player\'s HP reaches 0 is recorded as a high score.'
+                ]
+            },
+            '49': {
+                title: 'Graduation Ceremony',
+                description: 'A game where you receive graduation certificates and input custom messages.',
+                theme: 'Graduation',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Check Received Diploma', btn: 'Y Button' },
+                    { action: 'Close Diploma', btn: 'B Button' },
+                    { action: 'Revert Transformation', btn: 'X Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Text Input', btn: 'Keyboard' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'You can switch to the graduate character in front of the chairs.',
+                    'Switch characters, go up to the stage, state your graduation message, and receive a diploma.',
+                    'The diploma for what you graduated from is recorded for the character who received it; switching back to that character allows you to review the recorded content.',
+                    'You can use it to record your own graduation or play by thinking of graduation messages appropriate for the switched character.',
+                    'There are 25 characters, including the default cat, meaning 25 graduation entries can be recorded.'
+                ]
+            },
+            '50': {
+                title: 'White Day',
+                description: 'A game where you restock shelves and serve customers in a White Day shop.',
+                theme: 'White Day',
+                controls: [
+                    { action: 'Restock', btn: 'X Button Long Press' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Open Shop', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Restock product shelves when inventory decreases.',
+                    'Before the shop opens, a single restock action fills shelves to MAX; after opening, items are restocked one by one at fixed intervals.',
+                    'If you lack the inventory for the amount a customer wants to buy, the gauge decreases by that amount.',
+                    'The total number of products purchased by customers before the gauge runs out is recorded as a high score.'
+                ]
+            },
             '51': { title: 'Gold Mine Maze', description: 'A game where you mine for gold while avoiding explosive mining spots.', theme: 'Gold Mine Maze' },
             '52': { title: 'Malnutrition Dept', description: 'A game where you provide missing nutrients to patients in a diagnostic room.', theme: 'Malnutrition Dept' },
             '53': { title: 'Fly High Shimaenaga', description: 'A game where you eat food to gain power and fly as high as possible.', theme: 'Fly High Shimaenaga' },
