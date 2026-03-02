@@ -2330,6 +2330,46 @@
             `
         };
 
+        const titleMap = {
+            "302": "くろろ水族館",
+            "303": "神経衰弱",
+            "304": "素潜り漁",
+            "305": "海底迷路",
+            "306": "海賊船の宝",
+            "307": "海底レース",
+            "308": "綱引き大会",
+            "309": "ゴブリン退治",
+            "310": "時計ランド",
+            "311": "ハードル走",
+            "312": "AnotherX展",
+            "313": "侵略防衛",
+            "314": "早撃ちウォーターガン",
+            "315": "時計生産ライン",
+            "316": "双子を探せ",
+            "317": "地雷設置バトル",
+            "318": "イルカジャンピング",
+            "319": "シーフードプラッター",
+            "320": "だるまさんがころんだ",
+            "321": "バトルシップ",
+            "322": "船釣り",
+            "323": "料理配膳",
+            "324": "雪合戦",
+            "325": "カニとクジラ",
+            "326": "レスキューフィッシュ",
+            "327": "体内時計",
+            "328": "玉入れ",
+            "329": "海賊船のナワバリ",
+            "330": "日本語召喚訓練",
+            "331": "砂漠の探し物",
+            "332": "サイン会",
+            "333": "イルカVSサメ",
+            "334": "和食配達",
+            "335": "フルーティスト",
+            "336": "海底のお見合い",
+            "337": "集合写真",
+            "338": "和食ビュッフェ"
+        };
+
         // --- 翻訳データ ---
         const actionTranslations = {
             "決定": "Confirm",
@@ -2863,7 +2903,12 @@
             const gameContent = document.getElementById('game-content');
 
             if (gameId && kurokuroGameData[gameId]) {
-                const rawContent = kurokuroGameData[gameId];
+                let rawContent = kurokuroGameData[gameId];
+                // タイトル日本語化 (日本語選択時)
+                if (currentLang === 'ja' && titleMap[gameId]) {
+                    rawContent = rawContent.replace(/<h1>.*?<\/h1>/, `<h1>${titleMap[gameId]}</h1>`);
+                }
+
                 if (currentLang === 'en') {
                     const trans = kurokuroGameTranslationInfo[gameId];
                     const parser = new DOMParser();
