@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
     <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         .library-header {
@@ -29,21 +31,26 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 30%);
             transform: rotate(0deg);
             animation: rotate 20s linear infinite;
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .library-header h1 {
             margin: 0;
             font-size: 3rem;
             font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 1;
         }
@@ -67,7 +74,7 @@
         .web-card {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -75,7 +82,7 @@
 
         .web-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
         }
 
         .web-thumbnail {
@@ -138,13 +145,13 @@
             .library-header h1 {
                 font-size: 2rem;
             }
-            
+
             .web-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
         }
-        
+
         @media (max-width: 480px) {
             .web-grid {
                 grid-template-columns: 1fr;
@@ -153,13 +160,14 @@
         }
     </style>
 </head>
+
 <body>
     <script src="../../header.js"></script>
-    
+
     <header class="library-header">
         <h1>🌐 Web</h1>
     </header>
-    
+
     <div class="container">
         <div class="web-grid">
             <div class="web-card">
@@ -171,7 +179,8 @@
                 </div>
             </div>
             <div class="web-card">
-                <img src="../../source/web/Japanese Travel Etiquette.png" alt="Japanese Travel Etiquette" class="web-thumbnail">
+                <img src="../../source/web/Japanese Travel Etiquette.png" alt="Japanese Travel Etiquette"
+                    class="web-thumbnail">
                 <div class="web-card-content">
                     <h3>Japanese Travel Etiquette</h3>
                     <p>日本観光マナーガイド</p>
@@ -184,19 +193,19 @@
     <footer>
         <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
     </footer>
-    
+
     <script>
         // カード全体をクリック可能にする
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const cards = document.querySelectorAll('.web-card');
-            
+
             cards.forEach(card => {
-                card.addEventListener('click', function(e) {
+                card.addEventListener('click', function (e) {
                     // リンク自体をクリックした場合は何もしない（重複を避ける）
                     if (e.target.tagName === 'A') {
                         return;
                     }
-                    
+
                     // カード内のリンクを取得してクリック
                     const link = this.querySelector('a');
                     if (link) {
@@ -204,7 +213,31 @@
                     }
                 });
             });
+
+            // 多言語化対応
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+            if (currentLang === 'en') {
+                const translations = [
+                    {
+                        h3: 'Kami-Furano',
+                        p: 'A site introducing Kami-Furano.'
+                    },
+                    {
+                        h3: 'Japanese Travel Etiquette',
+                        p: 'Guide to Japanese travel etiquette.'
+                    }
+                ];
+
+                const cards = document.querySelectorAll('.web-card');
+                cards.forEach((card, index) => {
+                    if (translations[index]) {
+                        card.querySelector('h3').textContent = translations[index].h3;
+                        card.querySelector('p').textContent = translations[index].p;
+                    }
+                });
+            }
         });
     </script>
 </body>
+
 </html>

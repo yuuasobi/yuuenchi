@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D model | ゆうえんち</title>
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yuure.github.io/yuuenchi/contents/3Dmodel/3Dmodel.html">
     <meta property="og:title" content="3D Model | ゆうえんち">
     <meta property="og:description" content="サイコロ、スター、山、リング、円柱、ハート、風船、茶碗、看板、スピーカー、雪だるまなど、様々な3Dモデルをインタラクティブに体験できます。">
     <meta property="og:image" content="https://yuure.github.io/yuuenchi/source/category_image/3Dmodel.png">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://yuure.github.io/yuuenchi/contents/3Dmodel/3Dmodel.html">
     <meta property="twitter:title" content="3D Model | ゆうえんち">
-    <meta property="twitter:description" content="サイコロ、スター、山、リング、円柱、ハート、風船、茶碗、看板、スピーカー、雪だるまなど、様々な3Dモデルをインタラクティブに体験できます。">
+    <meta property="twitter:description"
+        content="サイコロ、スター、山、リング、円柱、ハート、風船、茶碗、看板、スピーカー、雪だるまなど、様々な3Dモデルをインタラクティブに体験できます。">
     <meta property="twitter:image" content="https://yuure.github.io/yuuenchi/source/category_image/3Dmodel.png">
-    
+
     <link rel="icon" type="image/png" href="../../source/観覧車ファビコン.png">
     <link rel="shortcut icon" type="image/png" href="../../source/観覧車ファビコン.png">
     <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="3Dmodel.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -34,13 +37,14 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 </head>
+
 <body>
     <script src="../../header.js"></script>
-    
+
     <header class="library-header">
         <h1>🧊 3D model 🧊</h1>
     </header>
-    
+
     <div class="container">
         <div class="model-grid">
             <div class="model-card" data-model="../../source/3Dmodel/タマゴ.glb" data-title="タマゴ">
@@ -133,7 +137,7 @@
         // ライブラリの読み込み確認とイベント設定
         function initializeViewer() {
             console.log('Initializing viewer...');
-            
+
             // ライブラリの読み込み確認
             if (typeof THREE === 'undefined') {
                 console.error('Three.js not loaded');
@@ -142,7 +146,7 @@
             } else {
                 console.log('Three.js loaded successfully');
             }
-            
+
             if (typeof THREE.GLTFLoader === 'undefined') {
                 console.error('GLTFLoader not loaded');
                 setTimeout(initializeViewer, 100); // 100ms後に再試行
@@ -150,7 +154,7 @@
             } else {
                 console.log('GLTFLoader loaded successfully');
             }
-            
+
             if (typeof THREE.OrbitControls === 'undefined') {
                 console.error('OrbitControls not loaded');
                 setTimeout(initializeViewer, 100); // 100ms後に再試行
@@ -158,17 +162,65 @@
             } else {
                 console.log('OrbitControls loaded successfully');
             }
-            
+
             // すべてのライブラリが読み込まれたらイベントを設定
             const modelCards = document.querySelectorAll('.model-card');
             modelCards.forEach(card => {
-                card.addEventListener('click', function() {
+                card.addEventListener('click', function () {
                     const modelPath = this.getAttribute('data-model');
                     const modelTitle = this.getAttribute('data-title');
                     openModelViewer(modelPath, modelTitle);
                 });
             });
             console.log('Event listeners attached to model cards');
+
+            // 多言語化対応
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+            if (currentLang === 'en') {
+                const modelTranslations = {
+                    'タマゴ': 'Egg',
+                    'スター': 'Star',
+                    '山': 'Mountain',
+                    'リング': 'Ring',
+                    '円柱': 'Cylinder',
+                    'ハート': 'Heart',
+                    '風船': 'Balloon',
+                    '茶碗': 'Rice Bowl',
+                    '看板': 'Signboard',
+                    'スピーカー': 'Speaker',
+                    'サイコロ': 'Dice',
+                    '雪だるま': 'Snowman'
+                };
+
+                const modelCards = document.querySelectorAll('.model-card');
+                modelCards.forEach(card => {
+                    const jaTitle = card.getAttribute('data-title');
+                    if (modelTranslations[jaTitle]) {
+                        const enTitle = modelTranslations[jaTitle];
+                        card.setAttribute('data-title', enTitle);
+                        const titleEl = card.querySelector('.model-title');
+                        if (titleEl) titleEl.textContent = enTitle;
+                        const imgEl = card.querySelector('img');
+                        if (imgEl) imgEl.alt = enTitle;
+                    }
+                });
+
+                // モーダル内のデフォルトテキスト
+                const viewerHeader = document.querySelector('.model-viewer-header h2');
+                if (viewerHeader) viewerHeader.textContent = '3D Model Viewer';
+
+                const loadingMsg = document.getElementById('loadingMessage');
+                if (loadingMsg) {
+                    loadingMsg.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading 3D Model...';
+                }
+
+                const resetBtn = document.querySelector('button[onclick="resetCamera()"]');
+                if (resetBtn) resetBtn.innerHTML = '<i class="fas fa-home"></i> Reset';
+
+                // 自動回転ボタンの初期テキスト（openModelViewer内でも上書きされるが念のため）
+                const autoRotateBtn = document.getElementById('autoRotateBtn');
+                if (autoRotateBtn) autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Auto Rotate';
+            }
         }
 
         // DOMContentLoadedとwindow.onloadの両方で初期化を試行
@@ -186,34 +238,37 @@
             console.log('Opening model viewer for:', modelPath, title);
             document.getElementById('modelTitle').textContent = title;
             document.getElementById('modelViewer').style.display = 'flex';
-            
+
             const loadingMessage = document.getElementById('loadingMessage');
             if (loadingMessage) {
                 loadingMessage.style.display = 'block';
             }
-            
+
             // Three.jsが読み込まれているかチェック
             if (typeof THREE === 'undefined') {
                 console.error('Three.js is not loaded');
                 if (loadingMessage) {
-                    loadingMessage.innerHTML = 
+                    loadingMessage.innerHTML =
                         '<i class="fas fa-exclamation-triangle"></i> Three.jsライブラリの読み込みに失敗しました';
                 }
                 return;
             }
-            
+
             // 完全にクリーンアップ
             cleanupThreeJS();
-            
+
             initThreeJS();
             loadModel(addCacheBuster(modelPath));
-            
+
             // 自動回転ボタンの初期状態を設定
             setTimeout(() => {
+                const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
                 const autoRotateBtn = document.getElementById('autoRotateBtn');
                 if (autoRotateBtn) {
                     autoRotateBtn.classList.add('active');
-                    autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> 自動回転ON';
+                    autoRotateBtn.innerHTML = currentLang === 'en'
+                        ? '<i class="fas fa-sync-alt fa-spin"></i> Auto Rotate ON'
+                        : '<i class="fas fa-sync-alt fa-spin"></i> 自動回転ON';
                 }
             }, 100);
         }
@@ -227,13 +282,13 @@
         // Three.jsの完全クリーンアップ
         function cleanupThreeJS() {
             console.log('Cleaning up Three.js...');
-            
+
             // アニメーションループを停止
             if (animationId) {
                 cancelAnimationFrame(animationId);
                 animationId = null;
             }
-            
+
             // モデルのクリーンアップ
             if (model) {
                 model.traverse((child) => {
@@ -250,7 +305,7 @@
                 });
                 model = null;
             }
-            
+
             // シーンのクリーンアップ
             if (scene) {
                 scene.traverse((child) => {
@@ -268,22 +323,22 @@
                 scene.clear();
                 scene = null;
             }
-            
+
             // コントロールのクリーンアップ
             if (controls) {
                 controls.dispose();
                 controls = null;
             }
-            
+
             // レンダラーのクリーンアップ
             if (renderer) {
                 renderer.dispose();
                 renderer = null;
             }
-            
+
             // カメラのクリーンアップ
             camera = null;
-            
+
             console.log('Three.js cleanup completed');
         }
 
@@ -291,23 +346,23 @@
         function initThreeJS() {
             console.log('Initializing Three.js...');
             const container = document.getElementById('modelContainer');
-            
+
             try {
                 // コンテナを完全にクリア
                 container.innerHTML = '';
-                
+
                 // 既存のレンダラーをクリア
                 if (renderer) {
                     renderer.dispose();
                     renderer = null;
                 }
-                
+
                 // すべての変数をリセット
                 scene = null;
                 camera = null;
                 controls = null;
                 model = null;
-                
+
                 // シーンの作成
                 scene = new THREE.Scene();
                 scene.background = new THREE.Color(0xf0f0f0);
@@ -375,12 +430,12 @@
 
                 // ウィンドウリサイズ対応
                 window.addEventListener('resize', onWindowResize);
-                
+
             } catch (error) {
                 console.error('Error initializing Three.js:', error);
                 const loadingMessage = document.getElementById('loadingMessage');
                 if (loadingMessage) {
-                    loadingMessage.innerHTML = 
+                    loadingMessage.innerHTML =
                         '<i class="fas fa-exclamation-triangle"></i> Three.jsの初期化に失敗しました: ' + error.message;
                 }
             }
@@ -389,22 +444,22 @@
         // モデルの読み込み
         function loadModel(modelPath) {
             console.log('Loading model from:', modelPath);
-            
+
             if (typeof THREE.GLTFLoader === 'undefined') {
                 console.error('GLTFLoader not available');
-                document.getElementById('loadingMessage').innerHTML = 
+                document.getElementById('loadingMessage').innerHTML =
                     '<i class="fas fa-exclamation-triangle"></i> GLTFLoaderライブラリの読み込みに失敗しました';
                 return;
             }
-            
+
             const loader = new THREE.GLTFLoader();
             console.log('GLTFLoader created');
-            
+
             loader.load(
                 modelPath,
-                function(gltf) {
+                function (gltf) {
                     console.log('Model loaded successfully:', gltf);
-                    
+
                     // 既存のモデルを削除
                     if (model) {
                         scene.remove(model);
@@ -421,9 +476,9 @@
                             }
                         });
                     }
-                    
+
                     model = gltf.scene;
-                    
+
                     // モデルのサイズを調整
                     const box = new THREE.Box3().setFromObject(model);
                     const size = box.getSize(new THREE.Vector3());
@@ -442,7 +497,7 @@
                         if (child.isMesh) {
                             child.castShadow = false;
                             child.receiveShadow = false;
-                            
+
                             // マテリアルの設定を調整して影を除去
                             if (child.material) {
                                 if (Array.isArray(child.material)) {
@@ -457,32 +512,32 @@
                             }
                         }
                     });
-                    
+
                     scene.add(model);
                     console.log('Model added to scene');
-                    
+
                     // loadingMessageの存在確認
                     const loadingMessage = document.getElementById('loadingMessage');
                     if (loadingMessage) {
                         loadingMessage.style.display = 'none';
                     }
                 },
-                function(xhr) {
+                function (xhr) {
                     const progress = (xhr.loaded / xhr.total * 100);
                     console.log(progress + '% loaded');
-                    
+
                     const loadingMessage = document.getElementById('loadingMessage');
                     if (loadingMessage) {
-                        loadingMessage.innerHTML = 
+                        loadingMessage.innerHTML =
                             '<i class="fas fa-spinner fa-spin"></i> 3Dモデルを読み込み中... ' + Math.round(progress) + '%';
                     }
                 },
-                function(error) {
+                function (error) {
                     console.error('モデルの読み込みに失敗しました:', error);
-                    
+
                     const loadingMessage = document.getElementById('loadingMessage');
                     if (loadingMessage) {
-                        loadingMessage.innerHTML = 
+                        loadingMessage.innerHTML =
                             '<i class="fas fa-exclamation-triangle"></i> モデルの読み込みに失敗しました<br><small>' + error.message + '</small>';
                     }
                 }
@@ -508,27 +563,33 @@
         function toggleAutoRotate() {
             autoRotate = !autoRotate;
             const autoRotateBtn = document.getElementById('autoRotateBtn');
-            
+
             if (controls) {
                 controls.autoRotate = autoRotate;
             }
-            
+
             // ボタンの状態を視覚的に更新
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
             if (autoRotate) {
                 autoRotateBtn.classList.add('active');
-                autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> 自動回転ON';
+                autoRotateBtn.innerHTML = currentLang === 'en'
+                    ? '<i class="fas fa-sync-alt fa-spin"></i> Auto Rotate ON'
+                    : '<i class="fas fa-sync-alt fa-spin"></i> 自動回転ON';
             } else {
                 autoRotateBtn.classList.remove('active');
-                autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt"></i> 自動回転OFF';
+                autoRotateBtn.innerHTML = currentLang === 'en'
+                    ? '<i class="fas fa-sync-alt"></i> Auto Rotate OFF'
+                    : '<i class="fas fa-sync-alt"></i> 自動回転OFF';
             }
         }
 
         // モーダル外クリックで閉じる
-        document.getElementById('modelViewer').addEventListener('click', function(e) {
+        document.getElementById('modelViewer').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeModelViewer();
             }
         });
     </script>
 </body>
-</html> 
+
+</html>
