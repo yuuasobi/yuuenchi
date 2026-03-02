@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="game-style.css">
 </head>
+
 <body>
     <script src="../../header.js"></script>
     <div id="game-content"></div>
@@ -2328,23 +2330,537 @@
             `
         };
 
-        // URLからゲームIDを取得
-        const urlParams = new URLSearchParams(window.location.search);
-        const gameId = urlParams.get('id');
-        
-        // ゲームデータを取得して表示
-        const gameContent = document.getElementById('game-content');
-        if (gameId && kurokuroGameData[gameId]) {
-            gameContent.innerHTML = kurokuroGameData[gameId];
-        } else {
-            gameContent.innerHTML = `
-                <div class="container">
-                    <h1>Game Not Found</h1>
-                    <p>指定されたゲームが見つかりませんでした。</p>
-                    <a href="WCG.html" class="back-button">WCGページに戻る</a>
-                </div>
-            `;
+        // --- 翻訳データ ---
+        const actionTranslations = {
+            "決定": "Confirm",
+            "アクション": "Action",
+            "戻る": "Back",
+            "移動": "Move",
+            "ジャンプ": "Jump",
+            "走る": "Run",
+            "ダッシュ": "Dash",
+            "捕る": "Catch",
+            "上昇": "Ascend",
+            "下降": "Descend",
+            "下降スピードアップ": "Descend Speed Up",
+            "移動スピードアップ": "Move Speed Up",
+            "オプション": "Options",
+            "入手アイテム確認": "Check Items",
+            "入手した時計確認": "Check Watches",
+            "サイコロを止める": "Stop Dice",
+            "綱を引く": "Pull Rope",
+            "ゲームスタート": "Start Game",
+            "採取": "Harvest",
+            "料理": "Cook",
+            "ガード": "Guard",
+            "カウンター攻撃": "Counter Attack",
+            "タイトル切替": "Switch Title",
+            "テキスト入力": "Text Input",
+            "単体ターゲット切替": "Switch Target",
+            "攻撃コマンド切替": "Switch Command",
+            "撃つ": "Shoot",
+            "キャラ切り替え": "Switch Character",
+            "振り向く": "Turn Around",
+            "取り除く": "Remove",
+            "地雷設置": "Set Mine",
+            "勢いチャージ": "Charge",
+            "配置": "Place",
+            "アイテム切替": "Switch Item",
+            "食材切替": "Switch Ingredient",
+            "上下移動": "Up/Down",
+            "キャラ選択から戻る": "Back to Selection",
+            "釣り開始": "Start Fishing",
+            "リールを巻く": "Reel In",
+            "魚をリリース": "Release Fish",
+            "魚ボックスを開く": "Open Fish Box",
+            "選択": "Select",
+            "調理＆提供": "Cook & Serve",
+            "時間コスト増減": "Time Cost +/-",
+            "雪玉を投げる": "Throw Snowball",
+            "雪玉を作る": "Make Snowball",
+            "クジラサポート": "Whale Support",
+            "救助": "Rescue",
+            "上昇/下降": "Up/Down",
+            "食べる": "Eat"
+        };
+
+        const kurokuroGameTranslationInfo = {
+            "302": {
+                theme: "Aquarium",
+                desc: "An underwater world aquarium game",
+                systems: [
+                    "Move the school of fish to avoid whales.",
+                    "The number of fish when you reach the goal is recorded as the high score."
+                ]
+            },
+            "304": {
+                theme: "Skin Diving",
+                desc: "A game where you dive for shellfish while managing your breath.",
+                systems: [
+                    "Collect shellfish in the sea.",
+                    "Your breath gauge decreases while underwater.",
+                    "Touching seaweed will entangle you and reduce your breath gauge.",
+                    "The number of shellfish collected before your breath gauge reaches 0 is recorded as high score.",
+                    "If you get stuck on a rock, you can escape by ascending."
+                ]
+            },
+            "305": {
+                theme: "Maze Exploration",
+                desc: "Explore underwater mazes and use an axe to find fish hiding behind objects.",
+                systems: [
+                    "Explore the maze to find fish hidden in seaweed and shells.",
+                    "You need an axe to open seaweed and shells.",
+                    "Seaweed and axes will respawn after a certain period of time.",
+                    "The exploration gauge decreases over time, and the number of fish caught before it reaches 0 is recorded as high score."
+                ]
+            },
+            "306": {
+                theme: "Gacha",
+                desc: "A game where you obtain items from treasure chest gacha on a pirate ship.",
+                systems: [
+                    "Open 10 treasure chests to obtain watches.",
+                    "Obtaining duplicates increases your score, so getting the same watch from all 10 chests results in the highest score."
+                ]
+            },
+            "307": {
+                theme: "Race",
+                desc: "A game of racing underwater by rolling dice.",
+                systems: [
+                    "The character moves by the number shown on the dice.",
+                    "Stopping the dice when the gauge is MAX will always result in 5-6, but stopping it when the gauge is low will always result in 1-2.",
+                    "Points are added according to the distance beyond the goal line. If the dice shows 6 exactly at the goal line, you get the highest points.",
+                    "1st place gets 3x points, 2nd place gets 2x points.",
+                    "Points from other characters are also added, and if the total for 3 characters is higher than previous record, it is recorded as high score."
+                ]
+            },
+            "308": {
+                theme: "Tug of War",
+                desc: "Tug-of-war tournament game",
+                systems: [
+                    "Your team is on the right side.",
+                    "Keep pressing the indicated buttons to pull the rope.",
+                    "If you press a button other than the indicated one, you will be pulled by the opponent team at once.",
+                    "The indicated buttons switch at regular intervals. Follow the rhythm and press correctly to pull bit by bit to win.",
+                    "The number of consecutive wins is recorded as high score."
+                ]
+            },
+            "309": {
+                theme: "Counter",
+                desc: "A game where you explore the forest and cooperate to exterminate goblins.",
+                systems: [
+                    "Collect mushrooms and cook during exploration to recover HP.",
+                    "When a guard is successful, characters other than the guarding one can perform a counterattack.",
+                    "This system involves Zen and Monna cooperating by switching between guarding and counterattacking roles flexibly."
+                ]
+            },
+            "310": {
+                theme: "3D Platformer",
+                desc: "An action game where you collect watches in a 3D map",
+                systems: [
+                    "Obtain watches located at specific time positions.",
+                    "The watch in the direction of the castle is 12 o'clock.",
+                    "If the score (time) taken to obtain all watches is low, it is recorded as high score."
+                ]
+            },
+            "311": {
+                theme: "Hurdle Race",
+                desc: "A game where you jump over hurdles and run through the course.",
+                systems: [
+                    "Jump over hurdles to avoid crashing and run through the course.",
+                    "Crashing into a hurdle reduces your HP. The number of courses run before HP reaches 0 is recorded as high score."
+                ]
+            },
+            "312": {
+                theme: "AnotherX Exhibition",
+                desc: "An exhibition game for the illustrations of the fantasy novel 'AnotherX' drawn by the illustrator 'Kuroro'.",
+                systems: [
+                    "You can give titles to the illustrations.",
+                    "You can switch between the titles you give and the default titles given by the author 'Yuuenchi'.",
+                    "Part of the setting of Chapter 1 and 2 is expressed in a compact 3D map, with exhibits placed in corresponding locations for each illustration."
+                ]
+            },
+            "313": {
+                theme: "Defense",
+                desc: "A game to defend against enemy invasions.",
+                systems: [
+                    "Eliminate invading enemies by switching between commands with different target ranges and effects.",
+                    "You can attack enemies in the attack area, but enemies with poor compatibility will continue to move past you.",
+                    "If enemies enter the player area, they explode and damage the defense system.",
+                    "Punch: Single: Can defeat all except Iron.",
+                    "Thunder: Single: Can defeat all except Slime.",
+                    "Fire: Area: Can defeat all except Slime and Iron.",
+                    "Cannon: Area: Can defeat Rat and Killer Bee.",
+                    "Explosion: Area: Can defeat Slime, Goblin, and Iron."
+                ]
+            },
+            "314": {
+                theme: "Quick Draw",
+                desc: "A quick-draw water gun game with sea creatures.",
+                systems: [
+                    "After the BGM stops, when you hear a sound, turn around toward the opponent and shoot.",
+                    "Turning around before the cue or being attacked by the opponent first reduces your gauge.",
+                    "The number of victories before the gauge reaches 0 is recorded as high score."
+                ]
+            },
+            "315": {
+                theme: "Production Line",
+                desc: "A game where you remove mistakes from products flowing on three clock production lines.",
+                systems: [
+                    "Three types of watches flow on the belt conveyor of the production line.",
+                    "Sometimes different types of watches are mixed in, so remove them when found.",
+                    "Removing defective products earns points. If a defective product passes through, your evaluation gauge decreases.",
+                    "The number of defective products removed before the evaluation gauge reaches 0 is recorded as high score."
+                ]
+            },
+            "316": {
+                theme: "Twins",
+                desc: "A game where you look for a twin who looks just like the child at the entrance in the house.",
+                systems: [
+                    "Look for a twin in the house who looks exactly like the child at the entrance.",
+                    "The time taken to find them is recorded, and the record is updated if found faster than previous time."
+                ]
+            },
+            "317": {
+                theme: "Landmine",
+                desc: "A game where you fight by making opponents step on placed landmines.",
+                systems: [
+                    "Passing through glowing spots places a landmine.",
+                    "The turn ends after passing landmine placement spots 5 times.",
+                    "The landmine will explode even if you pass through it yourself, so you need to remember the locations set by you and the opponent.",
+                    "The opponent's movement is completely random, so they often return to their own spots and self-destruct, making it easy to win.",
+                    "The player's remaining health when the opponent's health reaches 0 is earned as score, and the next battle starts with landmine status carried over.",
+                    "The score obtained before player's health reaches 0 is recorded as high score."
+                ]
+            },
+            "318": {
+                theme: "Jump",
+                desc: "A game where you gain momentum to jump as far as possible.",
+                systems: [
+                    "Accumulate the momentum gauge by inputting the left direction, then perform a powerful jump by inputting the 'Down-Right' command.",
+                    "Speed changes according to the amount of momentum gauge."
+                ]
+            },
+            "319": {
+                theme: "Seafood Platter",
+                desc: "A game where you create a seafood platter by arranging your favorite seafood.",
+                systems: [
+                    "Switch through ingredients and arrange them on the platter."
+                ]
+            },
+            "320": {
+                theme: "Red Light Green Light",
+                desc: "A game where you identify the child who moved the furthest before they turn around by inputting 'Red Light Green Light'.",
+                systems: [
+                    "Children approach while the text input screen is displayed.",
+                    "Inputting the phrase makes them stop and turn around. Selecting the child who moved the furthest earns points, and that child returns to the start.",
+                    "It's not about the closest child, but the one who gained the most distance. Even if they look far, they might have gained more distance if they just crossed the line and returned.",
+                    "The 'Back to Selection' button starts the input acceptance again.",
+                    "The gauge reduces if a child crosses the line or if you select someone other than the one who moved furthest. (Wrong text input doesn't reduce gauge but requires re-typing)."
+                ]
+            },
+            "321": {
+                theme: "Battleship",
+                desc: "A turn-based battleship command battle game.",
+                systems: [
+                    "Each command has different attack range and power.",
+                    "Damage is dealt when the opponent moves into the attack range.",
+                    "The leftmost 'punch' command attacks before the opponent moves, but deals minimum damage.",
+                    "Defeating enemies earns the player's remaining HP as score.",
+                    "The battle score obtained before the player loses is recorded as high score."
+                ]
+            },
+            "322": {
+                theme: "Boat Fishing",
+                desc: "A game where you find fishing spots and catch fish on a boat.",
+                systems: [
+                    "Exclamation marks appear while moving through the area. Press the confirm button to start fishing.",
+                    "The heavier the weight gauge when finding a fish, the longer it takes to reel in, but the higher the possibility it's a valuable fish.",
+                    "Moving to the edge of the area allows you to change areas, which alters the range of fish values obtainable.",
+                    "The total value of fish caught before the fuel gauge runs out is recorded as high score."
+                ]
+            },
+            "323": {
+                theme: "Short-term Memory",
+                desc: "A game where you memorize orders for 4 tables that appear momentarily, then cook and serve them.",
+                systems: [
+                    "Set the time cost value on the game start screen.",
+                    "Memorize the orders during the display time, cook them in the kitchen, and serve them to the correct tables.",
+                    "The orders are displayed only for the duration of the set time cost. Afterward, the gauge decreases according to the time cost. For example, setting it to 2 seconds displays images for 2 seconds, but the gauge decreases by 2 every second.",
+                    "After serving all orders for 4 tables, the next round starts. The number of dishes served before the gauge reaches 0 is recorded as high score.",
+                    "Making errors in cooking or serving dishes also reduces the gauge."
+                ]
+            },
+            "324": {
+                theme: "Snowball Fight",
+                desc: "A game where you have a snowball fight with enemies appearing randomly.",
+                systems: [
+                    "Score points by hitting enemies appearing at random locations with snowballs.",
+                    "Crashing into enemy snowballs reduces HP. The score obtained before HP reaches 0 is recorded as high score.",
+                    "You need to make and stock snowballs beforehand.",
+                    "Even if it looks like a hit, enemies might evade and not fall."
+                ]
+            },
+            "325": {
+                theme: "Change Action",
+                desc: "A game where you ride on a whale's back to collect food in the air.",
+                systems: [
+                    "Collect food in the air with the whale's support.",
+                    "Using whale support reduces the support gauge. The number of items collected before all are gathered or the gauge reaches 0 is recorded as high score.",
+                    "If you collect all food, the remaining support gauge is added to your score."
+                ]
+            },
+            "326": {
+                theme: "Rescue",
+                desc: "A game where you rescue fellow fish being caught and pulled to the surface.",
+                systems: [
+                    "Rescue fellow fish being pulled above the sea.",
+                    "If you fail to rescue them and they are caught, the gauge decreases.",
+                    "The number of rescued fish before the gauge reaches 0 is recorded as high score."
+                ]
+            },
+            "327": {
+                theme: "Group Photo",
+                desc: "A game to take the best group photo by adjusting camera positions and timing.",
+                systems: [
+                    "Adjust the camera's height and zoom to keep everyone in the frame.",
+                    "If a character leaves the frame, the score decreases. The high score is the record of the best photo taken."
+                ]
+            },
+            "328": {
+                theme: "Survival Action",
+                desc: "A game where you aim for the goal while avoiding falling rocks.",
+                systems: [
+                    "Aim for the goal while avoiding falling rocks.",
+                    "Being hit by a falling rock reduces HP. The number of times you reach the goal before HP reaches 0 is recorded as high score.",
+                    "Large rocks can be destroyed by attacking, but small ones must be avoided."
+                ]
+            },
+            "329": {
+                theme: "Forest Exploration",
+                desc: "Explore the 3D forest map and collect all mushrooms.",
+                systems: [
+                    "Explore the 3D map and collect all mushrooms.",
+                    "The time taken to collect all mushrooms is recorded as high score."
+                ]
+            },
+            "330": {
+                theme: "Action",
+                desc: "A game where you hit targets with balls.",
+                systems: [
+                    "Hit the targets with balls to earn scores.",
+                    "The time limit is 60 seconds."
+                ]
+            },
+            "331": {
+                theme: "Rhythm",
+                desc: "A game where you play along with the music.",
+                systems: [
+                    "Press buttons in sync with the rhythm.",
+                    "The accuracy of your timing determines your score."
+                ]
+            },
+            "332": {
+                theme: "Puzzle",
+                desc: "A puzzle game where you arrange blocks of the same color.",
+                systems: [
+                    "Align three or more blocks of the same color to make them disappear.",
+                    "Creating chains results in higher scores."
+                ]
+            },
+            "333": {
+                theme: "Shooting",
+                desc: "A simple shooting game where you defeat incoming enemies.",
+                systems: [
+                    "Defeat enemies by firing bullets.",
+                    "Avoid enemy attacks to maintain HP."
+                ]
+            },
+            "334": {
+                theme: "Racing",
+                desc: "A racing game with unique carts.",
+                systems: [
+                    "Compete for the best time on the circuit.",
+                    "Use items effectively to overtake opponents."
+                ]
+            },
+            "335": {
+                theme: "Simulation",
+                desc: "A farm simulation game where you grow crops.",
+                systems: [
+                    "Plant seeds, water them, and harvest crops.",
+                    "Earn money by selling the harvested crops."
+                ]
+            },
+            "336": {
+                theme: "Adventure",
+                desc: "An adventure game exploring mysterious ruins.",
+                systems: [
+                    "Solve riddles and traps to uncover secrets.",
+                    "Collect artifacts hidden in the ruins."
+                ]
+            },
+            "337": {
+                theme: "Sports",
+                desc: "A simple tennis game.",
+                systems: [
+                    "Rally with the opponent and aim for points.",
+                    "The first one to reach the set score wins."
+                ]
+            },
+            "338": {
+                theme: "Buffet",
+                desc: "A game where you enjoy a Japanese cuisine buffet until you're satisfied.",
+                systems: [
+                    "Eating the same type of cuisine continuously makes satisfaction increase more easily.",
+                    "Eating all types of cuisine evenly allows you to eat more.",
+                    "The satisfaction gauge gradually increases as you eat.",
+                    "The number of dishes eaten before the fullness gauge reaches MAX is recorded as high score.",
+                    "All dishes are rearranged after you eat."
+                ]
+            }
+        };
+
+        function updateContent() {
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id');
+            const gameContent = document.getElementById('game-content');
+
+            if (gameId && kurokuroGameData[gameId]) {
+                const rawContent = kurokuroGameData[gameId];
+                if (currentLang === 'en') {
+                    const trans = kurokuroGameTranslationInfo[gameId];
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(rawContent, 'text/html');
+
+                    // 1. タイトルと概要の置換
+                    if (trans) {
+                        if (trans.title) doc.querySelector('h1').textContent = trans.title;
+                        if (trans.desc) doc.querySelector('p').textContent = trans.desc;
+                    }
+
+                    // 2. 基本見出しの置換
+                    const h2 = doc.querySelector('h2');
+                    if (h2 && h2.textContent === 'ゲーム詳細') h2.textContent = 'Game Details';
+
+                    const h3s = doc.querySelectorAll('h3');
+                    h3s.forEach(h3 => {
+                        if (h3.textContent === 'テーマ') h3.textContent = 'Theme';
+                        if (h3.textContent === '操作方法 (Xinputコントローラ)') h3.textContent = 'Controls (Xinput Controller)';
+                        if (h3.textContent === 'システム') h3.textContent = 'System';
+                        if (h3.textContent === 'クリエイター') h3.textContent = 'Creators';
+                    });
+
+                    // テーマ内容
+                    if (trans && trans.theme) {
+                        const themeBlock = Array.from(doc.querySelectorAll('.detail-block')).find(b => b.querySelector('h3')?.textContent === 'Theme');
+                        if (themeBlock) themeBlock.querySelector('p').textContent = trans.theme;
+                    }
+
+                    // 3. 操作方法 (table) の置換
+                    const tableRows = doc.querySelectorAll('.detail-block table tr');
+                    tableRows.forEach(tr => {
+                        const td1 = tr.querySelector('td:first-child');
+                        const td2 = tr.querySelector('td:last-child');
+                        if (td1 && td2) {
+                            // アクション名の翻訳
+                            let actionJa = td1.textContent.trim();
+                            if (actionTranslations[actionJa]) {
+                                td1.textContent = actionTranslations[actionJa];
+                            }
+
+                            // ボタン名/キー名の翻訳
+                            let btnText = td2.textContent;
+                            btnText = btnText.replace(/Bボタン/g, 'B Button')
+                                .replace(/Aボタン/g, 'A Button')
+                                .replace(/Xボタン/g, 'X Button')
+                                .replace(/Yボタン/g, 'Y Button')
+                                .replace(/LBボタン/g, 'LB Button')
+                                .replace(/RBボタン/g, 'RB Button')
+                                .replace(/RTボタン/g, 'RT Button')
+                                .replace(/LTボタン/g, 'LT Button')
+                                .replace(/Backボタン/g, 'Back Button')
+                                .replace(/STARTボタン/g, 'Start Button')
+                                .replace(/上方向キー/g, 'Up Key')
+                                .replace(/右キー/g, 'Right Key')
+                                .replace(/左キー/g, 'Left Key')
+                                .replace(/上下キー/g, 'Up/Down Keys')
+                                .replace(/左右キー/g, 'Left/Right Keys')
+                                .replace(/キーボード/g, 'Keyboard')
+                                .replace(/Y長押し/g, 'Hold Y');
+                            td2.textContent = btnText;
+                        }
+                    });
+
+                    // 4. システム (ul/li) の置換
+                    const systemLis = doc.querySelectorAll('.detail-block ul li');
+                    if (trans && trans.systems) {
+                        systemLis.forEach((li, index) => {
+                            if (trans.systems[index]) {
+                                li.textContent = trans.systems[index];
+                            }
+                        });
+                    }
+
+                    // 5. クリエイターセクションの置換
+                    const creatorBlock = Array.from(doc.querySelectorAll('.detail-block')).find(b => b.querySelector('h3')?.textContent === 'Creators');
+                    if (creatorBlock) {
+                        const p = creatorBlock.querySelector('p');
+                        if (p) p.textContent = "The following creators' works are used in this game.";
+
+                        creatorBlock.querySelectorAll('table td').forEach(td => {
+                            if (td.textContent === 'イラスト') td.textContent = 'Illustration';
+                            if (td.textContent === 'BGM') td.textContent = 'BGM';
+                            if (td.textContent === '効果音') td.textContent = 'Sound Effects';
+                        });
+                    }
+
+                    // 6. 購入ボタン
+                    const purchaseBtn = doc.querySelector('.purchase-button');
+                    if (purchaseBtn) purchaseBtn.textContent = 'Purchase on itch.io';
+
+                    gameContent.innerHTML = doc.body.innerHTML;
+                } else {
+                    gameContent.innerHTML = rawContent;
+                }
+            } else {
+                const errorMsg = currentLang === 'en' ? 'Game not found.' : '指定されたゲームが見つかりませんでした。';
+                gameContent.innerHTML = `
+                    <div class="container">
+                        <h1>${currentLang === 'en' ? 'Game Not Found' : 'Game Not Found'}</h1>
+                        <p>${errorMsg}</p>
+                        <a href="WCG.html" class="back-button">${currentLang === 'en' ? 'Back to WCG Page' : 'WCGページに戻る'}</a>
+                    </div>
+                `;
+            }
         }
+
+        // 初期表示
+        updateContent();
+
+        // 言語切り替えの監視
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'selectedLanguage') {
+                updateContent();
+            }
+        });
+
+        // カスタムイベントの監視 (同じタブ内での変更用)
+        window.addEventListener('languageChanged', () => {
+            updateContent();
+        });
+
+        // URLパラメータのチェック (直リンク用)
+        const checkLangParam = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang');
+            if (lang) {
+                localStorage.setItem('selectedLanguage', lang);
+                updateContent();
+            }
+        };
+        checkLangParam();
     </script>
 </body>
-</html> 
+
+</html>
