@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="game-style.css">
 </head>
+
 <body>
     <script src="../../header.js"></script>
     <div id="game-content"></div>
@@ -20,7 +22,7 @@
                     <h1>concentration</h1>
                     <p>動物カードと音声カードのペアを当てるカードゲーム。</p>
                     <div class="youtube-container">
-                        <iframe src="https://www.youtube.com/embed/EXh00-fMWTk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/EXh00-fMWTk?si=bCwIFjS4s2Xp30_U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     
                     <div class="details-section">
@@ -7035,10 +7037,27 @@
             const gameId = urlParams.get('id');
             const gameContent = document.getElementById('game-content');
 
+            // 言語設定の取得
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+
             if (gameId && gameData[gameId]) {
-                gameContent.innerHTML = gameData[gameId];
+                let content = gameData[gameId];
+
+                // 英語設定の場合、見出しなどを翻訳
+                if (currentLang === 'en') {
+                    content = content.replace(/<h2>ゲーム詳細<\/h2>/g, '<h2>Game Details</h2>');
+                    content = content.replace(/<h3>テーマ<\/h3>/g, '<h3>Theme</h3>');
+                    content = content.replace(/<h3>操作方法 \(Xinputコントローラ\)<\/h3>/g, '<h3>Controls (Xinput Controller)</h3>');
+                    content = content.replace(/<h3>システム<\/h3>/g, '<h3>Systems</h3>');
+                    content = content.replace(/<h3>クリエイター<\/h3>/g, '<h3>Creators</h3>');
+                    content = content.replace(/このゲームには以下のクリエイターさんの作品を素材として使用しています。/g, 'The following creators\' works are used in this game.');
+                    content = content.replace(/itch.ioで購入/g, 'Purchase on itch.io');
+                }
+
+                gameContent.innerHTML = content;
             } else {
-                gameContent.innerHTML = '<p>指定されたゲームが見つかりません。</p>';
+                const errorMsg = currentLang === 'en' ? 'Game not found.' : '指定されたゲームが見つかりません。';
+                gameContent.innerHTML = `<p>${errorMsg}</p>`;
             }
 
             // フェードイン
@@ -7046,4 +7065,5 @@
         });
     </script>
 </body>
+
 </html>

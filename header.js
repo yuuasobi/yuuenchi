@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Font Awesomeが既に読み込まれているかチェック
     const existingFontAwesome = document.querySelector('link[href*="font-awesome"]');
     if (!existingFontAwesome) {
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const isPluginsPage = window.location.pathname.includes('/contents/plugins/');
     const isToolsPage = window.location.pathname.includes('/contents/tools/');
     const isWebPage = window.location.pathname.includes('/contents/Web/');
-    
+
     // パス設定（3Dmodel.html用に分岐追加）
     let homeLink, logoPath, gamePath, anotherXPath, musicPath, synthPath, model3DPath, pluginsPath, toolsPath, webPath;
-    
+
     if (isSynthSubPage) {
         // シンセサブページ用のパス
         homeLink = '../../../index.html';
@@ -90,22 +90,126 @@ document.addEventListener('DOMContentLoaded', function() {
         toolsPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isWebPage ? '../tools/tools.html' : isToolsPage ? './tools.html' : './contents/tools/tools.html';
         webPath = isGamePage || isNovelsPage || isMusicPage || isSynthPage || isPluginsPage || isToolsPage ? '../Web/webpage.html' : isWebPage ? './webpage.html' : './contents/Web/webpage.html';
     }
-    header.innerHTML = `
-        <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
-        <div class="header-search">
-            <input type="text" id="header-search-box" placeholder="検索..." class="header-search-input">
-        </div>
-        <div class="header-menu">
-            <a href="${gamePath}" class="menu-button">Game</a>
-            <a href="${anotherXPath}" class="menu-button">Novel</a>
-            <a href="${musicPath}" class="menu-button">Music</a>
-            <a href="${synthPath}" class="menu-button">Synth</a>
-            <a href="${model3DPath}" class="menu-button">3D</a>
-            <a href="${pluginsPath}" class="menu-button">Plugin</a>
-            <a href="${toolsPath}" class="menu-button">Tools</a>
-            <a href="${webPath}" class="menu-button">Web</a>
-        </div>
-    `;
+    // 翻訳データ
+    const translations = {
+        ja: {
+            game: 'Game',
+            novel: 'Novel',
+            music: 'Music',
+            synth: 'Synth',
+            model: '3D',
+            plugin: 'Plugin',
+            tools: 'Tools',
+            web: 'Web',
+            search: '検索...',
+            searchNovel: 'エピソード番号やタイトルで検索...',
+            searchGame: 'ゲームを検索...'
+        },
+        en: {
+            game: 'Games',
+            novel: 'Novels',
+            music: 'Music',
+            synth: 'Synth',
+            model: '3D',
+            plugin: 'Plugins',
+            tools: 'Tools',
+            web: 'Web',
+            search: 'Search...',
+            searchNovel: 'Search by episode number or title...',
+            searchGame: 'Search games...'
+        }
+    };
+
+    // 言語設定を読み込み
+    let currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+
+    // ヘッダー内容を生成する関数
+    function updateHeaderContent() {
+        const lang = translations[currentLang];
+        header.innerHTML = `
+            <a href="${homeLink}" class="site-logo"><i class="fa-solid fa-ferris-wheel"></i> <img src="${logoPath}" alt="ゆうえんち" class="logo-image"></a>
+            <div class="header-search">
+                <input type="text" id="header-search-box" placeholder="${lang.search}" class="header-search-input">
+            </div>
+            <div class="header-menu">
+                <a href="${gamePath}" class="menu-button">${lang.game}</a>
+                <a href="${anotherXPath}" class="menu-button">${lang.novel}</a>
+                <a href="${musicPath}" class="menu-button">${lang.music}</a>
+                <a href="${synthPath}" class="menu-button">${lang.synth}</a>
+                <a href="${model3DPath}" class="menu-button">${lang.model}</a>
+                <a href="${pluginsPath}" class="menu-button">${lang.plugin}</a>
+                <a href="${toolsPath}" class="menu-button">${lang.tools}</a>
+                <a href="${webPath}" class="menu-button">${lang.web}</a>
+                <button id="lang-toggle" class="lang-toggle-button">
+                    <i class="fa-solid fa-globe"></i> ${currentLang.toUpperCase()}
+                </button>
+            </div>
+        `;
+
+        // 言語切り替えボタンのイベント
+        header.querySelector('#lang-toggle').addEventListener('click', function () {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            localStorage.setItem('selectedLanguage', currentLang);
+
+            // ページ全体をリロードして反映（または全文置換）
+            // 今回はシンプルにリロードして全体に反映させる
+            window.location.reload();
+        });
+
+        // ページごとの検索プレースホルダー設定
+        const searchBox = header.querySelector('#header-search-box');
+        if (searchBox) {
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('/contents/novels/AnotherX.html') || currentPath.endsWith('/contents/novels/AnotherX.html')) {
+                searchBox.placeholder = lang.searchNovel;
+                setupNovelSearch(searchBox);
+            } else if (currentPath.includes('/index.html') || currentPath.endsWith('/') || currentPath.endsWith('/index.html')) {
+                searchBox.placeholder = lang.searchGame;
+            }
+        }
+    }
+
+    function setupNovelSearch(searchBox) {
+        const episodeCards = document.querySelectorAll('.episode-card');
+        if (episodeCards.length > 0) {
+            searchBox.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                episodeCards.forEach(card => {
+                    const episode = card.getAttribute('data-episode');
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const episodeText = `episode ${episode}`.toLowerCase();
+
+                    let isVisible = false;
+
+                    if (searchTerm.includes('-')) {
+                        const range = searchTerm.split('-');
+                        if (range.length === 2) {
+                            const start = range[0].trim();
+                            const end = range[1].trim();
+
+                            if (start && end) {
+                                const startNum = parseInt(start);
+                                const endNum = parseInt(end);
+                                const episodeNum = parseInt(episode);
+                                isVisible = !isNaN(startNum) && !isNaN(endNum) && !isNaN(episodeNum) &&
+                                    episodeNum >= startNum && episodeNum <= endNum;
+                            } else if (start && !end) {
+                                const startNum = parseInt(start);
+                                const episodeNum = parseInt(episode);
+                                isVisible = !isNaN(startNum) && !isNaN(episodeNum) && episodeNum >= startNum;
+                            }
+                        }
+                    } else {
+                        isVisible = title.includes(searchTerm) || episodeText.includes(searchTerm) || episode.includes(searchTerm);
+                    }
+
+                    card.style.display = isVisible ? 'block' : 'none';
+                });
+            });
+        }
+    }
+
+    updateHeaderContent();
 
     // bodyの先頭にヘッダーを追加
     document.body.prepend(header);
@@ -115,68 +219,5 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mainContent) {
         const headerHeight = header.offsetHeight;
         mainContent.style.marginTop = `${headerHeight}px`;
-    }
-
-    // ページごとの検索機能を設定
-    const searchBox = document.getElementById('header-search-box');
-    if (searchBox) {
-        // 現在のページに基づいて検索機能を設定
-        const currentPath = window.location.pathname;
-        
-        if (currentPath.includes('/contents/novels/AnotherX.html') || currentPath.endsWith('/contents/novels/AnotherX.html')) {
-            // AnotherXページの場合
-            const episodeCards = document.querySelectorAll('.episode-card');
-            if (episodeCards.length > 0) {
-                searchBox.placeholder = 'エピソード番号やタイトルで検索...';
-                searchBox.addEventListener('input', function() {
-                    const searchTerm = this.value.toLowerCase();
-                    episodeCards.forEach(card => {
-                        const episode = card.getAttribute('data-episode');
-                        const title = card.getAttribute('data-title').toLowerCase();
-                        const episodeText = `episode ${episode}`.toLowerCase();
-                        
-                        let isVisible = false;
-                        
-                        // 範囲検索の処理
-                        if (searchTerm.includes('-')) {
-                            const range = searchTerm.split('-');
-                            if (range.length === 2) {
-                                const start = range[0].trim();
-                                const end = range[1].trim();
-                                
-                                if (start && end) {
-                                    // 5-10のような範囲検索
-                                    const startNum = parseInt(start);
-                                    const endNum = parseInt(end);
-                                    const episodeNum = parseInt(episode);
-                                    isVisible = !isNaN(startNum) && !isNaN(endNum) && !isNaN(episodeNum) && 
-                                              episodeNum >= startNum && episodeNum <= endNum;
-                                } else if (start && !end) {
-                                    // 5-のような開始番号以降の検索
-                                    const startNum = parseInt(start);
-                                    const episodeNum = parseInt(episode);
-                                    isVisible = !isNaN(startNum) && !isNaN(episodeNum) && episodeNum >= startNum;
-                                }
-                            }
-                        } else {
-                            // 通常の検索
-                            isVisible = title.includes(searchTerm) || episodeText.includes(searchTerm) || episode.includes(searchTerm);
-                        }
-                        
-                        card.style.display = isVisible ? 'block' : 'none';
-                    });
-                });
-            }
-        } else if (currentPath.includes('/index.html') || currentPath.endsWith('/') || currentPath.endsWith('/index.html')) {
-            // トップページの場合
-            const gameCards = document.querySelectorAll('.game-card');
-            if (gameCards.length > 0) {
-                searchBox.placeholder = 'ゲームを検索...';
-                // トップページの検索機能はscript.jsで処理されるため、ここでは何もしない
-            }
-        } else {
-            // その他のページの場合
-            searchBox.placeholder = '検索...';
-        }
     }
 });

@@ -1,25 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ゆうえんち</title>
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yuure.github.io/yuuenchi/">
     <meta property="og:title" content="ゆうえんち - Yuuenchi Creative World">
     <meta property="og:description" content="ゲーム、小説、音楽、シンセサイザー、3Dモデルなど、クリエイティブな作品をお楽しみください。">
     <meta property="og:image" content="https://yuure.github.io/yuuenchi/source/観覧車ファビコン.png">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://yuure.github.io/yuuenchi/">
     <meta property="twitter:title" content="ゆうえんち - Yuuenchi Creative World">
     <meta property="twitter:description" content="ゲーム、小説、音楽、シンセサイザー、3Dモデルなど、クリエイティブな作品をお楽しみください。">
     <meta property="twitter:image" content="https://yuure.github.io/yuuenchi/source/観覧車ファビコン.png">
-    
+
     <link rel="icon" type="image/png" href="source/観覧車ファビコン.png">
     <link rel="shortcut icon" type="image/png" href="source/観覧車ファビコン.png">
     <link rel="apple-touch-icon" href="source/観覧車ファビコン.png">
@@ -34,8 +34,10 @@
             position: relative;
             overflow-x: hidden;
         }
+
         /* 雲の装飾 */
-        body::before, body::after {
+        body::before,
+        body::after {
             content: '';
             position: absolute;
             border-radius: 50%;
@@ -43,46 +45,65 @@
             opacity: 0.7;
             z-index: 0;
         }
+
         body::before {
-            width: 180px; height: 90px;
-            top: 40px; left: 60px;
+            width: 180px;
+            height: 90px;
+            top: 40px;
+            left: 60px;
             box-shadow: 90px 20px 0 0 #fff, 180px 0 0 0 #fff;
         }
+
         body::after {
-            width: 140px; height: 70px;
-            bottom: 60px; right: 80px;
+            width: 140px;
+            height: 70px;
+            bottom: 60px;
+            right: 80px;
             box-shadow: 70px 20px 0 0 #fff, 140px 0 0 0 #fff;
         }
+
         /* 旗の装飾 */
         .flags {
             position: absolute;
-            top: 0; left: 50%;
+            top: 0;
+            left: 50%;
             transform: translateX(-50%);
             width: 80vw;
             height: 40px;
             z-index: 1;
             pointer-events: none;
         }
+
         .flags svg {
-            width: 100%; height: 40px;
+            width: 100%;
+            height: 40px;
             display: block;
         }
+
         /* 風船の装飾 */
         .balloon {
             position: absolute;
             z-index: 1;
-            width: 40px; height: 60px;
+            width: 40px;
+            height: 60px;
             opacity: 0.8;
         }
+
         .balloon.balloon1 {
-            left: 5vw; top: 80px;
+            left: 5vw;
+            top: 80px;
         }
+
         .balloon.balloon2 {
-            right: 8vw; top: 180px;
+            right: 8vw;
+            top: 180px;
         }
+
         .balloon.balloon3 {
-            left: 20vw; bottom: 60px;
+            left: 20vw;
+            bottom: 60px;
         }
+
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -93,23 +114,23 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .page-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-        
+
         .page-card {
             background: linear-gradient(135deg, #F8F8FF 0%, #F0F8FF 50%, #F8F8FF 100%);
             border: 3px solid #8B4513;
             border-radius: 12px;
             padding: 2rem;
             text-align: center;
-            box-shadow: 
-                0 8px 25px rgba(0,0,0,0.15),
-                inset 0 2px 8px rgba(255,255,255,0.3);
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.15),
+                inset 0 2px 8px rgba(255, 255, 255, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -120,33 +141,33 @@
             align-items: center;
             cursor: pointer;
         }
-        
-        .page-card > * {
+
+        .page-card>* {
             position: relative;
             z-index: 1;
         }
-        
+
         .page-card:hover {
             transform: translateY(-5px);
-            box-shadow: 
-                0 12px 35px rgba(0,0,0,0.2),
-                inset 0 2px 8px rgba(255,255,255,0.3);
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.2),
+                inset 0 2px 8px rgba(255, 255, 255, 0.3);
         }
-        
+
         .card-icon {
             font-size: 4rem;
             margin-bottom: 1rem;
             display: block;
         }
-        
+
         .page-card h3 {
             color: #4a90e2;
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
             font-weight: 600;
         }
-        
+
         .page-card a {
             display: inline-block;
             background: linear-gradient(45deg, #4a90e2, #5cb85c);
@@ -161,12 +182,12 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .page-card a:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
         }
-        
+
         .main-header {
             background: linear-gradient(90deg, #4a90e2, #5cb85c);
             color: white;
@@ -176,7 +197,7 @@
             overflow: hidden;
             margin-top: 3rem;
         }
-        
+
         .main-header::before {
             content: '';
             position: absolute;
@@ -184,27 +205,32 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 30%);
             transform: rotate(0deg);
             animation: rotate 20s linear infinite;
         }
-        
+
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
-        
+
         .main-header h1 {
             margin: 0;
             font-size: 3rem;
             font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 1;
         }
-        
 
-        
+
+
 
 
         @media (max-width: 768px) {
@@ -212,11 +238,11 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
+
             .welcome-header h1 {
                 font-size: 2.5rem;
             }
-            
+
             .page-card {
                 padding: 1.5rem;
             }
@@ -225,31 +251,32 @@
         }
     </style>
 </head>
+
 <body>
     <script src="header.js"></script>
-    
+
     <div class="flags">
         <!-- 旗装飾は非表示 -->
     </div>
     <div class="balloon balloon1">
         <svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="25" rx="16" ry="22" fill="#ff7675"/>
-            <rect x="17" y="47" width="6" height="8" rx="2" fill="#636e72"/>
-            <path d="M20 55 Q18 58 20 60 Q22 58 20 55" stroke="#636e72" stroke-width="2" fill="none"/>
+            <ellipse cx="20" cy="25" rx="16" ry="22" fill="#ff7675" />
+            <rect x="17" y="47" width="6" height="8" rx="2" fill="#636e72" />
+            <path d="M20 55 Q18 58 20 60 Q22 58 20 55" stroke="#636e72" stroke-width="2" fill="none" />
         </svg>
     </div>
     <div class="balloon balloon2">
         <svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="25" rx="16" ry="22" fill="#74b9ff"/>
-            <rect x="17" y="47" width="6" height="8" rx="2" fill="#636e72"/>
-            <path d="M20 55 Q18 58 20 60 Q22 58 20 55" stroke="#636e72" stroke-width="2" fill="none"/>
+            <ellipse cx="20" cy="25" rx="16" ry="22" fill="#74b9ff" />
+            <rect x="17" y="47" width="6" height="8" rx="2" fill="#636e72" />
+            <path d="M20 55 Q18 58 20 60 Q22 58 20 55" stroke="#636e72" stroke-width="2" fill="none" />
         </svg>
     </div>
     <div class="balloon balloon3">
         <svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="25" rx="16" ry="22" fill="#ffeaa7"/>
-            <rect x="17" y="47" width="6" height="8" rx="2" fill="#636e72"/>
-            <path d="M20 55 Q18 58 20 60 Q22 58 20 55" stroke="#636e72" stroke-width="2" fill="none"/>
+            <ellipse cx="20" cy="25" rx="16" ry="22" fill="#ffeaa7" />
+            <rect x="17" y="47" width="6" height="8" rx="2" fill="#636e72" />
+            <path d="M20 55 Q18 58 20 60 Q22 58 20 55" stroke="#636e72" stroke-width="2" fill="none" />
         </svg>
     </div>
     <header class="main-header">
@@ -259,7 +286,7 @@
             <img src="source/観覧車ファビコン.png" alt="観覧車" style="height:2em;vertical-align:middle;margin-left:0.5em;">
         </h1>
     </header>
-    
+
     <div class="main-content">
         <div class="page-grid">
             <div class="page-card game-card">
@@ -267,43 +294,43 @@
                 <h3>Game</h3>
                 <a href="contents/games/WCG.html">Check</a>
             </div>
-            
+
             <div class="page-card novel-card">
                 <div class="card-icon">📖</div>
                 <h3>Novel</h3>
                 <a href="contents/novels/AnotherX.html">Check</a>
             </div>
-            
+
             <div class="page-card music-card">
                 <div class="card-icon">🎵</div>
                 <h3>Music</h3>
                 <a href="contents/music/Music.html">Check</a>
             </div>
-            
+
             <div class="page-card synth-card">
                 <div class="card-icon">🎹</div>
                 <h3>Synth</h3>
                 <a href="contents/synth/synth.html">Check</a>
             </div>
-            
+
             <div class="page-card model-card">
                 <div class="card-icon">🧊</div>
                 <h3>3D Model</h3>
                 <a href="contents/3Dmodel/3Dmodel.html">Check</a>
             </div>
-            
+
             <div class="page-card plugin-card">
                 <div class="card-icon">🔌</div>
                 <h3>Plugin</h3>
                 <a href="contents/plugins/plugins.html">Check</a>
             </div>
-            
+
             <div class="page-card tools-card">
                 <div class="card-icon">🛠️</div>
                 <h3>Tools</h3>
                 <a href="contents/tools/tools.html">Check</a>
             </div>
-            
+
             <div class="page-card web-card">
                 <div class="card-icon">🌐</div>
                 <h3>Web</h3>
@@ -317,19 +344,19 @@
     <footer>
         <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
     </footer>
-    
+
     <script>
         // カード全体をクリック可能にする
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const cards = document.querySelectorAll('.page-card');
-            
+
             cards.forEach(card => {
-                card.addEventListener('click', function(e) {
+                card.addEventListener('click', function (e) {
                     // リンク自体をクリックした場合は何もしない（重複を避ける）
                     if (e.target.tagName === 'A') {
                         return;
                     }
-                    
+
                     // カード内のリンクを取得してクリック
                     const link = this.querySelector('a');
                     if (link) {
@@ -338,8 +365,34 @@
                 });
             });
 
+            // 多言語化対応
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+            if (currentLang === 'en') {
+                const translations = {
+                    '.game-card h3': 'Games',
+                    '.novel-card h3': 'Novels',
+                    '.music-card h3': 'Music',
+                    '.synth-card h3': 'Synth',
+                    '.model-card h3': '3D Models',
+                    '.plugin-card h3': 'Plugins',
+                    '.tools-card h3': 'Tools',
+                    '.web-card h3': 'Web',
+                    '.page-card a': 'Check', // 全てのCheckボタン
+                    'footer p': '&copy; 2025 Yuuenchi. All Rights Reserved.'
+                };
 
+                for (const [selector, text] of Object.entries(translations)) {
+                    document.querySelectorAll(selector).forEach(el => {
+                        if (selector.includes('footer')) {
+                            el.innerHTML = text;
+                        } else {
+                            el.textContent = text;
+                        }
+                    });
+                }
+            }
         });
     </script>
 </body>
+
 </html>
