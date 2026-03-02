@@ -7209,16 +7209,173 @@
                     'The gauge decreases over time, and the number of rescued cats before the gauge reaches 0 is recorded as high score.'
                 ]
             },
-            '11': { title: 'Combination Quiz', description: 'A quiz game where you answer the correct combination for given themes.', theme: 'Matching Quiz' },
-            '12': { title: 'Game Card Gacha', description: 'A game where you collect game cards from treasure chest gachas.', theme: 'Gacha' },
-            '13': { title: 'Tightrope Walking', description: 'A game where you walk a tightrope to the neighboring building.', theme: 'Tightrope Walking' },
-            '14': { title: 'Eye Test on the Cliff', description: 'A game where you test your eyesight on top of a cliff.', theme: 'Eye Exam' },
-            '15': { title: 'Stopwatch', description: 'A game where you measure time with your internal clock and aim to stop within 1 second of the target.', theme: 'Stopwatch' },
-            '16': { title: 'Absolute Pitch Ability', description: 'A game where you train your sense of pitch by hitting piano keys that match the given sound.', theme: 'Perfect Pitch' },
-            '17': { title: 'Live Stage', description: 'A game where you perform live on stage as an artist.', theme: 'Live Stage' },
-            '18': { title: 'Fishing', description: 'A game where you catch fish while managing stamina and the reel gauge.', theme: 'Fishing' },
-            '19': { title: 'Desert Oasis', description: 'A game where you wander the desert in search of an oasis and seek healing in a harsh environment.', theme: 'Desert Oasis' },
-            '20': { title: 'Crowded Road', description: 'A game where you avoid other people so as not to obstruct their walking.', theme: 'Crowded Road' },
+            '11': {
+                title: 'Combination Quiz',
+                description: 'A quiz game where you answer the correct combination for given themes.',
+                theme: 'Matching Quiz',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Switch Combination', btn: 'RB/LB+Up/Down Keys' },
+                    { action: 'Close Question', btn: 'A Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Set and answer the correct combination for the quiz.',
+                    'In ver2.1, journal entry questions for Japanese account titles are presented.',
+                    'Correct answers switch to the next question.',
+                    'The gauge decreases while the quiz is displayed, and the number of correct answers before the gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '12': {
+                title: 'Game Card Gacha',
+                description: 'A game where you collect game cards from treasure chest gachas.',
+                theme: 'Gacha',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Check Card File', btn: 'Y Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Open 10 treasure chests to obtain game cards.',
+                    'Obtaining duplicates increases your score; getting the same card from all 10 chests results in the highest score.',
+                    'You can check the list of obtained game cards in the card file.'
+                ]
+            },
+            '13': {
+                title: 'Tightrope Walking',
+                description: 'A game where you walk a tightrope to the neighboring building.',
+                theme: 'Tightrope Walking',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Crouch Move', btn: 'RT Button Long Press' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Cross the rope to reach the rooftop of the neighboring building.',
+                    'Time passes once you start crossing the rope; a shorter time to reach the neighboring building results in a high score.',
+                    'Crouching allows you to reduce your movement speed.'
+                ]
+            },
+            '14': {
+                title: 'Eye Test on the Cliff',
+                description: 'A game where you test your eyesight on top of a cliff.',
+                theme: 'Eye Exam',
+                controls: [
+                    { action: 'Answer', btn: 'RB + Up/Down/Left/Right Keys' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Answer the direction of the opening in the "C" 3D model.',
+                    'The size of the "C" decreases as you answer correctly.',
+                    'The number of correct answers before making 3 mistakes is recorded.'
+                ]
+            },
+            '15': {
+                title: 'Stopwatch',
+                description: 'A game where you measure time with your internal clock and aim to stop within 1 second of the target.',
+                theme: 'Stopwatch',
+                controls: [
+                    { action: 'Stop Clock', btn: 'B Button' },
+                    { action: 'Increase/Decrease Time ±1', btn: 'Up/Down Keys' },
+                    { action: 'Increase/Decrease Time ±10', btn: 'Left/Right Keys' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Set the target time and measure it yourself.',
+                    'Stopping the clock within 1 second of the target time records the measured time as a high score.',
+                    'Stopping exactly at 0 doubles your time score, but exceeding 0 results in a score of 0.'
+                ]
+            },
+            '16': {
+                title: 'Absolute Pitch Ability',
+                description: 'A game where you train your sense of pitch by hitting piano keys that match the given sound.',
+                theme: 'Perfect Pitch',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Check Theme', btn: 'RB + B Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Check the theme pitch and hit the piano keys with the same pitch.',
+                    'The number of correct answers before making 5 mistakes is recorded as high score.'
+                ]
+            },
+            '17': {
+                title: 'Live Stage',
+                description: 'A game where you perform live on stage as an artist.',
+                theme: 'Live Stage',
+                controls: [
+                    { action: 'Switch Song', btn: 'RB + Left/Right Keys' },
+                    { action: 'Start Live', btn: 'START Button' },
+                    { action: 'Performance', btn: 'A/B/X/Y/RT Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Select songs for the live stage and perform during the performance.',
+                    'There is no specific scoring system, so please perform until the song ends.'
+                ]
+            },
+            '18': {
+                title: 'Fishing',
+                description: 'A game where you catch fish while managing stamina and the reel gauge.',
+                theme: 'Fishing',
+                controls: [
+                    { action: 'Cast Rod', btn: 'B Button Long Press and Release' },
+                    { action: 'Start Fishing Battle', btn: 'B Button while ! display' },
+                    { action: 'Reel In', btn: 'X Button Long Press' },
+                    { action: 'Check Fish Box', btn: 'Y Button' },
+                    { action: 'Jump', btn: 'RB/RT Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Hold the button to cast the rod and adjust the distance.',
+                    'Reeling in while the reel icon is displayed reduces the fish\'s HP and Reel Gauge (RG); catching the fish occurs when RG reaches 0.',
+                    'A higher quality score is obtained if the fish has more HP and a longer RG distance when hit.',
+                    'Reeling in decreases the rod gauge, and reeling when the icon is not displayed sharply reduces the rod gauge.',
+                    'The total quality score obtained before the rod gauge reaches 0 or RG becomes MAX is recorded as high score.',
+                    'Exhausting the fish\'s HP allows for a significant reduction in RG.'
+                ]
+            },
+            '19': {
+                title: 'Desert Oasis',
+                description: 'A game where you wander the desert in search of an oasis and seek healing in a harsh environment.',
+                theme: 'Desert Oasis',
+                controls: [
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Wander the desert in search of an oasis.',
+                    'Entering an oasis for the first time in an area earns a hydration score.',
+                    'More hydration score is earned as remaining HP decreases.',
+                    'HP decreases over time, and the hydration score obtained before the gauge reaches 0 is recorded as high score.',
+                    'HP does not decrease while inside an oasis.'
+                ]
+            },
+            '20': {
+                title: 'Crowded Road',
+                description: 'A game where you avoid other people so as not to obstruct their walking.',
+                theme: 'Crowded Road',
+                controls: [
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Avoid people to avoid obstructing their walking.',
+                    'Earn scores by avoiding people, but colliding with them reduces HP.',
+                    'The number of people avoided before HP reaches 0 is recorded as high score.'
+                ]
+            },
             '21': { title: 'Maze Exploration', description: 'A game where you explore mazes and use keys to find items in treasure chests.', theme: 'Maze Exploration' },
             '22': { title: 'Card Battle', description: 'A game where you battle and defeat opponents using card affinities.', theme: 'Card Battle' },
             '23': { title: 'Star Land', description: 'An action game where you collect stars in a 3D map.', theme: 'Star Land' },
