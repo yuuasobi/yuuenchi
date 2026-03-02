@@ -8224,26 +8224,30 @@
                     { action: 'Viewpoint Movement', btn: 'Right Stick' },
                     { action: 'Move', btn: 'Left Stick' },
                     { action: 'Select Number', btn: 'A Button' },
+                    { action: 'Switch Room', btn: 'B Button' },
                     { action: 'Options', btn: 'Back Button' }
                 ],
                 systems: [
-                    'Compare Symmetrical Rooms A and B and select the number of differences.',
-                    'Selecting the correct number moves you to the next level.',
-                    'Compete for the number of levels cleared within the time limit.'
+                    'Compare Symmetrical Rooms A and B and find the differences.',
+                    'Move freely in 3D space to observe from various angles.',
+                    'Find all differences within the time limit to compete for the score.'
                 ]
             },
             '70': {
                 title: 'Golem Crush',
-                description: 'A game where you charge into enemies to defeat them.',
-                theme: 'Battle/Action',
+                description: 'A battle game where you defeat golems using positioning and wizard buffs with a 3-person party.',
+                theme: 'Battle/RPG',
                 controls: [
                     { action: 'Move', btn: 'Left Stick' },
-                    { action: 'Dash Charge', btn: 'A Button' },
+                    { action: 'Attack', btn: 'A Button' },
+                    { action: 'Magic', btn: 'B Button' },
+                    { action: 'Buff', btn: 'X Button' },
+                    { action: 'Defend', btn: 'Y Button' },
                     { action: 'Options', btn: 'Back Button' }
                 ],
                 systems: [
-                    'Charge into enemies to deal damage.',
-                    'Well-timed charges create combos and increase damage.',
+                    'Operate a 3-person party to defeat the golem.',
+                    'Use the wizard\'s buff effects strategically in battle.',
                     'Strategic positioning and timing are the keys to victory.'
                 ]
             },
@@ -8297,6 +8301,176 @@
                     'Use sumo techniques to push your opponent out of the ring.',
                     'Combine techniques like harite and thrusts to fight.',
                     'Timing and strategy are the keys to victory.'
+                ]
+            },
+            '81': {
+                title: 'Game Card High & Low',
+                description: 'A game where you answer whether the ID number of the displayed game card is lower or higher.',
+                theme: 'High & Low',
+                controls: [
+                    { action: 'High & Low', btn: 'Up/Down Keys' },
+                    { action: 'Start Game', btn: 'Start Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Answer whether the ID of the target game card on the right is lower or higher than the base game card on the left.',
+                    'If correct, the target card becomes the next base card.',
+                    'The gauge decreases over time or if you answer incorrectly.',
+                    'The number of correct answers before the gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '82': {
+                title: 'Icontact Friends',
+                description: 'A game where you emphasize with character with the same facial expression icons to break down their wariness and become friends.',
+                theme: 'Icons',
+                controls: [
+                    { action: 'Icon', btn: 'B(Smile) / A(Tears) / X(Anger) / Y(Surprise)' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Move through the areas; when a rabbit appears, the contact gauge is displayed.',
+                    'Show the same emotional icon as the rabbit to increase empathy.',
+                    'The contact gauge decreases if you show different emotions or as time passes.',
+                    'The empathy earned before the contact gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '83': {
+                title: 'Catch Ball',
+                description: 'A game where you keep playing catch-ball by balancing the power.',
+                theme: 'Catch Ball',
+                controls: [
+                    { action: 'Power Charge', btn: 'B(Child) / X(Parent)' },
+                    { action: 'Throw Ball', btn: 'Release button after charging' },
+                    { action: 'Switch Character', btn: 'RB(Right) / LB(Left)' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Keep playing catch-ball by balancing the power.',
+                    'Even if the power is slightly off, you might succeed, but the probability of dropping increases significantly with large deviations.',
+                    'The number of successful catches before dropping the ball is recorded as high score.'
+                ]
+            },
+            '84': {
+                title: 'Climbing Wall',
+                description: 'A game where you climb rock walls to aim for the summit.',
+                theme: 'Rock Climbing',
+                controls: [
+                    { action: 'Climb', btn: 'B Button' },
+                    { action: 'Release', btn: 'A Button' },
+                    { action: 'Switch View', btn: 'RB Button' },
+                    { action: 'Move to Another Wall', btn: 'X Button (Only before starting to climb)' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'You can check the rock positions beforehand to see if you can reach the summit.',
+                    'If it looks impossible, move to another wall.',
+                    'The time score increases once you start climbing.',
+                    'Aim for the summit while taking breaks on intermediate ledges; the record time is high score.',
+                    'If HP reaches 0, you lose your grip and fall, but you can recover if you land on a ledge.',
+                    'Be careful not to get stuck on rocks, as it significantly reduces HP.'
+                ]
+            },
+            '85': {
+                title: 'Flame and Thunder Dragon',
+                description: 'A boss-only shooting game where you operate Flame Dragon to defeat Thunder Dragon.',
+                theme: 'Shooting',
+                controls: [
+                    { action: 'Charge Flame', btn: 'B Button Long Press' },
+                    { action: 'Shoot Flame', btn: 'Release after charging' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Charge and release flames to deal damage.',
+                    'Damage is reduced if the opponent\'s thunder is larger, but you will still deal 1 damage.',
+                    'Defeating the dragon earns Dragon Points based on level.',
+                    'Dragon Points earned before HP reaches 0 are recorded as high score.'
+                ]
+            },
+            '86': {
+                title: 'Love & Rai',
+                description: 'A game where you mirror the opponent\'s "paw" request to increase LOVE level.',
+                theme: 'Paw',
+                controls: [
+                    { action: 'Love\'s Paw', btn: 'Up(Left) / Down(Right) Keys' },
+                    { action: 'Rai\'s Paw', btn: 'A(Left) / Y(Right) Buttons' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Love is a Miniature Dachshund, and Rai is a Yorkshire Terrier.',
+                    'Mirror the opponent\'s "paw" to increase LOVE level.',
+                    'A heart icon is displayed during successful mirroring.',
+                    'The play-time gauge decreases if you miss the timing or use the wrong paw.',
+                    'The LOVE level earned before the gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '87': {
+                title: 'Birthstone Crystal',
+                description: 'A game where you pour birthstone light into crystals to dispel darkness.',
+                theme: 'Birthstones',
+                controls: [
+                    { action: 'Power Charge', btn: 'B Button' },
+                    { action: 'Switch Birthstone', btn: 'RB/LB Buttons' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Approach a crystal and select the corresponding birthstone for the displayed month; pouring light restores the gauge and dispels darkness.',
+                    'The light gauge decreases over time; your score depends on the remaining gauge when you finish pouring.',
+                    'Pouring the wrong light significantly reduces the gauge.',
+                    'The total light gauge points for 12 crystals is recorded as high score.'
+                ]
+            },
+            '88': {
+                title: 'Seatalk',
+                description: 'A game where you communicate with sea creatures by emitting ultrasonic waves of the same pitch.',
+                theme: 'Ultrasonic',
+                controls: [
+                    { action: 'Ultrasonic', btn: 'X Button' },
+                    { action: 'Ultrasonic Check', btn: 'B Button' },
+                    { action: 'Switch Pitch', btn: 'RB + Left/Right Keys' },
+                    { action: 'Ascend/Descend', btn: 'Up/Down Keys' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Communicate with sea creatures by emitting ultrasonic waves of the same pitch.',
+                    'Emitting waves with a different pitch reduces the gauge.',
+                    'The number of successful communications before the gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '89': {
+                title: 'Dogs oshi life',
+                description: 'A game where you engage in "oshi-katsu" while playing with dogs in a dog run.',
+                theme: 'Oshi-katsu',
+                controls: [
+                    { action: 'Crouch', btn: 'RT Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Play with dogs in a dog run.',
+                    'Use the crouching action to match the dog\'s eye level.'
+                ]
+            },
+            '90': {
+                title: 'Figure VS Card',
+                description: 'A game where you defeat figure monsters using cards.',
+                theme: 'Figures',
+                controls: [
+                    { action: 'Select Card', btn: 'B Button' },
+                    { action: 'Use Card', btn: 'X Button' },
+                    { action: 'Switch Card', btn: 'Left/Right Keys' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Select a monster to battle.',
+                    'Using cards or repositioning consumes a turn; the opponent acts every 3 turns.',
+                    'Attributes follow a cycle (Fire > Ice > Wind > Earth > Thunder > Water > Fire); matching 3 cards increases power.',
+                    'Monster HP varies; defeating them earns Figure Points.',
+                    'Figure Points earned before HP reaches 0 are recorded as high score.'
                 ]
             },
             '74': {
@@ -8426,26 +8600,178 @@
                     'A high score is recorded if the time taken to find the crystals is faster than before.'
                 ]
             },
-            '81': { title: 'Card High & Low', description: 'A game where you guess if the next game card\'s number is higher or lower.', theme: 'Card High & Low' },
-            '82': { title: 'Eye Contact Friends', description: 'A game where you match facial expressions to befriend cautious characters.', theme: 'Eye Contact' },
-            '83': { title: 'Catch Ball', description: 'A game where you maintain power balance to keep playing catch.', theme: 'Catch Ball' },
-            '84': { title: 'Rock Climbing', description: 'A game where you climb rock walls to reach the summit.', theme: 'Rock Climbing' },
-            '85': { title: 'Flame & Thunder Dragon', description: 'A boss-only shooting game where you control a flame dragon to defeat a thunder dragon.', theme: 'Enrai' },
-            '86': { title: 'Love & Rai', description: 'A game where you mirror the opponent\'s paw gestures to increase the LOVE meter.', theme: 'Love & Rai' },
-            '87': { title: 'Birthstone Crystal', description: 'A game where you pour light from birthstones into crystals to dispel darkness.', theme: 'Birthstone Crystal' },
-            '88': { title: 'Sea Talk', description: 'A game where you converse with sea creatures by matching their ultrasonic pitches.', theme: 'Sea Talk' },
-            '89': { title: 'Dog Oshi Life', description: 'A game where you enjoy "oshi activity" while playing with dogs at a run.', theme: 'Dog Oshi Life' },
-            '90': { title: 'Figure VS Card', description: 'A game where you use cards to defeat figure monsters.', theme: 'Figure' },
-            '91': { title: 'LonGlide', description: 'A game where you gain momentum to glide as far as possible.', theme: 'LonGlide' },
-            '92': { title: 'Lock the Door', description: 'A game where you return to a blackout house to retrieve a forgotten key.', theme: 'Lock the Door' },
-            '93': { title: 'Dessert Buffet', description: 'A game where you enjoy a dessert buffet to your heart\'s content.', theme: 'Dessert Buffet' },
-            '94': { title: "Dog's Hip Mirror", description: 'A game where you match the lengths of dogs\' hips.', theme: "Dog's Hip Mirror" },
-            '95': { title: 'Iron Punch Battle', description: 'A one-on-one battle game where you defeat opponents with Iron Punches.', theme: 'Iron Punch' },
-            '96': { title: 'Shipwreck Salvage', description: 'A game where you salvage valuable treasures in a shipwreck graveyard.', theme: 'Shipwreck Salvage' },
-            '97': { title: 'Wish Upon Star Snow', description: 'A game where you use constellation power to make star-snow fall.', theme: 'Wish Upon Star Snow' },
-            '98': { title: 'Seeking Cheese', description: 'A game where you find and eat cheese hidden in a warehouse.', theme: 'Seeking' },
-            '99': { title: 'Ramen', description: 'A game where you create your original ramen by placing toppings.', theme: 'Ramen' },
-            '100': { title: 'Switch Link Battle', description: 'A battle game where you switch characters to fight in coordination.', theme: 'Switch Link Battle' },
+            '91': {
+                title: 'LonGlide',
+                description: 'A game where you glide as far as possible by gaining momentum.',
+                theme: 'Gliding',
+                controls: [
+                    { action: 'Charge Momentum', btn: 'Hold Left Key' },
+                    { action: 'Jump', btn: 'Command input "Down, Right" then A Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Charge the momentum gauge with left input, then jump powerfully by inputting "Down, Right".',
+                    'The gauge decreases during gliding; travel speed drops when it empties.',
+                    'The glide distance is recorded as high score.'
+                ]
+            },
+            '92': {
+                title: 'Lock the door',
+                description: 'A game where you return to a blacked-out house to retrieve forgotten keys.',
+                theme: 'Finding Lost Items',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Light On/Off', btn: 'X Button' },
+                    { action: 'Crouch', btn: 'RT Button' },
+                    { action: 'Dash', btn: 'LB Button (Only with light on)' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Explore the blacked-out house to find the keys and lock the entrance door.',
+                    'Keys are not visible without the light, but can still be picked up by touch.',
+                    'Game over if the light\'s battery runs out.',
+                    'The remaining battery when the door is locked is recorded as high score.'
+                ]
+            },
+            '93': {
+                title: 'Dessert_Buffet',
+                description: 'A game where you enjoy a dessert buffet until satisfied.',
+                theme: 'Buffet',
+                controls: [
+                    { action: 'Eat', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Continuing to eat the same type of cake increases the satisfaction per piece more easily.',
+                    'Satisfaction increases gradually after eating a dessert.',
+                    'Eating all types of desserts evenly allows you to eat more.',
+                    'The number of desserts eaten before the fullness gauge reaches MAX is recorded as high score.'
+                ]
+            },
+            '94': {
+                title: 'dogs hip mirror',
+                description: 'A game where you match the length of dogs\' hips sticking out from the wall.',
+                theme: 'Hips',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Move', btn: 'Left/Right Keys' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Match the lengths of the left and right dogs\' hips sticking out from the wall.',
+                    'Perfectly matching the lengths restores play time.',
+                    'Even if lengths differ, you earn score, but play time decreases based on the difference.',
+                    'The score earned before the play-time gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '95': {
+                title: 'Iron Punch Battle',
+                description: 'A 1v1 battle game where you defeat opponents with an Iron Punch.',
+                theme: '1v1 Battle',
+                controls: [
+                    { action: 'Punch', btn: 'X Button' },
+                    { action: 'Guard', btn: 'A Button' },
+                    { action: 'Rolling', btn: 'B Button' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Defeat the golem by choosing actions that counter the opponent\'s.',
+                    'Punch cancels Rolling, Guard beats Punch, and Rolling breaks Guard.',
+                    'Actions cannot be cancelled once executed.',
+                    'The opponent always counters your move if you act first; observe their behavior.',
+                    'Damage increases during the flinching period after cancelling rolling or breaking guard.',
+                    'Remaining HP is earned as score; the total score before HP reaches 0 is recorded as high score.'
+                ]
+            },
+            '96': {
+                title: 'Shipwreck Graveyard Salvage',
+                description: 'A game where you salvage valuable treasures in a shipwreck graveyard.',
+                theme: 'Salvage',
+                controls: [
+                    { action: 'Start Salvage', btn: 'B Button' },
+                    { action: 'Salvage', btn: 'X Button after starting' },
+                    { action: 'Cancel Salvage', btn: 'A Button after starting' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'An exclamation mark appears while moving; press confirm to start salvaging.',
+                    'Heavier treasures take longer to pull up but are likely more valuable.',
+                    'Move to the edge of the area to switch regions; different areas offer different treasure values.',
+                    'The total value of treasures salvaged before the fuel gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '97': {
+                title: 'wish upon the star snow',
+                description: 'A game where you use constellation power to make star-snow fall.',
+                theme: 'Constellations',
+                controls: [
+                    { action: 'Charge Power', btn: 'B Button' },
+                    { action: 'Switch Mark', btn: 'Left/Right Keys' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Charge power using the mark corresponding to the displayed constellation to earn score based on the remaining gauge.',
+                    'Charging with an incorrect mark reduces power.',
+                    'Power decreases over time.',
+                    'The total score earned while charging power for all 12 constellations is recorded as high score.'
+                ]
+            },
+            '98': {
+                title: 'Seeking Cheese',
+                description: 'A game where you search for and eat cheese in a warehouse.',
+                theme: 'Stealth',
+                controls: [
+                    { action: 'Eat', btn: 'B Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Start Game', btn: 'START' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Eating cheese gradually restores HP.',
+                    'Points are earned by finishing the cheese.',
+                    'HP decreases over time; colliding with wandering mice significantly reduces HP.',
+                    'The number of cheeses eaten before HP reaches 0 is recorded as high score.'
+                ]
+            },
+            '99': {
+                title: 'Ramen',
+                description: 'A game where you create your original ramen by placing soup and toppings.',
+                theme: 'Ramen',
+                controls: [
+                    { action: 'Confirm/Place', btn: 'B Button' },
+                    { action: 'Switch Item', btn: 'Y + Left/Right Keys (While Move Mode OFF)' },
+                    { action: 'Switch Ingredient', btn: 'Y + Left/Right Keys (While Move Mode ON)' },
+                    { action: 'Ascend/Descend', btn: 'RB/RT' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Combine ramen soup and toppings to create original ramen.'
+                ]
+            },
+            '100': {
+                title: 'Switch Link Battle',
+                description: 'A switch-link-battle game where you fight cooperatively by switching characters.',
+                theme: 'Switch',
+                controls: [
+                    { action: 'Action', btn: 'X(Phys) / B(Magic) / Y(Buff) / A(Debuff)' },
+                    { action: 'Switch Character', btn: 'RB + Action Button of each role' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Start Battle', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Legs are weak to physical, hands to magic, and face to bow. Attribute attacks matching weather (Snow > Fire, Ashes > Ice, Rain > Thunder) increase damage.',
+                    'Attacking non-glowing parts triggers a counter; buffs/debuffs must be cleared to deal damage or avoid massive damage.',
+                    'Playing carefully to counter buffs/debuffs and avoid counters allows you to defeat enemies without taking damage.',
+                    'Remaining HP is earned as score after defeating an enemy; stats carry over to the next battle.',
+                    'Total score before HP reaches 0 is recorded as high score.'
+                ]
+            },
             '302': { title: 'Kuroro Aquarium', description: 'A side-scrolling aquarium game where you can watch sea creatures swimming around.', theme: 'Aquarium' },
             '303': { title: 'Undersea Concentration', description: 'A memory game where you find pairs of sea creatures hidden in shells.', theme: 'Undersea Concentration' },
             '304': { title: 'Shellfish Free Diving', description: 'A game where you collect shells by free diving.', theme: 'Free Diving' },
