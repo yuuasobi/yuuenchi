@@ -7122,11 +7122,93 @@
                     'Starts from Earth at 1 AU.'
                 ]
             },
-            '06': { title: 'Onsen', description: 'A game where you take care of chicks in a hot spring.', theme: 'Hot Spring' },
-            '07': { title: 'Zoo', description: 'A game where you transform into the same species to talk to animals and make friends.', theme: 'Zoo' },
-            '08': { title: 'Exhibition', description: 'A game where you give titles to various paintings.', theme: 'Exhibition' },
-            '09': { title: 'Castle Siege Puzzle', description: 'A castle-siege puzzle adventure game where you defeat enemies to advance deep into the castle.', theme: 'Castle Siege Puzzle' },
-            '10': { title: 'Rescue Cats', description: 'A game where you find and rescue cats.', theme: 'Cat Rescue' },
+            '06': {
+                title: 'Onsen',
+                description: 'A game where you take care of chicks in a hot spring.',
+                theme: 'Hot Spring',
+                controls: [
+                    { action: 'Care', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Take care of chicks when they make requests.',
+                    'The gauge decreases while soaking in the hot spring.',
+                    'The number of times you took care of them before the gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '07': {
+                title: 'Zoo',
+                description: 'A game where you transform into the same species to talk to animals and make friends.',
+                theme: 'Zoo',
+                controls: [
+                    { action: 'Talk', btn: 'B Button' },
+                    { action: 'Switch Character', btn: 'RB/LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Talk to visiting animals in the square to make friends.',
+                    'They will become your friends if you transform into the same animal and talk to them.',
+                    'If a visiting animal leaves the square without becoming your friend, the gauge decreases.',
+                    'The number of animals you befriended before the gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '08': {
+                title: 'Exhibition',
+                description: 'A game where you give titles to various paintings.',
+                theme: 'Exhibition',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Switch Title', btn: 'X Button' },
+                    { action: 'Text Input', btn: 'Keyboard' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'You can input a title when you get close to a painting.',
+                    'Switching the title reveals the title given by the creator of the painting.'
+                ]
+            },
+            '09': {
+                title: 'Castle Siege Puzzle',
+                description: 'A castle-siege puzzle adventure game where you defeat enemies to advance deep into the castle.',
+                theme: 'Castle Siege',
+                controls: [
+                    { action: 'Action', btn: 'B Button' },
+                    { action: 'Switch Bow/Arrow', btn: 'RB Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Restart', btn: 'X Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Advance beyond the heavy gate while defeating enemies to earn EXP.',
+                    'The EXP earned before advancing beyond the heavy gate is recorded as high score.',
+                    'Sword attacks while holding a shield reduce incoming damage.',
+                    'Ranged attacks with the bow do not consume the shield.',
+                    'If HP reaches 0, the earned EXP is halved.',
+                    'There are three types of enemies, each with different attack power and HP.'
+                ]
+            },
+            '10': {
+                title: 'Rescue Cats',
+                description: 'A game where you find and rescue cats.',
+                theme: 'Cat Rescue',
+                controls: [
+                    { action: 'Confirm', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Crouch', btn: 'RT Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Search for and rescue cats on the street.',
+                    'Cats are repositioned as you advance.',
+                    'Crouching makes it easier to judge distances.',
+                    'The gauge decreases over time, and the number of rescued cats before the gauge reaches 0 is recorded as high score.'
+                ]
+            },
             '11': { title: 'Combination Quiz', description: 'A quiz game where you answer the correct combination for given themes.', theme: 'Matching Quiz' },
             '12': { title: 'Game Card Gacha', description: 'A game where you collect game cards from treasure chest gachas.', theme: 'Gacha' },
             '13': { title: 'Tightrope Walking', description: 'A game where you walk a tightrope to the neighboring building.', theme: 'Tightrope Walking' },
