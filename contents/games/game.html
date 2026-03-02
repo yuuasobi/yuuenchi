@@ -7043,20 +7043,47 @@
             if (gameId && gameData[gameId]) {
                 let content = gameData[gameId];
 
-                // 英語設定の場合、見出しなどを翻訳
+                // 英語設定の場合、動的に翻訳
                 if (currentLang === 'en') {
+                    // 共通の見出し
                     content = content.replace(/<h2>ゲーム詳細<\/h2>/g, '<h2>Game Details</h2>');
                     content = content.replace(/<h3>テーマ<\/h3>/g, '<h3>Theme</h3>');
                     content = content.replace(/<h3>操作方法 \(Xinputコントローラ\)<\/h3>/g, '<h3>Controls (Xinput Controller)</h3>');
+                    content = content.replace(/<h3>操作方法<\/h3>/g, '<h3>Controls</h3>');
                     content = content.replace(/<h3>システム<\/h3>/g, '<h3>Systems</h3>');
                     content = content.replace(/<h3>クリエイター<\/h3>/g, '<h3>Creators</h3>');
+
+                    // 共通のフレーズ
                     content = content.replace(/このゲームには以下のクリエイターさんの作品を素材として使用しています。/g, 'The following creators\' works are used in this game.');
                     content = content.replace(/itch.ioで購入/g, 'Purchase on itch.io');
+                    content = content.replace(/Bボタン/g, 'B Button');
+                    content = content.replace(/上下キー/g, 'Up/Down Keys');
+                    content = content.replace(/LBボタン/g, 'LB Button');
+                    content = content.replace(/Backボタン/g, 'Back Button');
+                    content = content.replace(/十字キー/g, 'D-Pad');
+                    content = content.replace(/Aボタン/g, 'A Button');
+                    content = content.replace(/Xボタン/g, 'X Button');
+                    content = content.replace(/Yボタン/g, 'Y Button');
+                    content = content.replace(/アナログスティック/g, 'Analog Stick');
+
+                    // クリエイター情報のテーブル見出し
+                    content = content.replace(/<td>イラスト<\/td>/g, '<td>Illustration</td>');
+                    content = content.replace(/<td>効果音<\/td>/g, '<td>Sound Effects</td>');
+                    content = content.replace(/<td>BGM<\/td>/g, '<td>BGM</td>');
+                    content = content.replace(/<td>ドット絵<\/td>/g, '<td>Pixel Art</td>');
+                    content = content.replace(/<td>プログラム<\/td>/g, '<td>Program</td>');
+                    content = content.replace(/<td>ゲームデザイン<\/td>/g, '<td>Game Design</td>');
+
+                    // 各ゲーム特有の日本語タイトルを英語に置換（h1内）
+                    // WCG.htmlのデータを使いこなすのが理想だが、ここでは置換を幾つか例示
+                    // すべての翻訳を網羅するのは難しいため、主要なものを置換
+                    content = content.replace(/<h1>神経衰弱<\/h1>/g, '<h1>Concentration</h1>');
+                    content = content.replace(/<h1>収穫祭<\/h1>/g, '<h1>Harvest Festival</h1>');
                 }
 
                 gameContent.innerHTML = content;
             } else {
-                const errorMsg = currentLang === 'en' ? 'Game not found.' : '指定されたゲームが見つかりません。';
+                const errorMsg = currentLang === 'en' ? 'Game not found.' : '指定されたゲームが見てかりません。';
                 gameContent.innerHTML = `<p>${errorMsg}</p>`;
             }
 
