@@ -2378,22 +2378,79 @@
             "時間コスト増減": "Time Cost +/-",
             "雪玉を投げる": "Throw Snowball",
             "雪玉を作る": "Make Snowball",
-            "クジラサポート": "Whale Support",
             "救助": "Rescue",
+            "貝を開く": "Open Shell",
+            "ゲーム終了": "End Game",
+            "移動: 上": "Move: Up",
+            "決定/配置": "Confirm / Place",
+            "バトルスタート": "Start Battle",
+            "戦闘開始": "Start Battle",
+            "釣り開始": "Start Fishing",
+            "リールを巻く": "Reel In",
+            "魚をリリース": "Release Fish",
+            "魚ボックスを開く": "Open Fish Box",
+            "調理＆提供": "Cook & Serve",
+            "時間コスト増減": "Time Cost +/-",
+            "地雷設置": "Set Mine",
+            "ボム設置": "Set Bomb",
+            "スタート/ストップ": "Start / Stop",
+            "開始/停止": "Start / Stop",
+            "時間増減±1": "Time Cost +/- 1",
+            "時間増減±10": "Time Cost +/- 10",
+            "時間コスト±1": "Time Cost +/- 1",
+            "時間コスト±10": "Time Cost +/- 10",
+            "召喚成功を知らせる": "Confirm Success",
+            "召喚指示": "Summon Instruction",
+            "召喚対象の切替": "Switch Target",
+            "成功確認": "Confirm Success",
+            "ターゲット切替": "Switch Target",
+            "砂の中を探す": "Search in Sand",
+            "地面を調べる": "Search in Sand",
+            "感覚を研ぎ澄ます": "Sharpen Senses",
+            "サインする": "Sign",
+            "サイン入力": "Signature Input",
+            "サイン会スタート": "Signing Event Start",
+            "サイン会開始": "Signing Event Start",
+            "旋律: ド": "Note: C",
+            "旋律: ミ": "Note: E",
+            "旋律: ソ": "Note: G",
+            "旋律: シb": "Note: Bb",
+            "キャラ選択/配置": "Select / Place Character",
+            "写真を撮る": "Take Photo",
+            "メモリー確認": "Check Memory",
+            "メモリー写真切替": "Switch Memory Photo",
+            "想い出を確認": "Check Memory",
+            "想い出切替": "Switch Memory Photo",
             "上昇/下降": "Up/Down",
             "食べる": "Eat"
         };
 
         const kurokuroGameTranslationInfo = {
             "302": {
+                title: "Kuroro Aquarium",
                 theme: "Aquarium",
-                desc: "An underwater world aquarium game",
+                desc: "An underwater world aquarium game.",
                 systems: [
-                    "Move the school of fish to avoid whales.",
-                    "The number of fish when you reach the goal is recorded as the high score."
-                ]
+                    "Watch Kuroro's sea creatures move freely around the screen.",
+                    "A side-scrolling aquarium game.",
+                    "This is a mini-game from 'Kuroro Park', developed as part of the Ring Link Park project using Kuroro's work."
+                ],
+                controls: ["Move"]
+            },
+            "303": {
+                title: "undersea concentration",
+                theme: "Concentration",
+                desc: "A game of undersea concentration where you find pairs of sea creatures hidden in shells.",
+                systems: [
+                    "Find pairs of sea creatures hidden in shells.",
+                    "Earn score by matching pairs, gauge decreases when you miss.",
+                    "The next wave starts when all shells are opened.",
+                    "The score obtained before the gauge runs out is recorded as the high score."
+                ],
+                controls: ["B Button", "Up/Down Keys", "LB Button", "Back Button"]
             },
             "304": {
+                title: "Shellfish free diving fishing",
                 theme: "Skin Diving",
                 desc: "A game where you dive for shellfish while managing your breath.",
                 systems: [
@@ -2402,9 +2459,11 @@
                     "Touching seaweed will entangle you and reduce your breath gauge.",
                     "The number of shellfish collected before your breath gauge reaches 0 is recorded as high score.",
                     "If you get stuck on a rock, you can escape by ascending."
-                ]
+                ],
+                controls: ["Catch", "Ascend", "Automatically descends when not ascending", "Descend Speed Up", "Move Speed Up", "Options"]
             },
             "305": {
+                title: "undersea maze",
                 theme: "Maze Exploration",
                 desc: "Explore underwater mazes and use an axe to find fish hiding behind objects.",
                 systems: [
@@ -2412,74 +2471,90 @@
                     "You need an axe to open seaweed and shells.",
                     "Seaweed and axes will respawn after a certain period of time.",
                     "The exploration gauge decreases over time, and the number of fish caught before it reaches 0 is recorded as high score."
-                ]
+                ],
+                controls: ["Action", "Dash", "Check Items", "Options"]
             },
             "306": {
+                title: "Treasure of Pirate Ship",
                 theme: "Gacha",
                 desc: "A game where you obtain items from treasure chest gacha on a pirate ship.",
                 systems: [
-                    "Open 10 treasure chests to obtain watches.",
-                    "Obtaining duplicates increases your score, so getting the same watch from all 10 chests results in the highest score."
-                ]
+                    "You will open 10 treasure chests to obtain watches.",
+                    "The score increases when you get duplicate items, so getting the same watch in all 10 chests results in the highest score."
+                ],
+                controls: ["Confirm", "Check Watches", "Jump", "Dash", "Options"]
             },
             "307": {
+                title: "undersea race",
                 theme: "Race",
-                desc: "A game of racing underwater by rolling dice.",
+                desc: "A game where you roll the dice to race on the seabed.",
                 systems: [
-                    "The character moves by the number shown on the dice.",
-                    "Stopping the dice when the gauge is MAX will always result in 5-6, but stopping it when the gauge is low will always result in 1-2.",
-                    "Points are added according to the distance beyond the goal line. If the dice shows 6 exactly at the goal line, you get the highest points.",
-                    "1st place gets 3x points, 2nd place gets 2x points.",
-                    "Points from other characters are also added, and if the total for 3 characters is higher than previous record, it is recorded as high score."
-                ]
+                    "Characters move by the number rolled on the dice.",
+                    "Stopping the dice when the gauge is MAX ensures a roll of 5-6, while stopping it when the gauge is low ensures a roll of 1-2.",
+                    "Points are added based on the distance beyond the goal line, so rolling a 6 exactly at the goal line results in the highest score.",
+                    "Finishing 1st triples your points, and finishing 2nd doubles them.",
+                    "The points of other characters are added to your total, and if the total for the 3 characters is higher than the previous record, it is recorded as high score."
+                ],
+                controls: ["Stop Dice", "Dash", "Options"]
             },
             "308": {
+                title: "tug of war",
                 theme: "Tug of War",
-                desc: "Tug-of-war tournament game",
+                desc: "A tug of war tournament game.",
                 systems: [
                     "Your team is on the right side.",
                     "Keep pressing the indicated buttons to pull the rope.",
-                    "If you press a button other than the indicated one, you will be pulled by the opponent team at once.",
-                    "The indicated buttons switch at regular intervals. Follow the rhythm and press correctly to pull bit by bit to win.",
+                    "Pressing the wrong button causes the opponent team to pull significantly.",
+                    "The buttons switch at regular intervals, so press the correct buttons rhythmically to pull little by little to win.",
                     "The number of consecutive wins is recorded as high score."
-                ]
+                ],
+                controls: ["Pull Rope", "Start Game", "Options"]
             },
             "309": {
+                title: "goblin extermination",
                 theme: "Counter",
                 desc: "A game where you explore the forest and cooperate to exterminate goblins.",
                 systems: [
-                    "Collect mushrooms and cook during exploration to recover HP.",
-                    "When a guard is successful, characters other than the guarding one can perform a counterattack.",
-                    "This system involves Zen and Monna cooperating by switching between guarding and counterattacking roles flexibly."
-                ]
+                    "Collect mushrooms to cook and recover during exploration.",
+                    "After a successful guard, a character other than the one who guarded can perform a counter attack.",
+                    "This system requires Zen and Monna to cooperatively switch between guard and counter roles flexibly."
+                ],
+                controls: ["Move: Up", "Harvest", "Hold Y to Cook", "Guard", "Counter Attack: X:Monna, B:Zen", "Options"]
             },
             "310": {
+                title: "clock land",
                 theme: "3D Platformer",
-                desc: "An action game where you collect watches in a 3D map",
+                desc: "An action game where you collect watches in a 3D map.",
                 systems: [
                     "Obtain watches located at specific time positions.",
                     "The watch in the direction of the castle is 12 o'clock.",
                     "If the score (time) taken to obtain all watches is low, it is recorded as high score."
-                ]
+                ],
+                controls: ["Confirm", "Dash", "Jump", "Options"]
             },
             "311": {
+                title: "hurdle race",
                 theme: "Hurdle Race",
                 desc: "A game where you jump over hurdles and run through the course.",
                 systems: [
                     "Jump over hurdles to avoid crashing and run through the course.",
                     "Crashing into a hurdle reduces your HP. The number of courses run before HP reaches 0 is recorded as high score."
-                ]
+                ],
+                controls: ["Jump", "Dash", "Options"]
             },
             "312": {
+                title: "AnotherX Exhibition",
                 theme: "AnotherX Exhibition",
                 desc: "An exhibition game for the illustrations of the fantasy novel 'AnotherX' drawn by the illustrator 'Kuroro'.",
                 systems: [
                     "You can give titles to the illustrations.",
                     "You can switch between the titles you give and the default titles given by the author 'Yuuenchi'.",
                     "Part of the setting of Chapter 1 and 2 is expressed in a compact 3D map, with exhibits placed in corresponding locations for each illustration."
-                ]
+                ],
+                controls: ["Confirm", "Jump", "Dash", "Switch Title", "Keyboard", "Options"]
             },
             "313": {
+                title: "invasion defense",
                 theme: "Defense",
                 desc: "A game to defend against enemy invasions.",
                 systems: [
@@ -2491,18 +2566,22 @@
                     "Fire: Area: Can defeat all except Slime and Iron.",
                     "Cannon: Area: Can defeat Rat and Killer Bee.",
                     "Explosion: Area: Can defeat Slime, Goblin, and Iron."
-                ]
+                ],
+                controls: ["Confirm", "Switch Target", "Switch Command", "Options"]
             },
             "314": {
+                title: "quick draw water gun",
                 theme: "Quick Draw",
                 desc: "A quick-draw water gun game with sea creatures.",
                 systems: [
                     "After the BGM stops, when you hear a sound, turn around toward the opponent and shoot.",
                     "Turning around before the cue or being attacked by the opponent first reduces your gauge.",
                     "The number of victories before the gauge reaches 0 is recorded as high score."
-                ]
+                ],
+                controls: ["Shoot", "Switch Character", "Turn Around", "Start Game", "Options"]
             },
             "315": {
+                title: "clock production line",
                 theme: "Production Line",
                 desc: "A game where you remove mistakes from products flowing on three clock production lines.",
                 systems: [
@@ -2510,17 +2589,21 @@
                     "Sometimes different types of watches are mixed in, so remove them when found.",
                     "Removing defective products earns points. If a defective product passes through, your evaluation gauge decreases.",
                     "The number of defective products removed before the evaluation gauge reaches 0 is recorded as high score."
-                ]
+                ],
+                controls: ["Remove", "Jump", "Dash", "Options"]
             },
             "316": {
+                title: "find the twins",
                 theme: "Twins",
                 desc: "A game where you look for a twin who looks just like the child at the entrance in the house.",
                 systems: [
                     "Look for a twin in the house who looks exactly like the child at the entrance.",
                     "The time taken to find them is recorded, and the record is updated if found faster than previous time."
-                ]
+                ],
+                controls: ["Confirm", "Jump", "Options"]
             },
             "317": {
+                title: "mine placement battle",
                 theme: "Landmine",
                 desc: "A game where you fight by making opponents step on placed landmines.",
                 systems: [
@@ -2530,24 +2613,30 @@
                     "The opponent's movement is completely random, so they often return to their own spots and self-destruct, making it easy to win.",
                     "The player's remaining health when the opponent's health reaches 0 is earned as score, and the next battle starts with landmine status carried over.",
                     "The score obtained before player's health reaches 0 is recorded as high score."
-                ]
+                ],
+                controls: ["Set Mine: Pass through glowing spots", "Dash", "Options"]
             },
             "318": {
+                title: "dolphin jumping",
                 theme: "Jump",
                 desc: "A game where you gain momentum to jump as far as possible.",
                 systems: [
                     "Accumulate the momentum gauge by inputting the left direction, then perform a powerful jump by inputting the 'Down-Right' command.",
                     "Speed changes according to the amount of momentum gauge."
-                ]
+                ],
+                controls: ["Charge: Hold Left Key", "Jump: Input 'Down-Right' then A Button", "Options"]
             },
             "319": {
+                title: "seafood platter",
                 theme: "Seafood Platter",
                 desc: "A game where you create a seafood platter by arranging your favorite seafood.",
                 systems: [
                     "Switch through ingredients and arrange them on the platter."
-                ]
+                ],
+                controls: ["Confirm / Place", "Switch Item: Hold Y + Left/Right (Move Mode Off)", "Switch Ingredient: Hold Y + Left/Right (Move Mode On)", "Up/Down: RB/RT", "Options"]
             },
             "320": {
+                title: "red light green light",
                 theme: "Red Light Green Light",
                 desc: "A game where you identify the child who moved the furthest before they turn around by inputting 'Red Light Green Light'.",
                 systems: [
@@ -2555,10 +2644,13 @@
                     "Inputting the phrase makes them stop and turn around. Selecting the child who moved the furthest earns points, and that child returns to the start.",
                     "It's not about the closest child, but the one who gained the most distance. Even if they look far, they might have gained more distance if they just crossed the line and returned.",
                     "The 'Back to Selection' button starts the input acceptance again.",
-                    "The gauge reduces if a child crosses the line or if you select someone other than the one who moved furthest. (Wrong text input doesn't reduce gauge but requires re-typing)."
-                ]
+                    "The gauge reduces if a child crosses the line or if you select someone other than the one who moved furthest. (Wrong text input doesn't reduce gauge but requires re-typing).",
+                    "The score obtained before the gauge reaches 0 is recorded as high score."
+                ],
+                controls: ["Action: B Button / Enter", "Back to Selection: A Button / Back", "Keyboard", "Start Game", "Options"]
             },
             "321": {
+                title: "battleship",
                 theme: "Battleship",
                 desc: "A turn-based battleship command battle game.",
                 systems: [
@@ -2567,9 +2659,11 @@
                     "The leftmost 'punch' command attacks before the opponent moves, but deals minimum damage.",
                     "Defeating enemies earns the player's remaining HP as score.",
                     "The battle score obtained before the player loses is recorded as high score."
-                ]
+                ],
+                controls: ["Confirm", "Dash", "Start Battle", "Options"]
             },
             "322": {
+                title: "boat fishing",
                 theme: "Boat Fishing",
                 desc: "A game where you find fishing spots and catch fish on a boat.",
                 systems: [
@@ -2577,9 +2671,11 @@
                     "The heavier the weight gauge when finding a fish, the longer it takes to reel in, but the higher the possibility it's a valuable fish.",
                     "Moving to the edge of the area allows you to change areas, which alters the range of fish values obtainable.",
                     "The total value of fish caught before the fuel gauge runs out is recorded as high score."
-                ]
+                ],
+                controls: ["Fishing Start", "Confirm", "Dash", "Options"]
             },
             "323": {
+                title: "short-term memory",
                 theme: "Short-term Memory",
                 desc: "A game where you memorize orders for 4 tables that appear momentarily, then cook and serve them.",
                 systems: [
@@ -2588,9 +2684,11 @@
                     "The orders are displayed only for the duration of the set time cost. Afterward, the gauge decreases according to the time cost. For example, setting it to 2 seconds displays images for 2 seconds, but the gauge decreases by 2 every second.",
                     "After serving all orders for 4 tables, the next round starts. The number of dishes served before the gauge reaches 0 is recorded as high score.",
                     "Making errors in cooking or serving dishes also reduces the gauge."
-                ]
+                ],
+                controls: ["Cook / Serve / Confirm", "Time Cost +/-", "Start Game", "Options"]
             },
             "324": {
+                title: "snowball fight",
                 theme: "Snowball Fight",
                 desc: "A game where you have a snowball fight with enemies appearing randomly.",
                 systems: [
@@ -2598,116 +2696,153 @@
                     "Crashing into enemy snowballs reduces HP. The score obtained before HP reaches 0 is recorded as high score.",
                     "You need to make and stock snowballs beforehand.",
                     "Even if it looks like a hit, enemies might evade and not fall."
-                ]
+                ],
+                controls: ["Throw Snowball", "Make Snowball", "Dash", "Options"]
             },
             "325": {
+                title: "change action",
                 theme: "Change Action",
                 desc: "A game where you ride on a whale's back to collect food in the air.",
                 systems: [
                     "Collect food in the air with the whale's support.",
                     "Using whale support reduces the support gauge. The number of items collected before all are gathered or the gauge reaches 0 is recorded as high score.",
                     "If you collect all food, the remaining support gauge is added to your score."
-                ]
+                ],
+                controls: ["Whale Support", "Dash", "Options"]
             },
             "326": {
+                title: "rescue fellow fish",
                 theme: "Rescue",
                 desc: "A game where you rescue fellow fish being caught and pulled to the surface.",
                 systems: [
                     "Rescue fellow fish being pulled above the sea.",
-                    "If you fail to rescue them and they are caught, the gauge decreases.",
-                    "The number of rescued fish before the gauge reaches 0 is recorded as high score."
-                ]
+                    "Direct contact rescues the fellow fish and earns points. Obstacles in the sea reduce the gauge upon contact.",
+                    "The number of rescues made before the gauge reaches 0 is recorded as high score."
+                ],
+                controls: ["Rescue", "Dash", "Jump", "Options"]
             },
             "327": {
-                theme: "Group Photo",
-                desc: "A game to take the best group photo by adjusting camera positions and timing.",
+                title: "internal clock",
+                theme: "Body Clock",
+                desc: "A game where you aim to stop with less than 1 second remaining by measuring time with your internal clock.",
                 systems: [
-                    "Adjust the camera's height and zoom to keep everyone in the frame.",
-                    "If a character leaves the frame, the score decreases. The high score is the record of the best photo taken."
-                ]
+                    "Measure the set time yourself after the countdown.",
+                    "If you stop within 1 second of the target time, the measured time is recorded as high score."
+                ],
+                controls: ["Start / Stop", "Time Cost +/- 1", "Time Cost +/- 10", "Options"]
             },
             "328": {
-                theme: "Survival Action",
-                desc: "A game where you aim for the goal while avoiding falling rocks.",
+                title: "ball toss",
+                theme: "Ball Toss",
+                desc: "A game where you put balls thrown by children at random positions into a basket.",
                 systems: [
-                    "Aim for the goal while avoiding falling rocks.",
-                    "Being hit by a falling rock reduces HP. The number of times you reach the goal before HP reaches 0 is recorded as high score.",
-                    "Large rocks can be destroyed by attacking, but small ones must be avoided."
-                ]
+                    "Children throw balls from free positions, so you need to move to the position where the ball falls and put it in the basket you carry to gain score.",
+                    "The gauge reduces each time a ball falls. The number of balls put in the basket before the gauge reaches 0 is recorded as high score."
+                ],
+                controls: ["Dash", "Start Game", "Options"]
             },
             "329": {
-                theme: "Forest Exploration",
-                desc: "Explore the 3D forest map and collect all mushrooms.",
+                title: "pirate ship territory",
+                theme: "Territory",
+                desc: "A game where you set bombs in the movement path of enemy ships in the pirate ship's territory to defeat them.",
                 systems: [
-                    "Explore the 3D map and collect all mushrooms.",
-                    "The time taken to collect all mushrooms is recorded as high score."
-                ]
+                    "Place bombs on the movement path of enemy ships.",
+                    "When an enemy ship touches a placed bomb, it explodes and increases your kill count.",
+                    "The icon of a placed bomb disappears after a certain time, but it remains placed, so you need to move carefully not to step on enemy bombs.",
+                    "Cannons are fired around the player's position at regular intervals. Getting hit is an immediate game over, so you must always keep moving."
+                ],
+                controls: ["Set Bomb", "Dash", "Start Game", "Options"]
             },
             "330": {
-                theme: "Action",
-                desc: "A game where you hit targets with balls.",
+                title: "Japanese summoning training",
+                theme: "Summoning",
+                desc: "A game where you check if the objects children summon match the requests.",
                 systems: [
-                    "Hit the targets with balls to earn scores.",
-                    "The time limit is 60 seconds."
-                ]
+                    "When you choose an item and give instructions to summon, children will summon objects in Japanese.",
+                    "Please let them know they succeeded once they successfully summon the instructed object.",
+                    "Summoning reduces children's stamina. The training ends when stamina reaches 0, but your summoning level increases by the number of successes.",
+                    "As the summoning level increases, the success probability goes up, reaching 100% at level 100.",
+                    "Stamina fully recovers when summoning succeeds as many times as the summoning level, or every time the number of successes reaches 10."
+                ],
+                controls: ["Confirm Success", "Summon Instruction", "Switch Target: Hold RB + Left/Right", "Options"]
             },
             "331": {
-                theme: "Rhythm",
-                desc: "A game where you play along with the music.",
+                title: "Searching in the Desert",
+                theme: "Searching",
+                desc: "A game where you search for watches buried under the sand by relying on sound.",
                 systems: [
-                    "Press buttons in sync with the rhythm.",
-                    "The accuracy of your timing determines your score."
-                ]
+                    "A sound plays at regular intervals from where the watch is buried. You can find the watch by digging in the area where the sound is loudest.",
+                    "When wind noise makes it hard to hear, you can sharpen your senses to make the sound easier to hear.",
+                    "The moisture gauge reduces over time. The number of watches found before the gauge runs out is recorded as high score."
+                ],
+                controls: ["Action", "Search in Sand: Hold X", "Sharpen Senses", "Jump", "Dash", "Options"]
             },
             "332": {
-                theme: "Puzzle",
-                desc: "A puzzle game where you arrange blocks of the same color.",
+                title: "kuroro signing",
+                theme: "Signing",
+                desc: "A game where you sign autographs for visiting fans.",
                 systems: [
-                    "Align three or more blocks of the same color to make them disappear.",
-                    "Creating chains results in higher scores."
-                ]
+                    "The signing time decreases over time. The number of autographs written before the time reaches 0 is recorded as high score.",
+                    "You will be asked for autographs in the languages of 7 different countries."
+                ],
+                controls: ["Sign", "Signature Input: Drag Mouse", "Signing Event Start", "Options"]
             },
             "333": {
-                theme: "Shooting",
-                desc: "A simple shooting game where you defeat incoming enemies.",
+                title: "Dolphin vs Shark",
+                theme: "Side-scrolling Shooter",
+                desc: "A shooting game where you defeat sharks in their territory.",
                 systems: [
-                    "Defeat enemies by firing bullets.",
-                    "Avoid enemy attacks to maintain HP."
-                ]
+                    "Score points by shooting and hitting sharks with bubbles.",
+                    "Contact with sharks causes damage.",
+                    "The number of sharks defeated before the HP gauge reaches 0 is recorded as high score."
+                ],
+                controls: ["Shoot", "Up / Down", "Dash", "Game Start", "Options"]
             },
             "334": {
-                theme: "Racing",
-                desc: "A racing game with unique carts.",
+                title: "Delivering cuisine in a sky city",
+                theme: "Delivery",
+                desc: "A game where you deliver Japanese cuisine in a sky city.",
                 systems: [
-                    "Compete for the best time on the circuit.",
-                    "Use items effectively to overtake opponents."
-                ]
+                    "Take orders with the Order Bird, then memorize the items and quantities for delivery.",
+                    "The gauge reduces upon falling or making mistakes. The number of deliveries made before the gauge reaches 0 is recorded as high score."
+                ],
+                controls: ["Action", "Jump (Delivery mode)", "Dash", "Up / Down (Order Bird mode)", "Options"]
             },
             "335": {
-                theme: "Simulation",
-                desc: "A farm simulation game where you grow crops.",
+                title: "flutist",
+                theme: "Instrument",
+                desc: "An instrument game where you can play the flute while looking at a hill overlooking a shipwreck.",
                 systems: [
-                    "Plant seeds, water them, and harvest crops.",
-                    "Earn money by selling the harvested crops."
-                ]
+                    "You can play the flute on the hill overlooking the shipwreck.",
+                    "You can play notes assigned to four buttons.",
+                    "Playing the sounds of the four buttons simultaneously creates a C7 chord."
+                ],
+                controls: ["Note: C", "Note: E", "Note: G", "Note: Bb"]
             },
             "336": {
-                theme: "Adventure",
-                desc: "An adventure game exploring mysterious ruins.",
+                title: "Matchmaking event at the seabed",
+                theme: "Matchmaking",
+                desc: "A game where you match the lengths of fish bodies extending from the wall.",
                 systems: [
-                    "Solve riddles and traps to uncover secrets.",
-                    "Collect artifacts hidden in the ruins."
-                ]
+                    "Match the lengths of the fish bodies protruding from the walls on the left and right.",
+                    "The play time gauge reduces according to the difference in lengths.",
+                    "The number of matches made before the play time gauge reaches 0 is recorded as high score."
+                ],
+                controls: ["Confirm", "Move: Left / Right", "Options"]
             },
             "337": {
-                theme: "Sports",
-                desc: "A simple tennis game.",
+                title: "group photo",
+                theme: "Group Photo",
+                desc: "A game where you take a group photo at the creator development center.",
                 systems: [
-                    "Rally with the opponent and aim for points.",
-                    "The first one to reach the set score wins."
-                ]
+                    "Characters can be moved in Cat mode.",
+                    "Photos can be taken in Camera mode.",
+                    "Taken photos are saved in Memory and can be viewed."
+                ],
+                controls: ["Select / Place Character", "Take Photo (Camera mode)", "Up / Down (Camera mode)", "Check Memory", "Switch Memory Photo: RB / LB", "Options"]
             },
             "338": {
+                title: "Japanese Cuisine Buffet",
                 theme: "Buffet",
                 desc: "A game where you enjoy a Japanese cuisine buffet until you're satisfied.",
                 systems: [
@@ -2716,7 +2851,8 @@
                     "The satisfaction gauge gradually increases as you eat.",
                     "The number of dishes eaten before the fullness gauge reaches MAX is recorded as high score.",
                     "All dishes are rearranged after you eat."
-                ]
+                ],
+                controls: ["Eat", "Dash", "Options"]
             }
         };
 
@@ -2759,7 +2895,7 @@
 
                     // 3. 操作方法 (table) の置換
                     const tableRows = doc.querySelectorAll('.detail-block table tr');
-                    tableRows.forEach(tr => {
+                    tableRows.forEach((tr, rowIndex) => {
                         const td1 = tr.querySelector('td:first-child');
                         const td2 = tr.querySelector('td:last-child');
                         if (td1 && td2) {
@@ -2770,34 +2906,47 @@
                             }
 
                             // ボタン名/キー名の翻訳
-                            let btnText = td2.textContent;
-                            btnText = btnText.replace(/Bボタン/g, 'B Button')
-                                .replace(/Aボタン/g, 'A Button')
-                                .replace(/Xボタン/g, 'X Button')
-                                .replace(/Yボタン/g, 'Y Button')
-                                .replace(/LBボタン/g, 'LB Button')
-                                .replace(/RBボタン/g, 'RB Button')
-                                .replace(/RTボタン/g, 'RT Button')
-                                .replace(/LTボタン/g, 'LT Button')
-                                .replace(/Backボタン/g, 'Back Button')
-                                .replace(/STARTボタン/g, 'Start Button')
-                                .replace(/上方向キー/g, 'Up Key')
-                                .replace(/右キー/g, 'Right Key')
-                                .replace(/左キー/g, 'Left Key')
-                                .replace(/上下キー/g, 'Up/Down Keys')
-                                .replace(/左右キー/g, 'Left/Right Keys')
-                                .replace(/キーボード/g, 'Keyboard')
-                                .replace(/Y長押し/g, 'Hold Y');
-                            td2.textContent = btnText;
+                            if (trans && trans.controls && trans.controls[rowIndex]) {
+                                // 個別翻訳データがある場合は優先使用
+                                td2.textContent = trans.controls[rowIndex];
+                            } else {
+                                // 汎用的な置換
+                                let btnText = td2.textContent;
+                                btnText = btnText.replace(/Bボタン/g, 'B Button')
+                                    .replace(/Aボタン/g, 'A Button')
+                                    .replace(/Xボタン/g, 'X Button')
+                                    .replace(/Yボタン/g, 'Y Button')
+                                    .replace(/LBボタン/g, 'LB Button')
+                                    .replace(/RBボタン/g, 'RB Button')
+                                    .replace(/RTボタン/g, 'RT Button')
+                                    .replace(/LTボタン/g, 'LT Button')
+                                    .replace(/Backボタン/g, 'Back Button')
+                                    .replace(/STARTボタン/g, 'Start Button')
+                                    .replace(/上方向キー/g, 'Up Key')
+                                    .replace(/右キー/g, 'Right Key')
+                                    .replace(/左キー/g, 'Left Key')
+                                    .replace(/上下キー/g, 'Up/Down Keys')
+                                    .replace(/左右キー/g, 'Left/Right Keys')
+                                    .replace(/キーボード/g, 'Keyboard')
+                                    .replace(/Y長押し/g, 'Hold Y');
+                                td2.textContent = btnText;
+                            }
+
+                            // 記号の変換 (共通)
+                            td2.textContent = td2.textContent
+                                .replace(/：/g, ': ')
+                                .replace(/、/g, ', ')
+                                .replace(/・/g, '/');
                         }
                     });
 
-                    // 4. システム (ul/li) の置換
-                    const systemLis = doc.querySelectorAll('.detail-block ul li');
-                    if (trans && trans.systems) {
-                        systemLis.forEach((li, index) => {
+                    // 4. システム (p/ul/li) の置換
+                    const systemBlock = Array.from(doc.querySelectorAll('.detail-block')).find(b => b.querySelector('h3')?.textContent === 'System');
+                    if (systemBlock && trans && trans.systems) {
+                        const systemElements = systemBlock.querySelectorAll('p, li');
+                        systemElements.forEach((el, index) => {
                             if (trans.systems[index]) {
-                                li.textContent = trans.systems[index];
+                                el.textContent = trans.systems[index];
                             }
                         });
                     }
@@ -2812,6 +2961,9 @@
                             if (td.textContent === 'イラスト') td.textContent = 'Illustration';
                             if (td.textContent === 'BGM') td.textContent = 'BGM';
                             if (td.textContent === '効果音') td.textContent = 'Sound Effects';
+
+                            // クリエイター名「くろろ」の置換
+                            if (td.textContent.trim() === 'くろろ') td.textContent = 'Kuroro';
                         });
                     }
 
