@@ -7032,6 +7032,207 @@
             `
         };
 
+        // 翻訳データ：WCG100およびくろろ氏の全ゲームタイトルと説明の翻訳を一括定義
+        const gameTranslationInfo = {
+            '01': { title: 'Concentration', description: 'A card game where you find pairs of animal and sound cards.', theme: 'Concentration' },
+            '02': { title: 'Harvest Festival', description: 'A game where you harvest vegetables and fruits over time.', theme: 'Harvest' },
+            '03': { title: 'Diving Fishing', description: 'A game where you catch fish by free diving.', theme: 'Free Diving' },
+            '04': { title: 'Dining', description: 'A game where you serve various dishes to customers.', theme: 'Cooking' },
+            '05': { title: 'Space Exploration', description: 'A game where you explore the universe using gravity warps.', theme: 'Space Exploration' },
+            '06': { title: 'Onsen', description: 'A game where you take care of chicks in a hot spring.', theme: 'Hot Spring' },
+            '07': { title: 'Zoo', description: 'A game where you transform into the same species to talk to animals and make friends.', theme: 'Zoo' },
+            '08': { title: 'Exhibition', description: 'A game where you give titles to various paintings.', theme: 'Exhibition' },
+            '09': { title: 'Castle Siege Puzzle', description: 'A castle-siege puzzle adventure game where you defeat enemies to advance deep into the castle.', theme: 'Castle Siege Puzzle' },
+            '10': { title: 'Rescue Cats', description: 'A game where you find and rescue cats.', theme: 'Cat Rescue' },
+            '11': { title: 'Combination Quiz', description: 'A quiz game where you answer the correct combination for given themes.', theme: 'Matching Quiz' },
+            '12': { title: 'Game Card Gacha', description: 'A game where you collect game cards from treasure chest gachas.', theme: 'Gacha' },
+            '13': { title: 'Tightrope Walking', description: 'A game where you walk a tightrope to the neighboring building.', theme: 'Tightrope Walking' },
+            '14': { title: 'Eye Test on the Cliff', description: 'A game where you test your eyesight on top of a cliff.', theme: 'Eye Exam' },
+            '15': { title: 'Stopwatch', description: 'A game where you measure time with your internal clock and aim to stop within 1 second of the target.', theme: 'Stopwatch' },
+            '16': { title: 'Absolute Pitch Ability', description: 'A game where you train your sense of pitch by hitting piano keys that match the given sound.', theme: 'Perfect Pitch' },
+            '17': { title: 'Live Stage', description: 'A game where you perform live on stage as an artist.', theme: 'Live Stage' },
+            '18': { title: 'Fishing', description: 'A game where you catch fish while managing stamina and the reel gauge.', theme: 'Fishing' },
+            '19': { title: 'Desert Oasis', description: 'A game where you wander the desert in search of an oasis and seek healing in a harsh environment.', theme: 'Desert Oasis' },
+            '20': { title: 'Crowded Road', description: 'A game where you avoid other people so as not to obstruct their walking.', theme: 'Crowded Road' },
+            '21': { title: 'Maze Exploration', description: 'A game where you explore mazes and use keys to find items in treasure chests.', theme: 'Maze Exploration' },
+            '22': { title: 'Card Battle', description: 'A game where you battle and defeat opponents using card affinities.', theme: 'Card Battle' },
+            '23': { title: 'Star Land', description: 'An action game where you collect stars in a 3D map.', theme: 'Star Land' },
+            '24': { title: 'Music Room', description: 'A game where you open doors leading to rooms where music is playing.', theme: 'Music Room' },
+            '25': { title: 'Waste Disposal', description: 'A game where you sort various types of waste.', theme: 'Waste Disposal' },
+            '26': { title: 'Shrine Visit', description: 'A game where you visit a shrine and offer prayers.', theme: 'Shrine Visit' },
+            '27': { title: 'Greeting Exercise', description: 'A game where you say greetings in various languages.', theme: 'Greeting Exercise' },
+            '28': { title: 'Dice Race', description: 'A game where you race by rolling dice.', theme: 'Dice Race' },
+            '29': { title: 'Stack Craft', description: 'A game where you use stacked craft paper to reach balloons in the sky.', theme: 'Stack Craft' },
+            '30': { title: 'Snowman', description: 'A game where you make a snowman by rolling snowballs and collecting materials.', theme: 'Snowman' },
+            '31': { title: 'Multilingual Service', description: 'A game where you serve products matching orders placed in various languages.', theme: 'Multilingual Service' },
+            '32': { title: 'Focusing on the Good', description: 'A game where you write and share good points on sticky notes.', theme: 'Focusing on the Good' },
+            '33': { title: 'Fantasy Dept', description: 'A game where you display merchandise in a fantasy department store.', theme: 'Fantasy Dept' },
+            '34': { title: 'Quick Draw Water Gun', description: 'A quick-draw game using water guns.', theme: 'Quick Draw Water Gun' },
+            '35': { title: 'Invaders', description: 'A game where you place Peanut-kun on the oni\'s path to prevent their invasion.', theme: 'Invaders' },
+            '36': { title: 'Japan Map', description: 'A game where you create a 3D map of Japan.', theme: 'Japan Map' },
+            '37': { title: 'Robot Battle', description: 'A turn-based robot command battle game.', theme: 'Robot Battle' },
+            '38': { title: 'Gift', description: 'A game where you receive presents from visitors on anniversaries.', theme: 'Gift' },
+            '39': { title: 'Princess in the Box', description: 'A puzzle game where you move blocks to let the princess out.', theme: 'Princess in the Box' },
+            '40': { title: 'Wine Sommelier', description: 'A game where you serve the correct wines to increase your sommelier rank.', theme: 'Wine Sommelier' },
+            '41': { title: 'Balloon Animals', description: 'A game where you save animals that are floating away tied to balloons.', theme: 'Balloon Animals' },
+            '42': { title: 'Rescue Boat', description: 'A game where you find and rescue survivors drifting at sea.', theme: 'Rescue Boat' },
+            '43': { title: 'Snowball Fight', description: 'A game where you have a snowball fight with randomly appearing animals.', theme: 'Snowball Fight' },
+            '44': { title: 'Rabbit Jump', description: 'A game where you use custom-placed platforms to reach carrot boxes in the sky.', theme: 'Rabbit Jump' },
+            '45': { title: 'Pioneer Village', description: 'A game where you collect wood and build houses to develop a village.', theme: 'Pioneer Village' },
+            '46': { title: 'Hina Festival', description: 'A game based on the traditional Japanese Hina Doll Festival where you arrange dolls on a display stand.', theme: 'Hina Festival' },
+            '47': { title: 'Creator Institute', description: 'A game where you observe the creativity of students at a training institute.', theme: 'Creator Institute' },
+            '48': { title: 'Dragon Slayer', description: 'A side-scrolling action battle game where you slay dragons.', theme: 'Dragon Slayer' },
+            '49': { title: 'Graduation Ceremony', description: 'A game where you receive graduation certificates and input custom messages.', theme: 'Graduation Ceremony' },
+            '50': { title: 'White Day', description: 'A game where you restock shelves and serve customers in a White Day shop.', theme: 'White Day' },
+            '51': { title: 'Gold Mine Maze', description: 'A game where you mine for gold while avoiding explosive mining spots.', theme: 'Gold Mine Maze' },
+            '52': { title: 'Malnutrition Dept', description: 'A game where you provide missing nutrients to patients in a diagnostic room.', theme: 'Malnutrition Dept' },
+            '53': { title: 'Fly High Shimaenaga', description: 'A game where you eat food to gain power and fly as high as possible.', theme: 'Fly High Shimaenaga' },
+            '54': { title: 'Ball Juggling', description: 'A game where you keep a ball in the air using your feet, knees, and head.', theme: 'Ball Juggling' },
+            '55': { title: 'World Map Memory', description: 'A game where you take photos across the world map.', theme: 'World Map Memory' },
+            '56': { title: 'Snowfield Hide & Seek', description: 'A game where you find family members hidden in a crowd on a snowfield.', theme: 'Snowfield Hide & Seek' },
+            '57': { title: 'Shimaenaga Garden', description: 'A game where you grow a central tree and garden the surrounding area.', theme: 'Shimaenaga Garden' },
+            '58': { title: 'Alligator Panic', description: 'A game where you stomp on alligators that threaten a frog family.', theme: 'Alligator Panic' },
+            '59': { title: '3D x 2D Battle', description: 'A command battle game where a 3-person party of 2D characters fights 3D monsters.', theme: '3Dx2D' },
+            '60': { title: 'Tea Ceremony', description: 'A game where you drink tea in the Urasenke style.', theme: 'Sado (Tea Ceremony)' },
+            '61': { title: 'Warp Road', description: 'A game where you collect energy to warp as long as possible.', theme: 'Warp Road' },
+            '62': { title: 'Signing Session', description: 'A game where you sign autographs for visiting fans.', theme: 'Signing' },
+            '63': { title: 'Cat in the Barrel', description: 'A game where you sneak food while hiding in a barrel from pirates.', theme: 'Cat in the Barrel' },
+            '64': { title: 'Zodiac Dungeon', description: 'A game where you collect zodiac cards to increase your level.', theme: 'Zodiac Dungeon' },
+            '65': { title: 'Library', description: 'A game where you collect subtitles for "Another X" in episodic order.', theme: 'Library' },
+            '66': { title: 'Medicinal Food', description: 'A game where you balance heat and cold by eating medicinal food.', theme: 'Medicinal Food' },
+            '67': { title: 'Pizza Delivery', description: 'A game where you deliver pizzas in an aerial city.', theme: 'Pizza Delivery' },
+            '68': { title: 'Pitch Animals', description: 'A game where you match the sound pitch of animals to become friends.', theme: 'Pitch Animals' },
+            '69': { title: 'Symmetrical Room Differences', description: 'A 3D spot-the-difference game set in symmetrical rooms.', theme: 'Symmetrical Room Differences' },
+            '70': { title: 'Golem Crush', description: 'A battle game where you defeat golems using positioning and buffs.', theme: 'Golem Crush' },
+            '71': { title: 'Box Puzzle', description: 'A puzzle game where you move boxes to create a path to the tower.', theme: 'Box Puzzle' },
+            '72': { title: 'Bonfire Control', description: 'A game where you manage a bonfire to survive until morning.', theme: 'Bonfire Control' },
+            '73': { theme: 'Sumo', title: 'Sumo', description: 'A sumo game where you push opponents out of the ring.', theme: 'Ponsu' },
+            '74': { title: 'Cattle Care', description: 'A game where you raise and care for high-quality cattle.', theme: 'Cattle Care' },
+            '75': { title: 'Arena Battle', description: 'A front-view real-time battle game.', theme: 'Arena' },
+            '76': { title: 'Dowsing Factory', description: 'A mining game set in a randomly changing labyrinth.', theme: 'Dowsing' },
+            '77': { title: 'Growing Home', description: 'A game where you cook and eat to grow your character.', theme: 'Growing Home' },
+            '78': { title: 'Dance Matching', description: 'A dance party game where you match poses.', theme: 'Dance Matching' },
+            '79': { title: 'Popular Bakery', description: 'A game where you run a popular bakery.', theme: 'Popular Bakery' },
+            '80': { title: 'Puzzle Dungeon', description: 'A game where you use items to find crystals deep in a dungeon.', theme: 'Puzzle' },
+            '81': { title: 'Card High & Low', description: 'A game where you guess if the next game card\'s number is higher or lower.', theme: 'Card High & Low' },
+            '82': { title: 'Eye Contact Friends', description: 'A game where you match facial expressions to befriend cautious characters.', theme: 'Eye Contact' },
+            '83': { title: 'Catch Ball', description: 'A game where you maintain power balance to keep playing catch.', theme: 'Catch Ball' },
+            '84': { title: 'Rock Climbing', description: 'A game where you climb rock walls to reach the summit.', theme: 'Rock Climbing' },
+            '85': { title: 'Flame & Thunder Dragon', description: 'A boss-only shooting game where you control a flame dragon to defeat a thunder dragon.', theme: 'Enrai' },
+            '86': { title: 'Love & Rai', description: 'A game where you mirror the opponent\'s paw gestures to increase the LOVE meter.', theme: 'Love & Rai' },
+            '87': { title: 'Birthstone Crystal', description: 'A game where you pour light from birthstones into crystals to dispel darkness.', theme: 'Birthstone Crystal' },
+            '88': { title: 'Sea Talk', description: 'A game where you converse with sea creatures by matching their ultrasonic pitches.', theme: 'Sea Talk' },
+            '89': { title: 'Dog Oshi Life', description: 'A game where you enjoy "oshi activity" while playing with dogs at a run.', theme: 'Dog Oshi Life' },
+            '90': { title: 'Figure VS Card', description: 'A game where you use cards to defeat figure monsters.', theme: 'Figure' },
+            '91': { title: 'LonGlide', description: 'A game where you gain momentum to glide as far as possible.', theme: 'LonGlide' },
+            '92': { title: 'Lock the Door', description: 'A game where you return to a blackout house to retrieve a forgotten key.', theme: 'Lock the Door' },
+            '93': { title: 'Dessert Buffet', description: 'A game where you enjoy a dessert buffet to your heart\'s content.', theme: 'Dessert Buffet' },
+            '94': { title: "Dog's Hip Mirror", description: 'A game where you match the lengths of dogs\' hips.', theme: "Dog's Hip Mirror" },
+            '95': { title: 'Iron Punch Battle', description: 'A one-on-one battle game where you defeat opponents with Iron Punches.', theme: 'Iron Punch' },
+            '96': { title: 'Shipwreck Salvage', description: 'A game where you salvage valuable treasures in a shipwreck graveyard.', theme: 'Shipwreck Salvage' },
+            '97': { title: 'Wish Upon Star Snow', description: 'A game where you use constellation power to make star-snow fall.', theme: 'Wish Upon Star Snow' },
+            '98': { title: 'Seeking Cheese', description: 'A game where you find and eat cheese hidden in a warehouse.', theme: 'Seeking' },
+            '99': { title: 'Ramen', description: 'A game where you create your original ramen by placing toppings.', theme: 'Ramen' },
+            '100': { title: 'Switch Link Battle', description: 'A battle game where you switch characters to fight in coordination.', theme: 'Switch Link Battle' },
+            '302': { title: 'Kuroro Aquarium', description: 'A side-scrolling aquarium game where you can watch sea creatures swimming around.', theme: 'Aquarium' },
+            '303': { title: 'Undersea Concentration', description: 'A memory game where you find pairs of sea creatures hidden in shells.', theme: 'Undersea Concentration' },
+            '304': { title: 'Shellfish Free Diving', description: 'A game where you collect shells by free diving.', theme: 'Free Diving' },
+            '305': { title: 'Undersea Maze', description: 'A game where you explore an undersea maze and find fish hidden behind objects.', theme: 'Undersea Maze' },
+            '306': { title: 'Pirate Ship Treasure', description: 'A game where you collect items from treasure chest gachas on a pirate ship.', theme: 'Pirate Ship Treasure' },
+            '307': { title: 'Undersea Race', description: 'A racing game set on the ocean floor.', theme: 'Undersea Race' },
+            '308': { title: 'Tug of War', description: 'A competitive tug-of-war game.', theme: 'Tug of War' },
+            '309': { title: 'Goblin Extermination', description: 'A game where you exterminate goblins.', theme: 'Goblin Extermination' },
+            '310': { title: 'Clock Land', description: 'An adventure game set in a world of clocks.', theme: 'Clock Land' },
+            '311': { title: 'Hurdle Race', description: 'A racing game where you jump over hurdles.', theme: 'Hurdle Race' },
+            '312': { title: 'Another X Exhibition', description: 'A game where you experience the "Another X" exhibition.', theme: 'Exhibition' },
+            '313': { title: 'Invasion Defense', description: 'A defense game where you protect against invaders.', theme: 'Invasion Defense' },
+            '314': { title: 'Quick Draw Water Gun', description: 'A quick-draw game using water guns.', theme: 'Quick Draw Water Gun' },
+            '315': { title: 'Clock Production Line', description: 'A game where you manage a clock production line.', theme: 'Production Line' },
+            '316': { title: 'Find the Twins', description: 'A game where you find pairs of twins.', theme: 'Find the Twins' },
+            '317': { title: 'Mine Placement Battle', description: 'A battle game involving strategic mine placement.', theme: 'Mine Battle' },
+            '318': { title: 'Dolphin Jumping', description: 'A game where you help dolphins jump.', theme: 'Dolphin Jumping' },
+            '319': { title: 'Seafood Platter', description: 'A game where you assemble seafood platters.', theme: 'Seafood Platter' },
+            '320': { title: 'Red Light Green Light', description: 'A game based on the "Red Light, Green Light" play.', theme: 'Red Light Green Light' },
+            '321': { title: 'Battleship', description: 'A naval combat game involving battleships.', theme: 'Battleship' },
+            '322': { title: 'Boat Fishing', description: 'A game where you go fishing from a boat.', theme: 'Boat Fishing' },
+            '323': { title: 'Food Service', description: 'A game where you serve various foods.', theme: 'Food Service' },
+            '324': { title: 'Snowball Fight', description: 'A fun game of snowball fighting.', theme: 'Snowball Fight' },
+            '325': { title: 'Crab and Whale', description: 'A game featuring crabs and whales.', theme: 'Crab and Whale' },
+            '326': { title: 'Rescue Fish', description: 'A game where you save trapped fish.', theme: 'Rescue Fish' },
+            '327': { title: 'Internal Clock', description: 'A game that tests your internal timing.', theme: 'Internal Clock' },
+            '328': { title: 'Ball Toss', description: 'A traditional game of tossing balls into baskets.', theme: 'Ball Toss' },
+            '329': { title: 'Pirate Territory', description: 'A game where you explore pirate-claimed waters.', theme: 'Pirate Territory' },
+            '330': { title: 'Japanese Summoning', description: 'A training game for summoning Japanese words.', theme: 'Japanese Summoning' },
+            '331': { title: 'Desert Hunt', description: 'A treasure hunt game set in the desert.', theme: 'Desert Hunt' },
+            '332': { title: 'Signing Event', description: 'A game where you attend or manage an autograph session.', theme: 'Signing Event' },
+            '333': { title: 'Dolphin vs Shark', description: 'A game featuring a battle between dolphins and sharks.', theme: 'Dolphin vs Shark' },
+            '334': { title: 'Washoku Delivery', description: 'A game where you deliver Japanese food.', theme: 'Washoku Delivery' },
+            '335': { title: 'Fruity Artist', description: 'A game where you perform as a flutist.', theme: 'Fruity Artist' },
+            '336': { title: 'Undersea Date', description: 'A blind date game set on the ocean floor.', theme: 'Undersea Date' },
+            '337': { title: 'Group Photo', description: 'A game where you arrange characters for a group photo.', theme: 'Group Photo' },
+            '338': { title: 'Washoku Buffet', description: 'A game featuring a Japanese food buffet.', theme: 'Washoku Buffet' }
+        };
+
+        // 操作アクション辞書
+        const actionTranslations = {
+            'カードを開く': 'Flip Card',
+            '上昇/下降': 'Ascend/Descend',
+            'ダッシュ': 'Dash',
+            'オプション': 'Options',
+            '収穫': 'Harvest',
+            '移動': 'Move',
+            '潜る/浮上': 'Dive/Surface',
+            '捕まえる': 'Catch',
+            '料理を選択': 'Select Dish',
+            '提供する': 'Serve',
+            'ワープ': 'Warp',
+            'お世話': 'Care',
+            '話しかける': 'Talk',
+            '変身': 'Transform',
+            '名前を付ける': 'Give Name',
+            '進む': 'Advance',
+            '攻撃': 'Attack',
+            '救助': 'Rescue',
+            '答える': 'Answer',
+            'ガチャを引く': 'Pull Gacha',
+            '跳ぶ': 'Jump',
+            '視力検査': 'Eye Test',
+            'ストップ': 'Stop',
+            '弾く': 'Play',
+            'パフォーマンス': 'Perform',
+            'リールを巻く': 'Reel In',
+            '探索': 'Explore',
+            'よける': 'Avoid',
+            '鍵を使う': 'Use Key',
+            '星を集める': 'Collect Stars',
+            'ドアを開ける': 'Open Door',
+            '分別': 'Sort',
+            '参拝': 'Pray',
+            'あいさつ': 'Greet',
+            'ダイスを振る': 'Roll Dice',
+            'クラフト': 'Craft',
+            '雪玉を作る': 'Make Snowball',
+            '注文を受ける': 'Take Order',
+            '付箋を書く': 'Write Note',
+            '陳列': 'Display',
+            '撃つ': 'Shoot',
+            '防衛': 'Defend',
+            'ギフトを受け取る': 'Receive Gift',
+            'ブロックを動かす': 'Move Block',
+            'ワインを注ぐ': 'Pour Wine',
+            'バフ': 'Buff',
+            '連携': 'Combo',
+            'バトルスタート': 'Start Battle',
+            '食べる': 'Eat',
+            'ゲームスタート': 'Game Start',
+            '決定/配置': 'Confirm/Place',
+            'アイテム切替': 'Switch Item',
+            '食材切替': 'Switch Ingredient',
+            '上下移動': 'Move Up/Down',
+            'アクション': 'Action',
+            'キャラ切り替え': 'Switch Character'
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const gameId = urlParams.get('id');
@@ -7041,49 +7242,144 @@
             const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
 
             if (gameId && gameData[gameId]) {
-                let content = gameData[gameId];
+                const rawContent = gameData[gameId];
 
-                // 英語設定の場合、動的に翻訳
                 if (currentLang === 'en') {
-                    // 共通の見出し
-                    content = content.replace(/<h2>ゲーム詳細<\/h2>/g, '<h2>Game Details</h2>');
-                    content = content.replace(/<h3>テーマ<\/h3>/g, '<h3>Theme</h3>');
-                    content = content.replace(/<h3>操作方法 \(Xinputコントローラ\)<\/h3>/g, '<h3>Controls (Xinput Controller)</h3>');
-                    content = content.replace(/<h3>操作方法<\/h3>/g, '<h3>Controls</h3>');
-                    content = content.replace(/<h3>システム<\/h3>/g, '<h3>Systems</h3>');
-                    content = content.replace(/<h3>クリエイター<\/h3>/g, '<h3>Creators</h3>');
+                    // DOMParserを使用してHTMLを構造的に解析
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(rawContent, 'text/html');
+                    const trans = gameTranslationInfo[gameId];
 
-                    // 共通のフレーズ
-                    content = content.replace(/このゲームには以下のクリエイターさんの作品を素材として使用しています。/g, 'The following creators\' works are used in this game.');
-                    content = content.replace(/itch.ioで購入/g, 'Purchase on itch.io');
-                    content = content.replace(/Bボタン/g, 'B Button');
-                    content = content.replace(/上下キー/g, 'Up/Down Keys');
-                    content = content.replace(/LBボタン/g, 'LB Button');
-                    content = content.replace(/Backボタン/g, 'Back Button');
-                    content = content.replace(/十字キー/g, 'D-Pad');
-                    content = content.replace(/Aボタン/g, 'A Button');
-                    content = content.replace(/Xボタン/g, 'X Button');
-                    content = content.replace(/Yボタン/g, 'Y Button');
-                    content = content.replace(/アナログスティック/g, 'Analog Stick');
+                    // 1. タイトル (h1) と 説明文 (最初のp) の置換
+                    if (trans) {
+                        const h1 = doc.querySelector('h1');
+                        if (h1) h1.textContent = trans.title;
 
-                    // クリエイター情報のテーブル見出し
-                    content = content.replace(/<td>イラスト<\/td>/g, '<td>Illustration</td>');
-                    content = content.replace(/<td>効果音<\/td>/g, '<td>Sound Effects</td>');
-                    content = content.replace(/<td>BGM<\/td>/g, '<td>BGM</td>');
-                    content = content.replace(/<td>ドット絵<\/td>/g, '<td>Pixel Art</td>');
-                    content = content.replace(/<td>プログラム<\/td>/g, '<td>Program</td>');
-                    content = content.replace(/<td>ゲームデザイン<\/td>/g, '<td>Game Design</td>');
+                        const firstP = doc.querySelector('.container > p');
+                        if (firstP) firstP.textContent = trans.description;
 
-                    // 各ゲーム特有の日本語タイトルを英語に置換（h1内）
-                    // WCG.htmlのデータを使いこなすのが理想だが、ここでは置換を幾つか例示
-                    // すべての翻訳を網羅するのは難しいため、主要なものを置換
-                    content = content.replace(/<h1>神経衰弱<\/h1>/g, '<h1>Concentration</h1>');
-                    content = content.replace(/<h1>収穫祭<\/h1>/g, '<h1>Harvest Festival</h1>');
+                        // Themeセクションの置換
+                        const detailBlocks = doc.querySelectorAll('.detail-block');
+                        detailBlocks.forEach(block => {
+                            const h3 = block.querySelector('h3');
+                            const p = block.querySelector('p');
+                            if (h3 && h3.textContent.includes('テーマ') && p) {
+                                p.textContent = trans.theme;
+                            }
+                        });
+                    }
+
+                    // 2. 見出しの置換 (h2, h3)
+                    doc.querySelectorAll('h2').forEach(h2 => {
+                        if (h2.textContent === 'ゲーム詳細') h2.textContent = 'Game Details';
+                    });
+                    doc.querySelectorAll('h3').forEach(h3 => {
+                        if (h3.textContent === 'テーマ') h3.textContent = 'Theme';
+                        if (h3.textContent.includes('操作方法')) h3.textContent = 'Controls (Xinput Controller)';
+                        if (h3.textContent === 'システム') h3.textContent = 'Systems';
+                        if (h3.textContent === 'クリエイター') h3.textContent = 'Creators';
+                    });
+
+                    // 3. 操作方法 (table) の1列目の置換
+                    doc.querySelectorAll('table tr').forEach(tr => {
+                        const td1 = tr.querySelector('td:first-child');
+                        const td2 = tr.querySelector('td:last-child');
+                        if (td1 && td2) {
+                            // アクション名の翻訳
+                            const actionJa = td1.textContent.trim();
+                            if (actionTranslations[actionJa]) {
+                                td1.textContent = actionTranslations[actionJa];
+                            }
+
+                            // ボタン名/キー名の翻訳
+                            let btnText = td2.textContent;
+                            btnText = btnText.replace(/Bボタン/g, 'B Button')
+                                .replace(/Aボタン/g, 'A Button')
+                                .replace(/Xボタン/g, 'X Button')
+                                .replace(/Yボタン/g, 'Y Button')
+                                .replace(/LBボタン/g, 'LB Button')
+                                .replace(/RBボタン/g, 'RB Button')
+                                .replace(/RT/g, 'RT Button') // Added RT
+                                .replace(/Backボタン/g, 'Back Button')
+                                .replace(/STARTボタン/g, 'START Button')
+                                .replace(/START/g, 'START Button') // Added START
+                                .replace(/上下キー/g, 'Up/Down Keys')
+                                .replace(/左右キー/g, 'Left/Right Keys')
+                                .replace(/十字キー/g, 'D-Pad')
+                                .replace(/アナログスティック/g, 'Analog Stick');
+                            td2.textContent = btnText;
+                        }
+                    });
+
+                    // 4. システム (ul/li) の一部フレーズ置換
+                    doc.querySelectorAll('.detail-block ul li').forEach(li => {
+                        let text = li.textContent;
+                        // 個別の翻訳を網羅するのは難しいため、共通的な単語を置換、またはそのまま
+                        // ここでは「ゲージ」「スコア」「ハイスコア」などはカタカナ英語なのでそのまま、あるいは英語に
+                        text = text.replace(/スコア/g, 'Score')
+                            .replace(/ハイスコア/g, 'High Score')
+                            .replace(/ゲージ/g, 'Gauge')
+                            .replace(/アイテム/g, 'Item')
+                            .replace(/レベル/g, 'Level')
+                            .replace(/ターン/g, 'Turn')
+                            .replace(/ステージ/g, 'Stage')
+                            .replace(/体力/g, 'HP')
+                            .replace(/チーズ/g, 'Cheese')
+                            .replace(/ネズミ/g, 'Mouse')
+                            .replace(/ラーメンスープ/g, 'Ramen Soup')
+                            .replace(/トッピング/g, 'Toppings')
+                            .replace(/キャラ/g, 'Characters')
+                            .replace(/連携/g, 'Cooperation')
+                            .replace(/物理/g, 'Physical')
+                            .replace(/魔法/g, 'Magic')
+                            .replace(/バフ/g, 'Buff')
+                            .replace(/デバフ/g, 'Debuff')
+                            .replace(/弱点/g, 'Weakness')
+                            .replace(/属性攻撃/g, 'Elemental Attack')
+                            .replace(/ダメージ/g, 'Damage')
+                            .replace(/反撃/g, 'Counterattack')
+                            .replace(/ステータス効果/g, 'Status Effects')
+                            .replace(/ノーダメージ/g, 'No Damage')
+                            .replace(/HPが0になるまでに獲得したスコアがハイスコアとして記録される/g, 'The score obtained before HP reaches 0 is recorded as the high score.')
+                            .replace(/体力が0になるまでに食べたチーズの数がハイスコアとして記録される/g, 'The number of cheese eaten before HP reaches 0 is recorded as the high score.')
+                            .replace(/時間経過で体力が減り、徘徊しているネズミにぶつかると大幅に体力が削られる/g, 'HP decreases over time, and colliding with wandering mice significantly reduces HP.')
+                            .replace(/チーズを食べきることでスコアを獲得できる/g, 'You can earn scores by eating all the cheese.')
+                            .replace(/チーズを食べると体力が少しずつ回復する/g, 'Eating cheese gradually restores HP.')
+                            .replace(/ラーメンスープとトッピングを組み合わせてオリジナルのラーメンを作る/g, 'Create your original ramen by combining ramen soup and toppings.')
+                            .replace(/足は物理、手は魔法、顔は弓が弱点で、雪→炎、火の粉→氷、雨→雷と天候に応じた属性攻撃をするとさらにダメージが上がります/g, 'Feet are weak to physical, hands to magic, and face to bow. Elemental attacks corresponding to weather (snow→fire, sparks→ice, rain→lightning) further increase damage.')
+                            .replace(/光ってる部位以外に攻撃すると反撃を食らうのと、バフデバフ解除しないとダメージが一切通らなかったり、大ダメージを受けます/g, 'Attacking parts other than the glowing ones will result in a counterattack, and damage will not be dealt at all or large damage will be taken if buffs/debuffs are not removed.')
+                            .replace(/バフデバフでステータス効果を相殺させながら、反撃食らわないようにじっくり立ち回ればノーダメージでも倒せる/g, 'By neutralizing status effects with buffs and debuffs and carefully maneuvering to avoid counterattacks, you can defeat enemies without taking any damage.')
+                            .replace(/敵を倒すと残りHPがスコアとして獲得され、ステータスが引き継がれた状態で次のバトルが開始される/g, 'When an enemy is defeated, remaining HP is gained as a score, and the next battle begins with inherited stats.');
+                        li.textContent = text;
+                    });
+
+                    // 5. クリエイターセクションの置換
+                    const creatorBlock = Array.from(doc.querySelectorAll('.detail-block')).find(b => b.querySelector('h3')?.textContent === 'Creators');
+                    if (creatorBlock) {
+                        const p = creatorBlock.querySelector('p');
+                        if (p) p.textContent = "The following creators' works are used in this game.";
+
+                        creatorBlock.querySelectorAll('table td').forEach(td => {
+                            if (td.textContent === 'イラスト') td.textContent = 'Illustration';
+                            if (td.textContent === '効果音') td.textContent = 'Sound Effects';
+                            if (td.textContent === 'BGM') td.textContent = 'BGM';
+                            if (td.textContent === 'ドット絵') td.textContent = 'Pixel Art';
+                            if (td.textContent === '3D model') td.textContent = '3D Model'; // Added 3D model
+                            if (td.textContent === 'プログラム') td.textContent = 'Program';
+                            if (td.textContent === 'ゲームデザイン') td.textContent = 'Game Design';
+                        });
+                    }
+
+                    // 6. 購入ボタン
+                    const purchaseBtn = doc.querySelector('.purchase-button');
+                    if (purchaseBtn) purchaseBtn.textContent = 'Purchase on itch.io';
+
+                    gameContent.innerHTML = doc.body.innerHTML;
+                } else {
+                    gameContent.innerHTML = rawContent;
                 }
-
-                gameContent.innerHTML = content;
             } else {
-                const errorMsg = currentLang === 'en' ? 'Game not found.' : '指定されたゲームが見てかりません。';
+                const errorMsg = currentLang === 'en' ? 'Game not found.' : '指定されたゲームが見つかりません。';
                 gameContent.innerHTML = `<p>${errorMsg}</p>`;
             }
 
