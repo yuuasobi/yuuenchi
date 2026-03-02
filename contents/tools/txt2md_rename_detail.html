@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
     <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         .detail-header {
@@ -29,21 +31,26 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 30%);
             transform: rotate(0deg);
             animation: rotate 20s linear infinite;
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .detail-header h1 {
             margin: 0;
             font-size: 3rem;
             font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 1;
         }
@@ -61,7 +68,7 @@
         .detail-section {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             padding: 2rem;
             margin-bottom: 2rem;
         }
@@ -79,7 +86,7 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             margin: 1rem 0;
             display: block;
             margin-left: auto;
@@ -163,24 +170,25 @@
             .detail-header h1 {
                 font-size: 2rem;
             }
-            
+
             .detail-section {
                 padding: 1.5rem;
             }
-            
+
             .parameter-table {
                 font-size: 0.9rem;
             }
         }
     </style>
 </head>
+
 <body>
     <script src="../../header.js"></script>
-    
+
     <header class="detail-header">
         <h1>📄 TXT to MD Converter</h1>
     </header>
-    
+
     <div class="container">
         <!-- 画像セクション -->
         <div class="detail-section">
@@ -190,8 +198,9 @@
         <!-- 使い方セクション -->
         <div class="detail-section">
             <h2>📖 使い方</h2>
-            <p>TXT to MD Converterは、選択したフォルダ（サブフォルダも含む）内のすべての.txtファイルを.mdファイルに一括変換し、元のディレクトリ構造を保ったまま新しいフォルダに保存するツールです。</p>
-            
+            <p>TXT to MD Converterは、選択したフォルダ（サブフォルダも含む）内のすべての.txtファイルを.mdファイルに一括変換し、元のディレクトリ構造を保ったまま新しいフォルダに保存するツールです。
+            </p>
+
             <h3>基本的な使用方法</h3>
             <ol>
                 <li>Pythonで`txt2md_rename.py`を実行（またはexe版を利用）</li>
@@ -260,5 +269,92 @@
     <footer>
         <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+            if (currentLang === 'en') {
+                // セクション単位で処理
+                document.querySelectorAll('.detail-section').forEach(section => {
+                    const h2 = section.querySelector('h2');
+                    if (!h2) return;
+                    const h2Text = h2.textContent.trim();
+
+                    // 使い方セクション
+                    if (h2Text.includes('使い方')) {
+                        h2.textContent = '📖 How to Use';
+
+                        // h3 の翻訳
+                        section.querySelectorAll('h3').forEach(h3 => {
+                            if (h3.textContent.includes('基本的な使用方法')) h3.textContent = 'Basic Operations';
+                        });
+
+                        const p = section.querySelector('p');
+                        if (p) p.textContent = 'TXT to MD Converter is a GUI tool that batch converts text files (.txt) in a selected folder into Markdown files (.md) and renames them numerically (e.g., 001.md).';
+
+                        const list = section.querySelector('ol');
+                        if (list) {
+                            const steps = [
+                                'Run txt2md_rename.py with Python (or use the exe version).',
+                                'Select the target folder with the "Browse" button.',
+                                'Enter the starting number for renaming (default is 1).',
+                                'Click the "Start Conversion" button to begin processing.',
+                                'Check progress via the progress bar.',
+                                'After completion, the path to the output folder will be displayed.'
+                            ];
+                            list.querySelectorAll('li').forEach((li, i) => { if (steps[i]) li.textContent = steps[i]; });
+                        }
+                    }
+
+                    // 機能セクション
+                    if (h2Text.includes('機能')) {
+                        h2.textContent = '⚙️ Features';
+                        const featureData = [
+                            ['Batch Conversion', 'Batch convert all .txt files in a folder to .md files.'],
+                            ['Numerical Renaming', 'Rename files numerically based on the specified starting number.'],
+                            ['Original File Retention', 'The original .txt files are kept in their original folder.'],
+                            ['Progress Display', 'Progress displayed with a progress bar.'],
+                            ['Setting Memory', 'Remembers the folder and starting number used last time.'],
+                            ['Simple UI', 'Intuitive and easy-to-use interface.']
+                        ];
+                        section.querySelectorAll('.feature-list li').forEach((li, i) => {
+                            if (featureData[i]) li.innerHTML = `<strong>${featureData[i][0]}</strong> - ${featureData[i][1]}`;
+                        });
+                    }
+
+                    // パラメータセクション
+                    if (h2Text.includes('パラメータ')) {
+                        h2.textContent = '🎛️ Parameters';
+                        const table = section.querySelector('.parameter-table');
+                        if (table) {
+                            table.querySelector('th:nth-child(1)').textContent = 'Parameter Name';
+                            table.querySelector('th:nth-child(2)').textContent = 'Input Format';
+                            table.querySelector('th:nth-child(3)').textContent = 'Default Value';
+                            table.querySelector('th:nth-child(4)').textContent = 'Description';
+
+                            const rowData = [
+                                ['Target Folder', 'Folder selection', '-', 'Select the folder containing .txt files to convert.'],
+                                ['Starting Number', 'Number', '1', 'Sets the starting number for the numerical renaming.'],
+                                ['Output Folder', 'Auto-generation', '-', 'A "markdown" folder is automatically created in the current directory.']
+                            ];
+                            table.querySelectorAll('tbody tr').forEach((tr, i) => {
+                                if (rowData[i]) {
+                                    tr.querySelector('td:nth-child(1)').textContent = rowData[i][0];
+                                    tr.querySelector('td:nth-child(2)').textContent = rowData[i][1];
+                                    tr.querySelector('td:nth-child(3)').textContent = rowData[i][2];
+                                    tr.querySelector('td:nth-child(4)').textContent = rowData[i][3];
+                                }
+                            });
+                        }
+                    }
+                });
+
+                // 戻るボタン
+                const backBtn = document.querySelector('.back-button');
+                if (backBtn) backBtn.textContent = '← Back to Tools List';
+            }
+        });
+    </script>
 </body>
-</html> 
+
+</html>

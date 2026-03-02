@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
     <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         .detail-header {
@@ -29,21 +31,26 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 30%);
             transform: rotate(0deg);
             animation: rotate 20s linear infinite;
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .detail-header h1 {
             margin: 0;
             font-size: 3rem;
             font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 1;
         }
@@ -61,7 +68,7 @@
         .detail-section {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             padding: 2rem;
             margin-bottom: 2rem;
         }
@@ -79,7 +86,7 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             margin: 1rem 0;
             display: block;
             margin-left: auto;
@@ -93,7 +100,7 @@
             margin: 1rem auto;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .detail-section .video-container iframe {
@@ -194,24 +201,25 @@
             .detail-header h1 {
                 font-size: 2rem;
             }
-            
+
             .detail-section {
                 padding: 1.5rem;
             }
-            
+
             .parameter-table {
                 font-size: 0.9rem;
             }
         }
     </style>
 </head>
+
 <body>
     <script src="../../header.js"></script>
-    
+
     <header class="detail-header">
         <h1>🎵 Ghost Tuner</h1>
     </header>
-    
+
     <div class="container">
         <!-- 動画セクション -->
         <div class="detail-section">
@@ -223,7 +231,8 @@
         <!-- 概要セクション -->
         <div class="detail-section">
             <h2>📖 概要</h2>
-            <p>Ghost Tunerは、リアルタイムで音声のピッチを推定し、モジュレーションエフェクトを適用するプラグインです。入力音声から高精度にピッチを検出し、その情報を基に豊かなモジュレーションエフェクトを実現します。</p>
+            <p>Ghost Tunerは、リアルタイムで音声のピッチを推定し、モジュレーションエフェクトを適用するプラグインです。入力音声から高精度にピッチを検出し、その情報を基に豊かなモジュレーションエフェクトを実現します。
+            </p>
         </div>
 
         <!-- 使い方セクション -->
@@ -321,5 +330,99 @@
     <footer>
         <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+            if (currentLang === 'en') {
+                // セクション見出し
+                const headers = {
+                    '📖 概要': '📖 Overview',
+                    '🎯 使い方': '🎯 How to Use',
+                    '⚙️ 機能': '⚙️ Features',
+                    '🎛️ パラメータ': '🎛️ Parameters',
+                    '🔧 技術仕様': '🔧 Technical Specifications'
+                };
+                document.querySelectorAll('.detail-section h2').forEach(h2 => {
+                    if (headers[h2.textContent]) h2.textContent = headers[h2.textContent];
+                });
+
+                // 概要
+                const overview = document.querySelector('.detail-section:nth-of-type(2) p');
+                if (overview) overview.textContent = 'Ghost Tuner is a real-time pitch estimation and modulation effector plugin. It detects pitch from input audio with high accuracy and realizes rich modulation effects based on that information.';
+
+                // 使い方
+                const usage = document.querySelector('.detail-section:nth-of-type(3) ol');
+                if (usage) {
+                    const steps = [
+                        'Load the plugin into your DAW.',
+                        'Connect the input audio.',
+                        'Adjust the pitch estimation sensitivity.',
+                        'Set the modulation intensity.',
+                        'Fine-tune parameters while checking the output.'
+                    ];
+                    usage.querySelectorAll('li').forEach((li, i) => { if (steps[i]) li.textContent = steps[i]; });
+                }
+
+                // 機能
+                const features = document.querySelector('.detail-section:nth-of-type(4) ul');
+                if (features) {
+                    const featureData = [
+                        ['Real-time Pitch Estimation', 'High-precision audio processing by estimating pitch from input audio in real-time.'],
+                        ['Modulation Effect', 'Applies modulation effects based on the estimated pitch.'],
+                        ['Low Latency Processing', 'Real-time processing with minimal delay.'],
+                        ['High Quality Audio Processing', 'Maintains professional-level sound quality.'],
+                        ['Intuitive UI', 'Easy to operate with a user-friendly interface.']
+                    ];
+                    features.querySelectorAll('li').forEach((li, i) => {
+                        if (featureData[i]) li.innerHTML = `<strong>${featureData[i][0]}</strong> - ${featureData[i][1]}`;
+                    });
+                }
+
+                // パラメータ
+                const paramTable = document.querySelector('.parameter-table');
+                if (paramTable) {
+                    paramTable.querySelector('th:nth-child(1)').textContent = 'Parameter Name';
+                    paramTable.querySelector('th:nth-child(2)').textContent = 'Range';
+                    paramTable.querySelector('th:nth-child(3)').textContent = 'Default Value';
+                    paramTable.querySelector('th:nth-child(4)').textContent = 'Description';
+
+                    const rowDescs = [
+                        'Adjusts the sensitivity of pitch estimation. Higher values detect finer pitch changes.',
+                        'Sets the intensity of the modulation effect.',
+                        'Adjusts the speed of the modulation.',
+                        'Adjusts the gain of the input signal.',
+                        'Adjusts the gain of the output signal.'
+                    ];
+                    paramTable.querySelectorAll('tbody tr').forEach((tr, i) => {
+                        if (rowDescs[i]) tr.querySelector('td:nth-child(4)').textContent = rowDescs[i];
+                    });
+                }
+
+                // 技術仕様
+                const techSpecs = document.querySelector('.detail-section:nth-of-type(6) ul');
+                if (techSpecs) {
+                    const specData = [
+                        ['Supported Formats', 'VST3, CLAP'],
+                        ['Development Language', 'Rust'],
+                        ['Framework', 'nih-plug (ISC License)'],
+                        ['GUI Library', 'egui (MIT/Apache-2.0)'],
+                        ['Pitch Estimation Algorithm', 'High-precision FFT based'],
+                        ['Processing Latency', 'Low latency'],
+                        ['Sampling Rate', '44.1kHz - 192kHz supported'],
+                        ['Bit Depth', '16bit - 32bit supported']
+                    ];
+                    techSpecs.querySelectorAll('li').forEach((li, i) => {
+                        if (specData[i]) li.innerHTML = `<strong>${specData[i][0]}</strong> - ${specData[i][1]}`;
+                    });
+                }
+
+                // 戻るボタン
+                const backBtn = document.querySelector('.back-button');
+                if (backBtn) backBtn.textContent = '← Back to Plugin List';
+            }
+        });
+    </script>
 </body>
-</html> 
+
+</html>

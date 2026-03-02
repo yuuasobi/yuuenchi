@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
     <link rel="apple-touch-icon" href="../../source/観覧車ファビコン.png">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         .detail-header {
@@ -29,21 +31,26 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 30%);
             transform: rotate(0deg);
             animation: rotate 20s linear infinite;
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .detail-header h1 {
             margin: 0;
             font-size: 3rem;
             font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 1;
         }
@@ -61,7 +68,7 @@
         .detail-section {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             padding: 2rem;
             margin-bottom: 2rem;
         }
@@ -79,7 +86,7 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             margin: 1rem 0;
             display: block;
             margin-left: auto;
@@ -93,7 +100,7 @@
             margin: 1rem auto;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .detail-section .video-container iframe {
@@ -174,10 +181,21 @@
             border-left: 4px solid;
         }
 
-        .waveform-card.sine { border-left-color: #dc3545; }
-        .waveform-card.square { border-left-color: #28a745; }
-        .waveform-card.triangle { border-left-color: #007bff; }
-        .waveform-card.saw { border-left-color: #ffc107; }
+        .waveform-card.sine {
+            border-left-color: #dc3545;
+        }
+
+        .waveform-card.square {
+            border-left-color: #28a745;
+        }
+
+        .waveform-card.triangle {
+            border-left-color: #007bff;
+        }
+
+        .waveform-card.saw {
+            border-left-color: #ffc107;
+        }
 
         .waveform-card h4 {
             margin: 0 0 0.5rem 0;
@@ -225,28 +243,29 @@
             .detail-header h1 {
                 font-size: 2rem;
             }
-            
+
             .detail-section {
                 padding: 1.5rem;
             }
-            
+
             .parameter-table {
                 font-size: 0.9rem;
             }
-            
+
             .waveform-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <script src="../../header.js"></script>
-    
+
     <header class="detail-header">
         <h1>🎹 NodeSynth</h1>
     </header>
-    
+
     <div class="container">
         <!-- 動画セクション -->
         <div class="detail-section">
@@ -258,7 +277,8 @@
         <!-- 概要セクション -->
         <div class="detail-section">
             <h2>📖 概要</h2>
-            <p>NodeSynthは、Rustで構築されたノードベースのソフトウェアシンセサイザーVST3/CLAPプラグインです。最大12個の波形ノードを4×3グリッドレイアウトで組み合わせ、個別パラメータコントロールで豊かなサウンドを作成できます。</p>
+            <p>NodeSynthは、Rustで構築されたノードベースのソフトウェアシンセサイザーVST3/CLAPプラグインです。最大12個の波形ノードを4×3グリッドレイアウトで組み合わせ、個別パラメータコントロールで豊かなサウンドを作成できます。
+            </p>
         </div>
 
         <!-- 使い方セクション -->
@@ -383,5 +403,124 @@
     <footer>
         <p>&copy; 2025 ゆうえんち. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ja';
+            if (currentLang === 'en') {
+                // セクション見出し
+                const headers = {
+                    '📖 概要': '📖 Overview',
+                    '🎯 使い方': '🎯 How to Use',
+                    '⚙️ 機能': '⚙️ Features',
+                    '🌊 波形タイプ': '🌊 Waveform Types',
+                    '🎛️ パラメータ': '🎛️ Parameters',
+                    '🔧 技術仕様': '🔧 Technical Specifications'
+                };
+                document.querySelectorAll('.detail-section h2').forEach(h2 => {
+                    if (headers[h2.textContent]) h2.textContent = headers[h2.textContent];
+                });
+
+                // 概要
+                const overview = document.querySelector('.detail-section:nth-of-type(2) p');
+                if (overview) overview.textContent = 'NodeSynth is a node-based software synthesizer VST3/CLAP plugin built with Rust. You can combine up to 12 waveform nodes in a 4x3 grid layout and create rich sounds with individual parameter control.';
+
+                // 使い方
+                const usage = document.querySelector('.detail-section:nth-of-type(3) ol');
+                if (usage) {
+                    const steps = [
+                        'Load the plugin as a VST3 or CLAP instrument in your DAW.',
+                        'Add nodes using waveform buttons (Sine, Square, Triangle, Saw).',
+                        'You can add up to 12 nodes (buttons are disabled when limit is reached).',
+                        'Adjust parameters for each node individually.',
+                        'Play MIDI notes to hear the layered synthesis sound.',
+                        'Delete nodes with the X button on each node.'
+                    ];
+                    usage.querySelectorAll('li').forEach((li, i) => { if (steps[i]) li.textContent = steps[i]; });
+                }
+
+                // 機能
+                const features = document.querySelector('.detail-section:nth-of-type(4) ul');
+                if (features) {
+                    const featureData = [
+                        ['Node-based Synthesis', 'Combine up to 12 waveform nodes to create rich sounds.'],
+                        ['4x3 Grid Layout', 'Organized display in 4 columns and 3 rows for intuitive operation.'],
+                        ['Multiple Waveforms', 'Sine, Square, Triangle, and Sawtooth waves (color-coded).'],
+                        ['Individual Node Parameters', 'Gain, Detune, Phase, and Pulse Width for each node.'],
+                        ['MIDI Input', 'Full polyphonic support via Note On/Off events.'],
+                        ['Real-time Control', 'Instant parameter adjustment during playback.'],
+                        ['Master Gain', 'Overall output level control.'],
+                        ['Visual Feedback', 'Easy identification by color-coding waveform names.']
+                    ];
+                    features.querySelectorAll('li').forEach((li, i) => {
+                        if (featureData[i]) li.innerHTML = `<strong>${featureData[i][0]}</strong> - ${featureData[i][1]}`;
+                    });
+                }
+
+                // 波形タイプ
+                const waveforms = document.querySelector('.waveform-grid');
+                if (waveforms) {
+                    const waveData = [
+                        ['Sine Wave', 'Pure and smooth sinusoidal tone. Provides the most basic and natural timbre.'],
+                        ['Square Wave', 'Rich harmonics with adjustable pulse width. Characterized by a bright and powerful tone.'],
+                        ['Triangle Wave', 'Mellow and soft harmonic components. Provides a warm tone.'],
+                        ['Sawtooth Wave', 'Bright and buzzy sawtooth characteristics. A tone containing rich harmonics.']
+                    ];
+                    waveforms.querySelectorAll('.waveform-card').forEach((card, i) => {
+                        if (waveData[i]) {
+                            card.querySelector('h4').textContent = '🔴 ' + waveData[i][0]; // 絵文字は維持
+                            if (i === 1) card.querySelector('h4').textContent = '🟢 ' + waveData[i][0];
+                            if (i === 2) card.querySelector('h4').textContent = '🔵 ' + waveData[i][0];
+                            if (i === 3) card.querySelector('h4').textContent = '🟡 ' + waveData[i][0];
+                            card.querySelector('p').textContent = waveData[i][1];
+                        }
+                    });
+                }
+
+                // パラメータ
+                const paramTable = document.querySelector('.parameter-table');
+                if (paramTable) {
+                    paramTable.querySelector('th:nth-child(1)').textContent = 'Parameter Name';
+                    paramTable.querySelector('th:nth-child(2)').textContent = 'Range';
+                    paramTable.querySelector('th:nth-child(3)').textContent = 'Default Value';
+                    paramTable.querySelector('th:nth-child(4)').textContent = 'Description';
+
+                    const rowDescs = [
+                        'Controls the overall output level.',
+                        'Adjusts the volume of individual nodes.',
+                        'Sets the pitch offset in cents (-50 to +50 cents).',
+                        'Adjusts the waveform phase offset (0 to 360 degrees).',
+                        'Sets the duty cycle of the square wave (square wave only).'
+                    ];
+                    paramTable.querySelectorAll('tbody tr').forEach((tr, i) => {
+                        if (rowDescs[i]) tr.querySelector('td:nth-child(4)').textContent = rowDescs[i];
+                    });
+                }
+
+                // 技術仕様
+                const techSpecs = document.querySelector('.detail-section:nth-of-type(7) ul');
+                if (techSpecs) {
+                    const specData = [
+                        ['Supported Formats', 'VST3, CLAP'],
+                        ['Development Language', 'Rust'],
+                        ['Framework', 'nih-plug (ISC License)'],
+                        ['GUI Library', 'egui (MIT/Apache-2.0)'],
+                        ['Maximum Node Count', '12'],
+                        ['Layout', '4x3 Grid'],
+                        ['Polyphonic Support', 'Fully supported'],
+                        ['Real-time Processing', 'Low latency']
+                    ];
+                    techSpecs.querySelectorAll('li').forEach((li, i) => {
+                        if (specData[i]) li.innerHTML = `<strong>${specData[i][0]}</strong> - ${specData[i][1]}`;
+                    });
+                }
+
+                // 戻るボタン
+                const backBtn = document.querySelector('.back-button');
+                if (backBtn) backBtn.textContent = '← Back to Plugin List';
+            }
+        });
+    </script>
 </body>
-</html> 
+
+</html>
