@@ -93,13 +93,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // 翻訳データ
     const translations = {
         ja: {
-            game: 'Game',
-            novel: 'Novel',
-            music: 'Music',
-            synth: 'Synth',
-            model: '3D',
-            plugin: 'Plugin',
-            tools: 'Tools',
+            game: 'ゲーム',
+            novel: '小説',
+            music: '音楽',
+            synth: 'シンセ',
+            model: '3Dモデル',
+            plugin: 'プラグイン',
+            tools: 'ツール',
             web: 'Web',
             search: '検索...',
             searchNovel: 'エピソード番号やタイトルで検索...',
