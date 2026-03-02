@@ -7034,11 +7034,94 @@
 
         // 翻訳データ：WCG100およびくろろ氏の全ゲームタイトルと説明の翻訳を一括定義
         const gameTranslationInfo = {
-            '01': { title: 'Concentration', description: 'A card game where you find pairs of animal and sound cards.', theme: 'Concentration' },
-            '02': { title: 'Harvest Festival', description: 'A game where you harvest vegetables and fruits over time.', theme: 'Harvest' },
-            '03': { title: 'Diving Fishing', description: 'A game where you catch fish by free diving.', theme: 'Free Diving' },
-            '04': { title: 'Dining', description: 'A game where you serve various dishes to customers.', theme: 'Cooking' },
-            '05': { title: 'Space Exploration', description: 'A game where you explore the universe using gravity warps.', theme: 'Space Exploration' },
+            '01': {
+                title: 'Concentration',
+                description: 'A card game where you find pairs of animal and sound cards.',
+                theme: 'Concentration',
+                controls: [
+                    { action: 'Open card', btn: 'B Button' },
+                    { action: 'Ascend/Descend', btn: 'Up/Down Keys' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Players match animal cards with corresponding sound cards.',
+                    'Successfully pairing cards earns points; incorrect guesses reduce the gauge (up to five misses are allowed without penalty).',
+                    'Completing all pairs restores a portion of the gauge and initiates the next wave.',
+                    'The score obtained before the gauge reaches 0 is recorded as high score.'
+                ]
+            },
+            '02': {
+                title: 'Harvest Festival',
+                description: 'A game where you harvest vegetables and fruits over time.',
+                theme: 'Harvest',
+                controls: [
+                    { action: 'Harvest/Confirm', btn: 'B Button' },
+                    { action: 'Jump', btn: 'A Button' },
+                    { action: 'Dash', btn: 'LB Button' },
+                    { action: 'Switch Month', btn: 'RB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Harvest vegetables and fruits growing in fields and trees as time passes.',
+                    'The available crops for harvest change with the season.',
+                    'The goals is to aim for high score by harvesting as much as possible from April to March.'
+                ]
+            },
+            '03': {
+                title: 'Diving Fishing',
+                description: 'A game where you catch fish by skin diving.',
+                theme: 'Skin Diving Fishing',
+                controls: [
+                    { action: 'Catch', btn: 'B Button' },
+                    { action: 'Ascend', btn: 'RB Button' },
+                    { action: 'Descend', btn: 'Automatically descends when not ascending' },
+                    { action: 'Descend Speed Up', btn: 'RT Button' },
+                    { action: 'Move Speed Up', btn: 'LB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'A game where you collect fish in the sea.',
+                    'The breath gauge decreases when you are underwater.',
+                    'The number of fish caught before the breath gauge reaches 0 is recorded as high score.',
+                    'You can escape if you get stuck on rocks by ascending.'
+                ]
+            },
+            '04': {
+                title: 'Dining',
+                description: 'A game where you serve dishes.',
+                theme: 'Restaurant',
+                controls: [
+                    { action: 'Serve Dish', btn: 'RB/RT/LB/LT Button' },
+                    { action: 'Start Game', btn: 'START Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Serve the same dish as the order displayed at each table.',
+                    'The business hours gauge decreases while the order is displayed.',
+                    'The total number of dishes served before the gauge reaches 0 is recorded as high score.',
+                    'The number of servings for each dish is displayed at the results screen.'
+                ]
+            },
+            '05': {
+                title: 'Space Exploration',
+                description: 'A game where you explore the universe using gravity warp.',
+                theme: 'Space Exploration',
+                controls: [
+                    { action: 'Ascend/Descend', btn: 'RB/RT Button' },
+                    { action: 'Start Warp System', btn: 'LT Button' },
+                    { action: 'Adjust AU Value', btn: 'LT + Up/Down (±0.01) / Left/Right (±0.1), LT+Y + Up/Down (±1), LT+Y + Left/Right (±10)' },
+                    { action: 'Execute Warp', btn: 'LT+Y Button' },
+                    { action: 'Dash', btn: 'RB Button' },
+                    { action: 'Options', btn: 'Back Button' }
+                ],
+                systems: [
+                    'Explore the universe to find planets.',
+                    'Planet positions are set in AU (Astronomical Units) from the Sun.',
+                    'Warping to the correct AU value will reveal the planet in that region.',
+                    'Starts from Earth at 1 AU.'
+                ]
+            },
             '06': { title: 'Onsen', description: 'A game where you take care of chicks in a hot spring.', theme: 'Hot Spring' },
             '07': { title: 'Zoo', description: 'A game where you transform into the same species to talk to animals and make friends.', theme: 'Zoo' },
             '08': { title: 'Exhibition', description: 'A game where you give titles to various paintings.', theme: 'Exhibition' },
@@ -7106,7 +7189,7 @@
             '70': { title: 'Golem Crush', description: 'A battle game where you defeat golems using positioning and buffs.', theme: 'Golem Crush' },
             '71': { title: 'Box Puzzle', description: 'A puzzle game where you move boxes to create a path to the tower.', theme: 'Box Puzzle' },
             '72': { title: 'Bonfire Control', description: 'A game where you manage a bonfire to survive until morning.', theme: 'Bonfire Control' },
-            '73': { theme: 'Sumo', title: 'Sumo', description: 'A sumo game where you push opponents out of the ring.', theme: 'Ponsu' },
+            '73': { title: 'Sumo', description: 'A sumo game where you push opponents out of the ring.', theme: 'Sumo' },
             '74': { title: 'Cattle Care', description: 'A game where you raise and care for high-quality cattle.', theme: 'Cattle Care' },
             '75': { title: 'Arena Battle', description: 'A front-view real-time battle game.', theme: 'Arena' },
             '76': { title: 'Dowsing Factory', description: 'A mining game set in a randomly changing labyrinth.', theme: 'Dowsing' },
@@ -7177,17 +7260,25 @@
         const actionTranslations = {
             'カードを開く': 'Flip Card',
             '上昇/下降': 'Ascend/Descend',
+            '上昇': 'Ascend',
+            '下降': 'Descend',
             'ダッシュ': 'Dash',
             'オプション': 'Options',
             '収穫': 'Harvest',
             '移動': 'Move',
             '潜る/浮上': 'Dive/Surface',
+            '潜る': 'Dive',
+            '浮上': 'Surface',
             '捕まえる': 'Catch',
+            '捕る': 'Catch',
             '料理を選択': 'Select Dish',
             '提供する': 'Serve',
+            '料理提供': 'Serve Dish',
             'ワープ': 'Warp',
             'お世話': 'Care',
             '話しかける': 'Talk',
+            '声を掛ける': 'Talk',
+            '話す': 'Talk',
             '変身': 'Transform',
             '名前を付ける': 'Give Name',
             '進む': 'Advance',
@@ -7196,6 +7287,7 @@
             '答える': 'Answer',
             'ガチャを引く': 'Pull Gacha',
             '跳ぶ': 'Jump',
+            'ジャンプ': 'Jump',
             '視力検査': 'Eye Test',
             'ストップ': 'Stop',
             '弾く': 'Play',
@@ -7203,9 +7295,11 @@
             'リールを巻く': 'Reel In',
             '探索': 'Explore',
             'よける': 'Avoid',
+            '避ける': 'Avoid',
             '鍵を使う': 'Use Key',
             '星を集める': 'Collect Stars',
             'ドアを開ける': 'Open Door',
+            '扉を開く': 'Open Door',
             '分別': 'Sort',
             '参拝': 'Pray',
             'あいさつ': 'Greet',
@@ -7226,11 +7320,40 @@
             '食べる': 'Eat',
             'ゲームスタート': 'Game Start',
             '決定/配置': 'Confirm/Place',
+            '決定': 'Confirm',
+            '配置': 'Place',
             'アイテム切替': 'Switch Item',
             '食材切替': 'Switch Ingredient',
             '上下移動': 'Move Up/Down',
             'アクション': 'Action',
-            'キャラ切り替え': 'Switch Character'
+            'キャラ切り替え': 'Switch Character',
+            'キャラ/言語切替': 'Switch Character/Language',
+            '時間跳躍': 'Time Leap',
+            '木を切る': 'Chop Wood',
+            '解体': 'Demolish',
+            '建築': 'Build',
+            'モード切替': 'Switch Mode',
+            'ゲーム終了': 'End Game',
+            'アイテム配置': 'Place Item',
+            'アイテムを外す': 'Remove Item',
+            'カメラモード切替': 'Switch Camera Mode',
+            '創造力を見せてもらう': 'Show Creativity',
+            '解除': 'Release',
+            '弓矢切替': 'Switch Bow/Arrow',
+            'リスタート': 'Restart',
+            'しゃがむ': 'Crouch',
+            '組み合わせ切替': 'Switch Combination',
+            '問題を閉じる': 'Close Problem',
+            '写真を撮る': 'Take Photo',
+            'メモリー確認': 'Check Memory',
+            'メモリー写真切替': 'Switch Memory Photo',
+            '時間帯切替': 'Switch Time Zone',
+            '拾う': 'Pick Up',
+            '引き上げる': 'Salvage',
+            '星座パワーチャージ': 'Charge Constellation Power',
+            'マーク切替': 'Switch Mark',
+            '月の切替': 'Switch Month',
+            'スピードアップ': 'Speed Up'
         };
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -7280,78 +7403,120 @@
                         if (h3.textContent === 'クリエイター') h3.textContent = 'Creators';
                     });
 
-                    // 3. 操作方法 (table) の1列目の置換
-                    doc.querySelectorAll('table tr').forEach(tr => {
-                        const td1 = tr.querySelector('td:first-child');
-                        const td2 = tr.querySelector('td:last-child');
-                        if (td1 && td2) {
-                            // アクション名の翻訳
-                            const actionJa = td1.textContent.trim();
-                            if (actionTranslations[actionJa]) {
-                                td1.textContent = actionTranslations[actionJa];
+                    // 3. 操作方法 (table) の置換
+                    const tableRows = doc.querySelectorAll('table tr');
+                    if (trans && trans.controls) {
+                        // 個別設定がある場合はそれを使用
+                        tableRows.forEach((tr, index) => {
+                            const td1 = tr.querySelector('td:first-child');
+                            const td2 = tr.querySelector('td:last-child');
+                            if (td1 && td2 && trans.controls[index]) {
+                                td1.textContent = trans.controls[index].action;
+                                td2.textContent = trans.controls[index].btn;
                             }
+                        });
+                    } else {
+                        // 個別設定がない場合は汎用置換
+                        tableRows.forEach(tr => {
+                            const td1 = tr.querySelector('td:first-child');
+                            const td2 = tr.querySelector('td:last-child');
+                            if (td1 && td2) {
+                                // アクション名の翻訳 (「/」区切りに対応)
+                                let actionJa = td1.textContent.trim();
+                                if (actionJa.includes('/')) {
+                                    const parts = actionJa.split('/');
+                                    const translatedParts = parts.map(p => actionTranslations[p.trim()] || p.trim());
+                                    td1.textContent = translatedParts.join('/');
+                                } else if (actionTranslations[actionJa]) {
+                                    td1.textContent = actionTranslations[actionJa];
+                                }
 
-                            // ボタン名/キー名の翻訳
-                            let btnText = td2.textContent;
-                            btnText = btnText.replace(/Bボタン/g, 'B Button')
-                                .replace(/Aボタン/g, 'A Button')
-                                .replace(/Xボタン/g, 'X Button')
-                                .replace(/Yボタン/g, 'Y Button')
-                                .replace(/LBボタン/g, 'LB Button')
-                                .replace(/RBボタン/g, 'RB Button')
-                                .replace(/RT/g, 'RT Button') // Added RT
-                                .replace(/Backボタン/g, 'Back Button')
-                                .replace(/STARTボタン/g, 'START Button')
-                                .replace(/START/g, 'START Button') // Added START
-                                .replace(/上下キー/g, 'Up/Down Keys')
-                                .replace(/左右キー/g, 'Left/Right Keys')
-                                .replace(/十字キー/g, 'D-Pad')
-                                .replace(/アナログスティック/g, 'Analog Stick');
-                            td2.textContent = btnText;
-                        }
-                    });
+                                // ボタン名/キー名の翻訳
+                                let btnText = td2.textContent;
+                                btnText = btnText.replace(/Bボタン/g, 'B Button')
+                                    .replace(/Aボタン/g, 'A Button')
+                                    .replace(/Xボタン/g, 'X Button')
+                                    .replace(/Yボタン/g, 'Y Button')
+                                    .replace(/LBボタン/g, 'LB Button')
+                                    .replace(/RBボタン/g, 'RB Button')
+                                    .replace(/RTボタン/g, 'RT Button')
+                                    .replace(/LTボタン/g, 'LT Button')
+                                    .replace(/Backボタン/g, 'Back Button')
+                                    .replace(/backボタン/g, 'Back Button')
+                                    .replace(/STARTボタン/g, 'Start Button')
+                                    .replace(/\bRT\b(?! Button)/g, 'RT Button')
+                                    .replace(/\bLT\b(?! Button)/g, 'LT Button')
+                                    .replace(/\bBack\b(?! Button)/gi, 'Back Button')
+                                    .replace(/\bSTART\b(?! Button)/g, 'Start Button')
+                                    .replace(/上下キー/g, 'Up/Down Keys')
+                                    .replace(/左右キー/g, 'Left/Right Keys')
+                                    .replace(/上下左右キー/g, 'D-Pad')
+                                    .replace(/十字キー/g, 'D-Pad')
+                                    .replace(/アナログスティック/g, 'Analog Stick')
+                                    .replace(/右スティック/g, 'Right Stick')
+                                    .replace(/左スティック/g, 'Left Stick')
+                                    .replace(/キーボード/g, 'Keyboard');
+                                td2.textContent = btnText;
+                            }
+                        });
+                    }
 
-                    // 4. システム (ul/li) の一部フレーズ置換
-                    doc.querySelectorAll('.detail-block ul li').forEach(li => {
-                        let text = li.textContent;
-                        // 個別の翻訳を網羅するのは難しいため、共通的な単語を置換、またはそのまま
-                        // ここでは「ゲージ」「スコア」「ハイスコア」などはカタカナ英語なのでそのまま、あるいは英語に
-                        text = text.replace(/スコア/g, 'Score')
-                            .replace(/ハイスコア/g, 'High Score')
-                            .replace(/ゲージ/g, 'Gauge')
-                            .replace(/アイテム/g, 'Item')
-                            .replace(/レベル/g, 'Level')
-                            .replace(/ターン/g, 'Turn')
-                            .replace(/ステージ/g, 'Stage')
-                            .replace(/体力/g, 'HP')
-                            .replace(/チーズ/g, 'Cheese')
-                            .replace(/ネズミ/g, 'Mouse')
-                            .replace(/ラーメンスープ/g, 'Ramen Soup')
-                            .replace(/トッピング/g, 'Toppings')
-                            .replace(/キャラ/g, 'Characters')
-                            .replace(/連携/g, 'Cooperation')
-                            .replace(/物理/g, 'Physical')
-                            .replace(/魔法/g, 'Magic')
-                            .replace(/バフ/g, 'Buff')
-                            .replace(/デバフ/g, 'Debuff')
-                            .replace(/弱点/g, 'Weakness')
-                            .replace(/属性攻撃/g, 'Elemental Attack')
-                            .replace(/ダメージ/g, 'Damage')
-                            .replace(/反撃/g, 'Counterattack')
-                            .replace(/ステータス効果/g, 'Status Effects')
-                            .replace(/ノーダメージ/g, 'No Damage')
-                            .replace(/HPが0になるまでに獲得したスコアがハイスコアとして記録される/g, 'The score obtained before HP reaches 0 is recorded as the high score.')
-                            .replace(/体力が0になるまでに食べたチーズの数がハイスコアとして記録される/g, 'The number of cheese eaten before HP reaches 0 is recorded as the high score.')
-                            .replace(/時間経過で体力が減り、徘徊しているネズミにぶつかると大幅に体力が削られる/g, 'HP decreases over time, and colliding with wandering mice significantly reduces HP.')
-                            .replace(/チーズを食べきることでスコアを獲得できる/g, 'You can earn scores by eating all the cheese.')
-                            .replace(/チーズを食べると体力が少しずつ回復する/g, 'Eating cheese gradually restores HP.')
-                            .replace(/ラーメンスープとトッピングを組み合わせてオリジナルのラーメンを作る/g, 'Create your original ramen by combining ramen soup and toppings.')
-                            .replace(/足は物理、手は魔法、顔は弓が弱点で、雪→炎、火の粉→氷、雨→雷と天候に応じた属性攻撃をするとさらにダメージが上がります/g, 'Feet are weak to physical, hands to magic, and face to bow. Elemental attacks corresponding to weather (snow→fire, sparks→ice, rain→lightning) further increase damage.')
-                            .replace(/光ってる部位以外に攻撃すると反撃を食らうのと、バフデバフ解除しないとダメージが一切通らなかったり、大ダメージを受けます/g, 'Attacking parts other than the glowing ones will result in a counterattack, and damage will not be dealt at all or large damage will be taken if buffs/debuffs are not removed.')
-                            .replace(/バフデバフでステータス効果を相殺させながら、反撃食らわないようにじっくり立ち回ればノーダメージでも倒せる/g, 'By neutralizing status effects with buffs and debuffs and carefully maneuvering to avoid counterattacks, you can defeat enemies without taking any damage.')
-                            .replace(/敵を倒すと残りHPがスコアとして獲得され、ステータスが引き継がれた状態で次のバトルが開始される/g, 'When an enemy is defeated, remaining HP is gained as a score, and the next battle begins with inherited stats.');
-                        li.textContent = text;
-                    });
+                    // 4. システム (ul/li) の置換
+                    const systemLis = doc.querySelectorAll('.detail-block ul li');
+                    if (trans && trans.systems) {
+                        // 個別設定がある場合はそれを使用
+                        systemLis.forEach((li, index) => {
+                            if (trans.systems[index]) {
+                                li.textContent = trans.systems[index];
+                            }
+                        });
+                    } else {
+                        // 個別設定がない場合は汎用置換
+                        systemLis.forEach(li => {
+                            let text = li.textContent;
+                            text = text.replace(/スコア/g, 'Score')
+                                .replace(/ハイスコア/g, 'High Score')
+                                .replace(/ゲージ/g, 'Gauge')
+                                .replace(/アイテム/g, 'Item')
+                                .replace(/レベル/g, 'Level')
+                                .replace(/ターン/g, 'Turn')
+                                .replace(/ステージ/g, 'Stage')
+                                .replace(/タイム/g, 'Time')
+                                .replace(/制限時間/g, 'Time Limit')
+                                .replace(/最大/g, 'Max')
+                                .replace(/経験値/g, 'EXP')
+                                .replace(/クイズ/g, 'Quiz')
+                                .replace(/体力/g, 'HP')
+                                .replace(/ダメージ/g, 'Damage')
+                                .replace(/攻撃力/g, 'ATK')
+                                .replace(/防御力/g, 'DEF')
+                                .replace(/魔力/g, 'MATK')
+                                .replace(/魔法力/g, 'MATK')
+                                .replace(/属性/g, 'Element')
+                                .replace(/弱点/g, 'Weakness')
+                                .replace(/状態異常/g, 'Status Ailment')
+                                .replace(/バフ/g, 'Buff')
+                                .replace(/デバフ/g, 'Debuff')
+                                .replace(/回復/g, 'Recovery')
+                                .replace(/復活/g, 'Revive')
+                                .replace(/敵/g, 'Enemy')
+                                .replace(/勝利/g, 'Victory')
+                                .replace(/敗北/g, 'Defeat')
+                                .replace(/終了/g, 'End')
+                                .replace(/メニュー/g, 'Menu')
+                                .replace(/設定/g, 'Settings')
+                                .replace(/ cheese /g, ' Cheese ')
+                                .replace(/ HP /g, ' HP ')
+                                // 特徴的な長文のパターン置換
+                                .replace(/HPが0になるまでに獲得したスコアがハイスコアとして記録される/g, 'The score obtained before HP reaches 0 is recorded as the high score.')
+                                .replace(/体力が0になるまでに食べたチーズの数がハイスコアとして記録される/g, 'The number of cheese eaten before HP reaches 0 is recorded as the high score.')
+                                .replace(/時間経過で体力が減り、徘徊しているネズミにぶつかると大幅に体力が削られる/g, 'HP decreases over time, and colliding with wandering mice significantly reduces HP.')
+                                .replace(/チーズを食べきることでスコアを獲得できる/g, 'You can earn scores by eating all the cheese.')
+                                .replace(/チーズを食べると体力が少しずつ回復する/g, 'Eating cheese gradually restores HP.')
+                                .replace(/ラーメンスープとトッピングを組み合わせてオリジナルのラーメンを作る/g, 'Create your original ramen by combining ramen soup and toppings.');
+                            li.textContent = text;
+                        });
+                    }
 
                     // 5. クリエイターセクションの置換
                     const creatorBlock = Array.from(doc.querySelectorAll('.detail-block')).find(b => b.querySelector('h3')?.textContent === 'Creators');
