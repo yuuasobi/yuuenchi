@@ -1341,6 +1341,7 @@
                 currentIndex = Math.min(20, kurokuroGames.length);
             } else {
                 // デフォルトでWCG100タブを表示
+                currentIndex = 20; // 既に静的に表示されている20件をスキップ
                 loadMoreGames();
             }
         });
