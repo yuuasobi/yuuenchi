@@ -27,6 +27,14 @@
                 <button class="tab-button" onclick="switchTab('kuroro')">くろろ</button>
             </div>
 
+            <div class="bundle-purchase-wrapper" id="bundlePurchaseWrapper">
+                <a href="https://sua.lemonsqueezy.com/checkout/buy/cc57263e-f7e9-4cff-a483-0117081b3bf3"
+                    class="bundle-purchase-button"
+                    id="bundlePurchaseButton"
+                    target="_blank"
+                    rel="noopener noreferrer">バンドル版を購入</a>
+            </div>
+
             <div class="game-grid" id="gameGrid">
                 <!-- 最初の20個のゲームカードのみ表示 -->
                 <div class="game-card">
@@ -1542,10 +1550,19 @@
         // スクロールイベントを追加
         window.addEventListener('scroll', handleScroll);
 
+        function updateBundlePurchaseVisibility(tabName) {
+            const bundlePurchaseWrapper = document.getElementById('bundlePurchaseWrapper');
+            if (bundlePurchaseWrapper) {
+                bundlePurchaseWrapper.style.display = tabName === 'wcg100' ? 'flex' : 'none';
+            }
+        }
+
         // タブ切り替え関数
         function switchTab(tabName) {
             const tabButtons = document.querySelectorAll('.tab-button');
             const gameGrid = document.getElementById('gameGrid');
+
+            updateBundlePurchaseVisibility(tabName);
 
             // タブボタンのアクティブ状態を更新
             tabButtons.forEach(button => {
@@ -1605,6 +1622,7 @@
                     button.classList.remove('active');
                 });
                 document.querySelector('.tab-button[onclick="switchTab(\'kuroro\')"]').classList.add('active');
+                updateBundlePurchaseVisibility('kuroro');
 
                 // くろろのゲームを表示
                 const gameGrid = document.getElementById('gameGrid');
@@ -1621,6 +1639,7 @@
                 currentIndex = Math.min(20, kurokuroGames.length);
             } else {
                 // デフォルトでWCG100タブを表示
+                updateBundlePurchaseVisibility('wcg100');
                 currentIndex = 20; // 既に静的に表示されている20件をスキップ
                 loadMoreGames();
             }
@@ -1631,7 +1650,8 @@
                 const translations = {
                     '.wcg-header h1': 'World Community Games 100',
                     '.tab-button[onclick="switchTab(\'wcg100\')"]': 'WCG100',
-                    '.tab-button[onclick="switchTab(\'kuroro\')"]': 'Kuroro'
+                    '.tab-button[onclick="switchTab(\'kuroro\')"]': 'Kuroro',
+                    '#bundlePurchaseButton': 'Purchase Bundle'
                 };
 
                 for (const [selector, text] of Object.entries(translations)) {
@@ -1666,6 +1686,30 @@
             padding: 30px;
             margin: 20px 0;
             border: 1px solid #f0f0f0;
+        }
+
+        .bundle-purchase-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .bundle-purchase-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(45deg, #4a90e2, #5cb85c);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+        }
+
+        .bundle-purchase-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.35);
         }
 
         .tab-container {
