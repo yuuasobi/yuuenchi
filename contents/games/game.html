@@ -8942,6 +8942,31 @@
             'スピードアップ': 'Speed Up'
         };
 
+        const BUNDLE_PURCHASE_URL = 'https://sua.lemonsqueezy.com/checkout/buy/cc57263e-f7e9-4cff-a483-0117081b3bf3';
+
+        function insertBundlePurchaseButton(lang) {
+            const buttonContainer = document.querySelector('#game-content .button-container');
+            if (!buttonContainer) return;
+
+            let bundleBtn = buttonContainer.querySelector('.bundle-purchase-button');
+            if (!bundleBtn) {
+                bundleBtn = document.createElement('a');
+                bundleBtn.href = BUNDLE_PURCHASE_URL;
+                bundleBtn.className = 'bundle-purchase-button';
+                bundleBtn.target = '_blank';
+                bundleBtn.rel = 'noopener noreferrer';
+
+                const purchaseBtn = buttonContainer.querySelector('.purchase-button');
+                if (purchaseBtn) {
+                    buttonContainer.insertBefore(bundleBtn, purchaseBtn);
+                } else {
+                    buttonContainer.appendChild(bundleBtn);
+                }
+            }
+
+            bundleBtn.textContent = lang === 'en' ? 'Purchase Bundle' : 'バンドル版を購入';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const gameId = urlParams.get('id');
@@ -9138,6 +9163,8 @@
                 const errorMsg = currentLang === 'en' ? 'Game not found.' : '指定されたゲームが見つかりません。';
                 gameContent.innerHTML = `<p>${errorMsg}</p>`;
             }
+
+            insertBundlePurchaseButton(currentLang);
 
             // フェードイン
             document.body.style.opacity = 1;
