@@ -5,20 +5,8 @@
 			"path": "."
 		},
 		{
-			"name": "FuranoFlower",
-			"path": "../FuranoFlower"
-		},
-		{
 			"name": "tools",
 			"path": "../tools"
-		},
-		{
-			"name": "Audioplugins",
-			"path": "../Audioplugins"
-		},
-		{
-			"name": "web_game",
-			"path": "../web_game"
 		},
 		{
 			"name": "素材",
